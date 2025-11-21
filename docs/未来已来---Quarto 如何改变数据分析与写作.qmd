@@ -2082,11 +2082,11 @@ HTML和PDF是两种主要的形式， 支持章节、公式、图形、表格、
 
 ### Quarto中文书稿写作手册(pdf)
 
-<iframe src="./refs/quarto_book/Quarto Book Manual.pdf" type="application/pdf" width="80%" height="600px"></iframe>
+<iframe src="./refs/Quarto_book/Quarto-Book-Manual.pdf" type="application/pdf" width="80%" height="600px"></iframe>
 
 ### Quarto中文书稿写作手册(html)
 
-<iframe src="./refs/quarto_book/index.html" width="80%" height="600px"></iframe>
+<iframe src="./refs/Quarto_book/book-index.html" width="80%" height="600px"></iframe>
 
 
 ### 随机退化过程与统计建模(pdf)
@@ -2228,18 +2228,18 @@ format:
 
 ### Quarto revealjs
 
-<iframe src="./refs/quarto_slides/my-presentation.html" width="80%" height="600px"></iframe>
+<iframe src="./refs/Quarto_slides/presentation.html" width="80%" height="600px"></iframe>
 
 
 ### Quarto beamer
 
-<iframe src="./refs/quarto_slides/my-presentation.pdf" type="application/pdf" width="80%" height="800px"></iframe>
+<iframe src="./refs/Quarto_slides/presentation.pdf" type="application/pdf" width="80%" height="800px"></iframe>
 
 
 ### Quarto pptx
 
 
-[点击打开幻灯片](./refs/Quarto_slides/my-presentation.pptx){target="_blank"}
+[点击打开幻灯片](./refs/Quarto_slides/presentation.pptx){target="_blank"}
 
 :::
 
