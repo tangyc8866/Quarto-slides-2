@@ -360,7 +360,7 @@ knitr::include_graphics("./loc-figs/HPC-julia2.jpg")
 ```{=html}
 <div style="width: auto; height: 100%;">
   <video controls style="width: auto; height: 100%;">
-    <source src="./refs/AI-writing-1.mp4" type="video/mp4">
+    <source src="./refs/DS-writing-1.mp4" type="video/mp4">
   </video>
 </div>
 ```
@@ -371,7 +371,7 @@ knitr::include_graphics("./loc-figs/HPC-julia2.jpg")
 ```{=html}
 <div style="width: auto; height: 100%;">
   <video controls style="width: auto; height: 100%;">
-    <source src="./refs/AI-writing-2.mp4" type="video/mp4">
+    <source src="./refs/DS-writing-2.mp4" type="video/mp4">
   </video>
 </div>
 ```
@@ -382,7 +382,7 @@ knitr::include_graphics("./loc-figs/HPC-julia2.jpg")
 ```{=html}
 <div style="width: auto; height: 100%;">
   <video controls style="width: auto; height: 100%;">
-    <source src="./refs/AI-writing-3.mp4" type="video/mp4">
+    <source src="./refs/DS-writing-3.mp4" type="video/mp4">
   </video>
 </div>
 ```
@@ -1222,7 +1222,7 @@ $$
 ```{=html}
 <div style="width: 75%; height: auto;">
   <video controls style="width: 75%; height: auto;">
-    <source src="./refs/STARF-新文速递.mp4" type="video/mp4">
+    <source src="./refs/STARF-newpaper.mp4" type="video/mp4">
   </video>
 </div>
 ```
