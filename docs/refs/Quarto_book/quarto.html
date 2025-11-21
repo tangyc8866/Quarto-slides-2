@@ -1,0 +1,1558 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Quarto书稿速览 – Quarto中文书稿写作手册</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./sections.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-50ea0ab093d56a7dd5cf7d3295364d1c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-6a87998dc46a5b1fc604b46eb64f32b8.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+      tex: {
+          tags: 'ams',  // should be 'ams', 'none', or 'all'
+          inlineMath: [                 // start/end delimiter pairs for in-line math
+              ['$', '$'],
+              ['\\(', '\\)'],
+          ],
+          displayMath: [                // start/end delimiter pairs for display math
+              ['$$', '$$'],
+              ['\\[', '\\]']
+          ],
+          processEscapes: true,
+          macros: {
+              bm: ["\\boldsymbol{#1}", 1],  //   mathbbl: ["\\mathbb{#1}", 1],
+          },
+      }
+  };
+</script>
+
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Quarto中文书稿写作手册</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/tangyc8866"> <i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/tangyc8866" title="源代码" class="quarto-navigation-tool px-1" aria-label="源代码"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quarto.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿速览</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿速览</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto 书稿中的章节标题</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quarto 书稿中的公式与定理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Quarto 书稿中的图形的处理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quarto 书稿中的表格的处理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿中的文献排版</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">附录</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="切換部分">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mathjax27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>Mathjax</code>的离线安装与使用</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblatex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">基于<code>biblatex</code>生成参考文献</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tinytex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">tinytex安装</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#quarto-的结构" id="toc-quarto-的结构" class="nav-link active" data-scroll-target="#quarto-的结构"><span class="header-section-number">2.1</span> Quarto 的结构</a></li>
+  <li><a href="#sec-sec2-1" id="toc-sec-sec2-1" class="nav-link" data-scroll-target="#sec-sec2-1"><span class="header-section-number">2.2</span> 关于<code>Quarto Book</code></a></li>
+  <li><a href="#sec-sec2-3" id="toc-sec-sec2-3" class="nav-link" data-scroll-target="#sec-sec2-3"><span class="header-section-number">2.3</span> 书的基本设置</a>
+  <ul class="collapse">
+  <li><a href="#index.rmd文件" id="toc-index.rmd文件" class="nav-link" data-scroll-target="#index.rmd文件"><span class="header-section-number">2.3.1</span> <code>index.Rmd</code>文件</a></li>
+  <li><a href="#bookdown.yml文件" id="toc-bookdown.yml文件" class="nav-link" data-scroll-target="#bookdown.yml文件"><span class="header-section-number">2.3.2</span> <code>_bookdown.yml</code>文件</a></li>
+  <li><a href="#output.yml文件" id="toc-output.yml文件" class="nav-link" data-scroll-target="#output.yml文件"><span class="header-section-number">2.3.3</span> <code>_output.yml</code>文件</a></li>
+  </ul></li>
+  <li><a href="#sec-sec2-4" id="toc-sec-sec2-4" class="nav-link" data-scroll-target="#sec-sec2-4"><span class="header-section-number">2.4</span> 章节结构</a></li>
+  <li><a href="#sec-sec2-5" id="toc-sec-sec2-5" class="nav-link" data-scroll-target="#sec-sec2-5"><span class="header-section-number">2.5</span> 书的编译</a></li>
+  <li><a href="#sec-sec2-6" id="toc-sec-sec2-6" class="nav-link" data-scroll-target="#sec-sec2-6"><span class="header-section-number">2.6</span> 浮动对象标签与引用汇总</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-quarto" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿速览</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>这是第 <a href="#sec-quarto" class="quarto-xref"><span> 2</span></a> 章的内容，概要性地讲解基于<code>quarto</code>拓展包进行图书排版的整体思路与实现方式. <span class="citation" data-cites="xie2015 R-base">(<a href="quarto.html#ref-R-base" role="doc-biblioref">R Core Team, 2021</a>; <a href="quarto.html#ref-xie2015" role="doc-biblioref">Xie, 2015</a>)</span></p>
+<section id="quarto-的结构" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="quarto-的结构"><span class="header-section-number">2.1</span> Quarto 的结构</h2>
+<p>Quarto 作为基于 Markdown 的写作工具，旨在简化和增强出版流程，它提供了一种灵活且易于使用的方式来创建和发布各种类型的文档。</p>
+<p>Quarto 包括以下几个关键组成部分：</p>
+<ol type="1">
+<li><p><strong>Quarto Markdown 文件</strong>：Quarto 使用 Markdown 作为主要的文档格式，文件扩展名为 <code>.qmd</code>。</p></li>
+<li><p><strong>YAML 配置文件</strong>：Quarto 使用 <code>_quarto.yml</code> 文件作为项目的配置文件。这个 YAML 配置文件就是一个文本文件，它允许用户指定输出格式、模板、外观等选项，自定义 Quarto 文档的元数据。</p></li>
+<li><p><strong>输出格式</strong>：Quarto 使用 <a href="https://pandoc.org/">Pandoc</a> 转换文档格式，将 Markdown 文档输出为 HTML、PDF、ePub、docx 等格式，用户可以根据需要配置相应选项，选择输出格式。</p></li>
+<li><p><strong>模板</strong>：Quarto 使用模板来定义文档的整体布局、样式和体例等，用户可以选择预定义的模板，也可以自定义自己的模板，使用 HTML、CSS或SCSS、LaTeX 等方式来控制文档的形式。</p></li>
+<li><p><strong>资源</strong>：在 Quarto 中，你可以包含各种类型的资源，如图片、代码、数据、交互列表等，这些资源可以与 Markdown 文件一起存储在同一目录中，方便管理和引用。</p></li>
+</ol>
+<p>通过将 Markdown 文件、YAML 配置文件、模板和各类资源整合到一起，Quarto 提供了一种完整的文档构建和发布解决方案，它使得创建专业、美观的多格式文档变得更加简单和高效。</p>
+<p>Quarto 目前发行的版本为 1.4.554。</p>
+</section>
+<section id="sec-sec2-1" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sec-sec2-1"><span class="header-section-number">2.2</span> 关于<code>Quarto Book</code></h2>
+<p><code>Quarto Markdown</code>作为新一代的<code>R Markdown</code>， 是另一个增强<code>markdown</code>格式的扩展， 使得<code>qmd</code>格式可以支持书箱编写所需的章节、数学公式、定理、表格、图形、文献等浮动对象的自动编号，并按设定的标签在正文中引用。 在<code>quarto</code>的管理下一本书的内容可以按章节分解成多个<code>qmd</code>文件， 其中可以包含可执行的<code>R</code>/<code>Python</code>/<code>Julia</code>/<code>observable</code>等代码， 代码生成的统计汇总结果、表格、图形可以自动插入到生成的内容中， 而且其中的表格和图形也是浮动。书的输出格式包括支持<code>gitbook</code>格式的网页图书， 也可以经LaTeX 编译器转换的<code>PDF</code>图书，还 可以生成<code>ePub</code>等格式的电子书。</p>
+<p>目前<code>Quarto</code>支持在<code>RStudio</code>、<code>VS Code</code>(甚至Python Jupyter)的集成环境中编辑、管理和生成图书.</p>
+<p>关于浮动对象标签的设定与应用见第 <a href="#sec-sec2-6" class="quarto-xref"><span> 2.6</span></a> 节的汇总表格及后续各章的介绍与示例.</p>
+</section>
+<section id="sec-sec2-3" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sec-sec2-3"><span class="header-section-number">2.3</span> 书的基本设置</h2>
+<p>一本用<code>bookdown</code>管理的书， 一般放置在某个子目录下，并作为一个<code>RStudio</code>项目(project)用<code>RStudio</code>管理。该目录中的所有的文本文件都要使用<code>UTF-8</code>编码。</p>
+<section id="index.rmd文件" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="index.rmd文件"><span class="header-section-number">2.3.1</span> <code>index.Rmd</code>文件</h3>
+<p>一本<code>bookdown</code>书， 一般都需要有一个<code>index.Rmd</code>文件， 这是最后生成的网站的主页的原始文件. 这个文件的开始是<code>YAML</code>元数据部分, 进行全书的有关设置，包括标题、作者、日期及影响全书的一些选项等，放在三个减号组成的两行之间。然后写一些这本书的说明，如书的前言部分。<code>index.Rmd</code>中<code>YAML</code>元数据部分的一个例子如下：</p>
+<pre><code>title: "bookdown书稿模板"
+author: "汤银才"
+date: "2024-06-15"
+documentclass: book
+bibliography: [myrefs.bib]
+biblio-style: apa
+link-citations: yes
+site: bookdown::bookdown_site
+description: "bookdown写书体验非常好."</code></pre>
+<p>注意:</p>
+<ol type="1">
+<li><p><code>site</code>选项很重要， 一定要有， <code>site: bookdown::bookdown_site</code>使得<code>RStudio</code>能辨认这是一个<code>bookdown</code>图书项目， 从而为其生成一键编译的<code>build</code>快捷方式；</p></li>
+<li><p>在<code>bookdown</code>项目中与<code>index.Rmd</code>同级的所有<code>.Rmd</code>文件都自动作为书的一章，其好处是作者可以任意地增删章节，编译整本书时将按照文件名的字典序依次进行。实际上， 也可以在<code>_output.yml</code>文件中设置一项<code>rmd_files</code>， 列出所有需要作为一章的文件，并以列出次序编译；</p></li>
+<li><p>在<code>index.Rmd</code>的元数据中也可以指定一些的选项, 例如</p></li>
+</ol>
+<pre><code>fontsize: 12pt
+indent: true
+linestretch: 2.0
+link-citations: yes
+colorlinks: yes
+lot: true
+lof: true
+geometry:
+- a4paper
+- tmargin=2.5cm
+- bmargin=2.5cm
+- lmargin=3.5cm
+- rmargin=2.5cm</code></pre>
+</section>
+<section id="bookdown.yml文件" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="bookdown.yml文件"><span class="header-section-number">2.3.2</span> <code>_bookdown.yml</code>文件</h3>
+<p>一个<code>bookdown</code>图书项目除了<code>index.Rmd</code>文件之外，还有一些设置文件从<code>index.Rmd</code>文件的元数据部分抽离出来。 一个是<code>_bookdown.yml</code>文件, 它存放与整本书的处理有关的<code>YAML</code>元数据。 例如</p>
+<pre><code>book_filename: "bookdown-template"
+new_session: yes
+language:
+  label:
+    fig: "图 "
+    tab: "表 "
+    thm: '定理'
+    def: '定义'
+    exm: '例'
+    proof: '证明: '
+  ui:
+    chapter_name: ["第 ", " 章"]</code></pre>
+<p>其中<code>new_session: true</code>设置很重要，这使得每一个<code>Rmd</code>文件中的<code>R</code>程序都在一个单独的<code>R</code>会话中独立地运行，避免了不同<code>Rmd</code>文件之间同名变量和同名标签的互相干扰。 <code>book_filename</code>是最终生成的<code>PDF</code>图书或者<code>ePub</code>电子书的主文件名。 <code>language</code>下可以定制一些与章节名、定理名等有关的名称。</p>
+</section>
+<section id="output.yml文件" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="output.yml文件"><span class="header-section-number">2.3.3</span> <code>_output.yml</code>文件</h3>
+<p>另一个设置文件是<code>_output.yml</code>， 用于图书输出格式的设置<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>, 本小删子的<code>_output.yml</code>文件内容如下</p>
+<pre><code>bookdown::gitbook:
+  css: css/style.css
+  split_by: chapter
+  includes:
+    in_header: _header.html
+  config:
+    toc:
+      collapse: subsection
+      scroll_highlight: yes
+      before: |
+        &lt;li&gt;&lt;a href="./"&gt;bookdown排版模板&lt;/a&gt;&lt;/li&gt;
+      after: |
+        &lt;li&gt;&lt;a href="https://bookdown.org" target="blank"&gt;本书由 bookdown 强力驱动&lt;/a&gt;&lt;/li&gt;
+    download: [pdf, epub]
+    edit: https://github.com/yihui/bookdown-chinese/edit/master/%s
+    sharing:
+      github: yes
+      facebook: no
+  pandoc_args: [ "--csl", "apa-6th-edition-no-ampersand.csl" ]
+bookdown::pdf_book:
+  includes:
+    in_header: latex/preamble.tex
+    before_body: latex/before_body.tex
+    after_body: latex/after_body.tex
+  keep_tex: yes
+  dev: "cairo_pdf"
+  latex_engine: xelatex
+  citation_package: biblatex
+  template: latex/template.tex
+  toc_depth: 3
+  toc_unnumbered: no
+  toc_appendix: yes
+  quote_footer: ["\\begin{flushright}", "\\end{flushright}"]
+  pandoc_args: [ "--top-level-division=chapter" ]
+bookdown::epub_book:
+  stylesheet: css/style.css
+  pandoc_args: [ "--csl", "apa-6th-edition-no-ampersand.csl" ]</code></pre>
+<p>它分别对<code>gitbook</code>、<code>pdf_book</code>和<code>epub_book</code>三种输出格式设置了一些输出选项。其中一些选项是通过文件形式给出设置的，我们再补充说明一下。</p>
+<ol type="1">
+<li><p><code>style.css</code>是自定义的CSS显示格式，在<code>gitbook</code>和<code>epub_book</code>中使用;</p></li>
+<li><p><code>_header.html</code>是插入了一部分个性化的<code>HTML</code>代码，其内容将出现在每个生成的<code>HTML</code>文件的<code>head</code>部分。我们在此文件中给出了使用本地的<code>Mathjax</code>实现数学公式离线显示的设置，内容为</p></li>
+</ol>
+<pre><code>&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  jax: ["input/TeX","output/SVG"],
+  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],
+  TeX: {
+    Macros: {
+      bm: ["{\\boldsymbol #1}",1],
+    }, 
+    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]
+  }
+});
+
+&lt;/script&gt;
+&lt;script type="text/javascript"
+  src="http://127.0.0.1/MathJax/MathJax.js"&gt;
+&lt;/script&gt;</code></pre>
+<p>其中<code>http://127.0.0.1/MathJax/</code>是本地服务器上<code>Mathjax</code>的位置。有关<code>Mathjax</code>的本地安装与启动可参考第 <a href="mathjax27.html" class="quarto-xref"><span>附录 A</span></a> 章的介绍;</p>
+<ol start="3" type="1">
+<li><p><code>apa-6th-edition-no-ampersand.csl</code> 是<code>gitbook</code>和<code>epub_book</code>处理文献使用的风格文件;</p></li>
+<li><p><code>preamble.tex</code>是处理(编译)<code>bookdown</code>文件经<code>pandoc</code>转化生成的<code>tex</code>文件时导言区需要额外的宏包和设置;</p></li>
+<li><p><code>before_body.tex</code> 是<code>tex</code>书稿类正文前面的设置，最基本的是</p></li>
+</ol>
+<pre><code> \frontmatter</code></pre>
+<ol start="6" type="1">
+<li><code>after_body.tex</code> 是<code>tex</code>书稿类正文之后的设置，最基本的是</li>
+</ol>
+<pre><code>\backmatter</code></pre>
+<pre><code>7. `template.tex` 是针对`bookdown`编译经`pandoc`转化生成的`tex`文件时的模板，由它生成供`latex_engine`指定的编译方式(`xelatex`)编译的`tex`文件. `index.Rmd`及`_output.yml`中的设置会嵌入到这个模板中，生成完整的单文档`tex`源文件.   </code></pre>
+<p>其他选项说明：</p>
+<ol type="1">
+<li><p><code>split_by: chapter</code>: 按章分割书稿；</p></li>
+<li><p><code>collapse: subsection</code>: 目录中隐藏子节(仅显示二级标题)；</p></li>
+<li><p><code>scroll_highlight: yes</code>: 目录滚动时高亮显示，便于定位；</p></li>
+<li><p><code>keep_tex: yes</code>: 保留中间生成的<code>tex</code>源文件，便于查错；</p></li>
+<li><p><code>dev: "cairo_pdf"</code>: 使用<code>cairo_pdf()</code>生成 编译需要的图片文件;</p></li>
+<li><p><code>latex_engine: xelatex</code>: <code>TeX</code>文件的排版引擎为 <code>XeTeX</code> , 针对<code>UTF-8</code>编码;</p></li>
+<li><p><code>citation_package: biblatex</code>: 文献引用库指定为<code>biblatex</code>, 另一个为<code>natbib</code>;</p></li>
+<li><p><code>toc_depth: 3</code>: 目录提取至三级标题;</p></li>
+<li><p><code>toc_unnumbered: no</code>: 指定目录编号;</p></li>
+<li><p><code>toc_appendix: yes</code>: 附录添加到目录中.</p></li>
+</ol>
+</section>
+</section>
+<section id="sec-sec2-4" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sec-sec2-4"><span class="header-section-number">2.4</span> 章节结构</h2>
+<p>如前所述, 除了<code>index.Rmd</code>文件， 项目中每个<code>.Rmd</code>文件都作为一章，其第一行是以一个<code>#</code>号和空格开头的一级标题。</p>
+<p>每一章可以有若干节与子节，分别用<code>markdown</code>的二级标题(二个<code>#</code>开始)和三级标题(三个<code>#</code>开始)编写。<code>bookdown</code>的章、节、子节标题单独成一行，其后可以添加标签, 章节的标签是标题后加空格，然后是大括号内以<code>#</code>号开头的标签， 如</p>
+<pre><code># 引言 {#intro}
+
+## 关于bookdown {#bookdown}</code></pre>
+<p><code>bookdown</code>中有二个特殊的标题：</p>
+<ol type="1">
+<li><p>部分</p>
+<p>内容相近的章节可以作为一个”部分”。 为此，在一个部分的第一个章节文件的章标题前面增加一行， 以<code># (PART)</code> 开头， 以<code>{-}</code>结尾，例如</p></li>
+</ol>
+<pre><code>   # (PART) bookdown中的浮动对象 {-}</code></pre>
+<ol start="2" type="1">
+<li><p>附录</p>
+<p>一本书的最后可以有附录， 附录的章节将显示为<code>A.1</code>, <code>B.1</code>这样的格式。 为此， 在附录章节的第一个文件开头加如下的第一行标题行：</p></li>
+</ol>
+<pre><code>   # (APPENDIX) 附录 {-}
+
+   # biblatex介绍 {#biber}</code></pre>
+</section>
+<section id="sec-sec2-5" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="sec-sec2-5"><span class="header-section-number">2.5</span> 书的编译</h2>
+<p>在<code>index.Rmd</code>或者<code>_bookdown.yml</code>中设置<code>site: bookdown::bookdown_site</code>后， <code>RStudio</code>就能识别这个项目是一个<code>bookdown</code>项目， 这时<code>RStudio</code>会有一个<code>Build</code>按钮，其中有<code>Build book</code>快捷图标， 从下拉菜单中选择一个输出格式（包括<code>gitbook</code>、<code>pdf_book</code>、<code>epub_book</code>）， 就可以编译整本书(见图 <span class="quarto-unresolved-ref">?fig-rmd</span>)。</p>
+<p>经<code>build</code>编译生成的图书默认保存在<code>_book</code>子目录中<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>。</p>
+<ol type="1">
+<li><p>对<code>gitbook</code>格式(即<code>HTML</code>网页格式)， 编译完成后会弹出一个预览窗口， 点击”Show in new window “按钮可以将内容在操作系统默认的网络浏览器中打开。我们也可以用其他浏览器(建议使用Google chrome浏览器)打开<code>_book</code>子目录中的<code>index.html</code>文件来查看<code>gitbook</code>格式的图书。</p></li>
+<li><p>对于<code>pdf_book</code>格式，如果成功编译<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>， 也会弹出一个<code>PDF</code>预览窗口。 可以在<code>_book</code>子目录中找到这个<code>PDF</code>文件。</p></li>
+<li><p>对于<code>epub_book</code>格式，如果成功编译，会在操作系统默认的<code>ePub</code>软件(如苹果电脑的<code>book</code>)中打开,并在<code>_book</code>子目录中找到这个<code>ePub</code>文件。</p></li>
+</ol>
+</section>
+<section id="sec-sec2-6" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="sec-sec2-6"><span class="header-section-number">2.6</span> 浮动对象标签与引用汇总</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: right;">浮动对象</th>
+<th style="text-align: left;">标签设置</th>
+<th style="text-align: left;">引用格式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">标题</td>
+<td style="text-align: left;"><code>{#sec-label}</code></td>
+<td style="text-align: left;"><code>@sec-label</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">公式</td>
+<td style="text-align: left;"><code>{#eq-label}</code></td>
+<td style="text-align: left;"><code>(@eq-label)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">图形</td>
+<td style="text-align: left;"><code>label="label"</code></td>
+<td style="text-align: left;"><code>\@ref(fig:label)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">表格</td>
+<td style="text-align: left;"><code>label="label"</code></td>
+<td style="text-align: left;"><code>\@ref(tab:label)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">定理</td>
+<td style="text-align: left;"><code>label="label"</code></td>
+<td style="text-align: left;"><code>\@ref(prefix:label)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">文本</td>
+<td style="text-align: left;"><code>(ref:label)</code></td>
+<td style="text-align: left;"><code>`(ref:label)`</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">文献</td>
+<td style="text-align: left;"><code>biblabel</code></td>
+<td style="text-align: left;"><code>@biblabel</code></td>
+</tr>
+</tbody>
+</table>
+<p>注：</p>
+<ol type="1">
+<li><p>定理泛指定理类，包括定理(thm)、引理(lem)、推论(cor)、命题(prp)、设想(cnj)、定义(def)、例子(exm)、习题(exr)等, 其中括号中是引用时的前缀(prefix);</p></li>
+<li><p>文本标签在单独一行中设定，可用在表格与图形的<code>caption</code>中引用，即在 <code>fig.caption</code>, <code>tab.caption</code>选项的设置中引用；</p></li>
+<li><p>定理类环境标签前缀的汉化可在<code>_bookdown.yml</code>中通过<code>language</code>进行<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>，例如</p></li>
+</ol>
+<pre><code>language:
+  label:
+    fig: "图 "
+    tab: "表 "
+    thm: '定理'
+    def: '定义'
+    exm: '例'</code></pre>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-R-base" class="csl-entry" role="listitem">
+R Core Team, 2021. R: A Language and Environment for Statistical
+Computing[M/OL]. Vienna, Austria: R Foundation for Statistical
+Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-xie2015" class="csl-entry" role="listitem">
+Xie Y, 2015. Dynamic Documents with <span>R</span> and Knitr[M/OL]. 2nd
+版. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
+</div>
+</div>
+
+
+<!-- -->
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>这部分内容也可以包含在<code>index.Rmd</code>的元数据部分<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>可以在<code>_bookdown.yml</code>中设置<code>output_dir</code>项改变图书保存的子目录.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>需要支持，建议安排<code>TeXLive</code>，也可以仅安装谢益辉为<code>rmarkdown</code>开发的<code>tinytex</code><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>图形与表格也可同理汉化<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="引言">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./sections.html" class="pagination-link" aria-label="Quarto 书稿中的章节标题">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto 书稿中的章节标题</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb13" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># `Quarto`书稿速览 {#sec-quarto}</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>这是第 @sec-quarto 章的内容，概要性地讲解基于<span class="in">`quarto`</span>拓展包进行图书排版的整体思路与实现方式. <span class="co">[</span><span class="ot">@xie2015; @R-base</span><span class="co">]</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Quarto 的结构</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>Quarto 作为基于 Markdown 的写作工具，旨在简化和增强出版流程，它提供了一种灵活且易于使用的方式来创建和发布各种类型的文档。</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>Quarto 包括以下几个关键组成部分：</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**Quarto Markdown 文件**：Quarto 使用 Markdown 作为主要的文档格式，文件扩展名为 <span class="in">`.qmd`</span>。</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**YAML 配置文件**：Quarto 使用 <span class="in">`_quarto.yml`</span> 文件作为项目的配置文件。这个 YAML 配置文件就是一个文本文件，它允许用户指定输出格式、模板、外观等选项，自定义 Quarto 文档的元数据。</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**输出格式**：Quarto 使用 <span class="co">[</span><span class="ot">Pandoc</span><span class="co">](https://pandoc.org/)</span> 转换文档格式，将 Markdown 文档输出为 HTML、PDF、ePub、docx 等格式，用户可以根据需要配置相应选项，选择输出格式。</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**模板**：Quarto 使用模板来定义文档的整体布局、样式和体例等，用户可以选择预定义的模板，也可以自定义自己的模板，使用 HTML、CSS或SCSS、LaTeX 等方式来控制文档的形式。</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**资源**：在 Quarto 中，你可以包含各种类型的资源，如图片、代码、数据、交互列表等，这些资源可以与 Markdown 文件一起存储在同一目录中，方便管理和引用。</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>通过将 Markdown 文件、YAML 配置文件、模板和各类资源整合到一起，Quarto 提供了一种完整的文档构建和发布解决方案，它使得创建专业、美观的多格式文档变得更加简单和高效。</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>Quarto 目前发行的版本为 1.4.554。</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="fu">## 关于`Quarto Book` {#sec-sec2-1}</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="in">`Quarto Markdown`</span>作为新一代的<span class="in">`R Markdown`</span>， 是另一个增强<span class="in">`markdown`</span>格式的扩展， 使得<span class="in">`qmd`</span>格式可以支持书箱编写所需的章节、数学公式、定理、表格、图形、文献等浮动对象的自动编号，并按设定的标签在正文中引用。 在<span class="in">`quarto`</span>的管理下一本书的内容可以按章节分解成多个<span class="in">`qmd`</span>文件， 其中可以包含可执行的<span class="in">`R`</span>/<span class="in">`Python`</span>/<span class="in">`Julia`</span>/<span class="in">`observable`</span>等代码， 代码生成的统计汇总结果、表格、图形可以自动插入到生成的内容中， 而且其中的表格和图形也是浮动。书的输出格式包括支持<span class="in">`gitbook`</span>格式的网页图书， 也可以经LaTeX 编译器转换的<span class="in">`PDF`</span>图书，还 可以生成<span class="in">`ePub`</span>等格式的电子书。</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>目前<span class="in">`Quarto`</span>支持在<span class="in">`RStudio`</span>、<span class="in">`VS Code`</span>(甚至Python Jupyter)的集成环境中编辑、管理和生成图书.</span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>关于浮动对象标签的设定与应用见第 @sec-sec2-6 节的汇总表格及后续各章的介绍与示例.</span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## 书的基本设置 {#sec-sec2-3}</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>一本用<span class="in">`bookdown`</span>管理的书， 一般放置在某个子目录下，并作为一个<span class="in">`RStudio`</span>项目(project)用<span class="in">`RStudio`</span>管理。该目录中的所有的文本文件都要使用<span class="in">`UTF-8`</span>编码。</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a><span class="fu">### `index.Rmd`文件</span></span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>一本<span class="in">`bookdown`</span>书， 一般都需要有一个<span class="in">`index.Rmd`</span>文件， 这是最后生成的网站的主页的原始文件. 这个文件的开始是<span class="in">`YAML`</span>元数据部分, 进行全书的有关设置，包括标题、作者、日期及影响全书的一些选项等，放在三个减号组成的两行之间。然后写一些这本书的说明，如书的前言部分。<span class="in">`index.Rmd`</span>中<span class="in">`YAML`</span>元数据部分的一个例子如下：</span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a><span class="in">title: "bookdown书稿模板"</span></span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a><span class="in">author: "汤银才"</span></span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a><span class="in">date: "`r Sys.Date()`"</span></span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a><span class="in">documentclass: book</span></span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a><span class="in">bibliography: [myrefs.bib]</span></span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a><span class="in">biblio-style: apa</span></span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a><span class="in">link-citations: yes</span></span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a><span class="in">site: bookdown::bookdown_site</span></span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a><span class="in">description: "bookdown写书体验非常好."</span></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>注意:</span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="in">`site`</span>选项很重要， 一定要有， <span class="in">`site: bookdown::bookdown_site`</span>使得<span class="in">`RStudio`</span>能辨认这是一个<span class="in">`bookdown`</span>图书项目， 从而为其生成一键编译的<span class="in">`build`</span>快捷方式；</span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>在<span class="in">`bookdown`</span>项目中与<span class="in">`index.Rmd`</span>同级的所有<span class="in">`.Rmd`</span>文件都自动作为书的一章，其好处是作者可以任意地增删章节，编译整本书时将按照文件名的字典序依次进行。实际上， 也可以在<span class="in">`_output.yml`</span>文件中设置一项<span class="in">`rmd_files`</span>， 列出所有需要作为一章的文件，并以列出次序编译；</span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>在<span class="in">`index.Rmd`</span>的元数据中也可以指定一些\LaTeX 的选项, 例如</span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a><span class="in">fontsize: 12pt</span></span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a><span class="in">indent: true</span></span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a><span class="in">linestretch: 2.0</span></span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a><span class="in">link-citations: yes</span></span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a><span class="in">colorlinks: yes</span></span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a><span class="in">lot: true</span></span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a><span class="in">lof: true</span></span>
+<span id="cb13-69"><a href="#cb13-69" aria-hidden="true" tabindex="-1"></a><span class="in">geometry:</span></span>
+<span id="cb13-70"><a href="#cb13-70" aria-hidden="true" tabindex="-1"></a><span class="in">- a4paper</span></span>
+<span id="cb13-71"><a href="#cb13-71" aria-hidden="true" tabindex="-1"></a><span class="in">- tmargin=2.5cm</span></span>
+<span id="cb13-72"><a href="#cb13-72" aria-hidden="true" tabindex="-1"></a><span class="in">- bmargin=2.5cm</span></span>
+<span id="cb13-73"><a href="#cb13-73" aria-hidden="true" tabindex="-1"></a><span class="in">- lmargin=3.5cm</span></span>
+<span id="cb13-74"><a href="#cb13-74" aria-hidden="true" tabindex="-1"></a><span class="in">- rmargin=2.5cm</span></span>
+<span id="cb13-75"><a href="#cb13-75" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-76"><a href="#cb13-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-77"><a href="#cb13-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### `_bookdown.yml`文件</span></span>
+<span id="cb13-78"><a href="#cb13-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-79"><a href="#cb13-79" aria-hidden="true" tabindex="-1"></a>一个<span class="in">`bookdown`</span>图书项目除了<span class="in">`index.Rmd`</span>文件之外，还有一些设置文件从<span class="in">`index.Rmd`</span>文件的元数据部分抽离出来。 一个是<span class="in">`_bookdown.yml`</span>文件, 它存放与整本书的处理有关的<span class="in">`YAML`</span>元数据。 例如</span>
+<span id="cb13-80"><a href="#cb13-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-81"><a href="#cb13-81" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-82"><a href="#cb13-82" aria-hidden="true" tabindex="-1"></a><span class="in">book_filename: "bookdown-template"</span></span>
+<span id="cb13-83"><a href="#cb13-83" aria-hidden="true" tabindex="-1"></a><span class="in">new_session: yes</span></span>
+<span id="cb13-84"><a href="#cb13-84" aria-hidden="true" tabindex="-1"></a><span class="in">language:</span></span>
+<span id="cb13-85"><a href="#cb13-85" aria-hidden="true" tabindex="-1"></a><span class="in">  label:</span></span>
+<span id="cb13-86"><a href="#cb13-86" aria-hidden="true" tabindex="-1"></a><span class="in">    fig: "图 "</span></span>
+<span id="cb13-87"><a href="#cb13-87" aria-hidden="true" tabindex="-1"></a><span class="in">    tab: "表 "</span></span>
+<span id="cb13-88"><a href="#cb13-88" aria-hidden="true" tabindex="-1"></a><span class="in">    thm: '定理'</span></span>
+<span id="cb13-89"><a href="#cb13-89" aria-hidden="true" tabindex="-1"></a><span class="in">    def: '定义'</span></span>
+<span id="cb13-90"><a href="#cb13-90" aria-hidden="true" tabindex="-1"></a><span class="in">    exm: '例'</span></span>
+<span id="cb13-91"><a href="#cb13-91" aria-hidden="true" tabindex="-1"></a><span class="in">    proof: '证明: '</span></span>
+<span id="cb13-92"><a href="#cb13-92" aria-hidden="true" tabindex="-1"></a><span class="in">  ui:</span></span>
+<span id="cb13-93"><a href="#cb13-93" aria-hidden="true" tabindex="-1"></a><span class="in">    chapter_name: ["第 ", " 章"]</span></span>
+<span id="cb13-94"><a href="#cb13-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-95"><a href="#cb13-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-96"><a href="#cb13-96" aria-hidden="true" tabindex="-1"></a>其中<span class="in">`new_session: true`</span>设置很重要，这使得每一个<span class="in">`Rmd`</span>文件中的<span class="in">`R`</span>程序都在一个单独的<span class="in">`R`</span>会话中独立地运行，避免了不同<span class="in">`Rmd`</span>文件之间同名变量和同名标签的互相干扰。 <span class="in">`book_filename`</span>是最终生成的<span class="in">`PDF`</span>图书或者<span class="in">`ePub`</span>电子书的主文件名。 <span class="in">`language`</span>下可以定制一些与章节名、定理名等有关的名称。</span>
+<span id="cb13-97"><a href="#cb13-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-98"><a href="#cb13-98" aria-hidden="true" tabindex="-1"></a><span class="fu">### `_output.yml`文件</span></span>
+<span id="cb13-99"><a href="#cb13-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-100"><a href="#cb13-100" aria-hidden="true" tabindex="-1"></a>另一个设置文件是<span class="in">`_output.yml`</span>， 用于图书输出格式的设置<span class="ot">[^quarto-1]</span>, 本小删子的<span class="in">`_output.yml`</span>文件内容如下</span>
+<span id="cb13-101"><a href="#cb13-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-102"><a href="#cb13-102" aria-hidden="true" tabindex="-1"></a><span class="ot">[^quarto-1]: </span>这部分内容也可以包含在<span class="in">`index.Rmd`</span>的元数据部分</span>
+<span id="cb13-103"><a href="#cb13-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-104"><a href="#cb13-104" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-105"><a href="#cb13-105" aria-hidden="true" tabindex="-1"></a><span class="in">bookdown::gitbook:</span></span>
+<span id="cb13-106"><a href="#cb13-106" aria-hidden="true" tabindex="-1"></a><span class="in">  css: css/style.css</span></span>
+<span id="cb13-107"><a href="#cb13-107" aria-hidden="true" tabindex="-1"></a><span class="in">  split_by: chapter</span></span>
+<span id="cb13-108"><a href="#cb13-108" aria-hidden="true" tabindex="-1"></a><span class="in">  includes:</span></span>
+<span id="cb13-109"><a href="#cb13-109" aria-hidden="true" tabindex="-1"></a><span class="in">    in_header: _header.html</span></span>
+<span id="cb13-110"><a href="#cb13-110" aria-hidden="true" tabindex="-1"></a><span class="in">  config:</span></span>
+<span id="cb13-111"><a href="#cb13-111" aria-hidden="true" tabindex="-1"></a><span class="in">    toc:</span></span>
+<span id="cb13-112"><a href="#cb13-112" aria-hidden="true" tabindex="-1"></a><span class="in">      collapse: subsection</span></span>
+<span id="cb13-113"><a href="#cb13-113" aria-hidden="true" tabindex="-1"></a><span class="in">      scroll_highlight: yes</span></span>
+<span id="cb13-114"><a href="#cb13-114" aria-hidden="true" tabindex="-1"></a><span class="in">      before: |</span></span>
+<span id="cb13-115"><a href="#cb13-115" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;&lt;a href="./"&gt;bookdown排版模板&lt;/a&gt;&lt;/li&gt;</span></span>
+<span id="cb13-116"><a href="#cb13-116" aria-hidden="true" tabindex="-1"></a><span class="in">      after: |</span></span>
+<span id="cb13-117"><a href="#cb13-117" aria-hidden="true" tabindex="-1"></a><span class="in">        &lt;li&gt;&lt;a href="https://bookdown.org" target="blank"&gt;本书由 bookdown 强力驱动&lt;/a&gt;&lt;/li&gt;</span></span>
+<span id="cb13-118"><a href="#cb13-118" aria-hidden="true" tabindex="-1"></a><span class="in">    download: [pdf, epub]</span></span>
+<span id="cb13-119"><a href="#cb13-119" aria-hidden="true" tabindex="-1"></a><span class="in">    edit: https://github.com/yihui/bookdown-chinese/edit/master/%s</span></span>
+<span id="cb13-120"><a href="#cb13-120" aria-hidden="true" tabindex="-1"></a><span class="in">    sharing:</span></span>
+<span id="cb13-121"><a href="#cb13-121" aria-hidden="true" tabindex="-1"></a><span class="in">      github: yes</span></span>
+<span id="cb13-122"><a href="#cb13-122" aria-hidden="true" tabindex="-1"></a><span class="in">      facebook: no</span></span>
+<span id="cb13-123"><a href="#cb13-123" aria-hidden="true" tabindex="-1"></a><span class="in">  pandoc_args: [ "--csl", "apa-6th-edition-no-ampersand.csl" ]</span></span>
+<span id="cb13-124"><a href="#cb13-124" aria-hidden="true" tabindex="-1"></a><span class="in">bookdown::pdf_book:</span></span>
+<span id="cb13-125"><a href="#cb13-125" aria-hidden="true" tabindex="-1"></a><span class="in">  includes:</span></span>
+<span id="cb13-126"><a href="#cb13-126" aria-hidden="true" tabindex="-1"></a><span class="in">    in_header: latex/preamble.tex</span></span>
+<span id="cb13-127"><a href="#cb13-127" aria-hidden="true" tabindex="-1"></a><span class="in">    before_body: latex/before_body.tex</span></span>
+<span id="cb13-128"><a href="#cb13-128" aria-hidden="true" tabindex="-1"></a><span class="in">    after_body: latex/after_body.tex</span></span>
+<span id="cb13-129"><a href="#cb13-129" aria-hidden="true" tabindex="-1"></a><span class="in">  keep_tex: yes</span></span>
+<span id="cb13-130"><a href="#cb13-130" aria-hidden="true" tabindex="-1"></a><span class="in">  dev: "cairo_pdf"</span></span>
+<span id="cb13-131"><a href="#cb13-131" aria-hidden="true" tabindex="-1"></a><span class="in">  latex_engine: xelatex</span></span>
+<span id="cb13-132"><a href="#cb13-132" aria-hidden="true" tabindex="-1"></a><span class="in">  citation_package: biblatex</span></span>
+<span id="cb13-133"><a href="#cb13-133" aria-hidden="true" tabindex="-1"></a><span class="in">  template: latex/template.tex</span></span>
+<span id="cb13-134"><a href="#cb13-134" aria-hidden="true" tabindex="-1"></a><span class="in">  toc_depth: 3</span></span>
+<span id="cb13-135"><a href="#cb13-135" aria-hidden="true" tabindex="-1"></a><span class="in">  toc_unnumbered: no</span></span>
+<span id="cb13-136"><a href="#cb13-136" aria-hidden="true" tabindex="-1"></a><span class="in">  toc_appendix: yes</span></span>
+<span id="cb13-137"><a href="#cb13-137" aria-hidden="true" tabindex="-1"></a><span class="in">  quote_footer: ["\\begin{flushright}", "\\end{flushright}"]</span></span>
+<span id="cb13-138"><a href="#cb13-138" aria-hidden="true" tabindex="-1"></a><span class="in">  pandoc_args: [ "--top-level-division=chapter" ]</span></span>
+<span id="cb13-139"><a href="#cb13-139" aria-hidden="true" tabindex="-1"></a><span class="in">bookdown::epub_book:</span></span>
+<span id="cb13-140"><a href="#cb13-140" aria-hidden="true" tabindex="-1"></a><span class="in">  stylesheet: css/style.css</span></span>
+<span id="cb13-141"><a href="#cb13-141" aria-hidden="true" tabindex="-1"></a><span class="in">  pandoc_args: [ "--csl", "apa-6th-edition-no-ampersand.csl" ]</span></span>
+<span id="cb13-142"><a href="#cb13-142" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-143"><a href="#cb13-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-144"><a href="#cb13-144" aria-hidden="true" tabindex="-1"></a>它分别对<span class="in">`gitbook`</span>、<span class="in">`pdf_book`</span>和<span class="in">`epub_book`</span>三种输出格式设置了一些输出选项。其中一些选项是通过文件形式给出设置的，我们再补充说明一下。</span>
+<span id="cb13-145"><a href="#cb13-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-146"><a href="#cb13-146" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="in">`style.css`</span>是自定义的CSS显示格式，在<span class="in">`gitbook`</span>和<span class="in">`epub_book`</span>中使用;</span>
+<span id="cb13-147"><a href="#cb13-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-148"><a href="#cb13-148" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span><span class="in">`_header.html`</span>是插入了一部分个性化的<span class="in">`HTML`</span>代码，其内容将出现在每个生成的<span class="in">`HTML`</span>文件的<span class="in">`head`</span>部分。我们在此文件中给出了使用本地的<span class="in">`Mathjax`</span>实现数学公式离线显示的设置，内容为</span>
+<span id="cb13-149"><a href="#cb13-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-150"><a href="#cb13-150" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-151"><a href="#cb13-151" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script type="text/x-mathjax-config"&gt;</span></span>
+<span id="cb13-152"><a href="#cb13-152" aria-hidden="true" tabindex="-1"></a><span class="in">MathJax.Hub.Config({</span></span>
+<span id="cb13-153"><a href="#cb13-153" aria-hidden="true" tabindex="-1"></a><span class="in">  jax: ["input/TeX","output/SVG"],</span></span>
+<span id="cb13-154"><a href="#cb13-154" aria-hidden="true" tabindex="-1"></a><span class="in">  extensions: ["tex2jax.js","MathMenu.js","MathZoom.js"],</span></span>
+<span id="cb13-155"><a href="#cb13-155" aria-hidden="true" tabindex="-1"></a><span class="in">  TeX: {</span></span>
+<span id="cb13-156"><a href="#cb13-156" aria-hidden="true" tabindex="-1"></a><span class="in">    Macros: {</span></span>
+<span id="cb13-157"><a href="#cb13-157" aria-hidden="true" tabindex="-1"></a><span class="in">      bm: ["{\\boldsymbol #1}",1],</span></span>
+<span id="cb13-158"><a href="#cb13-158" aria-hidden="true" tabindex="-1"></a><span class="in">    }, </span></span>
+<span id="cb13-159"><a href="#cb13-159" aria-hidden="true" tabindex="-1"></a><span class="in">    extensions: ["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]</span></span>
+<span id="cb13-160"><a href="#cb13-160" aria-hidden="true" tabindex="-1"></a><span class="in">  }</span></span>
+<span id="cb13-161"><a href="#cb13-161" aria-hidden="true" tabindex="-1"></a><span class="in">});</span></span>
+<span id="cb13-162"><a href="#cb13-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-163"><a href="#cb13-163" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
+<span id="cb13-164"><a href="#cb13-164" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;script type="text/javascript"</span></span>
+<span id="cb13-165"><a href="#cb13-165" aria-hidden="true" tabindex="-1"></a><span class="in">  src="http://127.0.0.1/MathJax/MathJax.js"&gt;</span></span>
+<span id="cb13-166"><a href="#cb13-166" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;/script&gt;</span></span>
+<span id="cb13-167"><a href="#cb13-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-168"><a href="#cb13-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-169"><a href="#cb13-169" aria-hidden="true" tabindex="-1"></a>其中<span class="in">`http://127.0.0.1/MathJax/`</span>是本地服务器上<span class="in">`Mathjax`</span>的位置。有关<span class="in">`Mathjax`</span>的本地安装与启动可参考第 @sec-mjx 章的介绍;</span>
+<span id="cb13-170"><a href="#cb13-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-171"><a href="#cb13-171" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span><span class="in">`apa-6th-edition-no-ampersand.csl`</span> 是<span class="in">`gitbook`</span>和<span class="in">`epub_book`</span>处理文献使用的风格文件;</span>
+<span id="cb13-172"><a href="#cb13-172" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-173"><a href="#cb13-173" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span><span class="in">`preamble.tex`</span>是处理(编译)<span class="in">`bookdown`</span>文件经<span class="in">`pandoc`</span>转化生成的<span class="in">`tex`</span>文件时导言区需要额外的宏包和设置;</span>
+<span id="cb13-174"><a href="#cb13-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-175"><a href="#cb13-175" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span><span class="in">`before_body.tex`</span> 是<span class="in">`tex`</span>书稿类正文前面的设置，最基本的是</span>
+<span id="cb13-176"><a href="#cb13-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-177"><a href="#cb13-177" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-178"><a href="#cb13-178" aria-hidden="true" tabindex="-1"></a><span class="in"> \frontmatter</span></span>
+<span id="cb13-179"><a href="#cb13-179" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-180"><a href="#cb13-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-181"><a href="#cb13-181" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span><span class="in">`after_body.tex`</span> 是<span class="in">`tex`</span>书稿类正文之后的设置，最基本的是</span>
+<span id="cb13-182"><a href="#cb13-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-183"><a href="#cb13-183" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-184"><a href="#cb13-184" aria-hidden="true" tabindex="-1"></a><span class="in">\backmatter</span></span>
+<span id="cb13-185"><a href="#cb13-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-186"><a href="#cb13-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-187"><a href="#cb13-187" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-188"><a href="#cb13-188" aria-hidden="true" tabindex="-1"></a><span class="in">7. `template.tex` 是针对`bookdown`编译经`pandoc`转化生成的`tex`文件时的模板，由它生成供`latex_engine`指定的编译方式(`xelatex`)编译的`tex`文件. `index.Rmd`及`_output.yml`中的设置会嵌入到这个模板中，生成完整的单文档`tex`源文件.   </span></span>
+<span id="cb13-189"><a href="#cb13-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-190"><a href="#cb13-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-191"><a href="#cb13-191" aria-hidden="true" tabindex="-1"></a>其他选项说明：</span>
+<span id="cb13-192"><a href="#cb13-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-193"><a href="#cb13-193" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="in">`split_by: chapter`</span>: 按章分割书稿；</span>
+<span id="cb13-194"><a href="#cb13-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-195"><a href="#cb13-195" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span><span class="in">`collapse: subsection`</span>: 目录中隐藏子节(仅显示二级标题)；</span>
+<span id="cb13-196"><a href="#cb13-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-197"><a href="#cb13-197" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span><span class="in">`scroll_highlight: yes`</span>: 目录滚动时高亮显示，便于定位；</span>
+<span id="cb13-198"><a href="#cb13-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-199"><a href="#cb13-199" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span><span class="in">`keep_tex: yes`</span>: 保留中间生成的<span class="in">`tex`</span>源文件，便于查错；</span>
+<span id="cb13-200"><a href="#cb13-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-201"><a href="#cb13-201" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span><span class="in">`dev: "cairo_pdf"`</span>: 使用<span class="in">`cairo_pdf()`</span>生成 \LaTeX 编译需要的图片文件;</span>
+<span id="cb13-202"><a href="#cb13-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-203"><a href="#cb13-203" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span><span class="in">`latex_engine: xelatex`</span>: <span class="in">`TeX`</span>文件的排版引擎为 <span class="in">`XeTeX`</span> , 针对<span class="in">`UTF-8`</span>编码;</span>
+<span id="cb13-204"><a href="#cb13-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-205"><a href="#cb13-205" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span><span class="in">`citation_package: biblatex`</span>: 文献引用库指定为<span class="in">`biblatex`</span>, 另一个为<span class="in">`natbib`</span>;</span>
+<span id="cb13-206"><a href="#cb13-206" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-207"><a href="#cb13-207" aria-hidden="true" tabindex="-1"></a><span class="ss">8.  </span><span class="in">`toc_depth: 3`</span>: 目录提取至三级标题;</span>
+<span id="cb13-208"><a href="#cb13-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-209"><a href="#cb13-209" aria-hidden="true" tabindex="-1"></a><span class="ss">9.  </span><span class="in">`toc_unnumbered: no`</span>: 指定目录编号;</span>
+<span id="cb13-210"><a href="#cb13-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-211"><a href="#cb13-211" aria-hidden="true" tabindex="-1"></a><span class="ss">10. </span><span class="in">`toc_appendix: yes`</span>: 附录添加到目录中.</span>
+<span id="cb13-212"><a href="#cb13-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-213"><a href="#cb13-213" aria-hidden="true" tabindex="-1"></a><span class="fu">## 章节结构 {#sec-sec2-4}</span></span>
+<span id="cb13-214"><a href="#cb13-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-215"><a href="#cb13-215" aria-hidden="true" tabindex="-1"></a>如前所述, 除了<span class="in">`index.Rmd`</span>文件， 项目中每个<span class="in">`.Rmd`</span>文件都作为一章，其第一行是以一个<span class="in">`#`</span>号和空格开头的一级标题。</span>
+<span id="cb13-216"><a href="#cb13-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-217"><a href="#cb13-217" aria-hidden="true" tabindex="-1"></a>每一章可以有若干节与子节，分别用<span class="in">`markdown`</span>的二级标题(二个<span class="in">`#`</span>开始)和三级标题(三个<span class="in">`#`</span>开始)编写。<span class="in">`bookdown`</span>的章、节、子节标题单独成一行，其后可以添加标签, 章节的标签是标题后加空格，然后是大括号内以<span class="in">`#`</span>号开头的标签， 如</span>
+<span id="cb13-218"><a href="#cb13-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-219"><a href="#cb13-219" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-220"><a href="#cb13-220" aria-hidden="true" tabindex="-1"></a><span class="in"># 引言 {#intro}</span></span>
+<span id="cb13-221"><a href="#cb13-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-222"><a href="#cb13-222" aria-hidden="true" tabindex="-1"></a><span class="in">## 关于bookdown {#bookdown}</span></span>
+<span id="cb13-223"><a href="#cb13-223" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-224"><a href="#cb13-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-225"><a href="#cb13-225" aria-hidden="true" tabindex="-1"></a><span class="in">`bookdown`</span>中有二个特殊的标题：</span>
+<span id="cb13-226"><a href="#cb13-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-227"><a href="#cb13-227" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>部分</span>
+<span id="cb13-228"><a href="#cb13-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-229"><a href="#cb13-229" aria-hidden="true" tabindex="-1"></a>    内容相近的章节可以作为一个"部分"。 为此，在一个部分的第一个章节文件的章标题前面增加一行， 以<span class="in">`# (PART)`</span> 开头， 以<span class="in">`{-}`</span>结尾，例如</span>
+<span id="cb13-230"><a href="#cb13-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-231"><a href="#cb13-231" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-232"><a href="#cb13-232" aria-hidden="true" tabindex="-1"></a><span class="in">   # (PART) bookdown中的浮动对象 {-}</span></span>
+<span id="cb13-233"><a href="#cb13-233" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-234"><a href="#cb13-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-235"><a href="#cb13-235" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>附录</span>
+<span id="cb13-236"><a href="#cb13-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-237"><a href="#cb13-237" aria-hidden="true" tabindex="-1"></a>    一本书的最后可以有附录， 附录的章节将显示为<span class="in">`A.1`</span>, <span class="in">`B.1`</span>这样的格式。 为此， 在附录章节的第一个文件开头加如下的第一行标题行：</span>
+<span id="cb13-238"><a href="#cb13-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-239"><a href="#cb13-239" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-240"><a href="#cb13-240" aria-hidden="true" tabindex="-1"></a><span class="in">   # (APPENDIX) 附录 {-}</span></span>
+<span id="cb13-241"><a href="#cb13-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-242"><a href="#cb13-242" aria-hidden="true" tabindex="-1"></a><span class="in">   # biblatex介绍 {#biber}</span></span>
+<span id="cb13-243"><a href="#cb13-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-244"><a href="#cb13-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-245"><a href="#cb13-245" aria-hidden="true" tabindex="-1"></a><span class="fu">## 书的编译 {#sec-sec2-5}</span></span>
+<span id="cb13-246"><a href="#cb13-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-247"><a href="#cb13-247" aria-hidden="true" tabindex="-1"></a>在<span class="in">`index.Rmd`</span>或者<span class="in">`_bookdown.yml`</span>中设置<span class="in">`site: bookdown::bookdown_site`</span>后， <span class="in">`RStudio`</span>就能识别这个项目是一个<span class="in">`bookdown`</span>项目， 这时<span class="in">`RStudio`</span>会有一个<span class="in">`Build`</span>按钮，其中有<span class="in">`Build book`</span>快捷图标， 从下拉菜单中选择一个输出格式（包括<span class="in">`gitbook`</span>、<span class="in">`pdf_book`</span>、<span class="in">`epub_book`</span>）， 就可以编译整本书(见图 @fig-rmd)。</span>
+<span id="cb13-248"><a href="#cb13-248" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-251"><a href="#cb13-251" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb13-252"><a href="#cb13-252" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: fig-rmd</span></span>
+<span id="cb13-253"><a href="#cb13-253" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb13-254"><a href="#cb13-254" aria-hidden="true" tabindex="-1"></a><span class="co">#| out.width: "85%"</span></span>
+<span id="cb13-255"><a href="#cb13-255" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig.cap: "R Bookdown编译界面."</span></span>
+<span id="cb13-256"><a href="#cb13-256" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"./figures/Rbookdown-compile.jpg"</span>)</span>
+<span id="cb13-257"><a href="#cb13-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-258"><a href="#cb13-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-259"><a href="#cb13-259" aria-hidden="true" tabindex="-1"></a>经<span class="in">`build`</span>编译生成的图书默认保存在<span class="in">`_book`</span>子目录中<span class="ot">[^quarto-2]</span>。</span>
+<span id="cb13-260"><a href="#cb13-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-261"><a href="#cb13-261" aria-hidden="true" tabindex="-1"></a><span class="ot">[^quarto-2]: </span>可以在<span class="in">`_bookdown.yml`</span>中设置<span class="in">`output_dir`</span>项改变图书保存的子目录.</span>
+<span id="cb13-262"><a href="#cb13-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-263"><a href="#cb13-263" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>对<span class="in">`gitbook`</span>格式(即<span class="in">`HTML`</span>网页格式)， 编译完成后会弹出一个预览窗口， 点击"Show in new window "按钮可以将内容在操作系统默认的网络浏览器中打开。我们也可以用其他浏览器(建议使用Google chrome浏览器)打开<span class="in">`_book`</span>子目录中的<span class="in">`index.html`</span>文件来查看<span class="in">`gitbook`</span>格式的图书。</span>
+<span id="cb13-264"><a href="#cb13-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-265"><a href="#cb13-265" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>对于<span class="in">`pdf_book`</span>格式，如果成功编译<span class="ot">[^quarto-3]</span>， 也会弹出一个<span class="in">`PDF`</span>预览窗口。 可以在<span class="in">`_book`</span>子目录中找到这个<span class="in">`PDF`</span>文件。</span>
+<span id="cb13-266"><a href="#cb13-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-267"><a href="#cb13-267" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>对于<span class="in">`epub_book`</span>格式，如果成功编译，会在操作系统默认的<span class="in">`ePub`</span>软件(如苹果电脑的<span class="in">`book`</span>)中打开,并在<span class="in">`_book`</span>子目录中找到这个<span class="in">`ePub`</span>文件。</span>
+<span id="cb13-268"><a href="#cb13-268" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-269"><a href="#cb13-269" aria-hidden="true" tabindex="-1"></a><span class="ot">[^quarto-3]: </span>需要\LaTeX 支持，建议安排<span class="in">`TeXLive`</span>，也可以仅安装谢益辉为<span class="in">`rmarkdown`</span>开发的<span class="in">`tinytex`</span></span>
+<span id="cb13-270"><a href="#cb13-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-271"><a href="#cb13-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## 浮动对象标签与引用汇总 {#sec-sec2-6}</span></span>
+<span id="cb13-272"><a href="#cb13-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-273"><a href="#cb13-273" aria-hidden="true" tabindex="-1"></a>| 浮动对象 | 标签设置        | 引用格式              |</span>
+<span id="cb13-274"><a href="#cb13-274" aria-hidden="true" tabindex="-1"></a>|---------:|:----------------|:----------------------|</span>
+<span id="cb13-275"><a href="#cb13-275" aria-hidden="true" tabindex="-1"></a>|     标题 | <span class="in">`{#sec-label}`</span>  | <span class="in">`@sec-label`</span>          |</span>
+<span id="cb13-276"><a href="#cb13-276" aria-hidden="true" tabindex="-1"></a>|     公式 | <span class="in">`{#eq-label}`</span>   | <span class="in">`(@eq-label)`</span>         |</span>
+<span id="cb13-277"><a href="#cb13-277" aria-hidden="true" tabindex="-1"></a>|     图形 | <span class="in">`label="label"`</span> | <span class="in">`\@ref(fig:label)`</span>    |</span>
+<span id="cb13-278"><a href="#cb13-278" aria-hidden="true" tabindex="-1"></a>|     表格 | <span class="in">`label="label"`</span> | <span class="in">`\@ref(tab:label)`</span>    |</span>
+<span id="cb13-279"><a href="#cb13-279" aria-hidden="true" tabindex="-1"></a>|     定理 | <span class="in">`label="label"`</span> | <span class="in">`\@ref(prefix:label)`</span> |</span>
+<span id="cb13-280"><a href="#cb13-280" aria-hidden="true" tabindex="-1"></a>|     文本 | <span class="in">`(ref:label)`</span>   | `<span class="in">` `</span>(ref:label)` ``   |</span>
+<span id="cb13-281"><a href="#cb13-281" aria-hidden="true" tabindex="-1"></a>|     文献 | <span class="in">`biblabel`</span>      | <span class="in">`@biblabel`</span>           |</span>
+<span id="cb13-282"><a href="#cb13-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-283"><a href="#cb13-283" aria-hidden="true" tabindex="-1"></a>注：</span>
+<span id="cb13-284"><a href="#cb13-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-285"><a href="#cb13-285" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>定理泛指定理类，包括定理(thm)、引理(lem)、推论(cor)、命题(prp)、设想(cnj)、定义(def)、例子(exm)、习题(exr)等, 其中括号中是引用时的前缀(prefix);</span>
+<span id="cb13-286"><a href="#cb13-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-287"><a href="#cb13-287" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>文本标签在单独一行中设定，可用在表格与图形的<span class="in">`caption`</span>中引用，即在 <span class="in">`fig.caption`</span>, <span class="in">`tab.caption`</span>选项的设置中引用；</span>
+<span id="cb13-288"><a href="#cb13-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-289"><a href="#cb13-289" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>定理类环境标签前缀的汉化可在<span class="in">`_bookdown.yml`</span>中通过<span class="in">`language`</span>进行<span class="ot">[^quarto-4]</span>，例如</span>
+<span id="cb13-290"><a href="#cb13-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-291"><a href="#cb13-291" aria-hidden="true" tabindex="-1"></a><span class="ot">[^quarto-4]: </span>图形与表格也可同理汉化</span>
+<span id="cb13-292"><a href="#cb13-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-293"><a href="#cb13-293" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb13-294"><a href="#cb13-294" aria-hidden="true" tabindex="-1"></a><span class="in">language:</span></span>
+<span id="cb13-295"><a href="#cb13-295" aria-hidden="true" tabindex="-1"></a><span class="in">  label:</span></span>
+<span id="cb13-296"><a href="#cb13-296" aria-hidden="true" tabindex="-1"></a><span class="in">    fig: "图 "</span></span>
+<span id="cb13-297"><a href="#cb13-297" aria-hidden="true" tabindex="-1"></a><span class="in">    tab: "表 "</span></span>
+<span id="cb13-298"><a href="#cb13-298" aria-hidden="true" tabindex="-1"></a><span class="in">    thm: '定理'</span></span>
+<span id="cb13-299"><a href="#cb13-299" aria-hidden="true" tabindex="-1"></a><span class="in">    def: '定义'</span></span>
+<span id="cb13-300"><a href="#cb13-300" aria-hidden="true" tabindex="-1"></a><span class="in">    exm: '例'</span></span>
+<span id="cb13-301"><a href="#cb13-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb13-302"><a href="#cb13-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-303"><a href="#cb13-303" aria-hidden="true" tabindex="-1"></a>::: {#refs}</span>
+<span id="cb13-304"><a href="#cb13-304" aria-hidden="true" tabindex="-1"></a>:::</span>
+</code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>本书由汤银才编写</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>本书使用 <a href="https://quarto.org/">Quarto</a> 写作</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

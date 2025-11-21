@@ -1,0 +1,1660 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; 引言 – 随机退化过程与统计建模</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/02-Wiener.html" rel="next">
+<link href="../index.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-678afd9922eebfa9ca7f5014aecbca52.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1b5c5d9af6a8c471bfa7390881d2a26e.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+      tex: {
+          tags: 'ams',  // should be 'ams', 'none', or 'all'
+          inlineMath: [                 // start/end delimiter pairs for in-line math
+              ['$', '$'],
+              ['\\(', '\\)'],
+          ],
+          displayMath: [                // start/end delimiter pairs for display math
+              ['$$', '$$'],
+              ['\\[', '\\]']
+          ],
+          processEscapes: true,
+          macros: {
+              bm: ["\\boldsymbol{#1}", 1],  
+              diff: ["\\mathrm{d}"],  
+          },
+      }
+  };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">随机退化过程与统计建模</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://xu-ancha.github.io/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/01-intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-Wiener.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">基于维纳过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-Gamma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">基于伽马过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-IG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基于逆高斯过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-ED.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">基于指数分散过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-Conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">总结与展望</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#sec-intro-s2" id="toc-sec-intro-s2" class="nav-link active" data-scroll-target="#sec-intro-s2"><span class="header-section-number">1.1</span> 退化建模方法回顾</a></li>
+  <li><a href="#sec-intro-s2-1" id="toc-sec-intro-s2-1" class="nav-link" data-scroll-target="#sec-intro-s2-1"><span class="header-section-number">1.2</span> 一般路径模型</a></li>
+  <li><a href="#sec-intro-s2-2" id="toc-sec-intro-s2-2" class="nav-link" data-scroll-target="#sec-intro-s2-2"><span class="header-section-number">1.3</span> 随机过程模型</a>
+  <ul class="collapse">
+  <li><a href="#维纳过程模型" id="toc-维纳过程模型" class="nav-link" data-scroll-target="#维纳过程模型"><span class="header-section-number">1.3.1</span> 维纳过程模型</a></li>
+  <li><a href="#伽马过程模型" id="toc-伽马过程模型" class="nav-link" data-scroll-target="#伽马过程模型"><span class="header-section-number">1.3.2</span> 伽马过程模型</a></li>
+  <li><a href="#逆高斯过程模型" id="toc-逆高斯过程模型" class="nav-link" data-scroll-target="#逆高斯过程模型"><span class="header-section-number">1.3.3</span> 逆高斯过程模型</a></li>
+  <li><a href="#指数分散过程模型" id="toc-指数分散过程模型" class="nav-link" data-scroll-target="#指数分散过程模型"><span class="header-section-number">1.3.4</span> 指数分散过程模型</a></li>
+  </ul></li>
+  <li><a href="#sec-intro-s3" id="toc-sec-intro-s3" class="nav-link" data-scroll-target="#sec-intro-s3"><span class="header-section-number">1.4</span> 数据集介绍</a>
+  <ul class="collapse">
+  <li><a href="#examp1" id="toc-examp1" class="nav-link" data-scroll-target="#examp1"><span class="header-section-number">1.4.1</span> 激光退化数据</a></li>
+  <li><a href="#碳膜电阻器退化数据" id="toc-碳膜电阻器退化数据" class="nav-link" data-scroll-target="#碳膜电阻器退化数据"><span class="header-section-number">1.4.2</span> 碳膜电阻器退化数据</a></li>
+  <li><a href="#有机发光二极管退化数据" id="toc-有机发光二极管退化数据" class="nav-link" data-scroll-target="#有机发光二极管退化数据"><span class="header-section-number">1.4.3</span> 有机发光二极管退化数据</a></li>
+  <li><a href="#列车车轮退化数据" id="toc-列车车轮退化数据" class="nav-link" data-scroll-target="#列车车轮退化数据"><span class="header-section-number">1.4.4</span> 列车车轮退化数据</a></li>
+  <li><a href="#设备-b数据集成电路数据" id="toc-设备-b数据集成电路数据" class="nav-link" data-scroll-target="#设备-b数据集成电路数据"><span class="header-section-number">1.4.5</span> 设备-B数据/集成电路数据</a></li>
+  <li><a href="#铝合金裂纹退化数据" id="toc-铝合金裂纹退化数据" class="nav-link" data-scroll-target="#铝合金裂纹退化数据"><span class="header-section-number">1.4.6</span> 铝合金裂纹退化数据</a></li>
+  <li><a href="#锂离子电池容量退化数据" id="toc-锂离子电池容量退化数据" class="nav-link" data-scroll-target="#锂离子电池容量退化数据"><span class="header-section-number">1.4.7</span> 锂离子电池容量退化数据</a></li>
+  <li><a href="#应力关系退化数据" id="toc-应力关系退化数据" class="nav-link" data-scroll-target="#应力关系退化数据"><span class="header-section-number">1.4.8</span> 应力关系退化数据</a></li>
+  <li><a href="#两阶段模式的锂离子电池退化数据" id="toc-两阶段模式的锂离子电池退化数据" class="nav-link" data-scroll-target="#两阶段模式的锂离子电池退化数据"><span class="header-section-number">1.4.9</span> 两阶段模式的锂离子电池退化数据</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<!--
+## 背景介绍 {#sec-intro-s1}
+-->
+<p>可靠性作为评估产品质量的核心指标, 能够全面反映产品的性能、稳定性和 耐用程度, 是衡量一个国家制造业发展水平的重要标准. 为了加快推进质量强国建设, 提升我国制造业的国际竞争力, 中共中央、国务院于 2023 年 2 月联合发布了《质量强国建设纲要》. 该纲要明确提出要实施质量可靠性提升计划, 重点提高大型装备、基础零部件以及元器件的可靠性水平. 这一计划的实施, 将有助于推动我国制造业的转型升级, 提升产品质量和可靠性, 增强企业的核心竞争力. 可靠性评估作为产品质量提升的关键环节, 对于确保产品在全寿命周期内的稳定性和可靠性具有至关重要的作用. 通过科学合理的可靠性评估方法, 可以及时发 现产品在设计、生产、使用过程中存在的问题, 为改进和优化提供依据. 同时, 可靠性评估还可为企业制定产品标准和质量控制提供重要参考, 促进产业整体水 平的提升. 因此, 实施质量可靠性提升计划, 加强可靠性评估工作, 对于推动我国制造业高质量发展、提升国家整体竞争力具有重要意义.</p>
+<p>传统的产品可靠性评估方法主要依赖于失效数据, 即在产品出现故障或失效时收集的数据. 这种方法通常基于一定的寿命分布假设, 如指数分布、威布尔分 布或对数正态分布等, 来推断产品的可靠度 <span class="citation" data-cites="茆诗松2008 张志华2002">(<a href="references.html#ref-张志华2002" role="doc-biblioref">张志华, 2002</a>; <a href="references.html#ref-茆诗松2008" role="doc-biblioref">茆诗松 等, 2008</a>)</span>. 然而, 随着 生产技术的进步和产品质量标准的提高, 产品的可靠度不断提升, 导致在一定的 试验时间内很难收集到失效数据来支持这种传统的可靠度评估. 虽然很多国内外 学者提出了处理零失效数据的统计方法, 如 <span class="citation" data-cites="miller1992estimating">Miller 等 (<a href="references.html#ref-miller1992estimating" role="doc-biblioref">1992</a>)</span> 建立”黑盒子模型”获取 失效概率的先验分布, 减少了主观因素对可靠性评估结果的影响; <span class="citation" data-cites="韩明2003">韩明 (<a href="references.html#ref-韩明2003" role="doc-biblioref">2003</a>)</span> 提出一 种可靠性指标估计的综合贝叶斯法, 通过引入经验信息来估计产品失效概率, 避 免了可靠性评估中出现的异常现象; <span class="citation" data-cites="李海洋2018">李海洋 等 (<a href="references.html#ref-李海洋2018" role="doc-biblioref">2018</a>)</span> 在置信限分析中结合失效信息来 修正单侧置信限, 得到产品可靠性单侧置信限的稳健估计, 但是这些方法都依赖 大量的先验信息, 并不能从根本上解决失效信息缺乏所带来的可靠性评估问题. 为此, 国内外学者开始关注基于产品性能退化数据的可靠度评估方法. 与失效数 据不同, 性能退化数据是在产品正常使用过程中监测到的性能参数变化值. 这些 数据反映了产品性能随时间的退化趋势, 从而提供有关产品可靠性的有用信息. 基于性能退化数据的可靠度评估方法主要通过对产品性能参数的连续监测和数 据分析来实现. 通过收集产品在不同时间点的性能退化数据, 建立性能退化模型 来描述产品性能随时间的变化规律, 推导出产品的可靠度函数, 从而对产品的可靠性进行评估<span class="citation" data-cites="peng2009mis ye2015 Meeker1998">(<a href="references.html#ref-Meeker1998" role="doc-biblioref">Meeker 等, 1998</a>; <a href="references.html#ref-peng2009mis" role="doc-biblioref">Peng 等, 2009</a>; <a href="references.html#ref-ye2015" role="doc-biblioref">Ye, Xie, 2015</a>)</span>. 与基于失效数据的传统方法相比, 基于性能退化数据的可靠度评估方法具有以下三个优势: 首先, 通过连续监测产品的性能参数变化, 能够在产品尚未发生实际失效时提供更准确、 更及时的可靠性评估. 这不仅缩短了评估周期, 还提高了评估效率和精度. 其次, 它可以在产品运行的早期阶段发现潜在问题, 及时采取必要的维护措施, 防止突 发失效的发生, 延长产品的使用寿命, 降低维护成本. 同时, 这也为企业提供了 更科学的维护策略制定依据, 有助于优化维修计划和库存管理. 最后,通过对性能退化数据的分析,可以深入了解产品的性能变化趋势和失效机理. 这为产品的 设计和改进提供了宝贵的反馈信息, 有助于发现设计中的薄弱环节和潜在问题, 指导产品的优化设计和持续改进. 因此, 研究基于性能退化数据的可靠度评估方法对于提高产品可靠性、指导维护和预防失效、以及促进产品设计和改进都具有重要意义.</p>
+<section id="sec-intro-s2" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec-intro-s2"><span class="header-section-number">1.1</span> 退化建模方法回顾</h2>
+<p>基于系统性能特征退化数据的建模方法主要可分为三类: 物理模型、人工智能方法和数据驱动的统计方法. 基于物理模型的方法以理解产品的物理结构、工作原理和环境条件为基础, 从而揭示潜在的物理故障过程. 虽然物理模型能够准确描述系统失效规律和性能指标之间的相互关系, 但由于现代工业设备的复杂性, 获得失效 物理模型的解析形式通常具有挑战性, 因而在实际应用中受到一定限制. 近年来, 人 工智能方法在性能退化建模方面取得了显著进展<span class="citation" data-cites="xia2022distance nguyen2022probabilistic chao2022fusing">(<a href="references.html#ref-chao2022fusing" role="doc-biblioref">Chao 等, 2022</a>; <a href="references.html#ref-nguyen2022probabilistic" role="doc-biblioref">Nguyen 等, 2022</a>; <a href="references.html#ref-xia2022distance" role="doc-biblioref">Xia 等, 2022</a>)</span>, 它通过对数据进行模型训练, 建立与可靠性相关的映射关系, 并考虑各个性能指标之间的相依性. 然而, 在实际退化数据分析中, 该方法面临以下挑战: 1. 要求大量高质量的训练数据和准确的事件标记, 同时需要大量时间训练模型. 2. 主观假设故障发生时间 已知, 但错误的时间标记可能引入噪声, 影响可靠性估计的准确性. 3. 模型泛化能力的有限, 特别是在面对新领域或未见场景时的预测准确性<span class="citation" data-cites="ren2023deep">(<a href="references.html#ref-ren2023deep" role="doc-biblioref">Ren 等, 2024</a>)</span>. 数据驱动的统计方法通过分析系统的历史故障信息或性能退化数据建立统计模型, 用于评估系统的可靠性, 并为确保系统稳定性、制定质保策略和预防性维修策略提供理论依据<span class="citation" data-cites="wen2022recent">(<a href="references.html#ref-wen2022recent" role="doc-biblioref">Wen 等, 2022</a>)</span>. 在基于故障事件数据的建模中, 通过收集系统故障的时间, 运用统计方法来推断故障时间的概率分布, 并将其用于后续的决策分析<span class="citation" data-cites="lewis2022prediction peng2017dynamic">(<a href="references.html#ref-lewis2022prediction" role="doc-biblioref">Lewis-Beck 等, 2022</a>; <a href="references.html#ref-peng2017dynamic" role="doc-biblioref">Peng Y 等, 2017</a>)</span>. 尽管这种方法能够描述整体故障时间的分布趋势, 但它无法为特定系统提供准确的故障预测和可靠性评估. 在基于性能退化数据的建模中, 通过监控系统性能退化状态, 建立退化模型并学习系统性能退化的演化规律, 从而评估系统的可靠性<span class="citation" data-cites="zhang2021stochastic">(<a href="references.html#ref-zhang2021stochastic" role="doc-biblioref">Zhang 等, 2021</a>)</span>. 该方法具有两个显著的优点: 1.性能退化数据的易收集性: 随着传感器和监测技术的不断进步, 我们能够实时监控和收集性能退化数据. 这种随时获取退化特征的能力极大地简化了数据收集的过程, 并提高了数据的准确性. 2.性能退化与系统寿命的直接关联: 性能退化所反映的是系统在使用过程中状态的变化. 这种变化与系统的寿命息息相关, 因此, 通过分析性能退化信息, 我们能够实时更新系统寿命的估计, 实现对系统可靠性的实时预测. 这为及时采取维修策略和管理系统可靠性提供了有力支持. 下面章节将对性能退化建模方法的研究现状进行分析, 对应的综述框架见图 <a href="#fig-review_frame" class="quarto-xref"><span>1.1</span></a>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-review_frame" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-review_frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="figures/review_frame.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-review_frame-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.1: 性能退化建模方法框架.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-intro-s2-1" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec-intro-s2-1"><span class="header-section-number">1.2</span> 一般路径模型</h2>
+<p>早期的退化数据建模主要借鉴了随机效应模型的思想: 通过物理或经验分析, 确定产品性能退化与时间的函数形式, 并在此基础上引入随机效应和观测误差, 从而建立产品寿命与性能退化之间的定量关系. <span class="citation" data-cites="ye2015">Ye, Xie (<a href="references.html#ref-ye2015" role="doc-biblioref">2015</a>)</span> 将这种方法称为一般路径模型(General path model). <span class="citation" data-cites="lu1993using">Lu 等 (<a href="references.html#ref-lu1993using" role="doc-biblioref">1993</a>)</span> 首次对一般路径模型进行了详细的阐述, 并说明了该模型可以灵活地刻画测量误差和产品间的异质性. 之后, 该模型得到了广泛关注, 并被应用到更复杂的退化数据建模中<span class="citation" data-cites="robinson2000">(<a href="references.html#ref-robinson2000" role="doc-biblioref">Robinson 等, 2000</a>)</span>. 例如: <span class="citation" data-cites="hong2015statistical">Hong 等 (<a href="references.html#ref-hong2015statistical" role="doc-biblioref">2015</a>)</span> 引入动态协变量来刻画多种应力(如：温度, 湿度和紫外线强度)对某种环氧树脂涂层退化的影响. <span class="citation" data-cites="liu2018statistical">Liu 等 (<a href="references.html#ref-liu2018statistical" role="doc-biblioref">2018</a>)</span> 将该模型拓展到时空退化数据中, 构建了一个由退化过程和传播过程相结合的时空模型. <span class="citation" data-cites="si2018reliability">Si 等 (<a href="references.html#ref-si2018reliability" role="doc-biblioref">2018</a>)</span> 提出了一种多变量一般路径模型, 用于描述材料拉伸过程中的动态局部变形, 并通过两阶段方法验证其有效性和适用性. 在此基础上, <span class="citation" data-cites="Lu2020">Lu 等 (<a href="references.html#ref-Lu2020" role="doc-biblioref">2020</a>)</span> 结合非线性路径协变量与特征间随机效应 对模型做了拓展, 并利用EM算法与MCMC模拟实现参数估计和系统可靠性分析. 一般路径模型能够灵活地融合协变量和单元间异质效应, 使其适用于多样化的实际场景, 但是它在计算上存在一定的复杂性, 尤其是在处理大规模多维退化数据时, 可能需要较高的计算资源. 此外, 在实际应用中, 产品的性能退化会受到环境变化、外部因素或未知因素的影响. 当这些因素不能被准确记录或量化时, 一般路径模型就难以刻画这种随机性引起的产品性能退化特征<span class="citation" data-cites="ye2015 zhai2023statistical">(<a href="references.html#ref-ye2015" role="doc-biblioref">Ye, Xie, 2015</a>; <a href="references.html#ref-zhai2023statistical" role="doc-biblioref">Zhai 等, 2023</a>)</span>. <!-- 尽管在某些情况下具有一定的有效性, 这些模型通常将退化视为一个确定性过程, 而忽略了其内在的随机性. 这一简化限制了模型捕捉真实退化路径的能力, 从而降低了其对复杂退化行为的适用性 [@zhai2023statistical]. 为克服这些局限性, 基于随机过程的模型被广泛应用于退化建模. 随机过程模型能够自然地刻画退化过程的随机性, 通过动态变化的概率分布捕捉退化路径的复杂特征[@ye2015]. --></p>
+</section>
+<section id="sec-intro-s2-2" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec-intro-s2-2"><span class="header-section-number">1.3</span> 随机过程模型</h2>
+<!--  (段21页)  -->
+<p>产品性能特征的退化通常由多次微小损伤逐步累积所导致, 这一过程既具有累积性又带有随机性. 退化过程不仅受到外部环境的影响, 还与材料本身的性质及其工作状态密切相关. 因此, 随机过程作为一种能够有效描述这种随机性和累积性的数学工具, 在物理意义上与产品退化特征高度契合, 并逐渐成为研究退化行为的核心方法之一.</p>
+<p>近年来, 随着统计学和随机过程理论的不断发展, 维纳过程、伽马过程、逆高斯过程以及指数分散过程（Exponential dispersion process）等模型因其独特的数学性质和对实际问题的适用性而受到广泛关注. 这些模型能够有效地捕捉和描述产品在长期使用过程中的退化行为, 尤其是在描述不同类型的随机损伤积累机制上展现出了重要优势. 国内外学者通过大量研究, 已经在这些随机过程模型的拓展与应用、参数估计以及剩余使用寿命预测等方面取得了丰富的成果. 本节将对这些常用的随机过程模型进行文献综述, 具体的模型理论和相关应用将在后续章节中进一步展开。</p>
+<section id="维纳过程模型" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="维纳过程模型"><span class="header-section-number">1.3.1</span> 维纳过程模型</h3>
+<p>维纳过程及其扩展形式最早用于描述产品性能的退化机制. 由于维纳过程在物理解释和数学性质上的优越性, 过去20年来, 它在退化数据分析方面得到了广泛而深入的研究. 基本的维纳过程假设所有样本的退化均值和波动性是同质的, 且退化路径为线性. <span class="citation" data-cites="doksum1992models">Doksum 等 (<a href="references.html#ref-doksum1992models" role="doc-biblioref">1992</a>)</span> 使用该模型拟合绝缘电缆寿命数据, 并证明其寿命分布为逆高斯分布. 更多该模型的应用见<span class="citation" data-cites="ye2012degradation">Guan 等 (<a href="references.html#ref-guan2016objective" role="doc-biblioref">2016</a>)</span>. 然而, 许多产品的退化路径表现出非线性的特征. 为此, 部分学者提出了基于时间尺度变换的非线性维纳退化模型. 例如, <span class="citation" data-cites="whitmore1997modelling">Whitmore 等 (<a href="references.html#ref-whitmore1997modelling" role="doc-biblioref">1997</a>)</span> 对维纳过程在时间尺度上进行幂变换, 并利用该模型分析了自控温加热电缆的寿命. <span class="citation" data-cites="tseng2007stochastic">Tseng 等 (<a href="references.html#ref-tseng2007stochastic" role="doc-biblioref">2007</a>)</span> 也进行了类似研究, 但他们采用了指数变换对维纳过程进行时间尺度上的调整.</p>
+<p>产品在实际使用过程中, 其性能退化往往受到多种潜在因素的共同影响, 导致退化路径呈现出显著的异质性. 为了在退化建模中刻画这种异质性, 通常会在模型中引入随机效应, 即假设某些模型参数服从特定的概率分布. <span class="citation" data-cites="peng2009mis">Peng 等 (<a href="references.html#ref-peng2009mis" role="doc-biblioref">2009</a>)</span> 研究了带随机效应的维纳过程模型，并系统分析了模型假设错误对参数估计的影响; <span class="citation" data-cites="wang2010wiener">Wang (<a href="references.html#ref-wang2010wiener" role="doc-biblioref">2010</a>)</span> 在非线性维纳过程模型中引入随机的漂移和波动参数, 提出的模型能够较好地拟合桥梁裂纹数据. <span class="citation" data-cites="Ye2015">Ye, Chen, 等 (<a href="references.html#ref-Ye2015" role="doc-biblioref">2015</a>)</span> 在激光设备性能退化数据中发现模型的漂移参数与波动参数之间存在较强的相依关系, 并提出了一种参数相依的维纳过程退化模型. <span class="citation" data-cites="zhai2018random">Zhai 等 (<a href="references.html#ref-zhai2018random" role="doc-biblioref">2018</a>)</span> 从加速失效机理的角度进一步拓展了 <span class="citation" data-cites="Ye2015">Ye, Chen, 等 (<a href="references.html#ref-Ye2015" role="doc-biblioref">2015</a>)</span> 的模型. 随后, <span class="citation" data-cites="zhou2021generalized">Zhou 等 (<a href="references.html#ref-zhou2021generalized" role="doc-biblioref">2021</a>)</span> 提出了更为一般的非线性参数相依维纳退化模型, 并给出了其寿命分布的近似表达式. 此外, <span class="citation" data-cites="paroissin2015inference">Paroissin (<a href="references.html#ref-paroissin2015inference" role="doc-biblioref">2015</a>)</span> 观察到某些产品的初始退化值具有随机性, 因此提出了具有随机初始值的维纳退化模型. <span class="citation" data-cites="shen2018degradation">Shen 等 (<a href="references.html#ref-shen2018degradation" role="doc-biblioref">2018</a>)</span> 在更一般的随机退化框架下进一步研究了该现象. 更多关于随机效应维纳退化模型的研究, 可参考 <span class="citation" data-cites="wang2020accurate tang2014accelerated zhang2018degradation pan2017wiener">(<a href="references.html#ref-pan2017wiener" role="doc-biblioref">Pan 等, 2017</a>; <a href="references.html#ref-tang2014accelerated" role="doc-biblioref">Tang, Guo, 等, 2014</a>; <a href="references.html#ref-wang2020accurate" role="doc-biblioref">Wang 等, 2020</a>; <a href="references.html#ref-zhang2018degradation" role="doc-biblioref">Zhang 等, 2018</a>)</span>.</p>
+<p>由于设备测量精度的限制以及试验设备的老化, 退化测量过程中不可避免地会产生测量误差. 针对这一现象, <span class="citation" data-cites="whitmore1995estimating">Whitmore (<a href="references.html#ref-whitmore1995estimating" role="doc-biblioref">1995</a>)</span> 建议在基本维纳过程模型中引入时间独立的测量误差, 以更准确地描述退化数据. <span class="citation" data-cites="peng2012note">Peng 等 (<a href="references.html#ref-peng2012note" role="doc-biblioref">2012</a>)</span> 在此基础上进一步研究了该模型, 并推导出了其方差协方差矩阵的解析表达形式. <span class="citation" data-cites="ye2013degradation">Ye 等 (<a href="references.html#ref-ye2013degradation" role="doc-biblioref">2013</a>)</span> 对 <span class="citation" data-cites="whitmore1995estimating">Whitmore (<a href="references.html#ref-whitmore1995estimating" role="doc-biblioref">1995</a>)</span> 的模型进行了扩展, 提出了一种同时考虑测量误差与随机效应的非线性维纳退化模型. 随后, <span class="citation" data-cites="peng2020student">Peng 等 (<a href="references.html#ref-peng2020student" role="doc-biblioref">2020</a>)</span> 在 <span class="citation" data-cites="ye2013degradation">Ye 等 (<a href="references.html#ref-ye2013degradation" role="doc-biblioref">2013</a>)</span> 模型的基础上进一步引入了多层随机效应, 并提出了一种基于学生化t随机过程模型, 可有效拟合具有厚尾特征的退化数据. 更多关于带测量误差的维纳退化模型研究及其应用, 可参考 <span class="citation" data-cites="tang2014remaining li2017degradation li2018nonlinear yan2020novel">(<a href="references.html#ref-li2017degradation" role="doc-biblioref">Li 等, 2017</a>, <a href="references.html#ref-li2018nonlinear" role="doc-biblioref">2018</a>; <a href="references.html#ref-tang2014remaining" role="doc-biblioref">Tang, Yu, 等, 2014</a>; <a href="references.html#ref-yan2020novel" role="doc-biblioref">Yan 等, 2020</a>)</span>.</p>
+</section>
+<section id="伽马过程模型" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="伽马过程模型"><span class="header-section-number">1.3.2</span> 伽马过程模型</h3>
+<p>伽马过程在退化建模中常用于拟合具有单调退化路径的产品, 其因能描述逐步累积的退化特性而备受关注. <span class="citation" data-cites="abdel1975gamma">Abdel Hameed (<a href="references.html#ref-abdel1975gamma" role="doc-biblioref">1975</a>)</span> 最早提出使用伽马过程进行退化建模. 随后, <span class="citation" data-cites="singpurwalla1997gamma">Singpurwalla (<a href="references.html#ref-singpurwalla1997gamma" role="doc-biblioref">1997</a>)</span> 从方法论角度对伽马过程进行了深入阐述, 并指出其能够很好地拟合某种机翼合金材料的退化行为. <span class="citation" data-cites="park2014cumulative">Park 等 (<a href="references.html#ref-park2014cumulative" role="doc-biblioref">2014</a>)</span> 基于齐次伽马过程推导了产品寿命分布的解析表达, 并指出该分布可进一步用Birnbaum-Sauders(BS)分布近似. 为考虑产品间的异质性, <span class="citation" data-cites="lawless2004covariates">Lawless 等 (<a href="references.html#ref-lawless2004covariates" role="doc-biblioref">2004</a>)</span> 提出了带随机效应的线性伽马退化模型. <span class="citation" data-cites="tsai2012optimal">Tsai 等 (<a href="references.html#ref-tsai2012optimal" role="doc-biblioref">2012</a>)</span> 基于随机效应非线性伽马退化模型, 研究了退化试验的优化设计问题. <span class="citation" data-cites="guida2019bayesian">Guida 等 (<a href="references.html#ref-guida2019bayesian" role="doc-biblioref">2019</a>)</span> 从贝叶斯角度研究了非线性伽马退化过程的参数估计问题, 并提出了一种估计剩余寿命的近似方法. 进一步地, <span class="citation" data-cites="fan2017bayesian">Fan 等 (<a href="references.html#ref-fan2017bayesian" role="doc-biblioref">2017</a>)</span> 利用贝叶斯方法解决了步进应力加速退化试验下的伽马退化模型统计推断问题. 更多相关研究可参考 <span class="citation" data-cites="hao2015led wang2021degradation">(<a href="references.html#ref-hao2015led" role="doc-biblioref">Hao 等, 2015</a>; <a href="references.html#ref-wang2021degradation" role="doc-biblioref">Wang 等, 2021</a>)</span>.</p>
+<p>在测量误差方面, <span class="citation" data-cites="pulcini2016perturbed">Pulcini (<a href="references.html#ref-pulcini2016perturbed" role="doc-biblioref">2016</a>)</span> 假设测量误差服从一阶随机游动过程, 并提出了一种具有时间相关测量误差的伽马退化模型. <span class="citation" data-cites="giorgio2019perturbed">Giorgio 等 (<a href="references.html#ref-giorgio2019perturbed" role="doc-biblioref">2019</a>)</span> 在非高斯测量误差的假设下进一步扩展了伽马退化模型. 然而, 在伽马过程中添加时间独立的测量误差通常导似然函数难以解析表示, 从而增加了模型参数估计的难度. 为此, <span class="citation" data-cites="hazra2020approximate">Hazra 等 (<a href="references.html#ref-hazra2020approximate" role="doc-biblioref">2020</a>)</span> 利用近似贝叶斯计算方法, 解决了带时间独立测量误差的伽马退化模型的统计推断问题. 除了在退化建模中的广泛应用外, 伽马过程还在其他领域发挥了重要作用, 如统计过程控制<span class="citation" data-cites="chenye2018">(<a href="references.html#ref-chenye2018" role="doc-biblioref">Chen 等, 2018</a>)</span>和预防性维修<span class="citation" data-cites="noort2009 yuanetal21">(<a href="references.html#ref-noort2009" role="doc-biblioref">Van Noortwijk, 2009</a>; <a href="references.html#ref-yuanetal21" role="doc-biblioref">Yuan 等, 2021</a>)</span>等.</p>
+<!-- 伽马过程\index{伽马过程}可以看作是具有特定分布的跳跃大小的复合泊松过程的极限. 当PCs的退化严格单调时,  伽马过程\index{伽马过程}常被优先选择. 伽马过程\index{伽马过程}作为一类退化模型的引入可追溯到[@Abdel75]. [@noort2009]对伽马过程\index{伽马过程}的理论与统计性质进行了全面综述,  并展示了其在维护应用中的成功案例. 在过去的二十年中,  为了适应协变量、异质性\index{异质性}效应、ndex{测量误差}和多阶段退化,  伽马过程\index{伽马过程}的多种扩展得到了研究. 例如,  [@bagnik2001]使用损伤累积的加法方法对带有协变量的伽马过程\index{伽马过程}进行了建模. [@parpad2006]提出了一种加速伽马退化模型,  假设形状参数是协变量的函数. [@lintsubal2015]提出了一种带有约束的加速伽马退化模型. 当需要考虑单元间差异时,  [@lawcro2004]研究了带有异质性效应的伽马过程\index{伽马过程},  其中尺度参数被视为具有伽马分布\index{伽马分布}的随机变量. [@wang2008]提出了一种伪似然方法,  用于估计具有随机效应的非齐次伽马过程\index{伽马过程}模型中的参数. [@wanwanhon2022]开发了一种针对带有随机效应的伽马过程\index{伽马过程}的广义推断方法,  使得模型参数的区间估计更加精确. 当退化过程\index{退化过程}的检测不完全且测量误差\index{测量误差}显著时,  有必要考虑高斯分布噪声. 这引入了退化增量之间的非独立性,  使得似然函数不具备解析形式,  从而增加了参数估计的难度. [@hazpanman2020]提出了一种近似贝叶斯\index{贝叶斯}计算方法来解决这一问题,  而[@espmelcas2022]则结合了粒子滤波器和期望最大化算法以获得参数估计. 某些特定系统由于物理或化学变化而表现出两阶段退化路径,  如有机发光二极管的亮度[@wantanbae2018]或锂离子电池的容量[@linlincab2021]. [@linngtsu2019]研究了伽马过程\index{伽马过程}下的两阶段退化模型,  并开发了贝叶斯\index{贝叶斯}和似然方法来估计模型参数. 除了作为退化模型的应用外,  伽马过程\index{伽马过程}还在其他领域中有所应用,  包括统计过程控制[@chenye2018]、维修[@noort2009; @yuanetal21]等.  -->
+<!-- 伽马过程\index{伽马过程}最早由 [@abdel1975gamma] 应用于退化建模. 随后,  [@singpurwalla1997gamma] 从方法论的角度对基本伽马过程\index{伽马过程}进行了全面阐述,  并指出它可以为飞机表皮的退化提供令人满意的解决方案. [@park2014cumulative] 开发了上述基本伽马退化模型首次达到时间的闭式寿命分布,  并通过考虑离散损伤累积证明其可以近似为逆高斯分布\index{逆高斯分布}. 对于某些材料,  可能存在由其自身引起的隐性内生变异和由操作环境引起的不可观测的外生多样性,  这可能导致样本在初始值和退化路径上的单元间差异. 初始值的异质性通常通过设定初始退化量服从某种随机分布来捕获,  详见 [@shen2018degradation] 和 [@hazra2020approximate]. 退化路径间的异质性可以通过设定模型的一个或多个参数服从特定分布来描述,  详见 [@jiang2019inference; @tsai2012optimal; @guida2019bayesian; @bordes2016parametric]. 一些产品退化过程可能会受到协变量的影响. 对于固定协变量或简单动态协变量过程,  [@lawless2004covariates] 基于退化速率与协变量之间的关系提出了一种扩展的伽马退化模型. 产品的性能退化指标可能表现出线性、凸性或凹性的整体老化趋势. 目前,  非线性函数通常用于退化建模中,  以在时间尺度上转换检测时间,  其中指数函数和幂函数是常用的转换方法. 例如,  [@tseng2009optimal] 使用带有幂尺度函数的伽马退化模型拟合了一批发光二极管设备的退化路径. 类似的建模框架可以参见 [@wu2018gamma; @ye2013degradation]. 此外,  现有的退化观测可能会受到噪声污染. 这种不确定性的噪声可以通过在伽马退化模型中引入测量误差\index{测量误差}来解决. 维纳过程由于其数学性质,  假设随时间变化的独立测量误差\index{测量误差}服从均值为零的高斯分布 [@ye2013degradation]. 然而,  在假设随时间变化的独立高斯测量误差\index{测量误差}的情况下,  伽马过程\index{伽马过程}会导致似然函数不具备解析结构. 为此,  [@pulcini2016perturbed] 提出了一种时间相关的一阶自回归测量误差\index{测量误差}方法,  以折衷方式基于伽马过程\index{伽马过程}的简化模型来模拟测量误差\index{测量误差}. 类似的建模方案由 [@giorgio2019perturbed; @le2016remaining] 提出.  -->
+</section>
+<section id="逆高斯过程模型" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="逆高斯过程模型"><span class="header-section-number">1.3.3</span> 逆高斯过程模型</h3>
+<p>逆高斯过程是另一种常用来拟合单调退化路径的随机过程. <span class="citation" data-cites="wang2010inverse">Wang 等 (<a href="references.html#ref-wang2010inverse" role="doc-biblioref">2010</a>)</span> 最早将逆高斯过程引入退化建模领域, 并发现对于某些具有单调退化路径的高可靠性产品, 基于逆高斯过程的退化模型在拟合效果上优于伽马过程模型. <span class="citation" data-cites="ye2014inverse">Ye, Chen N (<a href="references.html#ref-ye2014inverse" role="doc-biblioref">2014</a>)</span> 进一步证明了逆高斯过程是复合泊松过程的极限形式, 从而为逆高斯退化模型提供了清晰的物理解释. 他们还基于维纳过程构建了两种具有解析结构的随机效应逆高斯退化模型. <span class="citation" data-cites="peng2014inverse">Peng 等 (<a href="references.html#ref-peng2014inverse" role="doc-biblioref">2014</a>)</span> 从贝叶斯的角度对@ye2014inverse提出的逆高斯退化模型进行了深入分析. 此外, <span class="citation" data-cites="peng2015inverse">Peng (<a href="references.html#ref-peng2015inverse" role="doc-biblioref">2015</a>)</span> 研究了同时包含协变量和随机效应的逆高斯退化模型, 并推导了对应的寿命分布及平均失效时间的解析表达形式. 更多关于该模型的研究可参考 <span class="citation" data-cites="ye2014accelerated peng2017bayesian guo2018improved ma2019engineering">(<a href="references.html#ref-guo2018improved" role="doc-biblioref">Guo 等, 2018</a>; <a href="references.html#ref-ma2019engineering" role="doc-biblioref">Ma 等, 2019</a>; <a href="references.html#ref-peng2017bayesian" role="doc-biblioref">Peng W 等, 2017</a>; <a href="references.html#ref-ye2014accelerated" role="doc-biblioref">Ye, Chen L-P, 等, 2014</a>)</span>.</p>
+<p>在测量误差的研究方面, <span class="citation" data-cites="sun2021improved">Sun 等 (<a href="references.html#ref-sun2021improved" role="doc-biblioref">2021</a>)</span> 在时间相关测量误差的假设下, 研究了带测量误差与随机效应的逆高斯退化模型. <span class="citation" data-cites="hao2019degradation">Hao 等 (<a href="references.html#ref-hao2019degradation" role="doc-biblioref">2019</a>)</span> 则在不同的随机效应设置下进一步探讨了带测量误差的逆高斯退化建模方法. 此外, <span class="citation" data-cites="peng2019transformed">Peng 等 (<a href="references.html#ref-peng2019transformed" role="doc-biblioref">2019</a>)</span> 提出了一种改进的逆高斯过程退化模型, 该模型假设观测量在特定的非线性变换下服从逆高斯过程, 从而增强了对复杂退化行为的刻画能力. 当系统具有多个性能退化指标时, <span class="citation" data-cites="fang2022inverse">Fang 等 (<a href="references.html#ref-fang2022inverse" role="doc-biblioref">2022</a>)</span> 观察产品多个性能指标存在固有异质性和相依性, 并提出了一种具有多元随机效应的逆高斯退化模型, 以更全面地描述系统性能的退化行为.</p>
+</section>
+<section id="指数分散过程模型" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="指数分散过程模型"><span class="header-section-number">1.3.4</span> 指数分散过程模型</h3>
+<p>指数分散过程是一类广义的随机过程, 前述的维纳过程、伽马过程和逆高斯过程均为其特例 <span class="citation" data-cites="tseng2016optimum">(<a href="references.html#ref-tseng2016optimum" role="doc-biblioref">Tseng 等, 2016</a>)</span>. 当指数分散过程的单位方差函数呈幂函数形式时，被称为 Tweedie 指数分散过程, 其中参数<span class="math inline">\(p\)</span>的不同取值对应特定的随机过程: <span class="math inline">\(p=0,2,3\)</span>时, 分别对应维纳过程, 伽马过程和逆高斯过程. 目前, 指数分散过程在退化建模中的研究尚不够深入. <span class="citation" data-cites="tseng2016optimum">Tseng 等 (<a href="references.html#ref-tseng2016optimum" role="doc-biblioref">2016</a>)</span> 基于指数分散过程研究了加速退化试验中的样本分配问题, 并针对三种常用的优化准则(V-最优, D-最优, 和A-最优), 给出了最优样本分配方案. <span class="citation" data-cites="lee2020global">Lee 等 (<a href="references.html#ref-lee2020global" role="doc-biblioref">2020</a>)</span> 进一步探讨了基于指数分散过程的加速退化试验设计, 在两个和三个应力水平下, 通过最小化产品寿命分布分位点估计的渐近方差, 给出了各应力水平下的全局最优样本分配方案. <span class="citation" data-cites="hong2017acceleration">Hong 等 (<a href="references.html#ref-hong2017acceleration" role="doc-biblioref">2017</a>)</span> 将指数分散过程推广应用于加速退化试验设计，统一了基于维纳过程、伽马过程和逆高斯过程的加速退化试验最优设计方法. 随后, <span class="citation" data-cites="zhou2019exponential">Zhou 等 (<a href="references.html#ref-zhou2019exponential" role="doc-biblioref">2019</a>)</span> 系统阐述了非齐次指数分散过程的统计性质, 并探讨了具有随机效应的指数分散过程的统计推断方法. 在考虑产品异质性方面, <span class="citation" data-cites="duan2018exponential">Duan 等 (<a href="references.html#ref-duan2018exponential" role="doc-biblioref">2018</a>)</span> 研究了具有随机效应的线性指数 分散过程, 以更好地刻画产品间的变异性. <span class="citation" data-cites="chen2021random">Chen 等 (<a href="references.html#ref-chen2021random" role="doc-biblioref">2021</a>)</span> 则进一步探讨了具有随机效应的非线性指数分散过程, 同时研究了同时包含加速退化和随机效应的指数分散过程的统计推断问题. 此外, <span class="citation" data-cites="xu2019unified">Xu 等 (<a href="references.html#ref-xu2019unified" role="doc-biblioref">2021</a>)</span> 利用指数分散过程的性质, 提出了适用于随机环境下的系统可靠性评估框架.</p>
+<!--Tweedie指数分散过程的概率密度函数没有显式表达, 不容易直接着手处理, 所以学者们提出了一些方法给出了其概率密度函数的近似表达式, @dunn2005series 借助序列展开的方法给出了Tweedie指数分散模型概率密度函数的近似. @dunn2008evaluation 根据Tweedie分布族具有显式矩母函数的性质, 采用傅里叶逆变换的方法给出了其概率密度函数的近似表达式.-->
+<!-- \newpage  -->
+</section>
+</section>
+<section id="sec-intro-s3" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="sec-intro-s3"><span class="header-section-number">1.4</span> 数据集介绍</h2>
+<section id="examp1" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="examp1"><span class="header-section-number">1.4.1</span> 激光退化数据</h3>
+<p>该数据集主要用于本书的第 <a href="02-Wiener.html#sec-Generalize-Wiener" class="quarto-xref"><span> 2.2</span></a> 节、<a href="03-Gamma.html#sec-Bayes-Gamma" class="quarto-xref"><span> 3.2</span></a> 节和 <a href="05-ED.html#sec-ED" class="quarto-xref"><span> 5.1</span></a> 节, 来源于 <span class="citation" data-cites="Meeker1998">Meeker 等 (<a href="references.html#ref-Meeker1998" role="doc-biblioref">1998</a>)</span>. 数据集记录了在 80°C 高温条件下测试的 15 个 GaAs (砷化镓) 激光器的运行电流随时间增加的百分比变化情况. 在时间 <span class="math inline">\(t=0\)</span> 时, 所有样本的电流增加百分比均设定为 0, 此后每隔 250 小时 测量一次运行电流的增加量, 直至试验终止时间 4000 小时. 所有激光器的性能退化过程如图 <a href="#fig-fig:laser2" class="quarto-xref"><span>1.2</span></a> 所示. 激光器的性能退化表现为运行电流随时间的逐渐增加, 以维持恒定的光输出. 当电流增加量超过初始值的 10% 时, 激光器被认为失效. 该数据集在分析激光器的退化模式、寿命预测以及识别潜在失效机制等方面具有重要研究价值.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:laser2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:laser2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/1.激光退化数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:laser2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.2: 激光工作电流的退化路径.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="碳膜电阻器退化数据" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="碳膜电阻器退化数据"><span class="header-section-number">1.4.2</span> 碳膜电阻器退化数据</h3>
+<p>该数据集主要用于本书的第 <a href="02-Wiener.html#sec-Generalize-Wiener" class="quarto-xref"><span> 2.2</span></a> 节, 数据来源于 <span class="citation" data-cites="Meeker1998">Meeker 等 (<a href="references.html#ref-Meeker1998" role="doc-biblioref">1998</a>)</span>, 列于其书中表 C.3. 数据集记录了碳膜电阻器在不同温度条件下电阻随时间的变化情况, 包括30个电阻器单元在 <span class="math inline">\(83^\circ\)</span>C、<span class="math inline">\(133^\circ\)</span>C 和 <span class="math inline">\(173^\circ\)</span>C 三个温度水平下的电阻增加百分比. 试验首先记录了每个电阻器的初始电阻值, 随后分别在 452 小时、1030 小时、4341 小时和 8084 小时时, 以初始电阻值的百分比形式记录电阻增加情况. 该数据集可用于评估不同温度条件下碳膜电阻器的性能退化趋势, 帮助研究人员分析温度对电阻器退化速率的影响. 图 <a href="#fig-fig:resistor2" class="quarto-xref"><span>1.3</span></a> 展示了 9 个碳膜电阻器在 <span class="math inline">\(83^\circ\)</span>C 条件下的电阻增加百分比退化路径.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:resistor2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:resistor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/2.碳膜电阻器退化数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:resistor2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.3: 9 个碳膜电阻的电阻百分比增加值
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="有机发光二极管退化数据" class="level3" data-number="1.4.3">
+<h3 data-number="1.4.3" class="anchored" data-anchor-id="有机发光二极管退化数据"><span class="header-section-number">1.4.3</span> 有机发光二极管退化数据</h3>
+<p>该数据集主要用于本书的第 <a href="02-Wiener.html#sec-Two-Phase-Wiener" class="quarto-xref"><span> 2.3</span></a> 节, 来源于 <span class="citation" data-cites="bae2008degradation">Bae 等 (<a href="references.html#ref-bae2008degradation" role="doc-biblioref">2008</a>)</span>. 该数据集主要用于评估有机发光二极管 (Organic light-emitting diode, OLED) 在恒定应力水平 (直流电流=25mA) 下的可靠性. 该数据集包含了6个用于移动电话显示元件的OLED样本单元, 在20个时间点的光度测量值. 测试样本被分配在在四种加速应力水平：25 mA, 32 mA, 40 mA和50 mA. 各直流电流下的退化路径如图 <a href="#fig-fig:oled" class="quarto-xref"><span>1.4</span></a> 所示. 行业标准规定, 在相对光度低于0.5或低于50%时失效.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:oled" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:oled-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/3.有机发光二极管退化数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:oled-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.4: 6 个OLED的退化数据
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="列车车轮退化数据" class="level3" data-number="1.4.4">
+<h3 data-number="1.4.4" class="anchored" data-anchor-id="列车车轮退化数据"><span class="header-section-number">1.4.4</span> 列车车轮退化数据</h3>
+<p>该数据集主要用于本书的第 <a href="03-Gamma.html#sec-Bayes-Gamma" class="quarto-xref"><span> 3.2</span></a> 节, 来源于 <span class="citation" data-cites="peng2020student">(<a href="references.html#ref-peng2020student" role="doc-biblioref">Peng 等, 2020</a>)</span>, 记录了14个列车车轮在行驶过程中直径磨损情况. 测试以50千公里为间隔, 直至累积里程达到1000千公里. 在每个里程节点, 分别测量每个车轮的直径. 当直径磨损达到60毫米时, 即视为车轮失效. 由于其中三个样品的车轮直径磨损过快, 很早便超过了 60 毫米, 故在数据集中移除了这三组数据. 剩余 11 个样品的磨损数据如图 <a href="#fig-fig:wheeldata" class="quarto-xref"><span>1.5</span></a> 所示. 该数据集可用于分析列车车轮的退化趋势和剩余使用寿命, 有助于科学规划车轮的维护与更换策略, 从而提升铁路运输的安全性与运营效率.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:wheeldata" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:wheeldata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/4.列车车轮退化数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:wheeldata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.5: 列车车轮退化路径.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="设备-b数据集成电路数据" class="level3" data-number="1.4.5">
+<h3 data-number="1.4.5" class="anchored" data-anchor-id="设备-b数据集成电路数据"><span class="header-section-number">1.4.5</span> 设备-B数据/集成电路数据</h3>
+<p>数据集主要用于本书的第 <a href="03-Gamma.html#sec-VB-Gamma" class="quarto-xref"><span> 3.3</span></a> 节、 第 <a href="04-IG.html#sec-IG" class="quarto-xref"><span> 4.1</span></a> 节、<a href="04-IG.html#sec-Online-IG" class="quarto-xref"><span> 4.4</span></a> 节, 来源于 <span class="citation" data-cites="Meeker1998">Meeker 等 (<a href="references.html#ref-Meeker1998" role="doc-biblioref">1998</a>)</span>. 该数据集专注于通信卫星中使用的射频功率放大器在不同温度条件下的性能和可靠性. 工程师们将功率输出下降0.5分贝 (dB) 以下的初始输出时间点定义为故障时间, 并随机选取了67,000个设备-B样本位置, 在<span class="math inline">\(150^{\circ}\)</span>C、<span class="math inline">\(195^{\circ}\)</span>C和<span class="math inline">\(237^{\circ}\)</span>C这三个极端温度条件下, 以每125小时为间隔进行测量, 直至累计达到4,000小时. 图 <a href="#fig-fig:deviceB" class="quarto-xref"><span>1.6</span></a> 展示了在所有温度条件下产品的退化路径.</p>
+<!-- 图 @fig-fig:deviceb1 则展示了在$150^{\circ}$C条件下7个设备-B样本的退化路径。 -->
+<!-- ::: {#fig-fig:deviceB layout-ncol="2"} -->
+<!-- ![所有温度下](figures/Data_pic/5.所有温度下集成电路数据.pdf){#fig-fig:ic width="50%"} -->
+<!-- ![$150^{\circ}$C 条件下](figures/Data_pic/5.195C下集成电路数据.pdf){#fig-fig:deviceb1 width="30%"} -->
+<!-- 设备-B数据退化路径. -->
+<!-- ::: -->
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:deviceB" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:deviceB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/5.所有温度下集成电路数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:deviceB-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.6: 所有温度下设备-B数据退化路径.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="铝合金裂纹退化数据" class="level3" data-number="1.4.6">
+<h3 data-number="1.4.6" class="anchored" data-anchor-id="铝合金裂纹退化数据"><span class="header-section-number">1.4.6</span> 铝合金裂纹退化数据</h3>
+<p>该数据集主要运用于本书的第 <a href="04-IG.html#sec-IG" class="quarto-xref"><span> 4.1</span></a> 节、<a href="05-ED.html#sec-ED" class="quarto-xref"><span> 5.1</span></a> 节. 数据可以在<span class="citation" data-cites="Wu2003A">(<a href="references.html#ref-Wu2003A" role="doc-biblioref">Wu 等, 2003</a>)</span> 的表1中找到. 实验中, 选用了30个抛光处理的2024-T351铝合金样本, 在室温环境下利用统一测量设备进行测试. 实验设计以10,000次载荷循环为时间单位, 测试范围覆盖1至4单位, 步长设定为0.5单位. 当样本裂纹长度超出15毫米时, 即判定为失效并终止测试, 此时的循环次数记录为样本寿命, 其退化路径如图 <a href="#fig-fig:crack" class="quarto-xref"><span>1.7</span></a> 所示.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:crack" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:crack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/6.铝合金裂纹退化数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:crack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.7: 铝合金裂纹退化数据.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="锂离子电池容量退化数据" class="level3" data-number="1.4.7">
+<h3 data-number="1.4.7" class="anchored" data-anchor-id="锂离子电池容量退化数据"><span class="header-section-number">1.4.7</span> 锂离子电池容量退化数据</h3>
+<p>该数据集主要运用于本书的第 <a href="04-IG.html#sec-Online-IG" class="quarto-xref"><span> 4.4</span></a> 节, 数据来源于<span class="citation" data-cites="severson2019data">(<a href="references.html#ref-severson2019data" role="doc-biblioref">Severson 等, 2019</a>)</span>. 该数据集包含124个商业锂铁磷 (LFP) /石墨电池 (A123 Systems, APR18650M1A, 1.1 Ah名义容量) 在快速充电条件下的循环测试数据. 这些电池样本在一个温度控制的环境室 (30°C) 中进行测试, 在放电条件保持一致的情况下采用72种不同的快速充电策略. 研究中定义电池寿命终止为电池容量降至其名义容量的80%. 退化路径如图 <a href="#fig-fig:capdeg1" class="quarto-xref"><span>1.8</span></a> 所示. 分析该数据集有助于评估和预测电池的循环寿命.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:capdeg1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:capdeg1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/7.锂电池数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:capdeg1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.8: 17个锂离子电池的容量退化率.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="应力关系退化数据" class="level3" data-number="1.4.8">
+<h3 data-number="1.4.8" class="anchored" data-anchor-id="应力关系退化数据"><span class="header-section-number">1.4.8</span> 应力关系退化数据</h3>
+<p>该数据集主要运用于本书的第 <a href="05-ED.html#sec-ED" class="quarto-xref"><span> 5.1</span></a> 节, 原始数据来源于 <span class="citation" data-cites="Yang2008">Yang (<a href="references.html#ref-Yang2008" role="doc-biblioref">2008</a>)</span> 并在 <span class="citation" data-cites="ye2014accelerated">Ye, Chen L-P, 等 (<a href="references.html#ref-ye2014accelerated" role="doc-biblioref">2014</a>)</span> 中表 IV 中列出. 应力松弛是指在恒定应变下随时间发生的组件应力损失. 该数据集展示了电气连接器在不同温度条件下的应力松弛行为, 记录了在65°C、85°C和100°C三个不同温度下, 18个电气连接器样本的应力松弛测试结果. 这些样本被随机分为三组, 每组在指定的温度下进行测试, 以模拟连接器在实际使用过程中可能遇到的不同环境条件. 当应力松弛超过预定义的水平 (例如30%) 时, 认为连接器已经失效. 退化路径如图 <a href="#fig-fig:fstr_raw" class="quarto-xref"><span>1.9</span></a> 所示. 这些信息对于连接器的设计改进和可靠性评估至关重要, 有助于制造商和工程师更好地理解产品在实际应用中的性能和寿命.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-fig:fstr_raw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-fig:fstr_raw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/Data_pic/8.应力关系退化数据.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-fig:fstr_raw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.9: 应力关系退化数据.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="两阶段模式的锂离子电池退化数据" class="level3" data-number="1.4.9">
+<h3 data-number="1.4.9" class="anchored" data-anchor-id="两阶段模式的锂离子电池退化数据"><span class="header-section-number">1.4.9</span> 两阶段模式的锂离子电池退化数据</h3>
+<p>该数据集主要运用于本书的第 <a href="04-IG.html#sec-tp-IG" class="quarto-xref"><span> 4.3</span></a> 节, 数据来源于<span class="citation" data-cites="Zhuang2024-ejor">(<a href="references.html#ref-Zhuang2024-ejor" role="doc-biblioref">Zhuang 等, 2024</a>)</span>. 图 <a href="#fig-tp-battery-data" class="quarto-xref"><span>1.10</span></a> 展示了六个电池容量随周期变化的退化数据. 从图中可以看出, 每个电池的容量退化呈现出两个阶段的特征: 初始阶段退化速率较低, 而后进入退化速率较高的阶段. 分析这类两阶段退化类型的数据有助于评估和预测电池的循环寿命.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-tp-battery-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-tp-battery-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<embed src="figures/IG/EJOR2024/battery-data.pdf" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-tp-battery-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+图&nbsp;1.10: 6个锂电池的容量退化数据.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+
+
+
+<!-- -->
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-abdel1975gamma" class="csl-entry" role="listitem">
+Abdel Hameed M, 1975. A gamma wear process[J]. IEEE Transactions on Reliability, 24(2): 152–153.
+</div>
+<div id="ref-bae2008degradation" class="csl-entry" role="listitem">
+Bae S J, Kim S-J, Kim M S, 等, 2008. Degradation analysis of nano-contamination in plasma display panels[J]. IEEE Transactions on Reliability, 57(2): 222–229.
+</div>
+<div id="ref-chao2022fusing" class="csl-entry" role="listitem">
+Chao M A, Kulkarni C, Goebel K, 等, 2022. Fusing physics-based and deep learning models for prognostics[J]. Reliability Engineering &amp; System Safety, 217: 107961.
+</div>
+<div id="ref-chen2021random" class="csl-entry" role="listitem">
+Chen Z, Xia T, Li Y, 等, 2021. Random-effect models for degradation analysis based on nonlinear <span>T</span>weedie exponential-dispersion processes[J]. IEEE Transactions on Reliability, 71(1): 47–62.
+</div>
+<div id="ref-chenye2018" class="csl-entry" role="listitem">
+Chen P, Ye Z-S, 2018. A systematic look at the gamma process capability indices[J]. European Journal of Operational Research, 265(2): 589–597.
+</div>
+<div id="ref-doksum1992models" class="csl-entry" role="listitem">
+Doksum K A, Hbyland A, 1992. Models for variable-stress accelerated life testing experiments based on <span>W</span>iener processes and the inverse <span>G</span>aussian distribution[J]. Technometrics, 34(1): 74–82.
+</div>
+<div id="ref-duan2018exponential" class="csl-entry" role="listitem">
+Duan F, Wang G, 2018. Exponential-dispersion degradation process models with random effects and covariates[J]. IEEE Transactions on Reliability, 67(3): 1128–1142.
+</div>
+<div id="ref-fan2017bayesian" class="csl-entry" role="listitem">
+Fan T-H, Chen C-H, 2017. A <span>B</span>ayesian predictive Analysis of step-stress accelerated tests in Gamma degradation-based processes[J]. Quality and Reliability Engineering International.
+</div>
+<div id="ref-fang2022inverse" class="csl-entry" role="listitem">
+Fang G, Pan R, Wang Y, 2022. Inverse Gaussian processes with correlated random effects for multivariate degradation modeling[J]. European Journal of Operational Research, 300(3): 1177–1193.
+</div>
+<div id="ref-giorgio2019perturbed" class="csl-entry" role="listitem">
+Giorgio M, Mele A, Pulcini G, 2019. A perturbed gamma degradation process with degradation dependent non-Gaussian measurement errors[J]. Applied Stochastic Models in Business and Industry, 35(2): 198–210.
+</div>
+<div id="ref-guan2016objective" class="csl-entry" role="listitem">
+Guan Q, Tang Y, Xu A, 2016. Objective <span>B</span>ayesian analysis accelerated degradation test based on <span>W</span>iener process models[J]. Applied Mathematical Modelling, 40(4): 2743–2755.
+</div>
+<div id="ref-guida2019bayesian" class="csl-entry" role="listitem">
+Guida M, Postiglione F, Pulcini G, 2019. A <span>Bayesian</span> approach for non-homogeneous gamma degradation processes[J]. Communications in Statistics-Theory and Methods, 48(7): 1748–1765.
+</div>
+<div id="ref-guo2018improved" class="csl-entry" role="listitem">
+Guo J, Wang C, Cabrera J, 等, 2018. Improved inverse <span>G</span>aussian process and bootstrap: <span>D</span>egradation and reliability metrics[J]. Reliability Engineering &amp; System Safety, 178: 269–277.
+</div>
+<div id="ref-guo2013maintenance" class="csl-entry" role="listitem">
+Guo C, Wang W, Guo B, 等, 2013. A maintenance optimization model for mission-oriented systems based on Wiener degradation[J]. Reliability Engineering &amp; System Safety, 111: 183–194.
+</div>
+<div id="ref-hao2015led" class="csl-entry" role="listitem">
+Hao H, Su C, Li C, 2015. <span>LED</span> lighting system reliability modeling and inference via random effects gamma process and copula function[J]. International Journal of Photoenergy, 2015.
+</div>
+<div id="ref-hao2019degradation" class="csl-entry" role="listitem">
+Hao S, Yang J, Berenguer C, 2019. Degradation analysis based on an extended inverse <span>G</span>aussian process model with skew-normal random effects and measurement errors[J]. Reliability Engineering &amp; System Safety, 189: 261–270. DOI:<a href="https://doi.org/10.1016/j.ress.2019.04.031">10.1016/j.ress.2019.04.031</a>.
+</div>
+<div id="ref-hazra2020approximate" class="csl-entry" role="listitem">
+Hazra I, Pandey M D, Manzana N, 2020. Approximate Bayesian computation method for estimating parameters of the gamma process using noisy data[J]. Reliability Engineering &amp; System Safety, 198: 106780.
+</div>
+<div id="ref-hong2015statistical" class="csl-entry" role="listitem">
+Hong Y, Duan Y, Meeker W Q, 等, 2015. Statistical methods for degradation data with dynamic covariates information and an application to outdoor weathering data[J]. Technometrics, 57(2): 180–193.
+</div>
+<div id="ref-hong2017acceleration" class="csl-entry" role="listitem">
+Hong L, Ye Z-S, 2017. When is acceleration unnecessary in a degradation test?[J]. Statistica Sinica, 27(3): 1461–1483.
+</div>
+<div id="ref-lawless2004covariates" class="csl-entry" role="listitem">
+Lawless J, Crowder M, 2004. Covariates and random effects in a gamma process model with application to degradation and failure[J]. Lifetime Data Analysis, 10: 213–227. DOI:<a href="https://doi.org/10.1023/B:LIDA.0000036389.14073.dd">10.1023/B:LIDA.0000036389.14073.dd</a>.
+</div>
+<div id="ref-lee2020global" class="csl-entry" role="listitem">
+Lee I-C, Tseng S-T, Hong Y, 2020. Global planning of accelerated degradation tests based on exponential dispersion degradation models[J]. Naval Research Logistics, 67(6): 469–483.
+</div>
+<div id="ref-lewis2022prediction" class="csl-entry" role="listitem">
+Lewis-Beck C, Tian Q, Meeker W Q, 2022. Prediction of future failures for heterogeneous reliability field data[J]. Technometrics, 64(1): 125–138.
+</div>
+<div id="ref-liu2018statistical" class="csl-entry" role="listitem">
+Liu X, Yeo K, Kalagnanam J, 2018. A statistical modeling approach for spatio-temporal degradation data[J]. Journal of Quality Technology, 50(2): 166–182.
+</div>
+<div id="ref-li2017degradation" class="csl-entry" role="listitem">
+Li J, Wang Z, Zhang Y, 等, 2017. Degradation data analysis based on a generalized Wiener process subject to measurement error[J]. Mechanical Systems and Signal Processing, 94: 57–72.
+</div>
+<div id="ref-li2018nonlinear" class="csl-entry" role="listitem">
+Li J, Wang Z, Zhang Y, 等, 2018. A nonlinear Wiener process degradation model with autoregressive errors[J]. Reliability Engineering &amp; System Safety, 173: 48–57.
+</div>
+<div id="ref-lu1993using" class="csl-entry" role="listitem">
+Lu C J, Meeker W O, 1993. Using degradation measures to estimate a time-to-failure distribution[J]. Technometrics, 35(2): 161–174.
+</div>
+<div id="ref-Lu2020" class="csl-entry" role="listitem">
+Lu L, Wang B, Hong Y, 等, 2020. General path models for degradation data with multiple characteristics and covariates[J]. Technometrics, 63(3): 354–369.
+</div>
+<div id="ref-ma2019engineering" class="csl-entry" role="listitem">
+Ma Z, Wang S, Liao H, 等, 2019. Engineering-driven performance degradation analysis of hydraulic piston pump based on the inverse <span>G</span>aussian process[J]. Quality and Reliability Engineering International, 35(7): 2278–2296.
+</div>
+<div id="ref-Meeker1998" class="csl-entry" role="listitem">
+Meeker W Q, Escobar L A, Pascual F G, 1998. Statistical Methods for Reliability Data[M]. John Wiley &amp; Sons.
+</div>
+<div id="ref-miller1992estimating" class="csl-entry" role="listitem">
+Miller K W, Morell L J, Noonan R E, 等, 1992. Estimating the probability of failure when testing reveals no failures[J]. IEEE Transactions on Software Engineering, 18(1): 33.
+</div>
+<div id="ref-nguyen2022probabilistic" class="csl-entry" role="listitem">
+Nguyen K T, Medjaher K, Gogu C, 2022. Probabilistic deep learning methodology for uncertainty quantification of remaining useful lifetime of multi-component systems[J]. Reliability Engineering &amp; System Safety, 222: 108383.
+</div>
+<div id="ref-pan2017wiener" class="csl-entry" role="listitem">
+Pan D, Liu J-B, Huang F, 等, 2017. A Wiener process model with truncated normal distribution for reliability analysis[J]. Applied Mathematical Modelling, 50: 333–346.
+</div>
+<div id="ref-park2014cumulative" class="csl-entry" role="listitem">
+Park C, Padgett W J, 2014. Cumulative damage models based on gamma processes[J]. Wiley StatsRef: Statistics Reference Online.
+</div>
+<div id="ref-paroissin2015inference" class="csl-entry" role="listitem">
+Paroissin C, 2015. Inference for the Wiener process with random initiation time[J]. IEEE Transactions on Reliability, 65(1): 147–157.
+</div>
+<div id="ref-peng2015inverse" class="csl-entry" role="listitem">
+Peng C-Y, 2015. Inverse <span>G</span>aussian processes with random effects and explanatory variables for degradation data[J]. Technometrics, 57(1): 100–111.
+</div>
+<div id="ref-peng2020student" class="csl-entry" role="listitem">
+Peng C-Y, Cheng Y-S, 2020. Student-t processes for degradation analysis[J]. Technometrics, 62(2): 223–235.
+</div>
+<div id="ref-peng2012note" class="csl-entry" role="listitem">
+Peng C-Y, Hsu S-C, 2012. A note on a Wiener process with measurement error[J]. Applied Mathematics Letters, 25(4): 729–732.
+</div>
+<div id="ref-peng2014inverse" class="csl-entry" role="listitem">
+Peng W, Li Y-F, Yang Y-J, 等, 2014. Inverse Gaussian process models for degradation analysis: A Bayesian perspective[J]. Reliability Engineering &amp; System Safety, 130: 175–189.
+</div>
+<div id="ref-peng2017bayesian" class="csl-entry" role="listitem">
+Peng W, Li Y-F, Yang Y-J, 等, 2017. Bayesian degradation analysis with inverse <span>G</span>aussian process models under time-varying degradation rates[J]. IEEE Transactions on Reliability, 66(1): 84–96. DOI:<a href="https://doi.org/10.1109/TR.2016.2635149">10.1109/TR.2016.2635149</a>.
+</div>
+<div id="ref-peng2009mis" class="csl-entry" role="listitem">
+Peng C-Y, Tseng S-T, 2009. Mis-specification analysis of linear degradation models[J]. IEEE Transactions on Reliability, 58(3): 444–455.
+</div>
+<div id="ref-peng2017dynamic" class="csl-entry" role="listitem">
+Peng Y, Wang Y, Zi Y, 等, 2017. Dynamic reliability assessment and prediction for repairable systems with interval-censored data[J]. Reliability Engineering &amp; System Safety, 159: 301–309.
+</div>
+<div id="ref-peng2019transformed" class="csl-entry" role="listitem">
+Peng W, Zhu S-P, Shen L, 2019. The transformed inverse Gaussian process as an age-and state-dependent degradation model[J]. Applied Mathematical Modelling, 75: 837–852.
+</div>
+<div id="ref-pulcini2016perturbed" class="csl-entry" role="listitem">
+Pulcini G, 2016. A perturbed gamma process with statistically dependent measurement errors[J]. Reliability Engineering &amp; System Safety, 152: 296–306.
+</div>
+<div id="ref-ren2023deep" class="csl-entry" role="listitem">
+Ren L, Jia Z, Laili Y, 等, 2024. Deep learning for time-series prediction in <span>II</span>o<span>T</span>: progress, challenges, and prospects[J]. IEEE transactions on neural networks and learning systems, 35(11): 15072–15091.
+</div>
+<div id="ref-robinson2000" class="csl-entry" role="listitem">
+Robinson M E, Crowder M J, 2000. Bayesian methods for a growth-curve degradation model with repeated measures[J]. Lifetime Data Analysis, 6: 357–374.
+</div>
+<div id="ref-severson2019data" class="csl-entry" role="listitem">
+Severson K A, Attia P M, Jin N, 等, 2019. Data-driven prediction of battery cycle life before capacity degradation[J]. Nature Energy, 4(5): 383–391.
+</div>
+<div id="ref-shen2018degradation" class="csl-entry" role="listitem">
+Shen L, Wang Y, Zhai Q, 等, 2018. Degradation modeling using stochastic processes with random initial degradation[J]. IEEE Transactions on Reliability, 68(4): 1320–1329. DOI:<a href="https://doi.org/10.1109/TR.2018.2885133">10.1109/TR.2018.2885133</a>.
+</div>
+<div id="ref-singpurwalla1997gamma" class="csl-entry" role="listitem">
+Singpurwalla N, 1997. Gamma processes and their generalizations: an overview[J]. Engineering Probabilistic Design and Maintenance for Flood Protection, : 67–75.
+</div>
+<div id="ref-si2018reliability" class="csl-entry" role="listitem">
+Si W, Yang Q, Wu X, 等, 2018. Reliability analysis considering dynamic material local deformation[J]. Journal of Quality Technology, 50(2): 183–197.
+</div>
+<div id="ref-sun2021improved" class="csl-entry" role="listitem">
+Sun B, Li Y, Wang Z, 等, 2021. An improved inverse <span>G</span>aussian process with random effects and measurement errors for <span>RUL</span> prediction of hydraulic piston pump[J]. Measurement, 173: 108604.
+</div>
+<div id="ref-tang2014accelerated" class="csl-entry" role="listitem">
+Tang S, Guo X, Yu C, 等, 2014. Accelerated degradation tests modeling based on the nonlinear Wiener process with random effects[J]. Mathematical Problems in Engineering, 2014(1): 560726.
+</div>
+<div id="ref-tang2014remaining" class="csl-entry" role="listitem">
+Tang S, Yu C, Wang X, 等, 2014. Remaining useful life prediction of lithium-ion batteries based on the Wiener process with measurement error[J]. Energies, 7(2): 520–547.
+</div>
+<div id="ref-tsai2012optimal" class="csl-entry" role="listitem">
+Tsai C-C, Tseng S-T, Balakrishnan N, 2012. Optimal design for degradation tests based on gamma processes with random effects[J]. IEEE Transactions on Reliability, 61(2): 604–613.
+</div>
+<div id="ref-tseng2016optimum" class="csl-entry" role="listitem">
+Tseng S-T, Lee I-C, 2016. Optimum allocation rule for accelerated degradation tests with a class of exponential-dispersion degradation models[J]. Technometrics, 58(2): 244–254.
+</div>
+<div id="ref-tseng2007stochastic" class="csl-entry" role="listitem">
+Tseng S-T, Peng C-Y, 2007. Stochastic diffusion modeling of degradation data[J]. Journal of Data Science, 5(3): 315–333.
+</div>
+<div id="ref-noort2009" class="csl-entry" role="listitem">
+Van Noortwijk J M, 2009. A survey of the application of gamma processes in maintenance[J]. Reliability Engineering &amp; System Safety, 94(1): 2–21.
+</div>
+<div id="ref-wang2010wiener" class="csl-entry" role="listitem">
+Wang X, 2010. Wiener processes with random effects for degradation data[J]. Journal of Multivariate Analysis, 101(2): 340–351.
+</div>
+<div id="ref-wang2020accurate" class="csl-entry" role="listitem">
+Wang X, Wang B X, Jiang P H, 等, 2020. Accurate reliability inference based on Wiener process with random effects for degradation data[J]. Reliability Engineering &amp; System Safety, 193: 106631.
+</div>
+<div id="ref-wang2010inverse" class="csl-entry" role="listitem">
+Wang X, Xu D, 2010. An inverse Gaussian process model for degradation data[J]. Technometrics, 52(2): 188–197.
+</div>
+<div id="ref-wang2021degradation" class="csl-entry" role="listitem">
+Wang Z, Zhai Q, Chen P, 2021. Degradation modeling considering unit-to-unit heterogeneity-A general model and comparative study[J]. Reliability Engineering &amp; System Safety, 216: 107897.
+</div>
+<div id="ref-wen2022recent" class="csl-entry" role="listitem">
+Wen Y, Rahman M F, Xu H, 等, 2022. Recent advances and trends of predictive maintenance from data-driven machine prognostics perspective[J]. Measurement, 187: 110276.
+</div>
+<div id="ref-whitmore1995estimating" class="csl-entry" role="listitem">
+Whitmore G, 1995. Estimating degradation by a <span>W</span>iener diffusion process subject to measurement error[J]. Lifetime data analysis, 1(3): 307–319.
+</div>
+<div id="ref-whitmore1997modelling" class="csl-entry" role="listitem">
+Whitmore G A, Schenkelberg F, 1997. Modelling accelerated degradation data using <span>W</span>iener diffusion with a time scale transformation[J]. Lifetime data analysis, 3(1): 27–45.
+</div>
+<div id="ref-Wu2003A" class="csl-entry" role="listitem">
+Wu W F, Ni C C, 2003. A study of stochastic fatigue crack growth modeling through experimental data[J]. Probabilistic Engineering Mechanics, 18(2): 107–118.
+</div>
+<div id="ref-xia2022distance" class="csl-entry" role="listitem">
+Xia J, Feng Y, Teng D, 等, 2022. Distance self-attention network method for remaining useful life estimation of aeroengine with parallel computing[J]. Reliability Engineering &amp; System Safety, 225: 108636.
+</div>
+<div id="ref-xu2019unified" class="csl-entry" role="listitem">
+Xu A, Zhou S, Tang Y, 2021. A unified model for system reliability evaluation under dynamic operating conditions[J]. IEEE Transactions on Reliability, 70(1): 65–72.
+</div>
+<div id="ref-Yang2008" class="csl-entry" role="listitem">
+Yang G, 2008. Life Cycle Reliability Engineering[M]. John Wiley <span class="math inline">\(\&amp;\)</span> Sons, Inc.
+</div>
+<div id="ref-yan2020novel" class="csl-entry" role="listitem">
+Yan B, Ma X, Yang L, 等, 2020. A novel degradation-rate-volatility related effect <span>W</span>iener process model with its extension to accelerated ageing data analysis[J]. Reliability Engineering &amp; System Safety, 204: 107138.
+</div>
+<div id="ref-ye2014inverse" class="csl-entry" role="listitem">
+Ye Z-S, Chen N, 2014. The inverse Gaussian process as a degradation model[J]. Technometrics, 56(3): 302–311.
+</div>
+<div id="ref-Ye2015" class="csl-entry" role="listitem">
+Ye Z-S, Chen N, Shen Y, 2015. A new class of Wiener process models for degradation analysis[J]. Reliability Engineering &amp; System Safety, 139: 58–67.
+</div>
+<div id="ref-ye2014accelerated" class="csl-entry" role="listitem">
+Ye Z-S, Chen L-P, Tang L C, 等, 2014. Accelerated degradation test planning using the inverse <span>G</span>aussian process[J]. IEEE Transactions on Reliability, 63(3): 750–763.
+</div>
+<div id="ref-ye2013degradation" class="csl-entry" role="listitem">
+Ye Z-S, Wang Y, Tsui K-L, 等, 2013. Degradation data analysis using <span>W</span>iener processes with measurement errors[J]. IEEE Transactions on Reliability, 62(4): 772–780.
+</div>
+<div id="ref-ye2015" class="csl-entry" role="listitem">
+Ye Z-S, Xie M, 2015. Stochastic modelling and analysis of degradation for highly reliable products[J]. Applied Stochastic Models in Business and Industry, 31(1): 16–32.
+</div>
+<div id="ref-ye2012degradation" class="csl-entry" role="listitem">
+Ye Z-S, Xie M, Tang L-C, 等, 2012. Degradation-based burn-in planning under competing risks[J]. Technometrics, 54(2): 159–168.
+</div>
+<div id="ref-yuanetal21" class="csl-entry" role="listitem">
+Yuan X-X, Higo E, Pandey M D, 2021. Estimation of the value of an inspection and maintenance program: A <span>B</span>ayesian gamma process model[J]. Reliability Engineering &amp; System Safety, 216: 107912.
+</div>
+<div id="ref-zhai2018random" class="csl-entry" role="listitem">
+Zhai Q, Chen P, Hong L, 等, 2018. A random-effects Wiener degradation model based on accelerated failure time[J]. Reliability Engineering &amp; System Safety, 180: 94–103.
+</div>
+<div id="ref-zhai2023statistical" class="csl-entry" role="listitem">
+Zhai Q, Xu A, Yang J, 等, 2023. Statistical modeling and reliability analysis for degradation processes indexed by two scales[J]. IEEE Transactions on Industrial Informatics, 20(3): 3675–3684.
+</div>
+<div id="ref-zhang2021stochastic" class="csl-entry" role="listitem">
+Zhang H, Chen M, Shang J, 等, 2021. Stochastic process-based degradation modeling and <span>RUL</span> prediction: from <span>B</span>rownian motion to fractional <span>B</span>rownian motion[J]. Science China Information Sciences, 64(7): 171201.
+</div>
+<div id="ref-zhang2018degradation" class="csl-entry" role="listitem">
+Zhang Z, Si X, Hu C, 等, 2018. Degradation data analysis and remaining useful life estimation: A review on Wiener-process-based methods[J]. European Journal of Operational Research, 271(3): 775–796.
+</div>
+<div id="ref-zhou2021generalized" class="csl-entry" role="listitem">
+Zhou S, Tang Y, Xu A, 2021. A generalized Wiener process with dependent degradation rate and volatility and time-varying mean-to-variance ratio[J]. Reliability Engineering &amp; System Safety, 216: 107895.
+</div>
+<div id="ref-zhou2019exponential" class="csl-entry" role="listitem">
+Zhou S, Xu A, 2019. Exponential dispersion process for degradation analysis[J]. IEEE Transactions on Reliability, 68(2): 398–409.
+</div>
+<div id="ref-Zhuang2024-ejor" class="csl-entry" role="listitem">
+Zhuang L, Xu A, Wang Y, 等, 2024. Remaining useful life prediction for two-phase degradation model based on reparameterized inverse Gaussian process[J]. European Journal of Operational Research, 319(3): 877–890. DOI:<a href="https://doi.org/10.1016/j.ejor.2024.06.032">https://doi.org/10.1016/j.ejor.2024.06.032</a>.
+</div>
+<div id="ref-张志华2002" class="csl-entry" role="listitem">
+张志华, 2002. 加速寿命试验及其统计分析[M]. 加速寿命试验及其统计分析.
+</div>
+<div id="ref-李海洋2018" class="csl-entry" role="listitem">
+李海洋, 谢里阳, 李铭, 等, 2018. 一种新的无失效数据可靠性评估方法研究[J]. 兵工学报, 39(8): 1622.
+</div>
+<div id="ref-茆诗松2008" class="csl-entry" role="listitem">
+茆诗松, 汤银才, 王玲玲, 2008. 可靠性统计[M]. 可靠性统计.
+</div>
+<div id="ref-韩明2003" class="csl-entry" role="listitem">
+韩明, 2003. 产品无失效数据的综合处理[J]. 机械工程学报, 39(2): 129–132.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../index.html" class="pagination-link" aria-label="前言">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">前言</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../chapters/02-Wiener.html" class="pagination-link" aria-label="基于维纳过程的统计建模">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">基于维纳过程的统计建模</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu"># 引言 {#sec-intro}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="in">```{=html}</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="in">&lt;!--</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="in">## 背景介绍 {#sec-intro-s1}</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="in">--&gt;</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="in">```</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a>可靠性\index{可靠性}作为评估产品质量的核心指标, 能够全面反映产品的性能、稳定性和 耐用程度, 是衡量一个国家制造业发展水平的重要标准. 为了加快推进质量强国建设, 提升我国制造业的国际竞争力, 中共中央、国务院于 2023 年 2 月联合发布了《质量强国建设纲要》. 该纲要明确提出要实施质量可靠性\index{可靠性}提升计划, 重点提高大型装备、基础零部件以及元器件的可靠性\index{可靠性}水平. 这一计划的实施, 将有助于推动我国制造业的转型升级, 提升产品质量和可靠性\index{可靠性}, 增强企业的核心竞争力. 可靠性评估\index{可靠性评估}作为产品质量提升的关键环节, 对于确保产品在全寿命周期内的稳定性和可靠性\index{可靠性}具有至关重要的作用. 通过科学合理的可靠性评估\index{可靠性评估}方法, 可以及时发 现产品在设计、生产、使用过程中存在的问题, 为改进和优化提供依据. 同时, 可靠性评估\index{可靠性评估}还可为企业制定产品标准和质量控制提供重要参考, 促进产业整体水 平的提升. 因此, 实施质量可靠性\index{可靠性}提升计划, 加强可靠性评估\index{可靠性评估}工作, 对于推动我国制造业高质量发展、提升国家整体竞争力具有重要意义.</span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>传统的产品可靠性评估\index{可靠性评估}方法主要依赖于失效数据\index{失效数据}, 即在产品出现故障\index{故障}或失效时收集的数据. 这种方法通常基于一定的寿命\index{寿命}分布假设, 如指数分布、威布尔分 布或对数正态分布\index{正态分布}等, 来推断产品的可靠度\index{可靠度} <span class="co">[</span><span class="ot">@茆诗松2008; @张志华2002</span><span class="co">]</span>. 然而, 随着 生产技术的进步和产品质量标准的提高, 产品的可靠度\index{可靠度}不断提升, 导致在一定的 试验时间内很难收集到失效数据\index{失效数据}来支持这种传统的可靠度\index{可靠度}评估. 虽然很多国内外 学者提出了处理零失效数据\index{失效数据}的统计方法, 如 @miller1992estimating 建立"黑盒子模型"获取 失效概率的先验\index{先验}分布, 减少了主观因素对可靠性评估\index{可靠性评估}结果的影响; @韩明2003 提出一 种可靠性\index{可靠性}指标估计的综合贝叶斯\index{贝叶斯}法, 通过引入经验信息来估计产品失效概率, 避 免了可靠性评估\index{可靠性评估}中出现的异常现象; @李海洋2018 在置信限分析中结合失效信息来 修正单侧置信限, 得到产品可靠性\index{可靠性}单侧置信限的稳健估计, 但是这些方法都依赖 大量的先验\index{先验}信息, 并不能从根本上解决失效信息缺乏所带来的可靠性评估\index{可靠性评估}问题. 为此, 国内外学者开始关注基于产品性能退化\index{性能退化}数据的可靠度\index{可靠度}评估方法. 与失效数 据不同, 性能退化\index{性能退化}数据是在产品正常使用过程中监测到的性能参数变化值. 这些 数据反映了产品性能随时间的退化趋势, 从而提供有关产品可靠性\index{可靠性}的有用信息. 基于性能退化\index{性能退化}数据的可靠度\index{可靠度}评估方法主要通过对产品性能参数的连续监测和数 据分析来实现. 通过收集产品在不同时间点的性能退化\index{性能退化}数据, 建立性能退化\index{性能退化}模型 来描述产品性能随时间的变化规律, 推导出产品的可靠度函数\index{可靠度函数}, 从而对产品的可靠性\index{可靠性}进行评估<span class="co">[</span><span class="ot">@peng2009mis; @ye2015; @Meeker1998</span><span class="co">]</span>. 与基于失效数据\index{失效数据}的传统方法相比, 基于性能退化\index{性能退化}数据的可靠度\index{可靠度}评估方法具有以下三个优势: 首先, 通过连续监测产品的性能参数变化, 能够在产品尚未发生实际失效时提供更准确、 更及时的可靠性评估\index{可靠性评估}. 这不仅缩短了评估周期, 还提高了评估效率和精度. 其次, 它可以在产品运行的早期阶段发现潜在问题, 及时采取必要的维护措施, 防止突 发失效的发生, 延长产品的使用寿命\index{寿命}, 降低维护成本. 同时, 这也为企业提供了 更科学的维护策略制定依据, 有助于优化维修计划和库存管理. 最后,通过对性能退化\index{性能退化}数据的分析,可以深入了解产品的性能变化趋势和失效机理. 这为产品的 设计和改进提供了宝贵的反馈信息, 有助于发现设计中的薄弱环节和潜在问题, 指导产品的优化设计和持续改进. 因此, 研究基于性能退化\index{性能退化}数据的可靠度\index{可靠度}评估方法对于提高产品可靠性\index{可靠性}、指导维护和预防失效、以及促进产品设计和改进都具有重要意义.</span>
+<span id="cb1-11"><a href="#cb1-11"></a></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="fu">## 退化建模方法回顾 {#sec-intro-s2}</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>基于系统性能特征退化数据的建模方法主要可分为三类: 物理模型、人工智能方法和数据驱动的统计方法. 基于物理模型的方法以理解产品的物理结构、工作原理和环境条件为基础, 从而揭示潜在的物理故障\index{故障}过程. 虽然物理模型能够准确描述系统失效规律和性能指标之间的相互关系, 但由于现代工业设备的复杂性, 获得失效 物理模型的解析形式通常具有挑战性, 因而在实际应用中受到一定限制. 近年来, 人 工智能方法在性能退化\index{性能退化}建模方面取得了显著进展<span class="co">[</span><span class="ot">@xia2022distance; @nguyen2022probabilistic; @chao2022fusing</span><span class="co">]</span>, 它通过对数据进行模型训练, 建立与可靠性\index{可靠性}相关的映射关系, 并考虑各个性能指标之间的相依\index{相依}性. 然而, 在实际退化数据分析中, 该方法面临以下挑战: 1. 要求大量高质量的训练数据和准确的事件标记, 同时需要大量时间训练模型. 2. 主观假设故障\index{故障}发生时间 已知, 但错误的时间标记可能引入噪声, 影响可靠性\index{可靠性}估计的准确性. 3. 模型泛化能力的有限, 特别是在面对新领域或未见场景时的预测准确性<span class="co">[</span><span class="ot">@ren2023deep</span><span class="co">]</span>. 数据驱动的统计方法通过分析系统的历史故障\index{故障}信息或性能退化\index{性能退化}数据建立统计模型, 用于评估系统的可靠性\index{可靠性}, 并为确保系统稳定性、制定质保策略和预防性维修策略提供理论依据<span class="co">[</span><span class="ot">@wen2022recent</span><span class="co">]</span>. 在基于故障\index{故障}事件数据的建模中, 通过收集系统故障\index{故障}的时间, 运用统计方法来推断故障\index{故障}时间的概率分布, 并将其用于后续的决策分析<span class="co">[</span><span class="ot">@lewis2022prediction; @peng2017dynamic</span><span class="co">]</span>. 尽管这种方法能够描述整体故障\index{故障}时间的分布趋势, 但它无法为特定系统提供准确的故障\index{故障}预测和可靠性评估\index{可靠性评估}. 在基于性能退化\index{性能退化}数据的建模中, 通过监控系统性能退化\index{性能退化}状态, 建立退化模型并学习系统性能退化\index{性能退化}的演化规律, 从而评估系统的可靠性\index{可靠性}<span class="co">[</span><span class="ot">@zhang2021stochastic</span><span class="co">]</span>. 该方法具有两个显著的优点: 1.性能退化\index{性能退化}数据的易收集性: 随着传感器和监测技术的不断进步, 我们能够实时监控和收集性能退化\index{性能退化}数据. 这种随时获取退化特征的能力极大地简化了数据收集的过程, 并提高了数据的准确性. 2.性能退化\index{性能退化}与系统寿命\index{寿命}的直接关联: 性能退化\index{性能退化}所反映的是系统在使用过程中状态的变化. 这种变化与系统的寿命\index{寿命}息息相关, 因此, 通过分析性能退化\index{性能退化}信息, 我们能够实时更新系统寿命\index{寿命}的估计, 实现对系统可靠性\index{可靠性}的实时预测. 这为及时采取维修策略和管理系统可靠性\index{可靠性}提供了有力支持. 下面章节将对性能退化\index{性能退化}建模方法的研究现状进行分析, 对应的综述框架见图 @fig-review_frame.</span>
+<span id="cb1-15"><a href="#cb1-15"></a></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="in">```{r}</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#| label: fig-review_frame</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#| out.width: '80%'</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">#| fig.cap: '性能退化建模方法框架.'</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/review_frame.jpg"</span>)</span>
+<span id="cb1-25"><a href="#cb1-25"></a><span class="in">```</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a></span>
+<span id="cb1-27"><a href="#cb1-27"></a><span class="fu">## 一般路径模型 {#sec-intro-s2-1}</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a></span>
+<span id="cb1-29"><a href="#cb1-29"></a>早期的退化数据建模主要借鉴了随机效应\index{随机效应}模型的思想: 通过物理或经验分析, 确定产品性能退化\index{性能退化}与时间的函数形式, 并在此基础上引入随机效应\index{随机效应}和观测误差, 从而建立产品寿命\index{寿命}与性能退化\index{性能退化}之间的定量关系. @ye2015 将这种方法称为一般路径模型\index{一般路径模型}(General path model). @lu1993using 首次对一般路径模型\index{一般路径模型}进行了详细的阐述, 并说明了该模型可以灵活地刻画测量误差\index{测量误差}和产品间的异质性\index{异质性}. 之后, 该模型得到了广泛关注, 并被应用到更复杂的退化数据建模中<span class="co">[</span><span class="ot">@robinson2000</span><span class="co">]</span>. 例如: @hong2015statistical 引入动态协变量\index{协变量}来刻画多种应力(如：温度, 湿度和紫外线强度)对某种环氧树脂涂层退化的影响. @liu2018statistical 将该模型拓展到时空退化数据中, 构建了一个由退化过程\index{退化过程}和传播过程相结合的时空模型. @si2018reliability 提出了一种多变量一般路径模型\index{一般路径模型}, 用于描述材料拉伸过程中的动态局部变形, 并通过两阶段方法验证其有效性和适用性. 在此基础上, @Lu2020 结合非线性路径协变量\index{协变量}与特征间随机效应\index{随机效应} 对模型做了拓展, 并利用EM算法\index{EM算法}与MCMC\index{MCMC}模拟实现参数估计和系统可靠性\index{可靠性}分析. 一般路径模型\index{一般路径模型}能够灵活地融合协变量\index{协变量}和单元间异质效应, 使其适用于多样化的实际场景, 但是它在计算上存在一定的复杂性, 尤其是在处理大规模多维退化数据\index{多维退化数据}时, 可能需要较高的计算资源. 此外, 在实际应用中, 产品的性能退化\index{性能退化}会受到环境变化、外部因素或未知因素的影响. 当这些因素不能被准确记录或量化时, 一般路径模型\index{一般路径模型}就难以刻画这种随机性引起的产品性能退化\index{性能退化}特征<span class="co">[</span><span class="ot">@ye2015; @zhai2023statistical</span><span class="co">]</span>. <span class="co">&lt;!-- 尽管在某些情况下具有一定的有效性, 这些模型通常将退化视为一个确定性过程, 而忽略了其内在的随机性. 这一简化限制了模型捕捉真实退化路径的能力, 从而降低了其对复杂退化行为的适用性 [@zhai2023statistical]. 为克服这些局限性, 基于随机过程的模型被广泛应用于退化建模. 随机过程模型能够自然地刻画退化过程的随机性, 通过动态变化的概率分布捕捉退化路径的复杂特征[@ye2015]. --&gt;</span></span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="fu">## 随机过程模型 {#sec-intro-s2-2}</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="co">&lt;!--  (段21页)  --&gt;</span></span>
+<span id="cb1-34"><a href="#cb1-34"></a></span>
+<span id="cb1-35"><a href="#cb1-35"></a>产品性能特征的退化通常由多次微小损伤逐步累积所导致, 这一过程既具有累积性又带有随机性. 退化过程\index{退化过程}不仅受到外部环境的影响, 还与材料本身的性质及其工作状态密切相关. 因此, 随机过程作为一种能够有效描述这种随机性和累积性的数学工具, 在物理意义上与产品退化特征高度契合, 并逐渐成为研究退化行为的核心方法之一.</span>
+<span id="cb1-36"><a href="#cb1-36"></a></span>
+<span id="cb1-37"><a href="#cb1-37"></a>近年来, 随着统计学和随机过程理论的不断发展, 维纳过程\index{维纳过程}、伽马过程\index{伽马过程}、逆高斯过程\index{逆高斯过程}以及指数分散过程\index{指数分散过程}（Exponential dispersion process）等模型因其独特的数学性质和对实际问题的适用性而受到广泛关注. 这些模型能够有效地捕捉和描述产品在长期使用过程中的退化行为, 尤其是在描述不同类型的随机损伤积累机制上展现出了重要优势. 国内外学者通过大量研究, 已经在这些随机过程模型的拓展与应用、参数估计以及剩余使用寿命预测等方面取得了丰富的成果. 本节将对这些常用的随机过程模型进行文献综述, 具体的模型理论和相关应用将在后续章节中进一步展开。</span>
+<span id="cb1-38"><a href="#cb1-38"></a></span>
+<span id="cb1-39"><a href="#cb1-39"></a><span class="fu">### 维纳过程模型</span></span>
+<span id="cb1-40"><a href="#cb1-40"></a></span>
+<span id="cb1-41"><a href="#cb1-41"></a>维纳过程\index{维纳过程}及其扩展形式最早用于描述产品性能的退化机制. 由于维纳过程\index{维纳过程}在物理解释和数学性质上的优越性, 过去20年来, 它在退化数据分析方面得到了广泛而深入的研究. 基本的维纳过程\index{维纳过程}假设所有样本的退化均值和波动性是同质的, 且退化路径为线性. @doksum1992models 使用该模型拟合绝缘电缆寿命\index{寿命}数据, 并证明其寿命\index{寿命}分布为逆高斯分布\index{逆高斯分布}. 更多该模型的应用见<span class="co">[</span><span class="ot">@ye2012degradation, @guo2013maintenance, @guan2016objective</span><span class="co">]</span>. 然而, 许多产品的退化路径表现出非线性的特征. 为此, 部分学者提出了基于时间尺度变换的非线性维纳退化模型. 例如, @whitmore1997modelling 对维纳过程\index{维纳过程}在时间尺度上进行幂变换, 并利用该模型分析了自控温加热电缆的寿命\index{寿命}. @tseng2007stochastic 也进行了类似研究, 但他们采用了指数变换对维纳过程\index{维纳过程}进行时间尺度上的调整.</span>
+<span id="cb1-42"><a href="#cb1-42"></a></span>
+<span id="cb1-43"><a href="#cb1-43"></a>产品在实际使用过程中, 其性能退化\index{性能退化}往往受到多种潜在因素的共同影响, 导致退化路径呈现出显著的异质性\index{异质性}. 为了在退化建模中刻画这种异质性\index{异质性}, 通常会在模型中引入随机效应\index{随机效应}, 即假设某些模型参数服从特定的概率分布. @peng2009mis 研究了带随机效应\index{随机效应}的维纳过程\index{维纳过程}模型，并系统分析了模型假设错误对参数估计的影响; @wang2010wiener 在非线性维纳过程模型中引入随机的漂移和波动参数, 提出的模型能够较好地拟合桥梁裂纹数据. @Ye2015 在激光设备性能退化\index{性能退化}数据中发现模型的漂移参数与波动参数之间存在较强的相依\index{相依}关系, 并提出了一种参数相依\index{相依}的维纳过程退化模型. @zhai2018random 从加速失效机理的角度进一步拓展了 @Ye2015 的模型. 随后, @zhou2021generalized 提出了更为一般的非线性参数相依\index{相依}维纳退化模型, 并给出了其寿命\index{寿命}分布的近似表达式. 此外, @paroissin2015inference 观察到某些产品的初始退化值具有随机性, 因此提出了具有随机初始值的维纳退化模型. @shen2018degradation 在更一般的随机退化框架下进一步研究了该现象. 更多关于随机效应\index{随机效应}维纳退化模型的研究, 可参考 <span class="co">[</span><span class="ot">@wang2020accurate; @tang2014accelerated; @zhang2018degradation; @pan2017wiener</span><span class="co">]</span>.</span>
+<span id="cb1-44"><a href="#cb1-44"></a></span>
+<span id="cb1-45"><a href="#cb1-45"></a>由于设备测量精度的限制以及试验设备的老化, 退化测量过程中不可避免地会产生测量误差\index{测量误差}. 针对这一现象, @whitmore1995estimating 建议在基本维纳过程模型中引入时间独立的测量误差\index{测量误差}, 以更准确地描述退化数据. @peng2012note 在此基础上进一步研究了该模型, 并推导出了其方差协方差矩阵的解析表达形式. @ye2013degradation 对 @whitmore1995estimating 的模型进行了扩展, 提出了一种同时考虑测量误差\index{测量误差}与随机效应\index{随机效应}的非线性维纳退化模型. 随后, @peng2020student 在 @ye2013degradation 模型的基础上进一步引入了多层随机效应\index{随机效应}, 并提出了一种基于学生化t随机过程模型, 可有效拟合具有厚尾特征的退化数据. 更多关于带测量误差\index{测量误差}的维纳退化模型研究及其应用, 可参考 <span class="co">[</span><span class="ot">@tang2014remaining; @li2017degradation; @li2018nonlinear; @yan2020novel</span><span class="co">]</span>.</span>
+<span id="cb1-46"><a href="#cb1-46"></a></span>
+<span id="cb1-47"><a href="#cb1-47"></a><span class="fu">### 伽马过程模型</span></span>
+<span id="cb1-48"><a href="#cb1-48"></a></span>
+<span id="cb1-49"><a href="#cb1-49"></a>伽马过程\index{伽马过程}在退化建模中常用于拟合具有单调退化路径的产品, 其因能描述逐步累积的退化特性而备受关注. @abdel1975gamma 最早提出使用伽马过程\index{伽马过程}进行退化建模. 随后, @singpurwalla1997gamma 从方法论角度对伽马过程\index{伽马过程}进行了深入阐述, 并指出其能够很好地拟合某种机翼合金材料的退化行为. @park2014cumulative 基于齐次伽马过程\index{伽马过程}推导了产品寿命\index{寿命}分布的解析表达, 并指出该分布可进一步用Birnbaum-Sauders(BS)分布近似. 为考虑产品间的异质性\index{异质性}, @lawless2004covariates 提出了带随机效应\index{随机效应}的线性伽马退化模型. @tsai2012optimal 基于随机效应\index{随机效应}非线性伽马退化模型, 研究了退化试验的优化设计问题. @guida2019bayesian 从贝叶斯\index{贝叶斯}角度研究了非线性伽马退化过程\index{退化过程}的参数估计问题, 并提出了一种估计剩余寿命\index{剩余寿命}的近似方法. 进一步地, @fan2017bayesian 利用贝叶斯\index{贝叶斯}方法解决了步进应力加速退化试验下的伽马退化模型统计推断问题. 更多相关研究可参考 <span class="co">[</span><span class="ot">@hao2015led; @wang2021degradation</span><span class="co">]</span>.</span>
+<span id="cb1-50"><a href="#cb1-50"></a></span>
+<span id="cb1-51"><a href="#cb1-51"></a>在测量误差\index{测量误差}方面, @pulcini2016perturbed 假设测量误差\index{测量误差}服从一阶随机游动过程, 并提出了一种具有时间相关测量误差\index{测量误差}的伽马退化模型. @giorgio2019perturbed 在非高斯测量误差\index{测量误差}的假设下进一步扩展了伽马退化模型. 然而, 在伽马过程\index{伽马过程}中添加时间独立的测量误差\index{测量误差}通常导似然函数\index{似然函数}难以解析表示, 从而增加了模型参数估计的难度. 为此, @hazra2020approximate 利用近似贝叶斯\index{贝叶斯}计算方法, 解决了带时间独立测量误差\index{测量误差}的伽马退化模型的统计推断问题. 除了在退化建模中的广泛应用外, 伽马过程\index{伽马过程}还在其他领域发挥了重要作用, 如统计过程控制<span class="co">[</span><span class="ot">@chenye2018</span><span class="co">]</span>和预防性维修<span class="co">[</span><span class="ot">@noort2009; @yuanetal21</span><span class="co">]</span>等.</span>
+<span id="cb1-52"><a href="#cb1-52"></a></span>
+<span id="cb1-53"><a href="#cb1-53"></a><span class="co">&lt;!-- 伽马过程\index{伽马过程}可以看作是具有特定分布的跳跃大小的复合泊松过程的极限. 当PCs的退化严格单调时,  伽马过程\index{伽马过程}常被优先选择. 伽马过程\index{伽马过程}作为一类退化模型的引入可追溯到[@Abdel75]. [@noort2009]对伽马过程\index{伽马过程}的理论与统计性质进行了全面综述,  并展示了其在维护应用中的成功案例. 在过去的二十年中,  为了适应协变量、异质性\index{异质性}效应、ndex{测量误差}和多阶段退化,  伽马过程\index{伽马过程}的多种扩展得到了研究. 例如,  [@bagnik2001]使用损伤累积的加法方法对带有协变量的伽马过程\index{伽马过程}进行了建模. [@parpad2006]提出了一种加速伽马退化模型,  假设形状参数是协变量的函数. [@lintsubal2015]提出了一种带有约束的加速伽马退化模型. 当需要考虑单元间差异时,  [@lawcro2004]研究了带有异质性效应的伽马过程\index{伽马过程},  其中尺度参数被视为具有伽马分布\index{伽马分布}的随机变量. [@wang2008]提出了一种伪似然方法,  用于估计具有随机效应的非齐次伽马过程\index{伽马过程}模型中的参数. [@wanwanhon2022]开发了一种针对带有随机效应的伽马过程\index{伽马过程}的广义推断方法,  使得模型参数的区间估计更加精确. 当退化过程\index{退化过程}的检测不完全且测量误差\index{测量误差}显著时,  有必要考虑高斯分布噪声. 这引入了退化增量之间的非独立性,  使得似然函数不具备解析形式,  从而增加了参数估计的难度. [@hazpanman2020]提出了一种近似贝叶斯\index{贝叶斯}计算方法来解决这一问题,  而[@espmelcas2022]则结合了粒子滤波器和期望最大化算法以获得参数估计. 某些特定系统由于物理或化学变化而表现出两阶段退化路径,  如有机发光二极管的亮度[@wantanbae2018]或锂离子电池的容量[@linlincab2021]. [@linngtsu2019]研究了伽马过程\index{伽马过程}下的两阶段退化模型,  并开发了贝叶斯\index{贝叶斯}和似然方法来估计模型参数. 除了作为退化模型的应用外,  伽马过程\index{伽马过程}还在其他领域中有所应用,  包括统计过程控制[@chenye2018]、维修[@noort2009; @yuanetal21]等.  --&gt;</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a></span>
+<span id="cb1-55"><a href="#cb1-55"></a><span class="co">&lt;!-- 伽马过程\index{伽马过程}最早由 [@abdel1975gamma] 应用于退化建模. 随后,  [@singpurwalla1997gamma] 从方法论的角度对基本伽马过程\index{伽马过程}进行了全面阐述,  并指出它可以为飞机表皮的退化提供令人满意的解决方案. [@park2014cumulative] 开发了上述基本伽马退化模型首次达到时间的闭式寿命分布,  并通过考虑离散损伤累积证明其可以近似为逆高斯分布\index{逆高斯分布}. 对于某些材料,  可能存在由其自身引起的隐性内生变异和由操作环境引起的不可观测的外生多样性,  这可能导致样本在初始值和退化路径上的单元间差异. 初始值的异质性通常通过设定初始退化量服从某种随机分布来捕获,  详见 [@shen2018degradation] 和 [@hazra2020approximate]. 退化路径间的异质性可以通过设定模型的一个或多个参数服从特定分布来描述,  详见 [@jiang2019inference; @tsai2012optimal; @guida2019bayesian; @bordes2016parametric]. 一些产品退化过程可能会受到协变量的影响. 对于固定协变量或简单动态协变量过程,  [@lawless2004covariates] 基于退化速率与协变量之间的关系提出了一种扩展的伽马退化模型. 产品的性能退化指标可能表现出线性、凸性或凹性的整体老化趋势. 目前,  非线性函数通常用于退化建模中,  以在时间尺度上转换检测时间,  其中指数函数和幂函数是常用的转换方法. 例如,  [@tseng2009optimal] 使用带有幂尺度函数的伽马退化模型拟合了一批发光二极管设备的退化路径. 类似的建模框架可以参见 [@wu2018gamma; @ye2013degradation]. 此外,  现有的退化观测可能会受到噪声污染. 这种不确定性的噪声可以通过在伽马退化模型中引入测量误差\index{测量误差}来解决. 维纳过程由于其数学性质,  假设随时间变化的独立测量误差\index{测量误差}服从均值为零的高斯分布 [@ye2013degradation]. 然而,  在假设随时间变化的独立高斯测量误差\index{测量误差}的情况下,  伽马过程\index{伽马过程}会导致似然函数不具备解析结构. 为此,  [@pulcini2016perturbed] 提出了一种时间相关的一阶自回归测量误差\index{测量误差}方法,  以折衷方式基于伽马过程\index{伽马过程}的简化模型来模拟测量误差\index{测量误差}. 类似的建模方案由 [@giorgio2019perturbed; @le2016remaining] 提出.  --&gt;</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a></span>
+<span id="cb1-57"><a href="#cb1-57"></a><span class="fu">### 逆高斯过程模型</span></span>
+<span id="cb1-58"><a href="#cb1-58"></a></span>
+<span id="cb1-59"><a href="#cb1-59"></a>逆高斯过程\index{逆高斯过程}是另一种常用来拟合单调退化路径的随机过程. @wang2010inverse 最早将逆高斯过程\index{逆高斯过程}引入退化建模领域, 并发现对于某些具有单调退化路径的高可靠性\index{可靠性}产品, 基于逆高斯过程\index{逆高斯过程}的退化模型在拟合效果上优于伽马过程\index{伽马过程}模型. @ye2014inverse 进一步证明了逆高斯过程\index{逆高斯过程}是复合泊松过程的极限形式, 从而为逆高斯退化模型提供了清晰的物理解释. 他们还基于维纳过程构建了两种具有解析结构的随机效应\index{随机效应}逆高斯退化模型. @peng2014inverse 从贝叶斯\index{贝叶斯}的角度对\@ye2014inverse提出的逆高斯退化模型进行了深入分析. 此外, @peng2015inverse 研究了同时包含协变量\index{协变量}和随机效应\index{随机效应}的逆高斯退化模型, 并推导了对应的寿命\index{寿命}分布及平均失效时间\index{失效时间}的解析表达形式. 更多关于该模型的研究可参考 <span class="co">[</span><span class="ot">@ye2014accelerated; @peng2017bayesian; @guo2018improved; @ma2019engineering</span><span class="co">]</span>.</span>
+<span id="cb1-60"><a href="#cb1-60"></a></span>
+<span id="cb1-61"><a href="#cb1-61"></a>在测量误差\index{测量误差}的研究方面, @sun2021improved 在时间相关测量误差\index{测量误差}的假设下, 研究了带测量误差\index{测量误差}与随机效应\index{随机效应}的逆高斯退化模型. @hao2019degradation 则在不同的随机效应\index{随机效应}设置下进一步探讨了带测量误差\index{测量误差}的逆高斯退化建模方法. 此外, @peng2019transformed 提出了一种改进的逆高斯过程\index{逆高斯过程}退化模型, 该模型假设观测量在特定的非线性变换下服从逆高斯过程\index{逆高斯过程}, 从而增强了对复杂退化行为的刻画能力. 当系统具有多个性能退化\index{性能退化}指标时, @fang2022inverse 观察产品多个性能指标存在固有异质性和相依\index{相依}性, 并提出了一种具有多元随机效应\index{随机效应}的逆高斯退化模型, 以更全面地描述系统性能的退化行为.</span>
+<span id="cb1-62"><a href="#cb1-62"></a></span>
+<span id="cb1-63"><a href="#cb1-63"></a><span class="fu">### 指数分散过程模型</span></span>
+<span id="cb1-64"><a href="#cb1-64"></a></span>
+<span id="cb1-65"><a href="#cb1-65"></a>指数分散过程\index{指数分散过程}是一类广义的随机过程, 前述的维纳过程\index{维纳过程}、伽马过程\index{伽马过程}和逆高斯过程\index{逆高斯过程}均为其特例 <span class="co">[</span><span class="ot">@tseng2016optimum</span><span class="co">]</span>. 当指数分散过程\index{指数分散过程}的单位方差函数呈幂函数形式时，被称为 Tweedie 指数分散过程\index{指数分散过程}, 其中参数$p$的不同取值对应特定的随机过程: $p=0,2,3$时, 分别对应维纳过程\index{维纳过程}, 伽马过程\index{伽马过程}和逆高斯过程\index{逆高斯过程}. 目前, 指数分散过程\index{指数分散过程}在退化建模中的研究尚不够深入. @tseng2016optimum 基于指数分散过程\index{指数分散过程}研究了加速退化试验中的样本分配问题, 并针对三种常用的优化准则(V-最优, D-最优, 和A-最优), 给出了最优样本分配方案. @lee2020global 进一步探讨了基于指数分散过程\index{指数分散过程}的加速退化试验设计, 在两个和三个应力水平下, 通过最小化产品寿命\index{寿命}分布分位点估计的渐近方差, 给出了各应力水平下的全局最优样本分配方案. @hong2017acceleration 将指数分散过程\index{指数分散过程}推广应用于加速退化试验设计，统一了基于维纳过程\index{维纳过程}、伽马过程\index{伽马过程}和逆高斯过程\index{逆高斯过程}的加速退化试验最优设计方法. 随后, @zhou2019exponential 系统阐述了非齐次指数分散过程\index{指数分散过程}的统计性质, 并探讨了具有随机效应\index{随机效应}的指数分散过程\index{指数分散过程}的统计推断方法. 在考虑产品异质性\index{异质性}方面, @duan2018exponential 研究了具有随机效应\index{随机效应}的线性指数 分散过程, 以更好地刻画产品间的变异性. @chen2021random 则进一步探讨了具有随机效应\index{随机效应}的非线性指数分散过程\index{指数分散过程}, 同时研究了同时包含加速退化和随机效应\index{随机效应}的指数分散过程\index{指数分散过程}的统计推断问题. 此外, @xu2019unified 利用指数分散过程\index{指数分散过程}的性质, 提出了适用于随机环境下的系统可靠性评估\index{可靠性评估}框架.</span>
+<span id="cb1-66"><a href="#cb1-66"></a></span>
+<span id="cb1-67"><a href="#cb1-67"></a><span class="co">&lt;!--Tweedie指数分散过程的概率密度函数没有显式表达, 不容易直接着手处理, 所以学者们提出了一些方法给出了其概率密度函数的近似表达式, @dunn2005series 借助序列展开的方法给出了Tweedie指数分散模型概率密度函数的近似. @dunn2008evaluation 根据Tweedie分布族具有显式矩母函数的性质, 采用傅里叶逆变换的方法给出了其概率密度函数的近似表达式.--&gt;</span></span>
+<span id="cb1-68"><a href="#cb1-68"></a></span>
+<span id="cb1-69"><a href="#cb1-69"></a><span class="co">&lt;!-- \newpage  --&gt;</span></span>
+<span id="cb1-70"><a href="#cb1-70"></a></span>
+<span id="cb1-71"><a href="#cb1-71"></a><span class="fu">## 数据集介绍 {#sec-intro-s3}</span></span>
+<span id="cb1-72"><a href="#cb1-72"></a></span>
+<span id="cb1-73"><a href="#cb1-73"></a><span class="fu">### 激光退化数据 {#examp1}</span></span>
+<span id="cb1-74"><a href="#cb1-74"></a></span>
+<span id="cb1-75"><a href="#cb1-75"></a>该数据集主要用于本书的第 @sec-Generalize-Wiener 节、@sec-Bayes-Gamma 节和 @sec-ED 节, 来源于 @Meeker1998. 数据集记录了在 80°C 高温条件下测试的 15 个 GaAs (砷化镓) 激光器的运行电流随时间增加的百分比变化情况. 在时间 $t=0$ 时, 所有样本的电流增加百分比均设定为 0, 此后每隔 250 小时 测量一次运行电流的增加量, 直至试验终止时间 4000 小时. 所有激光器的性能退化过程\index{退化过程}如图 @fig-fig:laser2 所示. 激光器的性能退化\index{性能退化}表现为运行电流随时间的逐渐增加, 以维持恒定的光输出. 当电流增加量超过初始值的 10% 时, 激光器被认为失效. 该数据集在分析激光器的退化模式、寿命\index{寿命}预测以及识别潜在失效机制等方面具有重要研究价值.</span>
+<span id="cb1-76"><a href="#cb1-76"></a></span>
+<span id="cb1-79"><a href="#cb1-79"></a><span class="in">```{r}</span></span>
+<span id="cb1-80"><a href="#cb1-80"></a><span class="co">#| label: fig-fig:laser2</span></span>
+<span id="cb1-81"><a href="#cb1-81"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-82"><a href="#cb1-82"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-83"><a href="#cb1-83"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-84"><a href="#cb1-84"></a><span class="co">#| fig.cap: '激光工作电流的退化路径.'</span></span>
+<span id="cb1-85"><a href="#cb1-85"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/1.激光退化数据.pdf"</span>)</span>
+<span id="cb1-86"><a href="#cb1-86"></a><span class="in">```</span></span>
+<span id="cb1-87"><a href="#cb1-87"></a></span>
+<span id="cb1-88"><a href="#cb1-88"></a><span class="fu">### 碳膜电阻器退化数据</span></span>
+<span id="cb1-89"><a href="#cb1-89"></a></span>
+<span id="cb1-90"><a href="#cb1-90"></a>该数据集主要用于本书的第 @sec-Generalize-Wiener 节, 数据来源于 @Meeker1998, 列于其书中表 C.3. 数据集记录了碳膜电阻器在不同温度条件下电阻随时间的变化情况, 包括30个电阻器单元在 $83^\circ$C、$133^\circ$C 和 $173^\circ$C 三个温度水平下的电阻增加百分比. 试验首先记录了每个电阻器的初始电阻值, 随后分别在 452 小时、1030 小时、4341 小时和 8084 小时时, 以初始电阻值的百分比形式记录电阻增加情况. 该数据集可用于评估不同温度条件下碳膜电阻器的性能退化\index{性能退化}趋势, 帮助研究人员分析温度对电阻器退化速率的影响. 图 @fig-fig:resistor2 展示了 9 个碳膜电阻器在 $83^\circ$C 条件下的电阻增加百分比退化路径.</span>
+<span id="cb1-91"><a href="#cb1-91"></a></span>
+<span id="cb1-94"><a href="#cb1-94"></a><span class="in">```{r}</span></span>
+<span id="cb1-95"><a href="#cb1-95"></a><span class="co">#| label: fig-fig:resistor2</span></span>
+<span id="cb1-96"><a href="#cb1-96"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-97"><a href="#cb1-97"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-98"><a href="#cb1-98"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-99"><a href="#cb1-99"></a><span class="co">#| fig.cap: '9 个碳膜电阻的电阻百分比增加值'</span></span>
+<span id="cb1-100"><a href="#cb1-100"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/2.碳膜电阻器退化数据.pdf"</span>)</span>
+<span id="cb1-101"><a href="#cb1-101"></a><span class="in">```</span></span>
+<span id="cb1-102"><a href="#cb1-102"></a></span>
+<span id="cb1-103"><a href="#cb1-103"></a><span class="fu">### 有机发光二极管退化数据</span></span>
+<span id="cb1-104"><a href="#cb1-104"></a></span>
+<span id="cb1-105"><a href="#cb1-105"></a>该数据集主要用于本书的第 @sec-Two-Phase-Wiener 节, 来源于 @bae2008degradation. 该数据集主要用于评估有机发光二极管 (Organic light-emitting diode, OLED) 在恒定应力水平 (直流电流=25mA) 下的可靠性\index{可靠性}. 该数据集包含了6个用于移动电话显示元件的OLED样本单元, 在20个时间点的光度测量值. 测试样本被分配在在四种加速应力水平：25 mA, 32 mA, 40 mA和50 mA. 各直流电流下的退化路径如图 @fig-fig:oled 所示. 行业标准规定, 在相对光度低于0.5或低于50%时失效.</span>
+<span id="cb1-106"><a href="#cb1-106"></a></span>
+<span id="cb1-109"><a href="#cb1-109"></a><span class="in">```{r}</span></span>
+<span id="cb1-110"><a href="#cb1-110"></a><span class="co">#| label: fig-fig:oled</span></span>
+<span id="cb1-111"><a href="#cb1-111"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-112"><a href="#cb1-112"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-113"><a href="#cb1-113"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-114"><a href="#cb1-114"></a><span class="co">#| fig.cap: '6 个OLED的退化数据'</span></span>
+<span id="cb1-115"><a href="#cb1-115"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/3.有机发光二极管退化数据.pdf"</span>)</span>
+<span id="cb1-116"><a href="#cb1-116"></a><span class="in">```</span></span>
+<span id="cb1-117"><a href="#cb1-117"></a></span>
+<span id="cb1-118"><a href="#cb1-118"></a><span class="fu">### 列车车轮退化数据</span></span>
+<span id="cb1-119"><a href="#cb1-119"></a></span>
+<span id="cb1-120"><a href="#cb1-120"></a>该数据集主要用于本书的第 @sec-Bayes-Gamma 节, 来源于 <span class="co">[</span><span class="ot">@peng2020student</span><span class="co">]</span>, 记录了14个列车车轮在行驶过程中直径磨损情况. 测试以50千公里为间隔, 直至累积里程达到1000千公里. 在每个里程节点, 分别测量每个车轮的直径. 当直径磨损达到60毫米时, 即视为车轮失效. 由于其中三个样品的车轮直径磨损过快, 很早便超过了 60 毫米, 故在数据集中移除了这三组数据. 剩余 11 个样品的磨损数据如图 @fig-fig:wheeldata 所示. 该数据集可用于分析列车车轮的退化趋势和剩余使用寿命, 有助于科学规划车轮的维护与更换策略, 从而提升铁路运输的安全性与运营效率.</span>
+<span id="cb1-121"><a href="#cb1-121"></a></span>
+<span id="cb1-124"><a href="#cb1-124"></a><span class="in">```{r}</span></span>
+<span id="cb1-125"><a href="#cb1-125"></a><span class="co">#| label: fig-fig:wheeldata</span></span>
+<span id="cb1-126"><a href="#cb1-126"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-127"><a href="#cb1-127"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-128"><a href="#cb1-128"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-129"><a href="#cb1-129"></a><span class="co">#| fig.cap: '列车车轮退化路径. '</span></span>
+<span id="cb1-130"><a href="#cb1-130"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/4.列车车轮退化数据.pdf"</span>)</span>
+<span id="cb1-131"><a href="#cb1-131"></a><span class="in">```</span></span>
+<span id="cb1-132"><a href="#cb1-132"></a></span>
+<span id="cb1-133"><a href="#cb1-133"></a><span class="fu">### 设备-B数据/集成电路数据</span></span>
+<span id="cb1-134"><a href="#cb1-134"></a></span>
+<span id="cb1-135"><a href="#cb1-135"></a>数据集主要用于本书的第 @sec-VB-Gamma 节、 第 @sec-IG 节、@sec-Online-IG 节, 来源于 @Meeker1998. 该数据集专注于通信卫星中使用的射频功率放大器在不同温度条件下的性能和可靠性\index{可靠性}. 工程师们将功率输出下降0.5分贝 (dB) 以下的初始输出时间点定义为故障\index{故障}时间, 并随机选取了67,000个设备-B样本位置, 在$150^{\circ}$C、$195^{\circ}$C和$237^{\circ}$C这三个极端温度条件下, 以每125小时为间隔进行测量, 直至累计达到4,000小时. 图 @fig-fig:deviceB 展示了在所有温度条件下产品的退化路径.</span>
+<span id="cb1-136"><a href="#cb1-136"></a></span>
+<span id="cb1-137"><a href="#cb1-137"></a><span class="co">&lt;!-- 图 @fig-fig:deviceb1 则展示了在$150^{\circ}$C条件下7个设备-B样本的退化路径。 --&gt;</span></span>
+<span id="cb1-138"><a href="#cb1-138"></a></span>
+<span id="cb1-139"><a href="#cb1-139"></a><span class="co">&lt;!-- ::: {#fig-fig:deviceB layout-ncol="2"} --&gt;</span></span>
+<span id="cb1-140"><a href="#cb1-140"></a></span>
+<span id="cb1-141"><a href="#cb1-141"></a><span class="co">&lt;!-- ![所有温度下](figures/Data_pic/5.所有温度下集成电路数据.pdf){#fig-fig:ic width="50%"} --&gt;</span></span>
+<span id="cb1-142"><a href="#cb1-142"></a></span>
+<span id="cb1-143"><a href="#cb1-143"></a><span class="co">&lt;!-- ![$150^{\circ}$C 条件下](figures/Data_pic/5.195C下集成电路数据.pdf){#fig-fig:deviceb1 width="30%"} --&gt;</span></span>
+<span id="cb1-144"><a href="#cb1-144"></a></span>
+<span id="cb1-145"><a href="#cb1-145"></a><span class="co">&lt;!-- 设备-B数据退化路径. --&gt;</span></span>
+<span id="cb1-146"><a href="#cb1-146"></a></span>
+<span id="cb1-147"><a href="#cb1-147"></a><span class="co">&lt;!-- ::: --&gt;</span></span>
+<span id="cb1-148"><a href="#cb1-148"></a></span>
+<span id="cb1-151"><a href="#cb1-151"></a><span class="in">```{r}</span></span>
+<span id="cb1-152"><a href="#cb1-152"></a><span class="co">#| label: fig-fig:deviceB</span></span>
+<span id="cb1-153"><a href="#cb1-153"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-154"><a href="#cb1-154"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-155"><a href="#cb1-155"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-156"><a href="#cb1-156"></a><span class="co">#| fig.cap: '所有温度下设备-B数据退化路径. '</span></span>
+<span id="cb1-157"><a href="#cb1-157"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/5.所有温度下集成电路数据.pdf"</span>)</span>
+<span id="cb1-158"><a href="#cb1-158"></a><span class="in">```</span></span>
+<span id="cb1-159"><a href="#cb1-159"></a></span>
+<span id="cb1-160"><a href="#cb1-160"></a><span class="fu">### 铝合金裂纹退化数据</span></span>
+<span id="cb1-161"><a href="#cb1-161"></a></span>
+<span id="cb1-162"><a href="#cb1-162"></a>该数据集主要运用于本书的第 @sec-IG 节、@sec-ED 节. 数据可以在<span class="co">[</span><span class="ot">@Wu2003A</span><span class="co">]</span> 的表1中找到. 实验中, 选用了30个抛光处理的2024-T351铝合金样本, 在室温环境下利用统一测量设备进行测试. 实验设计以10,000次载荷循环为时间单位, 测试范围覆盖1至4单位, 步长设定为0.5单位. 当样本裂纹长度超出15毫米时, 即判定为失效并终止测试, 此时的循环次数记录为样本寿命\index{寿命}, 其退化路径如图 @fig-fig:crack 所示.</span>
+<span id="cb1-163"><a href="#cb1-163"></a></span>
+<span id="cb1-166"><a href="#cb1-166"></a><span class="in">```{r}</span></span>
+<span id="cb1-167"><a href="#cb1-167"></a><span class="co">#| label: fig-fig:crack</span></span>
+<span id="cb1-168"><a href="#cb1-168"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-169"><a href="#cb1-169"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-170"><a href="#cb1-170"></a><span class="co">#| out.width: '70%'</span></span>
+<span id="cb1-171"><a href="#cb1-171"></a><span class="co">#| fig.cap: '铝合金裂纹退化数据. '</span></span>
+<span id="cb1-172"><a href="#cb1-172"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/6.铝合金裂纹退化数据.pdf"</span>)</span>
+<span id="cb1-173"><a href="#cb1-173"></a><span class="in">```</span></span>
+<span id="cb1-174"><a href="#cb1-174"></a></span>
+<span id="cb1-175"><a href="#cb1-175"></a><span class="fu">### 锂离子电池容量退化数据</span></span>
+<span id="cb1-176"><a href="#cb1-176"></a></span>
+<span id="cb1-177"><a href="#cb1-177"></a>该数据集主要运用于本书的第 @sec-Online-IG 节, 数据来源于<span class="co">[</span><span class="ot">@severson2019data</span><span class="co">]</span>. 该数据集包含124个商业锂铁磷 (LFP) /石墨电池 (A123 Systems, APR18650M1A, 1.1 Ah名义容量) 在快速充电条件下的循环测试数据. 这些电池样本在一个温度控制的环境室 (30°C) 中进行测试, 在放电条件保持一致的情况下采用72种不同的快速充电策略. 研究中定义电池寿命\index{寿命}终止为电池容量降至其名义容量的80%. 退化路径如图 @fig-fig:capdeg1 所示. 分析该数据集有助于评估和预测电池的循环寿命\index{寿命}.</span>
+<span id="cb1-178"><a href="#cb1-178"></a></span>
+<span id="cb1-181"><a href="#cb1-181"></a><span class="in">```{r}</span></span>
+<span id="cb1-182"><a href="#cb1-182"></a><span class="co">#| label: fig-fig:capdeg1</span></span>
+<span id="cb1-183"><a href="#cb1-183"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-184"><a href="#cb1-184"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-185"><a href="#cb1-185"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-186"><a href="#cb1-186"></a><span class="co">#| fig.cap: '17个锂离子电池的容量退化率.'</span></span>
+<span id="cb1-187"><a href="#cb1-187"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/7.锂电池数据.pdf"</span>)</span>
+<span id="cb1-188"><a href="#cb1-188"></a><span class="in">```</span></span>
+<span id="cb1-189"><a href="#cb1-189"></a></span>
+<span id="cb1-190"><a href="#cb1-190"></a><span class="fu">### 应力关系退化数据</span></span>
+<span id="cb1-191"><a href="#cb1-191"></a></span>
+<span id="cb1-192"><a href="#cb1-192"></a>该数据集主要运用于本书的第 @sec-ED 节, 原始数据来源于 @Yang2008 并在 @ye2014accelerated 中表 IV 中列出. 应力松弛是指在恒定应变下随时间发生的组件应力损失. 该数据集展示了电气连接器在不同温度条件下的应力松弛行为, 记录了在65°C、85°C和100°C三个不同温度下, 18个电气连接器样本的应力松弛测试结果. 这些样本被随机分为三组, 每组在指定的温度下进行测试, 以模拟连接器在实际使用过程中可能遇到的不同环境条件. 当应力松弛超过预定义的水平 (例如30%) 时, 认为连接器已经失效. 退化路径如图 @fig-fig:fstr_raw 所示. 这些信息对于连接器的设计改进和可靠性评估\index{可靠性评估}至关重要, 有助于制造商和工程师更好地理解产品在实际应用中的性能和寿命\index{寿命}.</span>
+<span id="cb1-193"><a href="#cb1-193"></a></span>
+<span id="cb1-196"><a href="#cb1-196"></a><span class="in">```{r}</span></span>
+<span id="cb1-197"><a href="#cb1-197"></a><span class="co">#| label: fig-fig:fstr_raw</span></span>
+<span id="cb1-198"><a href="#cb1-198"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-199"><a href="#cb1-199"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-200"><a href="#cb1-200"></a><span class="co">#| out.width: '60%'</span></span>
+<span id="cb1-201"><a href="#cb1-201"></a><span class="co">#| fig.cap: '应力关系退化数据.'</span></span>
+<span id="cb1-202"><a href="#cb1-202"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/Data_pic/8.应力关系退化数据.pdf"</span>)</span>
+<span id="cb1-203"><a href="#cb1-203"></a><span class="in">```</span></span>
+<span id="cb1-204"><a href="#cb1-204"></a></span>
+<span id="cb1-205"><a href="#cb1-205"></a><span class="fu">### 两阶段模式的锂离子电池退化数据</span></span>
+<span id="cb1-206"><a href="#cb1-206"></a></span>
+<span id="cb1-207"><a href="#cb1-207"></a>该数据集主要运用于本书的第 @sec-tp-IG 节, 数据来源于<span class="co">[</span><span class="ot">@Zhuang2024-ejor</span><span class="co">]</span>. 图 @fig-tp-battery-data 展示了六个电池容量随周期变化的退化数据. 从图中可以看出, 每个电池的容量退化呈现出两个阶段的特征: 初始阶段退化速率较低, 而后进入退化速率较高的阶段. 分析这类两阶段退化类型的数据有助于评估和预测电池的循环寿命\index{寿命}.</span>
+<span id="cb1-208"><a href="#cb1-208"></a></span>
+<span id="cb1-211"><a href="#cb1-211"></a><span class="in">```{r}</span></span>
+<span id="cb1-212"><a href="#cb1-212"></a><span class="co">#| label: fig-tp-battery-data</span></span>
+<span id="cb1-213"><a href="#cb1-213"></a><span class="co">#| fig.align: 'center'</span></span>
+<span id="cb1-214"><a href="#cb1-214"></a><span class="co">#| echo: FALSE</span></span>
+<span id="cb1-215"><a href="#cb1-215"></a><span class="co">#| out.width: '70%'</span></span>
+<span id="cb1-216"><a href="#cb1-216"></a><span class="co">#| fig.cap: '6个锂电池的容量退化数据.'</span></span>
+<span id="cb1-217"><a href="#cb1-217"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"figures/IG/EJOR2024/battery-data.pdf"</span>)</span>
+<span id="cb1-218"><a href="#cb1-218"></a><span class="in">```</span></span>
+</code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

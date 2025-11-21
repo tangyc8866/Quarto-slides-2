@@ -1,0 +1,7 @@
+project:
+  type: website     # 告诉 Quarto 按“站点”来组织
+  output-dir: docs  # 输出到 docs 文件夹，给 GitHub Pages 用
+
+format:
+  revealjs:
+    self-contained: true # 把资源打包进 html，上传后比较省事

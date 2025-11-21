@@ -1,0 +1,512 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Quarto中文书稿写作手册",
+    "section": "",
+    "text": "前言\n这本小册子是在我2021年7月在github上出版的《Bookdown中文书稿写作手册》 的基础上改篇过来的，基本的章节结构与内容基本保持不变.\nBookdown是谢益辉基于R Markdown开发出来的系列文学化写作工具之一, 主要是针对R语言开发出来，而Quarto Markdown是新一代的R Markdown, 可支持包括R, Python, Julia, Oberservable等在内的多种语言, 因此作为Quarto应用场景之一的Quarto Book可视为Bookdown的拓展或新的一代, 因此这本小册子会在多种编程语言和Quarto本身的特性上尽可能体现出来.\n这本小册子可视为一个写中文书稿的quarto模板，也是中文quarto book写作的一本说明书，其中汇总了书稿中几大核心要素的写作技巧. 除了原有的bookdown参考书, 我主要参考了Quarto网站Quarto Guide中Quarto Books的相关内容及其中提及的在线 电子书. Quarto Gallery提供的电子书在不断增加，在此 罗列一些，也表示对Posit及这些电子书的作者表示敬意和感谢.\n\nHadley Wickham, R for Data Science, 2E\nWes McKinney, Python for Data Analysis, 3E\nGarrett Grolemund, Hands on Programming with R\nBernd Bischl, Raphael Sonabend, Lars Kotthoff, Michel Lang （eds.), Applied Machine Learning Using mlr3 in R, mlr3book\nRohan Alexander, Telling Stories with Data: With Applications in R and Python\nJeffrey Heer, Dominik Moritz, Jake VanderPlas, and Brock Craft, Visualization Curriculum\nMichael Dorman, Anita Graser, Jakub Nowosad, Robin Lovelace, Geocomputation with Python\nV. Lyubchich and Y. R. Gel, Time Series Analysis: Lecture Notes with Examples in R\nDamien Dotta, Cookbook Polars for R: A side-by-side comparison of polars, R base, dplyr, tidyr and data.table packages.\nKevin Heavey, Modern Polars: A side-by-side comparison of the Polars and Pandas libraries.\nMalcolm Barrett, Lucy D’Agostino McGowan, Travis GerkeCausal Inference in R\n汤银才, Bookdown中文书稿写作手册, 2021-07-21.\n李东风，R语言教程，第22章：Quarto格式文件, 2023-07-27.",
+    "crumbs": [
+      "前言"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  引言",
+    "section": "",
+    "text": "1.1 中国图书出版的变化\n这是第  1 章的内容，回顾中国图书发展的历史及最新趋势 (R Core Team, 2021; Xie, 2015).\n中国的图书出版经历一些折腾，方正系统一度非常流行，但现在看来是非常失败的，主要是它在解决中文字库和公式排版等的同时没有解决兼容性、标准化及便利性等问题，其本质上想实现在其自创的中文系统中将 TeX 命令做一个映射以实现数学公式排版，同时完成格式的定制.\n中国学术界也经历了一些折腾，如中科院张林波研究员等开发的CCT系统和华东师范大学肖刚与陈志杰等老师开发的天元系统，它们是 TeX 系统汉化版，较好地解决了汉字生成与调用，但因没有考虑普适性或可拓展性而像方正系统一样随着CJK的逐渐成熟而逐渐被抛弃，均退出了历史舞台. 而同期中科院吴凌云博士等在普及 TeX 的同时开发的 TeX 中文套餐C TeX 相当成功，主要的工作是会对汉字排版的ctex宏包及套餐的开发(后者类似于针对苹果OS系统的MacTeX, 但后期的更新显得太慢)，并对三个主流的文档类book, article, report进行了定制，推出了相应的中文文档类ctexbook, ctexart, ctexrep, 由此避免了传统的基于CJK宏包需要的大量定制，同时保证了与原有 TeX 系统的兼容性. 这样我们始终可以使用跨平台的TeXLiVe进行排版或各类模板的开发，例如各个出版社的图书模板、各个期刊的模板、各高校的硕士和博士毕业论文模板等, 现在这样的模板都开源到Overleaf上.\nTeX 的出现1，而且始终屹立不倒的原因是什么？ 第一个原因是它解决了一个Word之类文字编辑系统的痛点，即从所见所得(WYSIWYG, What you see is what you get)到所想所得(WYTIWYG), 即通过一些 TeX 命令集构成一个完整的编程语言，由它完成一个封闭的体系，具有类似C语言一样非常强大的开发功能，由此形成了后来的latex, miktex, latex2.09, luatex, xetex等 TeX 编译引擎，它们在充分利用电脑系统资源的同时实现高质量输出需要的精度.\nTeX 屹立不倒的另一个原因是浮动对象的处理，即包括公式，表格、图形、页码、章节、文献、定理等的标签化与引用，实现文档内部的自由跳转，结合Acrobat Reader这样强大的pdf阅读器的支持，使得读者的阅读体验得到大幅改善，并为图书的电子化奠定了基础.\n随着数据科学这一新兴学科的出现，开源的R和Python (还有正在逐步流行的Julia)编程语言越来越强大. 为了增加这类图书的可读性，需要将代码较完整地呈现在读者面前，并且要求代码的即时可复现能力，即数据的变化，其分析的结果(包括图形和表格)也随之发生变化并同步呈现出来. 这就是现在逐步流行的文学化编程(literate programming), 它实现上最早也是 TeX 的鼻祖Knuth提出的, 后来被谢益辉得到重视并广泛推广，并通过Rstudio和R Markdown和现在的Quarto Markdown传递给R的用户. 我们姑且把这种将写作与数据分析相结合的统计分析称为文学化统计编程(literate statistical programming). 它在为数据科学爱好者带来便利的同时也通过Bookdown或quarto为论文、分析报告和图书的写作和电子化带来了极大的好处，越来越多的包括网页版电子书在内的文档出现在(https://github.com/)等网站上.\n这本小册子主要考虑书稿类文档的写作，它可以包括图书、毕业论文和分析报告，在些统称为书稿. 现在写书选择什么类型的模板，下面我们来作进一步的探索与比较.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>引言</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#sec1-2",
+    "href": "intro.html#sec1-2",
+    "title": "1  引言",
+    "section": "1.2 统计类图书的核心要素",
+    "text": "1.2 统计类图书的核心要素\n统计或数据科学类图书的排版除普通图书的页面及文字风格等静态元素外，核心要素体现在浮动的对象上，使得图书的阅读体验更好地发挥出来，即在不同页面之间快速切换、跟踪、搜索，以及必要的R和Python等代码以语法高亮方式显示，必要时同步将执行结果呈现出来.\n\n章节标题是浮动的，最主要用于书签的生成;\n公式是浮动的，这是数学、统计等理科书的特点，公式引用必不可少;\n图形是浮动的，统计图形作为可视工具，在说明数据或展示分析结果时经常会引用相应的图形;\n表格是浮动的，通常是原始数据或统计分析的结果以表格形式展示出来，它们可能被多次在不同的章节中引用;\n定理是浮动的, 这里定理是指与之相关的一大类，包括常用的定理、引理、推论、命题、例子等，它们在文中也会被反复引用;\n文本可以设置浮动标签后被引用，最为常见的是图形与表格的题图(caption)通过文本方式来引用;\n文献是浮动的，这在是谈及前人的已有工作、成果比较或进行综述时经常要引用大量已经发表的论文、图书、会议报告等.\n\nTeX 有一套成熟的浮动对象的排版方式，通过给浮动对象打标签(label)，然后引用(ref). Quarto Book(或之前的Bookdown)思路一样，但比 TeX 的处理稍复杂些(可能因我们还没有习惯引起). 我们在后面章节中分别举例说明.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>引言</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#sec1-3",
+    "href": "intro.html#sec1-3",
+    "title": "1  引言",
+    "section": "1.3 统计数据分析类图书模板的选择",
+    "text": "1.3 统计数据分析类图书模板的选择\n统计数据分析类图书既有理论或原理的讲解，又会有一些案例分析，包括这些案例分析实现的代码. 我们可以考虑的模板主要有三种类型.\n\n1.3.1 基于纯 TeX 模板\n全世界90%的书是由 TeX 排版的，包括硕士和博士毕业论文模板，这要感谢鼻祖Knuth！开源成就了 TeX !\n如果仅仅是统计理论方面的书集，这显然是最好的选择，因为高质量公式的排版离不开 TeX. 基于 TeX 的排版存在三个明显的缺陷或不足:\n\n大量的 TeX 命令需要记忆;\n对于代码的排版非常不便，特别是R或Python代码执行后的输出，尤其是图形与表格;\n代码以listing等包来呈现, 无法实时呈现代码运行的结果，不符合文学化编程的要求.\n\n\n\n1.3.2 R, Markdown与 TeX 的结合\n\n数据科学时代更注重文学化统计编程，代码伴随是这类图书的特点，自Springer出版R系列统计图书后，这种风格成为新趋势，大大方便了数据科学爱好者”便学习便练习”的学习方式. 针对代码伴随，早期对这类图书有二个解决方案：\n\nSweave/knitr + R\n\n\n本质上它是在 TeX 嵌入R代码块，并由R在后台运行后将结果也嵌入到 TeX 中，再由 TeX 的编译引擎生成pdf. 这个方案的基本沿用 TeX 的方式，它仅解决了上面提到的第二个问题. 在数据科学时代，报告的快速生成成为新的要求，效率优先！随着knitr的出现Sweave退出舞台.\n\nR Markdown + Mathjax/ TeX\n\n\nMarkdown作为一种轻量级的标记语言成为网页作为文字主要载体的互联网时代首先的写作工作，但它显然不适合数学与统计类论文或图书的撰写，但knitr和pandoc的出现使不同风格的内容整合与转换成为可能，而不同风格的内容各有善长的工具实现，作为统计类专业论文或图书类文档主要的内容有：\n\n文字， 由markdown完成\n公式，由 TeX 完成\n代码，由R (或Python) 完成\n\n要说明的是，在网页端， TeX 的实现可由Mathjax来完或渲染(转化或生成标准的公式)，见第  4 章说明.\n\n\n1.3.3 从Markdown、R Markdown 到 Quarto\nMarkdown 是一种轻量级标记语言，其语法简单易用，容易上手. 人们可以通过 Markdown 给纯文本文档添加格式化元素，轻松转换为其他格式文件，适用不同场景，从而使创作者专注于内容写作，而非格式排版. Markdown文档的扩展名为.md. Markdown 的语法结构十分简单，使用者稍微阅读一下相关文档和案例，便可动手写作.\nR Markdown 是基于 Markdown 的扩展，专门为 R 语言和数据分析而设计. 它允许在 Markdown 文档中嵌入R代码块，并提供了方便的方式来执行和显示代码的结果. 通过 R Markdown，用户可以编写结合了文本、代码和结果展示的动态报告、文档、演示文稿等. R Markdown 文件可以通过 RStudio 等工具进行编辑和转换，得到包括 HTML、PDF、Word 文档等多种输出格式. R Markdown 文档的扩展名为 .rmd.\n过去10年，R的功能与生态得到不断完善, 得益于Hadley Wickham和谢益辉等开发的许多优秀包的出现，如knitr, kableExtra, ggplot2, dplyr等, 以及基于 rmarkdown适用于新的特定应用场景的程序包, 如bookdown， pagedown, rticle等的出现和普及, Rstudio作为一个IDE也变得越来越成熟与强大， 正在成为一个非常优秀的论文、幻灯片及图书等撰写与出版系统(PUB).\nQuarto 则是定位 R Markdown 的下一代产品，由 Posit 2（原 RStudio 的开发团队）开发，是一个开源的数据分析与科技出版系统. Quarto 不仅支持 R 生态系统的扩展，还支持更多的编程语言（如 Python、Julia 和 Observable 等），同时支持近 40 种输出格式(包括html,pdf, ePub, Word, Asciidoc等)，从而在更大范畴内为科技类（不仅仅限于统计类）出版活动提供解决方案.\nQuarto已经完成能够实现bookdown的书稿排版涉及的定制及核心要素的排版，而且考虑到对更多编程语言的支持, 我们完成可以将原来基于bookdown的写作转换到Quarto上来. 若非必要, 我们这本手册之后也用Quarto Book来指基于Quarto的书稿格式排版.\n\n\n1.3.4 格式转换流程\nQuarto 根据以下工作流程导出各类格式文档：\n\n其中，Knitr 是 Quarto 中使用的一个 R 包，负责将 .qmd 文件转换为普通 Markdown 格式（.md 文件），以便后续使用 Pandoc 进行格式转换。在转换前， 会运行.qmd文件中的代码块， 将得到的文字、表格、图形结果再插入到文档中. 代码块可以在R的knitr包支持下运行， 也可以在Jupyter软件的支持下运行.\nPandoc 是一个开源的文档转换工具，用于将一个格式的文档转换为另一种格式，广泛应用于科技写作领域。Pandoc 支持多种输入格式（如 Markdown、HTML、LaTeX 等）和输出格式（如 HTML、PDF、Word、ePub 等），并提供了丰富的选项和灵活的配置来满足各种转换需求。特别地, 对于pdf输出, 由pandoc完成由md转化为 TeX , 并由laTeX编译生成pdf; 对于HTML输出, 由pandoc由md转化为html, 其中的数学公式由Mathjax或KaTeX完成渲染.\n想在 VS Code 中进行格式转换，可以在命令行下运行如下命令：\nquarto render --to all \n\n\n1.3.5 多格式图书出版的实现\n在科技高度发达的互联系时代，读者使用的媒介基本有三类：较为专业的电脑，较为轻便的平板(电脑)和全功能的智能手机. 前者以pdf类图书为主呈现给读者，同时可以完成标注等工作；后者以文字型的电子图书为主，消磨时间为主；而平板的使用者逐渐成为电子类图书的新势力，包括pdf和epub之类的电子书. 基于Quarto创建的Book类, 注重不同类型读者的媒体使用的差异，并很好地实现统一编写与差异化输出. 目前Quarto Book可以一键生成三类图书:\n\ngitbook，可自由出版在git pages上\nePub, 发表到大量的电子图书平台上\npdf, 正规的图书出版公司以电子或纸质形式出版\n\n\n\n\n\n\n\n注释\n\n\n\nQuarto 与 TeX 做到了无缝衔接，我们可以在 Markdown 文档中嵌入和管理 TeX 代码，而且我们还可以通过TeX或\\(CSS/SCSS\\)的高度定制实现符合PDF、HTML或ePub的的输出。\n\n\n\n\n\n\n\n\nR Core Team, 2021. R: A Language and Environment for Statistical Computing[M/OL]. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nXie Y, 2015. Dynamic Documents with R and knitr[M/OL]. 2nd 版本. Boca Raton, Florida: Chapman; Hall/CRC. http://yihui.name/knitr/.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>引言</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#footnotes",
+    "href": "intro.html#footnotes",
+    "title": "1  引言",
+    "section": "",
+    "text": "是伟大的Knuth创造了排版的奇迹↩︎\nPosit 由 RStudio 更名而来，于2021年开始着手打造新一代的R Markdown，称为Quarto. 2022年12月，Rstudio作为公司于2021年作出了重大战略调整，不仅将公司名称改为Popsit，而且将更多的开发放在应用更为广泛的VS Code上，但同时保证对Rstudio和Python Notebook的支持. 该公司专注于数据科学的资源集成，近年来一直在布局打通大数据科学的创作与分享.↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>引言</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html",
+    "href": "quarto.html",
+    "title": "2  Quarto书稿速览",
+    "section": "",
+    "text": "2.1 Quarto 的结构\n这是第  2 章的内容，概要性地讲解基于quarto拓展包进行图书排版的整体思路与实现方式. (R Core Team, 2021; Xie, 2015)\nQuarto 作为基于 Markdown 的写作工具，旨在简化和增强出版流程，它提供了一种灵活且易于使用的方式来创建和发布各种类型的文档。\nQuarto 包括以下几个关键组成部分：\n通过将 Markdown 文件、YAML 配置文件、模板和各类资源整合到一起，Quarto 提供了一种完整的文档构建和发布解决方案，它使得创建专业、美观的多格式文档变得更加简单和高效。\nQuarto 目前发行的版本为 1.4.554。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#quarto-的结构",
+    "href": "quarto.html#quarto-的结构",
+    "title": "2  Quarto书稿速览",
+    "section": "",
+    "text": "Quarto Markdown 文件：Quarto 使用 Markdown 作为主要的文档格式，文件扩展名为 .qmd。\nYAML 配置文件：Quarto 使用 _quarto.yml 文件作为项目的配置文件。这个 YAML 配置文件就是一个文本文件，它允许用户指定输出格式、模板、外观等选项，自定义 Quarto 文档的元数据。\n输出格式：Quarto 使用 Pandoc 转换文档格式，将 Markdown 文档输出为 HTML、PDF、ePub、docx 等格式，用户可以根据需要配置相应选项，选择输出格式。\n模板：Quarto 使用模板来定义文档的整体布局、样式和体例等，用户可以选择预定义的模板，也可以自定义自己的模板，使用 HTML、CSS或SCSS、LaTeX 等方式来控制文档的形式。\n资源：在 Quarto 中，你可以包含各种类型的资源，如图片、代码、数据、交互列表等，这些资源可以与 Markdown 文件一起存储在同一目录中，方便管理和引用。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#sec-sec2-1",
+    "href": "quarto.html#sec-sec2-1",
+    "title": "2  Quarto书稿速览",
+    "section": "2.2 关于Quarto Book",
+    "text": "2.2 关于Quarto Book\nQuarto Markdown作为新一代的R Markdown， 是另一个增强markdown格式的扩展， 使得qmd格式可以支持书箱编写所需的章节、数学公式、定理、表格、图形、文献等浮动对象的自动编号，并按设定的标签在正文中引用。 在quarto的管理下一本书的内容可以按章节分解成多个qmd文件， 其中可以包含可执行的R/Python/Julia/observable等代码， 代码生成的统计汇总结果、表格、图形可以自动插入到生成的内容中， 而且其中的表格和图形也是浮动。书的输出格式包括支持gitbook格式的网页图书， 也可以经LaTeX 编译器转换的PDF图书，还 可以生成ePub等格式的电子书。\n目前Quarto支持在RStudio、VS Code(甚至Python Jupyter)的集成环境中编辑、管理和生成图书.\n关于浮动对象标签的设定与应用见第  2.6 节的汇总表格及后续各章的介绍与示例.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#sec-sec2-3",
+    "href": "quarto.html#sec-sec2-3",
+    "title": "2  Quarto书稿速览",
+    "section": "2.3 书的基本设置",
+    "text": "2.3 书的基本设置\n一本用bookdown管理的书， 一般放置在某个子目录下，并作为一个RStudio项目(project)用RStudio管理。该目录中的所有的文本文件都要使用UTF-8编码。\n\n2.3.1 index.Rmd文件\n一本bookdown书， 一般都需要有一个index.Rmd文件， 这是最后生成的网站的主页的原始文件. 这个文件的开始是YAML元数据部分, 进行全书的有关设置，包括标题、作者、日期及影响全书的一些选项等，放在三个减号组成的两行之间。然后写一些这本书的说明，如书的前言部分。index.Rmd中YAML元数据部分的一个例子如下：\ntitle: \"bookdown书稿模板\"\nauthor: \"汤银才\"\ndate: \"2024-06-15\"\ndocumentclass: book\nbibliography: [myrefs.bib]\nbiblio-style: apa\nlink-citations: yes\nsite: bookdown::bookdown_site\ndescription: \"bookdown写书体验非常好.\"\n注意:\n\nsite选项很重要， 一定要有， site: bookdown::bookdown_site使得RStudio能辨认这是一个bookdown图书项目， 从而为其生成一键编译的build快捷方式；\n在bookdown项目中与index.Rmd同级的所有.Rmd文件都自动作为书的一章，其好处是作者可以任意地增删章节，编译整本书时将按照文件名的字典序依次进行。实际上， 也可以在_output.yml文件中设置一项rmd_files， 列出所有需要作为一章的文件，并以列出次序编译；\n在index.Rmd的元数据中也可以指定一些的选项, 例如\n\nfontsize: 12pt\nindent: true\nlinestretch: 2.0\nlink-citations: yes\ncolorlinks: yes\nlot: true\nlof: true\ngeometry:\n- a4paper\n- tmargin=2.5cm\n- bmargin=2.5cm\n- lmargin=3.5cm\n- rmargin=2.5cm\n\n\n2.3.2 _bookdown.yml文件\n一个bookdown图书项目除了index.Rmd文件之外，还有一些设置文件从index.Rmd文件的元数据部分抽离出来。 一个是_bookdown.yml文件, 它存放与整本书的处理有关的YAML元数据。 例如\nbook_filename: \"bookdown-template\"\nnew_session: yes\nlanguage:\n  label:\n    fig: \"图 \"\n    tab: \"表 \"\n    thm: '定理'\n    def: '定义'\n    exm: '例'\n    proof: '证明: '\n  ui:\n    chapter_name: [\"第 \", \" 章\"]\n其中new_session: true设置很重要，这使得每一个Rmd文件中的R程序都在一个单独的R会话中独立地运行，避免了不同Rmd文件之间同名变量和同名标签的互相干扰。 book_filename是最终生成的PDF图书或者ePub电子书的主文件名。 language下可以定制一些与章节名、定理名等有关的名称。\n\n\n2.3.3 _output.yml文件\n另一个设置文件是_output.yml， 用于图书输出格式的设置1, 本小删子的_output.yml文件内容如下\nbookdown::gitbook:\n  css: css/style.css\n  split_by: chapter\n  includes:\n    in_header: _header.html\n  config:\n    toc:\n      collapse: subsection\n      scroll_highlight: yes\n      before: |\n        &lt;li&gt;&lt;a href=\"./\"&gt;bookdown排版模板&lt;/a&gt;&lt;/li&gt;\n      after: |\n        &lt;li&gt;&lt;a href=\"https://bookdown.org\" target=\"blank\"&gt;本书由 bookdown 强力驱动&lt;/a&gt;&lt;/li&gt;\n    download: [pdf, epub]\n    edit: https://github.com/yihui/bookdown-chinese/edit/master/%s\n    sharing:\n      github: yes\n      facebook: no\n  pandoc_args: [ \"--csl\", \"apa-6th-edition-no-ampersand.csl\" ]\nbookdown::pdf_book:\n  includes:\n    in_header: latex/preamble.tex\n    before_body: latex/before_body.tex\n    after_body: latex/after_body.tex\n  keep_tex: yes\n  dev: \"cairo_pdf\"\n  latex_engine: xelatex\n  citation_package: biblatex\n  template: latex/template.tex\n  toc_depth: 3\n  toc_unnumbered: no\n  toc_appendix: yes\n  quote_footer: [\"\\\\begin{flushright}\", \"\\\\end{flushright}\"]\n  pandoc_args: [ \"--top-level-division=chapter\" ]\nbookdown::epub_book:\n  stylesheet: css/style.css\n  pandoc_args: [ \"--csl\", \"apa-6th-edition-no-ampersand.csl\" ]\n它分别对gitbook、pdf_book和epub_book三种输出格式设置了一些输出选项。其中一些选项是通过文件形式给出设置的，我们再补充说明一下。\n\nstyle.css是自定义的CSS显示格式，在gitbook和epub_book中使用;\n_header.html是插入了一部分个性化的HTML代码，其内容将出现在每个生成的HTML文件的head部分。我们在此文件中给出了使用本地的Mathjax实现数学公式离线显示的设置，内容为\n\n&lt;script type=\"text/x-mathjax-config\"&gt;\nMathJax.Hub.Config({\n  jax: [\"input/TeX\",\"output/SVG\"],\n  extensions: [\"tex2jax.js\",\"MathMenu.js\",\"MathZoom.js\"],\n  TeX: {\n    Macros: {\n      bm: [\"{\\\\boldsymbol #1}\",1],\n    }, \n    extensions: [\"AMSmath.js\",\"AMSsymbols.js\",\"noErrors.js\",\"noUndefined.js\"]\n  }\n});\n\n&lt;/script&gt;\n&lt;script type=\"text/javascript\"\n  src=\"http://127.0.0.1/MathJax/MathJax.js\"&gt;\n&lt;/script&gt;\n其中http://127.0.0.1/MathJax/是本地服务器上Mathjax的位置。有关Mathjax的本地安装与启动可参考第 附录 A 章的介绍;\n\napa-6th-edition-no-ampersand.csl 是gitbook和epub_book处理文献使用的风格文件;\npreamble.tex是处理(编译)bookdown文件经pandoc转化生成的tex文件时导言区需要额外的宏包和设置;\nbefore_body.tex 是tex书稿类正文前面的设置，最基本的是\n\n \\frontmatter\n\nafter_body.tex 是tex书稿类正文之后的设置，最基本的是\n\n\\backmatter\n7. `template.tex` 是针对`bookdown`编译经`pandoc`转化生成的`tex`文件时的模板，由它生成供`latex_engine`指定的编译方式(`xelatex`)编译的`tex`文件. `index.Rmd`及`_output.yml`中的设置会嵌入到这个模板中，生成完整的单文档`tex`源文件.   \n其他选项说明：\n\nsplit_by: chapter: 按章分割书稿；\ncollapse: subsection: 目录中隐藏子节(仅显示二级标题)；\nscroll_highlight: yes: 目录滚动时高亮显示，便于定位；\nkeep_tex: yes: 保留中间生成的tex源文件，便于查错；\ndev: \"cairo_pdf\": 使用cairo_pdf()生成 编译需要的图片文件;\nlatex_engine: xelatex: TeX文件的排版引擎为 XeTeX , 针对UTF-8编码;\ncitation_package: biblatex: 文献引用库指定为biblatex, 另一个为natbib;\ntoc_depth: 3: 目录提取至三级标题;\ntoc_unnumbered: no: 指定目录编号;\ntoc_appendix: yes: 附录添加到目录中.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#sec-sec2-4",
+    "href": "quarto.html#sec-sec2-4",
+    "title": "2  Quarto书稿速览",
+    "section": "2.4 章节结构",
+    "text": "2.4 章节结构\n如前所述, 除了index.Rmd文件， 项目中每个.Rmd文件都作为一章，其第一行是以一个#号和空格开头的一级标题。\n每一章可以有若干节与子节，分别用markdown的二级标题(二个#开始)和三级标题(三个#开始)编写。bookdown的章、节、子节标题单独成一行，其后可以添加标签, 章节的标签是标题后加空格，然后是大括号内以#号开头的标签， 如\n# 引言 {#intro}\n\n## 关于bookdown {#bookdown}\nbookdown中有二个特殊的标题：\n\n部分\n内容相近的章节可以作为一个”部分”。 为此，在一个部分的第一个章节文件的章标题前面增加一行， 以# (PART) 开头， 以{-}结尾，例如\n\n   # (PART) bookdown中的浮动对象 {-}\n\n附录\n一本书的最后可以有附录， 附录的章节将显示为A.1, B.1这样的格式。 为此， 在附录章节的第一个文件开头加如下的第一行标题行：\n\n   # (APPENDIX) 附录 {-}\n\n   # biblatex介绍 {#biber}",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#sec-sec2-5",
+    "href": "quarto.html#sec-sec2-5",
+    "title": "2  Quarto书稿速览",
+    "section": "2.5 书的编译",
+    "text": "2.5 书的编译\n在index.Rmd或者_bookdown.yml中设置site: bookdown::bookdown_site后， RStudio就能识别这个项目是一个bookdown项目， 这时RStudio会有一个Build按钮，其中有Build book快捷图标， 从下拉菜单中选择一个输出格式（包括gitbook、pdf_book、epub_book）， 就可以编译整本书(见图 ?fig-rmd)。\n经build编译生成的图书默认保存在_book子目录中2。\n\n对gitbook格式(即HTML网页格式)， 编译完成后会弹出一个预览窗口， 点击”Show in new window “按钮可以将内容在操作系统默认的网络浏览器中打开。我们也可以用其他浏览器(建议使用Google chrome浏览器)打开_book子目录中的index.html文件来查看gitbook格式的图书。\n对于pdf_book格式，如果成功编译3， 也会弹出一个PDF预览窗口。 可以在_book子目录中找到这个PDF文件。\n对于epub_book格式，如果成功编译，会在操作系统默认的ePub软件(如苹果电脑的book)中打开,并在_book子目录中找到这个ePub文件。",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#sec-sec2-6",
+    "href": "quarto.html#sec-sec2-6",
+    "title": "2  Quarto书稿速览",
+    "section": "2.6 浮动对象标签与引用汇总",
+    "text": "2.6 浮动对象标签与引用汇总\n\n\n\n浮动对象\n标签设置\n引用格式\n\n\n\n\n标题\n{#sec-label}\n@sec-label\n\n\n公式\n{#eq-label}\n(@eq-label)\n\n\n图形\nlabel=\"label\"\n\\@ref(fig:label)\n\n\n表格\nlabel=\"label\"\n\\@ref(tab:label)\n\n\n定理\nlabel=\"label\"\n\\@ref(prefix:label)\n\n\n文本\n(ref:label)\n`(ref:label)`\n\n\n文献\nbiblabel\n@biblabel\n\n\n\n注：\n\n定理泛指定理类，包括定理(thm)、引理(lem)、推论(cor)、命题(prp)、设想(cnj)、定义(def)、例子(exm)、习题(exr)等, 其中括号中是引用时的前缀(prefix);\n文本标签在单独一行中设定，可用在表格与图形的caption中引用，即在 fig.caption, tab.caption选项的设置中引用；\n定理类环境标签前缀的汉化可在_bookdown.yml中通过language进行4，例如\n\nlanguage:\n  label:\n    fig: \"图 \"\n    tab: \"表 \"\n    thm: '定理'\n    def: '定义'\n    exm: '例'\n\n\nR Core Team, 2021. R: A Language and Environment for Statistical\nComputing[M/OL]. Vienna, Austria: R Foundation for Statistical\nComputing. https://www.R-project.org/.\n\n\nXie Y, 2015. Dynamic Documents with R and Knitr[M/OL]. 2nd\n版. Boca Raton, Florida: Chapman; Hall/CRC. http://yihui.name/knitr/.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "quarto.html#footnotes",
+    "href": "quarto.html#footnotes",
+    "title": "2  Quarto书稿速览",
+    "section": "",
+    "text": "这部分内容也可以包含在index.Rmd的元数据部分↩︎\n可以在_bookdown.yml中设置output_dir项改变图书保存的子目录.↩︎\n需要支持，建议安排TeXLive，也可以仅安装谢益辉为rmarkdown开发的tinytex↩︎\n图形与表格也可同理汉化↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>`Quarto`书稿速览</span>"
+    ]
+  },
+  {
+    "objectID": "sections.html",
+    "href": "sections.html",
+    "title": "3  Quarto 书稿中的章节标题",
+    "section": "",
+    "text": "3.1 章节标题\n我们在第  3 章讲述章节标题的设置、标签与引用.\n章节标题用遵从markdown的规则，用#设置，\n还可以有更深的标题设置.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Quarto 书稿中的章节标题</span>"
+    ]
+  },
+  {
+    "objectID": "sections.html#sec3-1",
+    "href": "sections.html#sec3-1",
+    "title": "3  Quarto 书稿中的章节标题",
+    "section": "",
+    "text": "一级标题用一个井号 #, 在quarto书稿中表示章, 相当于 TeX 中的\\chapter{}\n二级标题用二个井号 ##, 在quarto书稿中表示节, 相当于 TeX 中的\\section{}\n三级标题用三个井号 ###, 在quarto书稿中表示子节, 相当于 TeX 中的\\subsection{}",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Quarto 书稿中的章节标题</span>"
+    ]
+  },
+  {
+    "objectID": "sections.html#sec-sec3-2",
+    "href": "sections.html#sec-sec3-2",
+    "title": "3  Quarto 书稿中的章节标题",
+    "section": "3.2 章节标题标签的设定与引用",
+    "text": "3.2 章节标题标签的设定与引用\nQuarto 书稿中章节标题标签可在标题后用 {#sec-label}来设定，引用方式为@sec-label. 例如\n第 @sec-sections 章 第 @sec-sec3-2 节讨论标题标签的设定与引用.\n显示为：\n第  3 章 第  3.2 节讨论标题标签的设定与引用.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Quarto 书稿中的章节标题</span>"
+    ]
+  },
+  {
+    "objectID": "formulas.html",
+    "href": "formulas.html",
+    "title": "4  Quarto 书稿中的公式与定理",
+    "section": "",
+    "text": "4.1 公式标签的设定与引用\n这是第  4 章的内容, 讲述浮动对象定理与公式的标签与引用.\nQUarto借助mathjax(或katex)处理数学公式的渲染; 尽管可通过联网由cdn上的mathjax.js进行渲染，但速度随因公式的增加，渲染变得很慢，甚至出错。mathjax的本地化是提速的主要解决方案, 详见 附录 A 介绍；",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quarto 书稿中的公式与定理</span>"
+    ]
+  },
+  {
+    "objectID": "formulas.html#sec-sec4-1",
+    "href": "formulas.html#sec-sec4-1",
+    "title": "4  Quarto 书稿中的公式与定理",
+    "section": "",
+    "text": "4.1.1 {#eq-label} 标签\nQuarto中无论是单行公式还是多行公式，均通过公式无标号的公式环境(一对$$)实现， 其后添加标签, 格式为 {#eq-label}, 其中eq是关键字，例如\n$$ \n  \\left(k\\right) = \\binom{n}{k} p^k\\left(1-p\\right)^{n-k}\n$$ {#eq-binom}  \n显示为单行公式 \\[\n  f\\left(k\\right) = \\binom{n}{k} p^k\\left(1-p\\right)^{n-k}\n\\tag{4.1}\\]\n对于多行公式可以采用aligned环境，但目前仅可对整个公式组设置标签，例如\n$$\n\\begin{aligned} \ng(X_{n}) &= g(\\theta)+g'({\\tilde{\\theta}})(X_{n}-\\theta) \\notag \\\\\n\\sqrt{n}[g(X_{n})-g(\\theta)] &= g'\\left({\\tilde{\\theta}}\\right)\n  \\sqrt{n}[X_{n}-\\theta ] (\\#eq:align)\n\\end{aligned}\n$$ {#eq-align}\n显示为 \\[\n\\begin{aligned}\ng(X_{n}) &= g(\\theta)+g'({\\tilde{\\theta}})(X_{n}-\\theta) \\notag \\\\\n\\sqrt{n}[g(X_{n})-g(\\theta)] &= g'\\left({\\tilde{\\theta}}\\right)\n  \\sqrt{n}[X_{n}-\\theta ]\n\\end{aligned}\n\\tag{4.2}\\]\n在这种情形下, 公式的引用采用 @eq-label, 例如上面的二个公式可引用为： 公式(4.1) 和 公式(4.2).\n\n\n4.1.2 \\label 标签\n\n为了和LaTeX一样使用 \\label 和 \\ref 或 \\eqref 去设定与引用公式标签，我们需要在上面创建的 mathjax.html 文件中，添加如下脚本:\n\n&lt;script&gt;\n  MathJax = {\n    tex: {\n      tags: 'ams',  // should be 'ams', 'none', or 'all'\n    }\n  };\n&lt;/script&gt;\n\n\n我们可以将 equation 和 aligned 环境结合起来输入多行公式，对整个公式组设置一个 \\label，例如：\n\n\\begin{equation}\n\\begin{aligned} \ng(X_{n}) &= g(\\theta)+g'({\\tilde{\\theta}})(X_{n}-\\theta)\\\\\n\\sqrt{n}[g(X_{n})-g(\\theta)] &= g'\\left({\\tilde{\\theta}}\\right)\n  \\sqrt{n}[X_{n}-\\theta ]  \n\\end{aligned}\\label{eq-1}\n\\end{equation}\n显示为\n\\[\\begin{equation}\n\\begin{aligned}\ng(X_{n}) &= g(\\theta)+g'({\\tilde{\\theta}})(X_{n}-\\theta)\\\\\n\\sqrt{n}[g(X_{n})-g(\\theta)] &= g'\\left({\\tilde{\\theta}}\\right)\n  \\sqrt{n}[X_{n}-\\theta ]  \n\\end{aligned}\\label{eq-1}\n\\end{equation}\\]\n\n\n我们还可以用 align 等环境输入多行公式，每行公式设置一个 \\label，例如：\n\n\\begin{align}\na^n &=  a\\cdot a \\cdot a \\cdot \\ldots \\label{eq-2}\\\\\na^n &= p \\label{eq-3}\n\\end{align}\n显示为 \\[\\begin{align}\na^n &=  a\\cdot a \\cdot a \\cdot \\ldots \\label{eq-2}\\\\\na^n &= p \\label{eq-3}\n\\end{align}\\]\n在这种情形下，我们可以用和 TeX 一样的方式来引用公式，引用方式为 \\eqref{label}，例如：公式 \\(\\eqref{eq-1}\\) 和 \\(\\eqref{eq-3}\\).\n\n\n\n\n\n\n\n注释\n\n\n\n{#eq-label} 和 \\label 标签有各自适用的应用场景.\n\n在Markdown 转换(render)为 PDF 时, Quarto 先将 Markdown 转换为 TeX，再利用 TeX 系统编译输出 PDF. 在此过程中，{#eq-label} 标签被自动转换为\\label 标签，因此两种标签会在 PDF 中合并编号;\n在Markdown 转换(render)为 HTML 时, {#eq-label} 标签会转换为静态的 \\tag 标签，而 \\label 标签保持不变，因此会出现两种标签相互独立、分别编号的情况;\n在 Markdown 转换(render)为 ePub 时, {#eq-label} 标签会被保留，而 \\label 标签无法显示.\n\n因此，我们不建议混用 {#eq-label} 和 \\label 这两种标签，尤其在多格式出版中，为尽量保证不同格式文件内容的一致性，应优先考虑使用 {#eq-label} 标签，暂时舍弃 \\label 标签以及多行公式的逐行引用，将这个问题留给 Quarto 在将来的升级版本中解决.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quarto 书稿中的公式与定理</span>"
+    ]
+  },
+  {
+    "objectID": "formulas.html#sec4-2",
+    "href": "formulas.html#sec4-2",
+    "title": "4  Quarto 书稿中的公式与定理",
+    "section": "4.2 定理标签的设定与引用",
+    "text": "4.2 定理标签的设定与引用\n这里我们给出几个Quarto书稿中定理类环境的例子.\n\n引理 4.1 带标签的引理.\n\n\n定理 4.1 (无限群) 带标签与名字的定理.\n\n\n证明. 这里是定理的证明部分.\n\n\n定义 4.1 带标签的定义.\n\n\n例 4.1 带标签的例子.\n\n定理类引用的示例: 4.1, 定义 4.1 定理 4.1.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quarto 书稿中的公式与定理</span>"
+    ]
+  },
+  {
+    "objectID": "formulas.html#sec4-3",
+    "href": "formulas.html#sec4-3",
+    "title": "4  Quarto 书稿中的公式与定理",
+    "section": "4.3 数学公式的扩展",
+    "text": "4.3 数学公式的扩展\n有些公式无法用 TeX 中包的命令来实现，例如粗体数学符号，尽管在 TeX 中有个bm包在数学环境下通过\\bm{\\alpha} 来实现\\boldsymbol{\\alpha}的功能，但在html下需要给mathjax做个TeX 宏(macro)bm1:\n  TeX: {\n    Macros: {\n      bm: [\"{\\\\boldsymbol #1}\",1],\n    },\n  }\n此时由$\\bm\\alpha$,出来的效果为 \\(\\bm\\alpha\\).\n有关数据公式的标签与应用可参考mathjax官方文档, Mathjax 2.7的本地化安装参考 附录 A 介绍.",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quarto 书稿中的公式与定理</span>"
+    ]
+  },
+  {
+    "objectID": "formulas.html#footnotes",
+    "href": "formulas.html#footnotes",
+    "title": "4  Quarto 书稿中的公式与定理",
+    "section": "",
+    "text": "配置在MathJax.Hub.Config下进行，具体参见Mathjax技术文档说明↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Quarto 书稿中的公式与定理</span>"
+    ]
+  },
+  {
+    "objectID": "figures.html",
+    "href": "figures.html",
+    "title": "5  Quarto 书稿中的图形的处理",
+    "section": "",
+    "text": "5.1 由R生成单个图形示例\n第  5 章将通过具体的示例展示浮动对象图形的标签与引用.\n这是最为常见的情形, 只涉及一个R的绘图主命令.\n显示为",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto 书稿中的图形的处理</span>"
+    ]
+  },
+  {
+    "objectID": "figures.html#sec-figures-1",
+    "href": "figures.html#sec-figures-1",
+    "title": "5  Quarto 书稿中的图形的处理",
+    "section": "",
+    "text": "#| label: fig-fig5-1\n#| fig: TRUE\n#| echo: FALSE\n#| fig.cap: \"`iris`数据集`Petal.Length ~ Species`的箱线图.\"\nboxplot(Petal.Length ~ Species, data = iris,\n        ylab = \"Petal length\", xlab = \"Species\", col = \"gray\")\n\n\n\n\n\n\n\n注释\n\n\n\n图形的标签由R代码块中的label: fig-xxx给出, 其中fig是关键字.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto 书稿中的图形的处理</span>"
+    ]
+  },
+  {
+    "objectID": "figures.html#sec-figures-2",
+    "href": "figures.html#sec-figures-2",
+    "title": "5  Quarto 书稿中的图形的处理",
+    "section": "5.2 由R生成两个图形并置或堆叠",
+    "text": "5.2 由R生成两个图形并置或堆叠\n在R的代码块选项中设置fig-subcap: true或fig-subcap加上子图的图例，并添加layout-ncol: 2就可获得二个子图的并置. 例如下面的代码\n#| label: fig-fig5-2\n#| fig-cap: \"`iris`数据集`Petal.Length ~ Species` 的散点图. 右侧的图像中散点类型通过`Species`因子的水平给出，见图例. 直线为数据集拟合线性模型的结果.\"\n#| fig-subcap: \n#|   - \"散点图\"\n#|   - \"添加回归线\"\n#| layout-ncol: 2\nplot(Petal.Length ~ Petal.Width, data = iris)\nplot(Petal.Length ~ Petal.Width, data = iris,\n     pch = c(21, 8, 19)[as.numeric(iris$Species)])\nlegend(\"topleft\", pch = c(21, 8, 19),\n       legend = levels(iris$Species), box.lty = 0)\nlm1 &lt;- lm(Petal.Length ~ Petal.Width, data = iris)\nabline(lm1)     #在散点图中添加拟合线\n在html正常的浏览中得到两个左右并置的图形.\n\n\n\n\n\n\n\n\n\n\n\n(a) 散点图\n\n\n\n\n\n\n\n\n\n\n\n(b) 添加回归线\n\n\n\n\n\n\n\n图 5.1: iris数据集Petal.Length ~ Species 的散点图. 右侧的图像中散点类型通过Species因子的水平给出，见图例. 直线为数据集拟合线性模型的结果.\n\n\n\n类似地，通过选项layout-nrow: 2就可将二个子图堆叠起来. R代码\n#| label: fig-fig5-3\n#| fig-cap: \"`iris`数据集`Petal.Length ~ Species` 的散点图. 下图的图像中散点类型通过`Species`因子的水平给出，见图例. 直线为数据集拟合线性模型的结果.\"\n#| fig-subcap: \n#|   - \"散点图\"\n#|   - \"添加回归线\"\n#| layout-nrow: 2   \nplot(Petal.Length ~ Petal.Width, data = iris)\nplot(Petal.Length ~ Petal.Width, data = iris,\n     pch = c(21, 8, 19)[as.numeric(iris$Species)])\nlegend(\"topleft\", pch = c(21, 8, 19),\n       legend = levels(iris$Species), box.lty = 0)\nlm1 &lt;- lm(Petal.Length ~ Petal.Width, data = iris)\nabline(lm1)     #在散点图中添加拟合线\n在html正常的浏览中得到两个上下堆叠的图形.\n\n\n\n\n\n\n\n\n\n\n\n\n(a) 散点图\n\n\n\n\n\n\n\n\n\n\n\n\n\n(b) 添加回归线\n\n\n\n\n\n\n\n图 5.2: iris数据集Petal.Length ~ Species 的散点图. 下图的图像中散点类型通过Species因子的水平给出，见图例. 直线为数据集拟合线性模型的结果.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto 书稿中的图形的处理</span>"
+    ]
+  },
+  {
+    "objectID": "figures.html#sec-figures-3",
+    "href": "figures.html#sec-figures-3",
+    "title": "5  Quarto 书稿中的图形的处理",
+    "section": "5.3 单个静态图形的插入",
+    "text": "5.3 单个静态图形的插入\n在Quarto中插入本地图形可使用命令. 代码\n#| label: fig-fig4-4\n#| fig.align: 'center'\n#| out.width: '70%'\n#| fig.cap: 'R logo'\nknitr::include_graphics(\"figures/Rlogo.png\")\n给出了R的 logo 图.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto 书稿中的图形的处理</span>"
+    ]
+  },
+  {
+    "objectID": "figures.html#sec-figures-4",
+    "href": "figures.html#sec-figures-4",
+    "title": "5  Quarto 书稿中的图形的处理",
+    "section": "5.4 静态图形的并置",
+    "text": "5.4 静态图形的并置\n::: {#fig-program layout-ncol=\"3\"}\n![R](figures/Rlogo.png){#fig-R}\n\n![Python](figures/python.png){#fig-python}\n\n![Julia](figures/julia.png){#fig-julia}\n\n数据科学的编程语言\n:::\n得到R, Python和Julia三个logo的并置.\n\n\n\n\n\n\n\n\n\n\n\n(a) R\n\n\n\n\n\n\n\n\n\n\n\n(b) Python\n\n\n\n\n\n\n\n\n\n\n\n(c) Julia\n\n\n\n\n\n\n\n图 5.3: 数据科学中的编程语言\n\n\n\n\n\n\n\n\n\n注释\n\n\n\n静态图形的插入我们可以使用knitr程序包中的命令include_graphics(). 例如上面的代码等价于",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto 书稿中的图形的处理</span>"
+    ]
+  },
+  {
+    "objectID": "figures.html#sec5-5",
+    "href": "figures.html#sec5-5",
+    "title": "5  Quarto 书稿中的图形的处理",
+    "section": "5.5 图形引用",
+    "text": "5.5 图形引用\n图形引用通过R代码块的标签引用, 并带前缀fig-, 例如\n图 @fig-fig5-2 和图 @fig-fig5-3 为两个图的并置与堆叠.\n输出为:\n图 5.1 和 图 5.2 为两个图的并置与堆叠.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Quarto 书稿中的图形的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html",
+    "href": "tables.html",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "",
+    "text": "6.1 表格示例1：由数据生成表格\n第  6 章将通过具体的示例展示浮动对象“表格”的标签与引用技巧.\n代码\n输出为\n表 6.1: mtcars数据的前5行.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#sec-tables-1",
+    "href": "tables.html#sec-tables-1",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "",
+    "text": "#| label: tbl-mtcars\n#| tbl-cap: \"mtcars数据的前5行.\"\nlibrary(knitr)\nkable(head(mtcars[, 1:5], 10))\n\n\n\n\n\n\n\n\n注释\n\n\n\n表格的标签由R代码块中的label: tbl-xxx给出, 其中tbl是关键字.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#sec-tables-2",
+    "href": "tables.html#sec-tables-2",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "6.2 表格示例2: 由数据框构造表格",
+    "text": "6.2 表格示例2: 由数据框构造表格\n代码\n#| label: tbl-tab3-2\n#| tbl-cap: '遗传连接模型例子中观测到的频数 $y_i$ 和频率 $p(y_i|\\pi)$，$i=1, \\dots ,4$，197个动物.'\n#| echo: FALSE\n#| results: \"asis\"\ntab.pis &lt;- data.frame(\n  C = c(\"Frequency $y_i$\", \"Probability $p(y_i\\\\mid\\\\pi)$\"),\n  V1 = c(\"125\", \"$\\\\frac{1}{2}+\\\\frac{\\\\pi}{4}$\"),\n  V2 = c(\"18\",\"$\\\\frac{1}{4}(1-\\\\pi)$\"),\n  V3 = c(\"20\",\"$\\\\frac{1}{4}(1-\\\\pi)$\"),\n  V4 = c(\"34\",\"$\\\\frac{1}{4}$\")\n)\nnames(tab.pis) &lt;- c(\"Category\", \"1\", \"2\", \"3\", \"4\") \n\nknitr::kable(tab.pis, escape = FALSE)\n输出为\n\n\n\n表 6.2: 遗传连接模型例子中观测到的频数 \\(y_i\\) 和频率 \\(p(y_i|\\pi)\\)，\\(i=1, \\dots ,4\\)，197个动物.\n\n\n\n\n\n\n\n\n\n\n\n\nCategory\n1\n2\n3\n4\n\n\n\n\nFrequency \\(y_i\\)\n125\n18\n20\n34\n\n\nProbability \\(p(y_i\\mid\\pi)\\)\n\\(\\frac{1}{2}+\\frac{\\pi}{4}\\)\n\\(\\frac{1}{4}(1-\\pi)\\)\n\\(\\frac{1}{4}(1-\\pi)\\)\n\\(\\frac{1}{4}\\)\n\n\n\n\n\n\n\n\n\n\n\n\n注释\n\n\n\n表格中的题图通过tbl-cap:由文本引用生成.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#sec-tables-3",
+    "href": "tables.html#sec-tables-3",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "6.3 表格示例3: 由markdwon表格直接生成",
+    "text": "6.3 表格示例3: 由markdwon表格直接生成\nINLA可处理的分布/似然有60种, 6.3 仅列出了其中的一部分.\n\n| **Value**  | **Likelihood** |\n|------------|----------------|\n| `poisson`  | Poisson        |\n| `binomial` | Binomial       |\n| `t`        | Student's t    |\n| `gamma`    | Gamma          |\n\n: `INLA`提供的一些似然. {#tbl-liks}\n输出为\n\n\n\n表 6.3: INLA提供的一些似然.\n\n\n\n\n\nValue\nLikelihood\n\n\n\n\npoisson\nPoisson\n\n\nbinomial\nBinomial\n\n\nt\nStudent’s t\n\n\ngamma\nGamma\n\n\n\n\n\n\n\n\n\n\n\n\n注释\n\n\n\n\n表格中%用\\\\%\n表格中latex命令用\\\\代替\\\n前二种方法中表格的标签由R代码块中的’label:’给出.",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#sec-tables-4",
+    "href": "tables.html#sec-tables-4",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "6.4 markdown子表的并置",
+    "text": "6.4 markdown子表的并置\n::: {#tbl-panel layout-ncol=\"2\"}\n| Col1 | Col2 | Col3 |\n|------|------|------|\n| A    | B    | C    |\n| E    | F    | G    |\n| A    | G    | G    |\n\n: 第一个表格 {#tbl-first}\n\n| Col1 | Col2 | Col3 |\n|------|------|------|\n| A    | B    | C    |\n| E    | F    | G    |\n| A    | G    | G    |\n\n: 第二个表格 {#tbl-second}\n\n二个子表的并置\n:::\n输出为\n\n\n\n表 6.4: 二个子表的并置\n\n\n\n\n\n\n\n(a) 第一个表格\n\n\n\n\n\nCol1\nCol2\nCol3\n\n\n\n\nA\nB\nC\n\n\nE\nF\nG\n\n\nA\nG\nG\n\n\n\n\n\n\n\n\n\n\n\n(b) 第二个表格\n\n\n\n\n\nCol1\nCol2\nCol3\n\n\n\n\nA\nB\nC\n\n\nE\nF\nG\n\n\nA\nG\nG",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#sec-tables-5",
+    "href": "tables.html#sec-tables-5",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "6.5 数据子表的并置与堆叠",
+    "text": "6.5 数据子表的并置与堆叠\n在R的代码块选项中设置tbl-subcap: true或tbl-subcap加上子表的图例，并添加layout-ncol: 2就可获得二个子表的并置.\n#| label: tbl-tables\n#| tbl-cap: \"两个表格并置示例2\"\n#| tbl-subcap:\n#|   - \"Cars数据\"\n#|   - \"Pressure数据\"\n#| layout-ncol: 2\n\nlibrary(knitr)\nkable(head(cars))\nkable(head(pressure))\n输出为\n类似地，通过选项layout-nrow: 2就可将二个子图堆叠起来.\n#| label: tbl-tables-by-row\n#| tbl-cap: \"两个表格堆叠示例\"\n#| tbl-subcap:\n#|   - \"mtcars数据\"\n#|   - \"iris数据\"\n#| layout-nrow: 2\n\nlibrary(knitr)\nkable(head(mtcars))\nkable(head(iris))\n输出为",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "tables.html#sec-tables-6",
+    "href": "tables.html#sec-tables-6",
+    "title": "6  Quarto 书稿中的表格的处理",
+    "section": "6.6 表格引用",
+    "text": "6.6 表格引用\n表格引用由代码块的标签(设为label)引用实现, 并带前缀tbl-, 由@tbl-label实现. 例如\n本章共出现二个表格并置的示例，即 表 @tbl-panel, 表 @tbl-tables 和  @tbl-second.\n输出为：\n本章共出现二个表格并置的示例，即 表 6.4, 表 6.5 和 6.4 (b).",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Quarto 书稿中的表格的处理</span>"
+    ]
+  },
+  {
+    "objectID": "bibs.html",
+    "href": "bibs.html",
+    "title": "7  Quarto书稿中的文献排版",
+    "section": "",
+    "text": "7.1 文献库建立样例\n这是第  7 章的内容，讲解文献库的建立、文献格式与排版方法.\n根据文献的类型，文献库的格式有14种类型，它们由title,author, journal,address等域构成. 最为常见的文献类型是论文(article)和图书(book), 它们的格式如下\n其余类型参见网页:The 14 BibTeX entry types. 文献库通过BiBTeX或BiBer的运行生成文献目录(bibliography).",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`Quarto`书稿中的文献排版</span>"
+    ]
+  },
+  {
+    "objectID": "bibs.html#sec-bibs-1",
+    "href": "bibs.html#sec-bibs-1",
+    "title": "7  Quarto书稿中的文献排版",
+    "section": "",
+    "text": "@article{CitekeyArticle,\n      author   = \"P. J. Cohen\",\n      title    = \"The independence of the continuum hypothesis\",\n      journal  = \"Proceedings of the National Academy of Sciences\",\n      year     = 1963,\n      volume   = \"50\",\n      number   = \"6\",\n      pages    = \"1143--1148\",\n    }\n    @book{CitekeyBook,\n      author    = \"Leonard Susskind and George Hrabovsky\",\n      title     = \"Classical mechanics: the theoretical minimum\",\n      publisher = \"Penguin Random House\",\n      address   = \"New York, NY\",\n      year      = 2014\n    }",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`Quarto`书稿中的文献排版</span>"
+    ]
+  },
+  {
+    "objectID": "bibs.html#sec-bibs-2",
+    "href": "bibs.html#sec-bibs-2",
+    "title": "7  Quarto书稿中的文献排版",
+    "section": "7.2 文献风格",
+    "text": "7.2 文献风格\n不同的期刊、书集对文献目录中参考文献的呈现方式有不同的要求，BiBTeX是通过风格(style)文件来控制(配合宏包natbib使用), BiBer是通过选项来控制(配合biblatex使用).\n文献呈现的风格分为作者-日期格式(author-date style)和数字格式(numeric). 作者-日期格式共有141个式样，其中最为常用的式样有2个，即alpha和apalike. 数据格式共88个式样，其中有8类是标准式样，也是最常用的式样，即abbrv, acm,ieeetr,plain,siam, 和unsrt. 这些式样的具体形式与介绍见\n中文的文献排版根据国标GB/T77114-2015的规范，对文献的类型要求提供文献的标识代码，共有18个，例如图书用M标识，期刊论文用J标识.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`Quarto`书稿中的文献排版</span>"
+    ]
+  },
+  {
+    "objectID": "bibs.html#sec-bibs-3",
+    "href": "bibs.html#sec-bibs-3",
+    "title": "7  Quarto书稿中的文献排版",
+    "section": "7.3 中文文献风格的设置",
+    "text": "7.3 中文文献风格的设置\n基于BiBTeX, 中文文献通过宏包gbt7714实现1，兼容宏包natbib，在 LaTeX 中使用方法如下：\n\n在导言区调用宏包 gbt7714；\n在正文中 \\cite{}等引用文献；\n使用 \\bibliographystyle{} 选择参考文献表的样式；\n使用 \\bibliography{} 命令生成参考文献表;\n编译生成带文献的pdf文件，基于xelatex引擎的编译方式如下(foo.tex为文件名)\n\n    xelatex foo.tex\n    bibtex foo\n    xelatex foo.tex\n    xelatex foo.tex\n基于BiBer, 中文文献通过宏包biblatex-gb7714-2015 实现2，兼容宏包biblatex. 本质上biblatex-gb7714-2015 是个式样宏包，依附于宏包biblatex, 通过式样选项使用. 在 LaTeX 中使用方法如下：\n\n在导言区调用宏包 biblatex, 并设定文献样本和， 例如；\n\n使用顺序编码制：\n\n\\usepackage[backend=biber,style=gb7714-2015]{biblatex}\n\n使用著者-出版年制3：\n\n \\usepackage[backend=biber,style=gb7714-2015ay]{biblatex}\n在\\begin{document}加载参考文献库，命令为\\addbibresource{}\n在正文中 \\cite{} 等引用文献；\n在需要出现文献目录的地方使用 \\printbibliography，可通过title, heading, segment选项对输出进行控制;\n编译生成带文献的pdf文件，基于xelatex引擎的编译方式如下(foo.tex为文件名)\n\n    xelatex foo.tex\n    biber foo\n    xelatex foo.tex\n    xelatex foo.tex",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`Quarto`书稿中的文献排版</span>"
+    ]
+  },
+  {
+    "objectID": "bibs.html#sec-bibs-4",
+    "href": "bibs.html#sec-bibs-4",
+    "title": "7  Quarto书稿中的文献排版",
+    "section": "7.4 文献库的建立工具",
+    "text": "7.4 文献库的建立工具\n\nZotero\nJabRef\n\n有关文献库扩展包biblatex的在TeX和bookdown中的使用请参考 附录 B.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`Quarto`书稿中的文献排版</span>"
+    ]
+  },
+  {
+    "objectID": "bibs.html#footnotes",
+    "href": "bibs.html#footnotes",
+    "title": "7  Quarto书稿中的文献排版",
+    "section": "",
+    "text": "详见 https://github.com/87ouo/gbt7714-bibtex-style 说明↩︎\n详见 https://github.com/hushidong/biblatex-gb7714-2015↩︎\n尽管后端(backend)可以使用bibtex, 但不建议使用.↩︎",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>`Quarto`书稿中的文献排版</span>"
+    ]
+  },
+  {
+    "objectID": "mathjax27.html",
+    "href": "mathjax27.html",
+    "title": "附录 A — Mathjax的离线安装与使用",
+    "section": "",
+    "text": "A.1 mathjax 简介\n附录 A 介绍了网页显示数学公式的插件mathjax，本地化安装和使用方法等. (R Core Team, 2021; Xie, 2015)\n显示出下面的数学公式 \\[\n    J\\alpha(x) = \\sum_{m=0}^\\infty \\frac{(-1)^m}{m! \\Gamma (m + \\alpha + 1)} {\\left({ \\frac{x}{2} }\\right)}^{2m + \\alpha}.\n    \\]\n输出为 \\[\\begin{align}\n3x-1 &= \\mathbb{A} \\label{eq-A-1}\\\\\n  3x &= \\mathbf{B} \\\\\n   x &= \\mathscr{C}\n\\end{align}\\]",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`Mathjax`的离线安装与使用</span>"
+    ]
+  },
+  {
+    "objectID": "mathjax27.html#sec-mjx-1",
+    "href": "mathjax27.html#sec-mjx-1",
+    "title": "附录 A — Mathjax的离线安装与使用",
+    "section": "",
+    "text": "MathJax是一款相当强悍的在网页显示数学公式的插件.\n基于Mathjax, 就可通过 LaTeX 的命令输出精美的数学公式. 加载Mathjax后1，就可通过一对美元符号$(或左\\(右 \\))输入行内公式，通过一对双美元符号$$(或左\\[右\\])输入行间公式，例如\n\n$$\nJ\\alpha(x) = \\sum_{m=0}^\\infty \n\\frac{(-1)^m}{m! \\Gamma (m + \\alpha + 1)} \n{\\left({ \\frac{x}{2} }\\right)}^{2m + \\alpha}\n$$\n\n\n可以使用 LaTeX 自带的复杂的数学环境和数学字体命令，如排版多行公式的align 和 split环境，字母加黑命令\\mathbb{}\n\n\\begin{align}\n3x-1 &= \\mathbb{A} \\\\\n  3x &= \\mathbf{B} \\\\\n   x &= \\mathscr{C}\n\\end{align}",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`Mathjax`的离线安装与使用</span>"
+    ]
+  },
+  {
+    "objectID": "mathjax27.html#sec-mjx-2",
+    "href": "mathjax27.html#sec-mjx-2",
+    "title": "附录 A — Mathjax的离线安装与使用",
+    "section": "A.2 调用远程服务器上的mathjax",
+    "text": "A.2 调用远程服务器上的mathjax\n一般情况下，只需要使用远程加载Mathjax的js库就行了，例如在需要渲染数学公式的网页上增加html命令\n&lt;/script&gt;\n&lt;script type=\"text/javascript\" async\n  src=\"https://cdn.mathjax.org/mathjax/latest/\n  MathJax.js?config=TeX-MML-AM_CHTML\"&gt;\n&lt;/script&gt;",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`Mathjax`的离线安装与使用</span>"
+    ]
+  },
+  {
+    "objectID": "mathjax27.html#sec-mjx-3",
+    "href": "mathjax27.html#sec-mjx-3",
+    "title": "附录 A — Mathjax的离线安装与使用",
+    "section": "A.3 mathjax本地服务器的安装与使用",
+    "text": "A.3 mathjax本地服务器的安装与使用\n我们以Macbook的Apache服务器为例说明步骤2\n\n服务器的启动\n\n在终端(terminal)下输入命令\nsudo apachectl start\n\n检查服务是否启动成功\n\n在浏览器中输入网址\nhttp://127.0.0.1/ \n如果显示It Works!就表示服务器已经成功启动. 请记住:服务器上文件在本地的位置为\n/Library/WebServer/Documents\n\n关闭服务器(不用时)\n\n在终端(terminal)下输入命令\nsudo apachectl stop\n\n将Mathjax2.6或Mathjax2.7下载并解压到/Library/WebServer/Documents下3, 目录名为Mathjax\n启动本地Mathjax\n\n在运行Bookdown(或其他R Mmarkdown, Quarto Markdown 文件)时，须加载下面的由html命令组成的文件mathjax_27.html\n&lt;/script&gt;\n&lt;script type=\"text/javascript\"\n   src=\"http://127.0.0.1/MathJax/MathJax.js\"&gt;\n&lt;/script&gt;\n并在Bookdown或 Quarto Markdown中由_output.yml的命令\ninclude-in-header: mathjax_27.html\n加载进来.\n\n\n\n\n\n\nR Core Team, 2021. R: A Language and Environment for Statistical Computing[M/OL]. Vienna, Austria: R Foundation for Statistical Computing. https://www.R-project.org/.\n\n\nXie Y, 2015. Dynamic Documents with R and knitr[M/OL]. 2nd 版本. Boca Raton, Florida: Chapman; Hall/CRC. http://yihui.name/knitr/.",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`Mathjax`的离线安装与使用</span>"
+    ]
+  },
+  {
+    "objectID": "mathjax27.html#footnotes",
+    "href": "mathjax27.html#footnotes",
+    "title": "附录 A — Mathjax的离线安装与使用",
+    "section": "",
+    "text": "需要远程或本地支持↩︎\nWindows 10下的本地服务器的启动可参考(https://www.jianshu.com/p/d86c77942181)↩︎\n暂且不要用最新的3.2版本↩︎",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>`Mathjax`的离线安装与使用</span>"
+    ]
+  },
+  {
+    "objectID": "biblatex.html",
+    "href": "biblatex.html",
+    "title": "附录 B — 基于biblatex生成参考文献",
+    "section": "",
+    "text": "B.1 概述\n附录 B 介绍了文献库扩展包biblatex的使用，及其与natbib的比较.",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>基于`biblatex`生成参考文献</span>"
+    ]
+  },
+  {
+    "objectID": "biblatex.html#sec-biber-1",
+    "href": "biblatex.html#sec-biber-1",
+    "title": "附录 B — 基于biblatex生成参考文献",
+    "section": "",
+    "text": "bibtex 与 biber 是处理参考文献信息的二个外部程序(backend), 它们起到将 LaTeX 文档与 bib 文档交互作用的目的；\nnatbib 与 biblatex 是二个处理参考文献(bibliography) 展示和引用(citation)的 TeX 宏包; natbib 仅通过bibtex 起作用，而biblatex 可通过 biber 起作用；\n\n\nB.1.1 natbib 的优缺点\n\nnatbib 的优点：\n\n有大量与期刊/出版商对应的风格文件(.sty);\n\nnatbib 的缺点:\n\n自定义的局限: 修改风格文件较为困难；\n设计的局限性：主要为自然科学类期刊的Author-Year 及数字引 用方式设计.\n\n\n\n\nB.1.2 biblatex 的优缺点\n\nbiblatex 被认为是 LaTeX 中处理参考文献(bibliography) 很有前途的宏包，功能强大，提供了很多可定制的选项.\nbiblatex 的优点\n\n提供natbib 的 Author-year 和数字引用方式，因此可视为natbib 的扩展；\n可通过 LaTeX 宏来控制文献的风格，方便修改;\n提供许多人性化的引用风格(例如author-title);\n提供人性化的文献数据库域名(字段);\n直接支持多文献库与文献分类;\n提供大量标准与拓展的biblatex 风格(见使用手册);\n文献可按主题分割为部分.\n\nbiblatex 的优点\n\n学习曲线陡：选项多, 不易掌握;\n编译时可能会依赖于最新LaTeX版本, 从而导致版本的更新, 由此带来不必要的麻烦.",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>基于`biblatex`生成参考文献</span>"
+    ]
+  },
+  {
+    "objectID": "biblatex.html#sec-biber-2",
+    "href": "biblatex.html#sec-biber-2",
+    "title": "附录 B — 基于biblatex生成参考文献",
+    "section": "B.2 biblatex 的在 TeX 中的使用样例",
+    "text": "B.2 biblatex 的在 TeX 中的使用样例\n\n使用示例\n\n  \\usepackage[style=authoryear,backend=biber]{biblatex}\n代替\\usepackage[authoryear]{natbib};\n\n加载一个或多个 bib 文献库文件\n\n  \\addbibresource{file1.bib}    \n  \\addbibresource{file2.bib}\n\n文献目录输入: 出现文献的地方输入\n\n  \\printbibliography\n\n引用:\n\n使用\\textcite 代替\\citet; 使用\\parencite 代替\\citep\n\n编译方式, 以 XeTeX 引擎为例\n\n   XeLaTeX\n   biber (代替bibtex)\n   XeLaTeX\n   XeLaTeX",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>基于`biblatex`生成参考文献</span>"
+    ]
+  },
+  {
+    "objectID": "biblatex.html#sec-biber-3",
+    "href": "biblatex.html#sec-biber-3",
+    "title": "附录 B — 基于biblatex生成参考文献",
+    "section": "B.3 biblatex在Quarto书稿中的使用",
+    "text": "B.3 biblatex在Quarto书稿中的使用\n\n在index.Rmd文件的yml部分增加选项\n\n   biblatexoptions: [refsegment=chapter]\n   biblio-style: gb7714-2015ay\n注意`[]`内可增加其他`biblatex`选项 (参考`biblatex`使用手册)\n\n在需要出现文献的地方 (如每一章后)加\n\n   \\printbibliography[segment=\\therefsegment, heading=subbibliography, title={参考文献}]\n\n在_output.yml文件的bookdown::pdf_book:增加选项(前面空二格)\n\n   citation_package: biblatex\n\n\n\n\n\n\n注释\n\n\n\n若要bibtex驱动文献的排版，只需要在这一步改为citation_package: natbib\n\n\n\n如上所述，LaTeX 要生成最终的 PDF 文档. 如果论文中含有交叉引用 (图形、表格、公式、章节、文献等)、bibtex/biber命令和术语表等，通常需要让TeX编译多次. 而使用 Latexmk, 只需要让TeX编译一次, 它会自动帮你做好其它所有事情. 由于系统在你已经安装的 LaTeX 发行版本时已经包含了latexmk，但我们需要人为地运行 Latexmk 命令(编译TeX文件)，使用XeLaTeX的编译格式为\n\n   latexmk -pvc -xelatex file.tex\n其中选项pvc表示检查输入文件的更改并预览结果. 在Rstudio中你只需要添加下面的代码块.\n    Sys.setenv(RSTUDIO_PDFLATEX = \"latexmk\")",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>基于`biblatex`生成参考文献</span>"
+    ]
+  },
+  {
+    "objectID": "tinytex.html",
+    "href": "tinytex.html",
+    "title": "附录 C — tinytex安装",
+    "section": "",
+    "text": "我们在第 附录 C 章讲述tinytex的安装与使用.",
+    "crumbs": [
+      "附录",
+      "<span class='chapter-number'>C</span>  <span class='chapter-title'>tinytex安装</span>"
+    ]
+  }
+]

@@ -1,0 +1,30 @@
+title: Metropolis
+author: Shafayet Khan Shafee
+version: 1.0.1
+quarto-required: ">=1.2.0"
+contributes:
+  formats:
+    revealjs:
+      theme: [serif, metropolis.scss]
+      filters:
+        - metropolis.lua
+      lang: zh
+      language: 
+        crossref-fig-title: "图"
+        crossref-tbl-title: "表"
+        crossref-exm-title: "例"
+        environment-proof-title: "证明"
+        crossref-sec-prefix: ""
+      crossref: 
+        eq-prefix: ""
+        thm-prefix: ""
+        lem-prefix: ""
+        fig-prefix: ""
+        tbl-prefix: ""
+        exm-prefix: ""
+        def-prefix: ""      
+  
+  include-in-header: mathjax_HEP.html
+
+
+

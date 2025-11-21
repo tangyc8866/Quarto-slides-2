@@ -1,0 +1,2602 @@
+---
+#title: "AI时代以数据分析为中心的全场景生态建设"
+#subtitle: 三明学院学术报告(2025-11-03)
+title: |
+  以数据分析为中心的全场景生态建设：
+  <br> [统计教学、科研、出版的新范式探索]{.small}
+subtitle: 东北师范大学数学与统计学院 (2025-11-20)
+#title: |
+#  AI时代文学化统计编程实践：
+#  <br> [统计教学、科研、出版的新范式]{.small}
+#subtitle: 闽南师范大学统计与数学学院报告(2025-11-05)
+#title: "大数据时代教学、科研、出版的新范式"
+#subtitle: 以数据分析为中心的全场景生态建设探索
+#title: "未来已来：Quarto 如何改变数据分析与写作？"
+#title: "Quarto: AI时代的数据分析与写作"
+#subtitle: 科技期刊与统计类论文写作及发表指导
+#subtitle: 温州大学  数理大讲堂  2025 年 第 2 期
+institute: "华东师范大学 统计学院"
+author: "汤银才"
+date: "2025-11-05"
+last-modified: "`r Sys.Date()`"
+format:
+  metropolis-revealjs:
+    lang: zh  
+    html-math-method: katex
+    transition: slide
+    background-transition: fade
+    logo: images/statLogo-02.png 
+    footer: "[汤银才, ECNU](https://faculty.ecnu.edu.cn/_s35/tyc/main.psp)&nbsp;&nbsp;&nbsp;"
+    reveal-header:
+#      sc-sb-title: true
+#      header-logo: images/statLogo-02.png
+#      subtitle-as-header: true
+    include-in-header: 
+      - mathjax_HEP.html
+    title-slide-attributes:
+      data-background-image: images/slidecover2.jpeg
+#      data-background-size: contain      
+    toc: true 
+    toc-depth: 2
+#    toc-title: 目录
+    margin: 0.05
+    width: 1600  # default 1050
+    height: 900  # default 700
+    code-overflow: wrap # scroll
+    slide-number: true
+#    embed-resources: true  # obtain self-contained HTML
+    slide-level: 3
+    chalkboard: 
+      boardmarker-width: 5
+    menu: true
+output-file: index    
+filters: 
+  - reveal-auto-agenda
+auto-agenda:
+  bullets: bullets # numbered
+  heading: "[目录]{.large .green}"
+#jupyter: julia-1.9
+---
+
+
+### 自我介绍
+
+-   从教近 41 年
+
+. . .
+
+-   《Statistical Theory and Related Fields》执行主编 (2007.6)
+-   《应用概率统计》编辑部主任(2004.9 - 2014.7, 2024.5 - 现在)
+
+. . .
+
+-   研究兴趣: 贝叶斯统计，大数据统计，可靠性统计
+-   著作: 《R语言与统计分析》(第二版)、《可靠性统计》(第二版)、《贝叶斯统计》(第二版)
+-   译著: INLA系列丛书(6本，2023-2024)
+
+. . .
+
+-   忠实的贝叶期学派
+-   中国 R 会议(上海)的发起人之一
+-   R 与$\TeX$的深度用户，开发了众多的 $\TeX$, Rmarkdown, Quarto 模板 (github: tangyc8866)
+
+
+# [I. 文学化统计编程的探索与思考]{.large}  {background-color="#01364C"} 
+
+## 1.1 三个思考 {background-image="images/slidecover.png"}
+
+### [思考1]{.green}: 大数据时代数据分析人才应具备哪些素质？
+
+-   目标: 赋能大数据人才培养
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+-   统计思维
+
+-   算法思维
+
+-   数据思维
+
+-   交叉思维
+:::
+
+::: {.column width="45%"}
+-   创新意识
+
+-   团队/协同精神
+
+-   提问能力
+
+-   写作, 逐步被AI取代
+:::
+:::
+
+### [思考2]{.green}: 如何打造一个高效的教学与科研生态?
+
+-   目标: 赋能教学与科研
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+-   [通过标准化与个性化的权衡]{.content-box-red}
+
+-   建立教学与科研的生态
+
+-   提升教学与科研的效率
+:::
+
+::: {.column width="45%"}
+-   标准化，个性化 [要？]{.red}
+
+-   标准化，个性化  [怎么做？]{.red}
+
+-   标准化基础上个性化，[可落地！]{.red}
+:::
+:::
+
+### [思考3]{.green}: 如何打造一个高效的数据科学写作/出版系统?
+
+-   目标: 赋能期刊与图书出版
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+-   [通过Quarto平台]{.content-box-red}
+
+    -   使编程与写作融为一体
+
+    -   建立作者与出版社的桥梁
+
+    -   为读者提供良好的阅读场景
+:::
+
+::: {.column width="45%"}
+-   [多格式出版]{.content-box-red}
+
+    -   PDF
+
+    -   HTML
+
+    -   ePub
+
+    -   Word
+:::
+:::
+
+### 我的答案
+
+[文学化统计编程, Knuth, 1984]{.center .content-box-red}
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+-   编程与写作共存 ([knitr]{.blue})
+
+    -   [编程]{.blue}(code)
+
+    -   [写作]{.blue}(prose)
+
+-   [标准化定制]{.content-box-red}
+
+    -   CSS/SCSS 定制
+
+    -   $\TeX$ 定制
+. . .
+:::
+
+::: {.column width="45%"}
+```{r}
+#| label: fig-lp1
+#| fig.cap: Doald E. Knuth
+#| echo: FALSE
+#| out.width: "20%"
+knitr::include_graphics("./loc-figs/knuth.gif")
+```
+```{r}
+#| label: fig-lp2
+#| fig.cap: 文学化编程由来
+#| echo: FALSE
+#| out.width: "55%"
+knitr::include_graphics("./loc-figs/lp2.jpg")
+```
+:::
+:::
+
+## 1.2. 编程语言的选择? {background-image="images/slidecover.png"}
+
+### 编程/分析工具应具备的品质
+
+::: columns
+::: {.column width="45%"}
+-   极易入门(基本功能简单)
+
+-   费用低廉(免费)
+
+-   代码开放/开源(共享)
+
+-   无平台限制(共享)
+
+-   求助方便
+:::
+
+::: {.column width="45%"}
+-   良好生态与社区
+
+-   数据分析高效(工具包)
+
+-   可视化容易而强(工具包)
+
+-   编程能力强(可扩展性)
+
+-   有卓越的IDE
+:::
+:::
+
+### [过去]{.yellow}与[现在]{.yellow}的统计软件
+
+::: columns
+::: {.column width="45%"}
+-   Excel
+
+-   [SAS]{.red} (好贵，好重)
+
+-   [Matlab]{.red}
+
+-   SPSS
+
+-   Minitab
+
+-   Fortran
+
+-   Eviews
+
+-   Stata
+:::
+
+::: {.column width="45%"}
+-   [R]{.content-box-red}
+
+-   [Python]{.content-box-red}
+
+-   [Julia]{.content-box-red}
+
+-   [Shiny/Observable]{.content-box-red}---动态可视化
+:::
+:::
+
+### 三大开源语比较: R, Python, Julia
+
+::: columns
+
+```{r}
+#| label: fig-comp3
+#| fig.cap: 编程语言性能比较(相对于C=1.0)
+#| echo: FALSE
+#| out.width: "65%"
+knitr::include_graphics("./loc-figs/HPC-julia2.jpg")
+```
+:::
+
+### R与Python的比较
+
+::: columns
+::: {.column width="45%"}
+[R:]{.content-box-red}
+
+1.  一种[解释性程序语言]{.red}，专注于统计建模与数据分析
+2.  拥有丰富的[统计计算]{.red}和[数据可视化]{.red}包
+3.  良好的社区和开源生态系统非常活跃，已经大量R包(超过[2万]{.red})
+4.  轻松地处理大型数据集和矩阵(借助R包)
+5.  可实现和Python的pandas媲美的高速数据处理能力
+6.  缺点: [效率相对较低]{.red}
+:::
+
+::: {.column width="45%"}
+[Python:]{.content-box-red}
+
+1.  一种[通用的编译语言]{.red}，可用于机器学习
+2.  拥有丰富的[机器学习、深度学习]{.red}库
+3.  社区和开源生态系统也非常活跃，有大量的开源库([12万]{.red})
+4.  支持多线程和分布式计算，可更好地处理大规模数据集
+5.  拥有更多的库(如NumPy和Pandas等)，可以实现更加高效的编程
+6.  缺点: [统计计算/建模]{.red}能力偏弱
+:::
+:::
+
+
+### R vs. Python, 选择?
+
+::: columns
+::: {.column width="45%"}
+-   当前主流的数据分析语言
+
+    -   [R: 倚天剑]{.content-box-green}
+
+    -   [Python: 屠龙刀]{.content-box-red}
+:::
+
+::: {.column width="45%"}
+-   个人建议:
+
+    -   [统计学院: R为主]{.content-box-green}
+
+    -   [工程类学院: Python为主]{.content-box-red}
+:::
+:::
+
+## 1.3. 写作工具的选择? {background-image="images/slidecover.png"}
+
+
+### AI 时代的写作: 测试AI工具 
+
+- 提示词-1:  介绍一下Quarto的优势
+- 贝叶斯分析中，VB方法相对于MCMC方法的优势
+
+- 提示词-2: 用 R/Python/julia 语言编写一段代码,要求： 1) 生成1000个标准正态分布随机数，2) 画出其直方图, 3) 叠加一个密度函数，4) 输出为Quarto的代码块
+
+- 提示词-3: 已经数据$y_1, \dots, y_n$ 来自正态分布$N(\mu, \sigma^2)$, 参数$(\mu, \sigma^2)$的先验分布为$\pi(\mu, \sigma^2)\propto 1/\sigma^2$, 求感兴趣参数$\mu$的边际后验分布. 
+
+测试用AI工具(LLMs): 
+
+- 国产的LLMs: [DeepSeek](https://www.deepseek.com/), [ChatGLM](https://chatglm.cn/), 
+ [Kimi](https://kimi.moonshot.cn/), ... 
+
+. . .
+
+- 国外的LLMs: [ChatGPT](https://openai.com/), [Claude](https://www.anthropic.com/), 
+ [Grok](https://grok.com/), ... 
+
+### AI写作
+
+::: panel-tabset
+### Quarto介绍(mp4)
+
+
+```{=html}
+<div style="width: auto; height: 100%;">
+  <video controls style="width: auto; height: 100%;">
+    <source src="./refs/AI-writing-1.mp4" type="video/mp4">
+  </video>
+</div>
+```
+
+### AI编程(mp4)
+
+
+```{=html}
+<div style="width: auto; height: 100%;">
+  <video controls style="width: auto; height: 100%;">
+    <source src="./refs/AI-writing-2.mp4" type="video/mp4">
+  </video>
+</div>
+```
+
+### AI推理(mp4)
+
+
+```{=html}
+<div style="width: auto; height: 100%;">
+  <video controls style="width: auto; height: 100%;">
+    <source src="./refs/AI-writing-3.mp4" type="video/mp4">
+  </video>
+</div>
+```
+:::
+
+
+### AI时代高效的写作：赋能学习、教学、科研与出版 
+
+
+1. 流行的写作工具
+
+    - Markdown
+
+    - Markdown + $\LaTeX$
+
+. . . 
+
+2. 高效的写作工具
+
+    - Markdown (写作) + R/Python (编程) + $\LaTeX$ (出版) 
+  
+3. 形成闭环: 兼顾标准化与个性，并嵌入到(院系)算力平台上
+
+
+
+### 认识 Markdown 
+
+- 一种轻量级标记语言(使用纯文本格式编写文档)，由John Gruber于2004年创建。
+
+- [语法极其简单，学习成本极低]{.red}。
+
+- 在与Deepseek, ChatGPT、Claude等大模型交互时，我们需要一种既能表达格式要求，又不会过于复杂的语言。Markdown恰好满足了这一需求.　
+
+
+::: columns
+::: {.column width="56%"}
+
+```{r}
+#| echo: FALSE
+#| out.width: "75%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/markdown-powers.png")
+```
+:::
+::: {.column width="30%"}
+```
+# 一级标题
+## 二级标题
+- 功能特点
+  1. 易于学习
+  1. 语法简洁
+  1. 兼容性好
+## 数学公式
+$$
+x^2+y^2=1
+$$
+## 黑体与斜体
+- *斜体*
+- **黑体**
+- ***黑斜体***
+```
+:::
+:::
+
+- 快速学习： [Markdown + AI = 效率神器：10分钟就能学会的大模型文本格式！](https://mp.weixin.qq.com/s/G7JezDARfSnGQ_Md8DmDVg)
+
+
+### 进化: 学习 TeX
+
+- 最为优秀的写作语言，世界上90%以上的书都用 TeX 排的
+
+  - 极致排版质量
+  - 内容与样式(cls/sty)分离
+  - 学术写作全流程支持
+  - 跨版本/跨平台稳定性
+
+- 优秀的在线平台: [Overleaf---在线TeXLive](https://cn.overleaf.com/project)
+
+- 建议本地安装: TeXLive, [tuna: 清华大学开源软件镜像站
+](https://mirrors.tuna.tsinghua.edu.cn/help/CTAN/)
+
+- 推荐编辑器:
+
+    - TeXStudio (免费,跨平台)
+
+. . . 
+
+- 缺点: [学习成本高]{.red}
+
+- AI时代，精通$\TeX$似乎并不是必要的
+
+### 使用$\TeX$的困扰
+
+1. 学习曲线陡峭: 需要学习大量专用命令
+  
+2. 排错与调试困难: 错误信息晦涩难懂, 排错过程像“破案”
+  
+3. 编写过程不直观:  非WYSIWYG，需要编译后才能看到最终效果，打断了写作的流畅性
+
+4. 精细调整复杂: 最头痛的是精确控制图片位置、复杂表格和数学公式
+  
+5. 环境配置繁琐: 不同的发行版本有差异，宏包之间可能产生冲突，定制模板需要极高的技能
+  
+6. 编译速度慢: 带交叉引用的需要编译多次
+  
+7. 协作困难: 需要像Overleaf在线平台支持
+  
+8. 编译方式: 过去常用$\LaTeX$, pdf$\LaTeX$, 而现在更倾向于使用Xe$\LaTeX$
+  
+9. 编码依赖: 有时GBK无法显示，需要转码为UTF-8 
+
+
+### $\TeX$编译流程
+
+
+::: columns
+
+::: {.column width="45%"}
+  1. XeLaTeX
+  1. [bibtex]{.red}(由bibtex生成参考文献索引)
+  1. XeLaTeX
+  1. XeLaTeX
+```{r}
+#| echo: FALSE
+#| out.width: "75%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/bibtex-compile.png")
+```
+:::
+
+::: {.column width="45%"}
+  1. XeLaTeX
+  1. [biber]{.red}(由biblatex生成参考文献索引)
+  1. XeLaTeX
+  1. XeLaTeX
+```{r}
+#| echo: FALSE
+#| out.width: "100%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/biber-compile.png")
+```
+:::
+
+:::
+
+### 降低学习 $\TeX$ 的成本
+  
+- 避免复杂的$\TeX$命令
+
+  1. 普通用户: 以Markdown为主，少量使用$\TeX$命令 (如数学公式)
+  
+  2. $\TeX$初级用户: $\TeX$中通过`markdown`宏包使用markdown: 减少$\TeX$命令的使用[^*]
+  
+
+  3. $\TeX$高级用户: 对于特定的任务(如毕业论文，期刊论文)，使用高度定制的$\TeX$模板 
+  
+  4. 超级用户: 使用Rmarkdown或quarto模板，构建科研与出版的生态
+  
+- 充分利用Rstudio, VS Code中编辑`md`, `rmd`, `qmd`文件的二种模式：
+
+  - Source （源文件模式）
+  - Visual（可视化模式）。
+
+. . .
+
+- AI时代，[精通$\TeX$似乎并不是必要的]{.red}
+
+[^*]: markdown 宏包由于其工作机制（在编译时调用 Lua 解释器处理 Markdown 语法），通常要求在使用除 LuaLaTeX 之外的引擎（如 XeLaTeX）时，启用 --shell-escape 编译选项。详见附录1中的示例。 
+
+
+# [II. Quarto: 数据科学新范式的基础]{.large}  {background-color="#01364C"}
+
+
+## 2.1. Quarto 介绍 {background-image=images/slidecover.png}
+ 
+### 从 Rmarkdown 到 Quarto 
+
+- 由Posit (前身为Rstudio) 全新打造: 下一代的RMarkdown， 于2021年1月开始开发，2022年12月发布第一版
+
+- Quarto 是一个基于 Pandoc 的现代开源科技出版系统
+
+- 功能更加强大和灵活: 适用于数据分析和机器学习等领域
+
+- 支持[代码块]{.red}执行: [R, Python，Julia，JavaScript Observable]{.red} 等
+  
+- 支持多格式输出: PDF、HTML、$\LaTeX$、Word 等
+
+- 支持自定义: CSS、JavaScript 和 $\LaTeX$ 模板
+
+
+
+###  Quarto IDE
+
+
+开源免费、高效、跨平台IDE，Visual 与 Source 两种编辑模式自由切换
+
+::: columns
+::: {.column width="45%"}
+```{r}
+#| label: fig-rstudio
+#| echo: false
+#| out.width: "85%"
+#| fig.cap: "Rstudio界面"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/Rstudio-Windows.jpg")
+```
+:::
+::: {.column width="45%"}
+```{r}
+#| label: fig-vscode
+#| echo: false
+#| out.width: "99%"
+#| fig.cap: "VS Code界面"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/vscode.png")
+```
+:::
+:::
+
+
+###  基于Quarto的文学化统计编程流程
+
+::: columns
+
+```{r}
+#| label: fig-quarto
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "Quarto 文学化统计编程流程"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/quarto_flow.png")
+```
+:::
+
+### Quarto工作原理
+
+::: columns
+
+```{r}
+#| label: fig-flowchart
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "Quarto工作原理"
+#| fig.align: 'center'
+knitr::include_graphics("images/quarto-diagram.drawio.svg")
+```
+:::
+
+
+## 2.2. 文学化统计编程的要素 {background-image="images/slidecover.png"}
+
+### 要素: 数学公式
+
+通过$\TeX$/[MathJax](https://www.mathjax.org/)/KaTeX 实现
+
+``` tex
+$$
+\frac{\partial C}
+     { \partial t} 
+     + \frac{1}{2}\sigma^2 S^2
+\frac{\partial^2 C}
+     {\partial C^2}
+     + r S 
+       \frac{\partial C}
+            {\partial S}
+      \ = r C 
+$$ {#eq-black-scholes}
+```
+
+$$\frac{\partial C}
+       { \partial t} 
+       + \frac{1}{2}\sigma^{2} S^{2}
+    \frac{\partial^{2} C}
+       {\partial C^2}
+       + r S 
+         \frac{\partial C}
+              {\partial S}
+        \ = r C 
+$${#eq-black-scholes}
+
+
+### 执行R代码
+
+::: columns
+::: {.column width="45%"}
+```{r}
+#| echo: TRUE
+#| eval: FALSE
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, 
+         data = cars)
+plot(cars, pch = 19, 
+     col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+:::
+
+::: {.column width="45%"}
+```{r}
+#| label: fig-regression
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "R图形: 回归分析"
+#| fig.align: 'center'
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, 
+         data = cars)
+plot(cars, pch = 19, 
+     col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+:::
+:::
+
+### 执行Python代码
+
+::: columns
+::: {.column width="45%"}
+```{python}
+#| echo: TRUE
+#| eval: FALSE
+# 需要加载R包 reticulate，并指定Python 
+import matplotlib.pyplot as plt
+import numpy as np
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2*np.pi*t)
+plt.plot(t, s)
+plt.grid(True)
+plt.show()
+plt.close("all")
+```
+:::
+
+::: {.column width="45%"}
+```{python}
+#| label: fig-python
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "Python图形"
+#| fig.align: 'center'
+import matplotlib.pyplot as plt
+import numpy as np
+t = np.arange(0.0, 2.0, 0.01)
+s = 1 + np.sin(2*np.pi*t)
+plt.plot(t, s)
+plt.grid(True)
+plt.show()
+plt.close("all")
+```
+:::
+:::
+
+### 插入本地图片
+
+```{r, echo=TRUE, eval = FALSE}
+knitr::include_graphics("./loc-figs/Rlogo.png")
+knitr::include_graphics("./loc-figs/python.png")
+knitr::include_graphics("./loc-figs/julia-logo.png")
+```
+
+::: columns
+::: {.column width="28%"}
+```{r}
+#| label: fig-Rlogo
+#| echo: false
+#| eval: true
+#| out.width: "88%"
+#| fig.cap: "本地图片: R logo"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/Rlogo.png")
+```
+:::
+
+::: {.column width="28%"}
+```{r}
+#| label: fig-pythonlogo
+#| echo: false
+#| eval: true
+#| out.width: "78%"
+#| fig.cap: "本地图片: Python logo"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/python.png")
+```
+:::
+
+::: {.column width="28%"}
+```{r}
+#| label: fig-julialogo
+#| echo: false
+#| eval: true
+#| out.width: "78%"
+#| fig.cap: "本地图片: Julia logo"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/julia-logo.jpg")
+```
+:::
+:::
+
+### 表格输出: kable
+
+```{r}
+#| label: tbl-kable 
+#| eval: TRUE
+#| echo: TRUE
+#| tidy: FALSE
+#| comment: ""
+require('knitr')
+kable(head(iris,8), format = "html", caption = "Title of the table")
+```
+
+### 常用chunk选项
+
+| 选项       |     取值      | 含义                        |
+|:-----------|:-------------:|:----------------------------|
+| eval       |  TRUE; FALSE  | 执行或不执行代码            |
+| echo       |  TRUE; FALSE  | 显示/隐藏源代码             |
+| warning    |  TRUE; FALSE  | 显示/隐藏警告文本           |
+| error      |  TRUE; FALSE  | 错误消息                    |
+| emssage    |  TRUE; FALSE  | 是否保留message()给出的消息 |
+| tidy       |  TRUE; FALSE  | 代码重排, 由formatR包支持   |
+| prompt     |  TRUE; FALSE  | 是否在R代码中添加代码       |
+| comment    | '\##'; 字符串 | 在R代码前添加注释符         |
+| fig.width  |  数字, 英寸   | 设置图形的宽度与高度        |
+| fig.height |  数字, 英寸   | 设置图形的宽度与高度        |
+
+: Chunk选项 {#tbl-chunkopts}
+
+### 代码块选项设置
+
+-   knitr对代码的处理通过其中的选项控制
+
+. . .
+
+::: columns
+::: {.column width="45%"}
+::: callout-tip
+-   rmarkdown中的设置
+
+``` r
+label=fig-regression,
+echo=false, 
+eval=true, 
+out.width = "99%",
+fig.cap = "R图形: 回归分析", 
+fig.align = 'center'
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, data = cars)
+plot(cars, pch = 19, col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+:::
+:::
+
+::: {.column width="45%"}
+::: callout-note
+-   quarto中的设置
+
+``` r
+#| label: fig-regression2
+#| echo: false
+#| eval: true
+#| out.width: "99%"
+#| fig.cap: "R图形: 回归分析"
+#| fig.align: 'center'
+par(mar = c(4, 4, 1, .1))
+fit = lm(dist ~ 1 + speed, data = cars)
+plot(cars, pch = 19, col = 'blue', las = 1)
+abline(fit, lwd = 2)
+```
+:::
+:::
+:::
+
+
+### 示例
+
+1. 华东师范大学硕博毕业生Quarto模板
+
+2. 上海对外经贸大学研究生QUARTO开题报告
+
+3. [同济大学硕士/博士毕业论文模板](https://github.com/haiiliin/quarto-tongji-thesis) 
+
+4. [香港科技大学硕士/博士毕业论文模板](https://github.com/haiiliin/quarto-polyu-thesis) 
+
+5. 大量quarto资源见: 
+
+
+    -  [Awesome-quarto-thesis](https://github.com/Jupyter4Science/awesome-quarto-thesis) 
+
+    - [awesome-quarto](https://github.com/mcanouil/awesome-quarto?tab=readme-ov-file) 
+
+## 2.3. $\TeX$ 模板向自定义Quarto模板的转换
+
+### Quarto的工作原理
+
+- Quarto是基于Pandoc构建的
+
+- Quarto工作原理：
+
+  - Quarto 使用 [Pandoc 模板]{.red}将 markdown 文件转换为渲染输出.
+
+  - Pandoc 模板由特定格式的内容和变量(例如`$body$`)组合而成，这些变量在渲染时会被文档中的实际值替换.
+
+- 做法：
+
+  - 替换LaTeX(或HTML)完整模板，此虽可完全掌控渲染输出，但成本很高且易出错；
+
+  - 选择性替换LaTeX(或HTML)模板中的局部组件(以`.tex`为后缀)；这是通过[LaTeX Partials(局部模板)]{.red}来实现的. 
+
+- 这些[局部模板]{.red}是构建称为[Quarto扩展]{.red}(个性化模型)的主要组件. 
+
+### Quarto扩展(extensions)
+
+::: columns
+::: {.column width="45%"}
+
+- [Quarto扩展]{.red} 是一种强大且灵活的Quarto增强方式，为他人提供可重复使用的自定义格式模板,  有以下几类扩展:
+
+  1. [格式模板(format templates)]{.red}, 用于预定义文档的输出格式(html,pdf,word,epub,revealjs等) 及主题等。示例:
+  
+  ```markdown
+  format:
+    pdf：
+      template: acm-template.tex
+    html：
+      theme: cosmo, darkly
+  ```
+
+  2. [局部模板(partial templates)]{.red}, 用于定制文档的局部结构，如页眉、页脚、标题页等。 示例:
+    
+:::    
+
+::: {.column width="45%"}
+
+
+```markdown
+format:
+  pdf：
+    include-fefore-body: path/before-body.tex
+  html：
+    include-fefore-body: path/title-block.html
+```
+
+  3. 短代码扩展(shortcodes)
+
+  4. 过滤器扩展(filters), 用于修改文档内容或行为。
+
+  5. 自定义函数(Custom Functions)
+    
+  6. 语法高亮扩展(Syntax Highlighting)
+  
+- [quarto-extensions](https://m.canouil.dev/quarto-extensions/) 共242个扩展,[点击查看详细介绍](https://quarto.org/docs/extensions/) 
+  
+:::
+:::
+
+### 局部模板(partials)
+
+- [定义]{.blue}: 局部模板(partials)为以特定顺序连接的 $\LaTeX$ 小片段（.tex文件）, 这些文件必须采用Pandoc默认模板中预定义的[特定名称]{.red}. 详见[Github: Pandoc LaTeX Partials](https://github.com/quarto-dev/quarto-cli/tree/main/src/resources/formats/pdf/pandoc)
+
+- [作用]{.blue}: 替换或扩展Pandoc默认LaTeX模板的[特定部分]{.red}，而无需重写整个模板，达到局部定制和精细地控制PDF/LaTeX输出的目的.
+
+- [典型应用场景]{.blue}: 在正文开始前添加摘要、致谢；自定义标题页、页眉页脚；调整目录、图表列表的格式或位置.
+
+- [配置方式]{.blue}: 在配置文件`_quarto.yml`中，通过`template-partials` 选项来指定。例如：
+```yaml
+format:
+  pdf:
+    template-partials:
+      - before-body.tex
+      - title.tex
+```
+- [优势]{.blue}: 使用局部模板通常比维护一个完整的自定义LaTeX模板（通过 template 指定）更简单, 维护成本低. 
+
+### 常用的局部模板及与$\LaTeX$中内容的对应关系
+
+
+- Quarto文档的 pdf 输出依赖于一系列默认的局部片段构建的局部模板, 
+
+- 提供$\TeX$模板所需要的元信息，包括论文题目、作者、单位、关键词、导师、专业、摘要、关键词等。这些文件置于`_extensions\extension-name\partials`目录下。 
+- 常用的局部模板有:
+
+  - `doc-class.tex` （`\documentclass[]{}`内容）
+  - `before-title.tex` (与`in-header.tex`类同)
+  - `in-header.tex` （宏包与基本的设置）
+  - `title.tex` (`\author`, `\affil`, `\keywords` 等设置)
+  - `before-body.tex`  （`\frontmatter` … 标题页，摘要  `\mainmatter` ）
+  - `after-body.tex` (`\backmatter` …参考文献 )
+  - `before-bib.tex` （正文之后参考文献之前的内容，如期刊中的funds/基金, conflicts of interest/利益冲突, acknowledgments/致谢）
+
+### Quarto YAML 配置
+
+::: panel-tabset
+
+### Quarto YAML 配置示例1 {.scrollable}
+
+```yaml
+---
+title: "My Document"
+format:
+  pdf:
+    # 文档类配置（等效于 doc-class.tex）
+    documentclass: article
+    classoption: [12pt, a4paper]
+
+    template-partials:
+      - in-header.tex
+      - before-title.tex
+      - title.tex
+      - before-body.tex
+      - after-body.tex
+---
+```
+
+
+### Quarto YAML 配置示例2 {.scrollable}
+
+```yaml
+---
+title: "My Document"
+format:
+  pdf:
+    # 文档类配置（等效于 doc-class.tex）
+    documentclass: article
+    classoption: [12pt, a4paper]
+
+    # 各插入文件配置
+    include-in-header: 
+      file: preamble.tex          # 导言区宏包和命令
+    include-before-title: 
+      file: cover.tex             # 封面（标题前）
+    include-before-body: 
+      file: abstract-toc.tex      # 摘要和目录
+    include-after-body: 
+      file: appendix.tex          # 附录
+    # before-bib.tex 需手动合并到 after-body.tex 或通过模板处理
+---
+```
+
+### $\TeX$ 文档中的对应位置 {.scrollabe}
+
+```tex
+% doc-class.tex 的内容会通过 Quarto YAML 的 documentclass 生成
+\documentclass[12pt]{article} 
+
+% in-header.tex 插入在此（导言区）
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+% ...其他导言区设置
+
+\begin{document}
+
+% before-title.tex 插入在此（标题前）
+\begin{center}
+  \includegraphics{cover.jpg} % 自定义封面
+\end{center}
+
+% title.tex 插入在此（若自定义）
+\title{Custom Title}
+\author{Author}
+\maketitle
+
+% before-body.tex 插入在此（标题后）
+\tableofcontents
+\begin{abstract}
+  Summary here.
+\end{abstract}
+
+% Quarto 生成的正文内容
+\section{Introduction}
+...
+
+% before-bib.tex 插入在此（若手动添加）
+\section*{References}
+% 参考文献列表（如 \bibliography）
+
+% after-body.tex 插入在此（文档末尾）
+\appendix
+\section{Appendix}
+...
+
+\end{document}
+```
+:::
+
+
+
+# [III. 模板分享]{.large}  {background-color="#01364C"}
+
+## 3.1.  Markdown模板 {background-image=images/slidecover.png}
+
+### STARF新文速递
+
+::: columns
+::: {.column width="42%"}
+- 用于微信推送
+
+- 介绍发表论文的主要内容
+
+    - 作者信息(author information)
+    - 引用格式(citation)
+    - 摘要(abstract)
+    - 背景(motivation)
+    - 主要结果(main results)
+    
+:::
+
+::: {.column width="42%"}
+
+- 特点:
+
+    - 最基本的markdown写作
+    - 支持数学公式
+    - 输出html
+    - 输出pdf
+    - 可借助AI工具自动生成初稿
+
+:::
+:::
+
+
+
+### 演示示例: STARF新文速递
+
+::: panel-tabset
+
+### STARF新文速递(Markdown) 
+
+```markdown
+---
+title: "新文速递"
+format:
+  html:
+    theme: 
+      light: flatly
+      dark: darkly
+    toc: true
+  pdf:
+    pdf-engine: xelatex
+    keep-tex: true
+    include-in-header: 
+      - text: |
+            \usepackage{ctex}
+            \setlength{\parindent}{0em}
+    toc: false
+    number-sections: true
+    colorlinks: true
+---
+
+**新文速递** \| 具有二元结果的随机化临床试验中经协变量调整的无条件治疗效果的稳健方差估计
+
+Robust Variance Estimation for Covariate-Adjusted Unconditional Treatment Effect in Randomized Clinical Trials with Binary Outcomes
+
+**引用**: Ting Ye, Marlena Bannick, Yanyao Yi & Jun Shao (2023), Robust variance estimation for covariate-adjusted unconditional treatment effect in randomized clinical trials with binary outcomes, Statistical Theory and Related Fields, DOI: [10.1080/24754269.2023.2205802](https://doi.org/10.1080/24754269.2023.2205802)
+
+**作者**:
+
+1.  Ting Ye, Department of Biostatistics, University of Washington, USA
+2.  Marlena Bannick, Global Statistical Sciences, Eli Lilly and Company, USA
+3.  Yanyao Yi, School of Statistics, East China Normal University, China
+4.  Jun Shao, Department of Statistics, University of Wisconsin, USA
+
+**摘要**:
+
+为了提高具有二元结果的随机化临床试验中无条件治疗效应估计的精度和检验假设的功效，研究人员和监管机构建议使用g-计算作为协变量调整的可靠方法。然而，g-计算的实际应用由于缺乏可用于不同场合下感兴趣的无条件处理效果的稳健且可显式表示的方差估计公式而受到阻碍。为了填补这一空白，我们为g-计算估计量提供了显式且稳健的方差估计量，并通过模拟证明了其在实际使用中的可行性。
+
+**背景**:
+
+在随机化临床试验中，调整基线协变量被认为是一种提高估计精度和检测治疗效果的方法。2021年5月，美国FDA发布了在随机化临床试验分析中使用协变量的指南草案，并推荐g-计算作为"统计上具有二元结果的无条件治疗效果协变量调整的可靠方法"。然而，(1) 目前没有可用于不同场合感兴趣无条件治疗效果推断的g-计算估计量的稳健且显式表示的方差估计公式；(2) 已有文献(如Ge等,2011) 中关于风险差异和两个治疗组的公式，它是基于模型的，不适合作为模型稳健性推理范式；(3) Ge等(2011)的公式没有考虑到logistic 模型的中由于协变量和非线性而导致的变异性来源，这可能导致置信区间的覆盖概率偏低的情况出现。
+
+考虑有$n$个受试者参与的$k$臂试验($n$个受试者被随机分配到$k$个实验组). 令 $\boldsymbol{A}_i$ 是 $k$ 维处理示性向量，其取值$\boldsymbol{a}_t$表示第$i$个病人接受处理$t$ ($t=1, \ldots, k$), 其第 $t$ 个元素为1，其余元素为0. $Y_i(t), i=1,2,\dots, n, t=1,2,\dots, k$ 是在处理 $t$ 下的二元潜在结果，$\boldsymbol{X}_i$ 是用于调整的基线协变量向量。令 $\theta_t=E\left(Y^{(t)}\right)$, $\boldsymbol{\theta}=\left(\theta_1, \ldots, \theta_k\right)^\top$ (其中省略了个体下标 $i$).
+
+论文考虑的模型为 $E(Y\mid\boldsymbol{A}, \boldsymbol{X})=\operatorname{expit}\left(\boldsymbol{\beta}_A^\top \boldsymbol{A}+\boldsymbol{\beta}_X^\top \boldsymbol{X}\right)$ (称为 logistic 工作模型). $\hat{\mu}_t\left(\boldsymbol{X}_i\right)=\operatorname{expit}\left(\hat{\boldsymbol{\beta}}_A^\top \boldsymbol{a}_t+\hat{\boldsymbol{\beta}}_X^\top \boldsymbol{X}_i\right)$ 为响应变量 $Y$ 在处理 $t$ 下的预测概率，其中$\hat{\boldsymbol{\beta}}_A$ 和 $\hat{\boldsymbol{\beta}}_X$ 分别为 $\boldsymbol{\beta}_A$ 和 $\boldsymbol{\beta}_X$ 的极大似然估计. 则 $\boldsymbol{\theta}$ 的g-计算估计为$\hat{\boldsymbol{\theta}}=\left(\hat{\theta}_1, \ldots, \hat{\theta}_k\right)^\top$，其中 $\hat{\theta}_t=n^{-1} \sum_{i=1}^n \hat{\mu}_t\left(\boldsymbol{X}_i\right)$, 目标参数函数 $f(\boldsymbol{\theta})$ 的g-计算估计为 $\hat{f}(\boldsymbol{\theta})$, 其中 $f(\boldsymbol{\theta})$ 的常用形式有
+
+$$
+\begin{aligned}
+f(\boldsymbol{\theta})=
+\begin{cases}
+\theta_t-\theta_s, & (\text{风险差}) \\
+\log \frac{\theta_t}{\theta_s}， & (\text{风险比})\\
+\log \frac{\theta_t /\left(1-\theta_t\right)}{\theta_s /\left(1-\theta_s\right)}，& (\text{优势比})
+\end{cases}
+\end{aligned}.
+$$
+
+
+论文的目的是要得到 $\hat{f}(\boldsymbol{\theta})$ 的方差的估计.
+
+**主要结果**:
+
+**1. 理论结果**
+
+$\hat{f}(\boldsymbol{\theta})$ 的一致稳健的方差估计为
+
+$$
+n^{-1}\{\nabla f(\hat{\boldsymbol{\theta}})\}^T \hat{\boldsymbol{V}}\{\nabla f(\hat{\boldsymbol{\theta}})\},
+$$
+
+其中
+
+$$
+\hat{\boldsymbol{V}}=\left(\begin{array}{cccc}\hat{v}_{11} & \hat{v}_{12} & \ldots & \hat{v}_{1 k} \\ \vdots & \vdots & \ddots & \vdots \\ \hat{v}_{1 k} & \hat{v}_{2 k} & \ldots & \hat{v}_{k k}\end{array}\right),
+$$
+
+$$
+\begin{aligned} & \hat{v}_{t t}=\pi_t^{-1} S_{r t}^2+2 Q_{y t t}-S_{\mu t}^2, \quad t=1, \ldots, k, \\ & \hat{v}_{t s}=Q_{y t s}+Q_{y s t}-Q_{\mu t s}, \quad 1 \leq t<s \leq k,\end{aligned},
+$$
+
+记号 $S_{r t}^2$, $Q_{y t t}$, $S_{\mu t}^2$，$Q_{y t s}$, $Q_{y s t}$ 和 $Q_{\mu t s}$ 为一些样本方差 (具体见原文).
+
+**2. 模拟结果**
+
+考虑三种情形:
+
+-   情形I: $P(Y=1 \mid \boldsymbol{A}, X)=\operatorname{expit}\left\{-2+5 I\left(\boldsymbol{A}=\boldsymbol{a}_2\right)+X\right\}$, 相应的 $\left(\theta_1, \theta_2\right)=(0.2830,0.8057)$;
+-   情形II: $P\left(Y=1 \mid \boldsymbol{A}=\boldsymbol{a}_1, X\right)=\operatorname{expit}(-2+X)$, $P\left(Y=1 \mid \boldsymbol{A}=\boldsymbol{a}_2, X\right)=\operatorname{expit}\left(3+1.5 X-0.01 X^2\right)$, 相应的 $\left(\theta_1, \theta_2\right)=(0.2830,0.7297)$;
+-   情形III: $P(Y=1 \mid \boldsymbol{A}, X)=\operatorname{expit}\left(-2+2 I\left(\boldsymbol{A}=\boldsymbol{a}_2\right)+4 I\left(\boldsymbol{A}=\boldsymbol{a}_3\right)+X\right)$, 相应的 $\left(\theta_1, \theta_2, \theta_3\right)=(0.2827,0.5004,0.7172)$.
+
+表1：在情况I-II和简单随机化下，$\hat\theta_2-\hat\theta_1$ 的模拟平均值和标准差(SD)，平均标准误差(SE)，和 $\theta_2-\theta_1$ 的渐近置信区间的95%覆盖概率(CP).
+
+![](figures/tstf-2023-0011-tab-1.png)
+
+表2：在情况III和简单随机化下，g-计算估计量的均值和标准差(SD)，平均标准误差(SE)，和基于稳健SE(1)的渐近置信区间的95%覆盖概率(CP).
+
+![](figures/tstf-2023-0011-tab-2.png)
+
+```
+
+### STARF新文速递(mp4)
+
+
+
+```{=html}
+<div style="width: 75%; height: auto;">
+  <video controls style="width: 75%; height: auto;">
+    <source src="./refs/STARF-新文速递.mp4" type="video/mp4">
+  </video>
+</div>
+```
+### STARF新文速递(HTML)
+
+<iframe src="./refs/新文速递-tstf-2023-0011.html" width="80%" height="650px"></iframe>
+
+
+
+### STARF新文速递(PDF)
+
+<iframe src="./refs/新文速递-tstf-2023-0011.pdf" type="application/pdf" width="80%" height="650px"></iframe>
+
+
+
+:::
+
+
+
+## 3.2.  期刊 - TeX模板 {background-image=images/slidecover.png}
+
+### 科技期刊论文的基本结构
+
+
+::: columns
+::: {.column width="42%"}
+
+1. 标题页
+
+    - 标题
+    - 作者，单位 
+    - 摘要(中英文)
+
+1. 主体(body)
+
+    - 引言
+    - 主要内容
+    - 结论与展望
+    - 附录
+    
+1. 参考文献
+
+    - bibtex 源文件
+    - 编译: biber/biblatex(更灵活), bibtex
+
+
+:::
+
+::: {.column width="42%"}
+
+- TeX 模板的核心要素: 浮动对象
+
+    - 公式
+    - 表格, 图形
+    - 文献
+    - 定理类对象, 算法
+
+- TeX 模板设计的难点
+
+    - 版芯定制(geometry)
+    - 标题页定制(fancyhr或scrlayer-scrpage)
+    - 页眉定制: 首页与其余页不同
+    - 参考文献的目录与引用格式
+    - 元信息的定义(汇总)
+    - 编译: 跨平台
+    
+:::
+:::
+
+
+### 《应用概率统计》- TeX模板
+
+
+::: columns
+
+::: {.column width="45%"}
+
+- 文档类:  apsart.cls
+
+- 主文件
+
+    - 中文稿: J_APS_CN.tex
+    - 英文稿: J_APS_EN.tex
+
+- 设置文件
+
+    - 中文稿: apsart_CN.cfg
+    - 英文稿: apsart_eN.cfg
+
+- 参考文献
+
+    - 中文稿: apsrefs-cn.bib
+    - 中文稿: apsrefs-cn.bib
+    
+- 参考文献的编译方式: biber
+    
+- [overleaf模板](https://www.overleaf.com/latex/templates/ying-yong-gai-lu-tong-ji-texmo-ban/jrrmqjxpnyyp) 
+
+:::
+
+::: {.column width="45%"}
+
+
+```{r}
+#| echo: FALSE
+#| out.width: "50%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/APS-1.jpg")
+```
+  - 1985年创刊，[网站](https://aps.ecnu.edu.cn/)
+  - 被CSCD，北大核心, 中科院核心等收录
+  - 入选数学领域高质量科技期刊分级目录(T3)
+
+:::
+
+:::
+
+### 《应用概率统计》TeX模板文件结构 {.scrollable}
+
+```tex
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+\documentclass{apsart}
+\usepackage[headsepline]{scrlayer-scrpage} % 代替fancyhdr
+\input{apsart_cn.cfg}                 % 中文稿模板的设置
+\usepackage[backend=biber, style=gb7714-2015]{biblatex}
+\addbibresource{apsrefs-cn.bib} % 加载bib文件
+% (论文信息)
+% (作者中英文信息)
+% (中英文摘要)
+\title{\vspace{-4mm}\zihao{-2}\textbf{\cntitle}
+	\!\thanks{~\cnfundinfo}}
+\author[1,2]{\cnfirstauthor\thanks{~\corauthorinfo}}
+\author[1]{ \cnsecondauthor}
+\author[2]{\cnthirdauthor}
+\affil[1]{\cnfirstinst}
+\affil[2]{\cnsecondinst}
+
+\begin{document}
+\maketitle
+\thispagestyle{titleheader-online} % print, online
+\begin{center}
+\begin{minipage}[c]{14cm}
+	\zihao{-5}
+	\textbf{摘~~~要:}\quad{\fangsong\cnabstract}\\
+	\textbf{关键词:}\quad{\fangsong\cnkeywords}\\
+	\textbf{中图分类号:}\quad\cnclassno\\
+	\rule[3mm]{14cm}{0.2pt}\vskip-4mm
+	\textbf{英文引用格式:} 
+	\quad \fullcite{Current2024}.
+	 (in Chinese)\\
+	\rule[3mm]{14cm}{0.2pt}
+\end{minipage}
+\end{center}
+\footnote[0]{本文\receivedate{}收到, \modifydate{}收到修改稿, \acceptdate{}录用.}
+\pagestyle{mainheader-online} % online, print
+
+\section{引言}
+\section{...}
+\begin{spacing}{1.2} % 行距
+	\setlength{\bibitemsep}{2pt}
+	\printbibliography[keyword={cn},resetnumbers=true,
+	                   title={\bfseries\sffamily \zihao{-4}参考文献}]
+\end{spacing}
+% (英文摘要)
+\end{document}
+```
+
+
+### *Statistical Theory and Related Fields* - TeX模板
+
+::: columns
+
+::: {.column width="42%"}
+
+- 文档类: interact.cls
+
+- 主文件
+
+    -  STARF-apacite.tex
+    -  STARF-apalike.tex
+
+- 参考文献
+
+    - interactapasample.bib 
+
+- 参考文献的格式(style): 
+
+    - apacite
+    - apalike
+    
+- 参考文献的编译方式:  bibtex    
+
+
+:::
+
+::: {.column width="48%"}
+
+```{r}
+#| echo: FALSE
+#| out.width: "40%"
+#| fig.align: 'center'
+knitr::include_graphics("./loc-figs/STARF-Cover-New.png")
+```
+  - 17年国际创刊, 21年国内创刊, 19年入选《中国科技期刊卓越行动计划》高起点新刊项目
+  - Scopus，CSCD, DOAJ，ESCI, 中科院及WoS Q4收录
+  - 入选数学领域高质量科技期刊分级目录(T3)
+:::
+
+:::
+
+
+
+### 《统计理论及其应用(英)》TeX模板文件结构  {.scrollable}
+
+```tex
+\documentclass[]{interact}
+\usepackage{epstopdf}% 
+% First with apacite style
+\usepackage[natbibapa,nodoi]{apacite}%
+% 或\usepackage[longnamesfirst,sort]{natbib}% 
+
+\graphicspath{{figs/}}
+\begin{document}
+\title{...}
+\author{
+\name{...}
+\affil{...}
+}
+\maketitle
+
+\begin{abstract}
+...
+\end{abstract}
+\begin{keywords}
+...
+\end{keywords}
+
+\section{Background}
+...
+\section{...}
+\appendix
+\section{Appendices}
+...
+\bibliography{interactapasample}
+\bibliographystyle{apacite}
+%\bibliographystyle{apalike}
+```
+
+## 3.3.  毕业论文 - TeX模板 {background-image=images/slidecover.png}
+
+### 毕业论文的基本结构 
+
+::: columns
+
+::: {.column width="45%"}
+
+1. 中英文封面页定制
+
+    - 单位logo
+    - 论文标题
+    - 研究生姓名
+    - 导师姓名与职称
+    - 学科分类号
+    - 单位代码
+    - 完成时间
+
+1. 原创性声明与版权声明
+
+1. 章节目录
+
+1. 插图目录
+
+1. 表格目录
+
+:::
+
+::: {.column width="45%"}
+
+6. 中文摘要
+
+1. 英文摘要
+
+1. 主要符号对照表
+
+1. 主体(body)
+
+    - 引言
+    - 主要内容
+    - 结论与展望
+    - 附录
+    
+3. 参考文献
+
+    - bibtex 源文件
+    - 编译: biber/biblatex(更灵活), bibtex
+
+4. 致谢
+
+5. 在学期间的研究成果
+:::
+:::
+
+### 华东师范大学硕博TeX模板文件结构  {.scrollable}
+
+```tex
+% 用 xelatex 编译
+%!TEX program = xelatex
+\documentclass{ecnuthesis-cn}
+% 仅编译某一章时 (章节编号保持不变) 
+\includeonly{
+             mainmatter/Chapter_1,
+			 mainmatter/Chapter_2,
+			 mainmatter/Chapter_3,
+			 mainmatter/Chapter_4,
+			 mainmatter/Chapter_5,
+			 mainmatter/appendix} 
+\usepackage[
+	backend=bibtex, % bibtex
+  ...
+]{biblatex}
+
+\addbibresource{backmatter/refs.bib} 
+\begin{document}
+	\graphicspath{{figures/}}   
+	% (封面信息)
+	% (生成封面页)
+	\input{frontmatter/Declaration}
+	\input{frontmatter/Committee}
+	\frontmatter
+  %（before-body）
+	% ===== 正文部分 ===== %
+	\mainmatter
+	\include{mainmatter/Chapter_1}
+	\include{mainmatter/Chapter_2}
+	\include{mainmatter/Chapter_3}
+	\include{mainmatter/Chapter_4}
+	\include{mainmatter/Chapter_5}
+	% ===== 附录部分 ===== %
+	\include{mainmatter/appendix}
+	\backmatter
+	% (after-body)
+ 	% ===== 生成参考文献 ===== %
+   \input{backmatter/refs}
+ 	% ===== 致谢 ===== %
+   \input{backmatter/thanks}	
+ 	% ===== 发表论文 ===== %
+	\input{backmatter/pubs}	
+
+\end{document}
+```
+
+::: callout-note
+`\includeonly{}` 仅为像毕业论文、书集等大文档设定，旨在减少不必要的重复性编译
+:::
+
+
+
+
+
+## 3.4. 期刊 - Quarto模板 {background-image=images/slidecover.png}
+
+### Quarto期刊论文
+
+
+- 期刊论文创建需要[标准化]{.red}与[个性化]{.red}的协调与统一, 方便期刊的集约化管理. 
+
+- Quarto支持创建自定义格式(format)，扩展基础格式（如pdf、html和docx）， 从而灵活地适应各类专业期刊论文创建的需要. 
+
+- Quarto支持“单一来源发布”，即相同的Quarto文档源能够生成HTML和$\LaTeX$输出，还能够创建适合多个期刊所需的$\LaTeX$输出。实现此功能的关键功能包括：
+
+    - $\TeX$模板适配: 配合Pandoc，能够灵活地为期刊提供本地$\LaTeX$模板;
+
+    - 自定义: 通过CSS实现针对HTML输出的定制; 通过$\LaTeX$实现针对pdf输出的定制;
+
+    - 作者与单位: 根据各种期刊所需的样式(style)自动格式化作者和隶属关系的标准化模式; 
+
+    - 文献引用: 借助引文样式语言（CSL），根据各种期刊所需的样式自动格式化引文和参考文献.
+    
+更多参见Quarto提供的[Journal Articles](https://quarto.org/docs/journals/)及多个期刊格式。
+    
+### 期刊quarto格式(format template)创建步骤
+
+- 调整 $\LaTeX$ 模板：将期刊通常提供的 $\LaTeX$ 模板进行适配，使其适用于 Quarto
+
+- 选择引用处理方式：为该格式选取合适的引用处理流程和样式
+
+- 创建模板文件：编写 template.qmd 文件来演示该格式的使用方法
+
+- 可选优化：确保同时为 HTML 和 $\LaTeX$ 文章提供良好支持
+
+ [Journal Articles](https://quarto.org/docs/journals/)或其[Github](https://github.com/quarto-journals/) 提供了Quarto团队开发的一些期刊格式模板. 
+
+    
+
+### Quarto 团队开发或其他作者分享的期刊模板
+
+::: columns
+
+::: {.column width="45%"}
+
+
+- [ACM](https://github.com/quarto-journals/acm),  [预览(pdf)](https://quarto-journals.github.io/acm/){preview-link="true" style="text-align: center"}
+
+- [PLOS](https://github.com/quarto-journals/plos),  [预览(pdf)](https://quarto-journals.github.io/plos/){preview-link="true" style="text-align: center"}
+
+- [ASA](https://github.com/quarto-journals/jasa), [预览(pdf)](https://quarto-journals.github.io/jasa/){preview-link="true" style="text-align: center"}
+
+- [ACS](https://github.com/quarto-journals/acs),  [预览(pdf)](https://quarto-journals.github.io/acs/){preview-link="true" style="text-align: center"}
+
+- [JSS](https://github.com/quarto-journals/jss),  [预览(pdf)](https://quarto-journals.github.io/jss/){preview-link="true" style="text-align: center"}
+
+
+- [JASA](https://github.com/quarto-journals/jasa), [预览(pdf)](https://quarto-journals.github.io/jasa/){preview-link="true" style="text-align: center"}
+
+- [PNAS](https://github.com/christopherkenny/pnas)
+
+- [中文期刊](https://github.com/haiiliin/quarto-chinese-journal/tree/main), [预览(pdf)](https://github.com/haiiliin/quarto-chinese-journal/blob/main/template.pdf), by 王海林 <!-- 同济大学/香港科大 -->
+
+- 应用概率统计Quarto模板(建设中......)
+
+
+:::
+
+::: {.column width="45%"}
+
+- [Elsevier](https://github.com/quarto-journals/elsevier),  [预览(pdf)](https://quarto-journals.github.io/elsevier/){preview-link="true" style="text-align: center"}
+
+- [Biophysical](https://github.com/quarto-journals/biophysical-journal), [预览(pdf)](https://quarto-journals.github.io/biophysical-journal/){preview-link="true" style="text-align: center"}
+
+- [IEEE](https://github.com/dfolio/quarto-ieee/), [预览(pdf)](https://github.com/dfolio/quarto-ieee/blob/main/template.pdf){preview-link="true" style="text-align: center"}, [预览(html)](https://htmlpreview.github.io/?https://github.com/dfolio/quarto-ieee/blob/master/template.html){preview-link="true" style="text-align: center"}
+
+- [MDPI](https://github.com/gregmacfarlane/quarto-mdpi), [预览](https://quarto-journals.github.io/article-format-template/){preview-link="true" style="text-align: center"}
+
+- [Taylor and Francis](https://github.com/mikemahoney218/quarto-tandf){preview-link="true" style="text-align: center"}, [预览(html)](https://mike.quarto.pub/demo-taylor-and-francis-template/){preview-link="true" style="text-align: center"}
+
+- [IOP](https://github.com/sebdunnett/quarto-iop), [预览(pdf)](https://sebdunnett.com/quarto-iop/){preview-link="true" style="text-align: center"}
+
+- [arxiv](https://github.com/mikemahoney218/quarto-arxiv),[预览(html)](https://mike.quarto.pub/quarto-arxiv-template/){preview-link="true" style="text-align: center"}
+
+- [Working paper](https://github.com/hchulkim/econ-paper-template), [预览(pdf)](https://github.com/hchulkim/econ-paper-template/blob/main/template.pdf){preview-link="true" style="text-align: center"}, [预览(html)](https://hchulkim.github.io/posts/quarto-paper-template/){preview-link="true" style="text-align: center"}
+
+
+:::
+:::
+
+::: footer 
+[更多参见: ]{.small}[Quarto Journals github](https://github.com/quarto-journals/)
+::: 
+
+
+### tstf/STARF Quarto模板
+
+::: panel-tabset
+
+### 文件结构
+
+```markdown
+├── _extensions
+    └── tandf
+        ├── _extension.yml
+        ├── interact.cls
+        └── patials
+            ├── _affiliations.tex
+            ├── _authors.tex
+            ├── before-body.tex
+            └── title.tex
+        └── shortcodes.lua
+    ├── _publish.yml
+    ├── _quarto.yml
+    ├── bibliography.bib
+    ├── interact.cls
+    ├── README.md
+    ├── sunflower.png
+    └──  tstf-template.qmd
+```
+
+### TSTF - $\TeX$ 模板 {.scrollable}
+
+```tex
+\documentclass[]{interact}
+
+\usepackage{epstopdf}% To incorporate .eps illustrations using PDFLaTeX, etc.
+\usepackage[caption=false]{subfig}% Support for small, `sub' figures and tables
+
+% First with apacite style
+\usepackage[natbibapa,nodoi]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+\setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+\renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+
+%% Second with apalike style (natbib package)
+%\usepackage[longnamesfirst,sort]{natbib}% Citation support using natbib.sty
+%\bibpunct[, ]{(}{)}{;}{a}{,}{,}% Citation support using natbib.sty
+%\renewcommand\bibfont{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using natbib.sty
+
+\theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+\newtheorem{notation}{Notation}
+
+\begin{document}
+
+\articletype{STARF ARTICLE TEMPLATE with apacite style}% Specify the article type or omit as appropriate
+
+\title{TSTF \LaTeX\ template} %(\textsf{Interact} layout + APA reference style)
+
+\author{
+\name{Michael J
+	Mahoney\textsuperscript{a}, Another
+	One\textsuperscript{a}, Someone Else$\textsuperscript{b}$}
+\affil{\textsuperscript{a}Graduate Program in Environmental Science, State
+	University of New York College of Environmental Science and
+	Forestry, Syracuse, NY, USA;\\ \textsuperscript{b}Department of
+	Sustainable Resources Management, State University of New York College
+	of Environmental Science and Forestry, Syracuse, NY, USA}
+}
+
+\thanks{CONTACT: Michael J
+	Mahoney. Email: fake.email@fakeyfake.com}
+
+\maketitle
+
+\begin{abstract}
+This template is for authors who are preparing a manuscript for a Taylor \& Francis journal using the \LaTeX\ document preparation system and the \texttt{interact} class file, which is available via selected journals' home pages on the Taylor \& Francis website.
+\end{abstract}
+
+\begin{keywords}
+Sections; lists; figures; tables; mathematics; fonts; references; appendices
+\end{keywords}
+
+
+\section{Introduction}
+...
+
+...
+
+```
+
+
+### TSTF - Quart 模板 {.scrollable}
+
+````yaml
+---
+title: "Demo Taylor and Francis template"
+format:
+  tandf-pdf:
+    keep-tex: true  
+  tandf-html: default
+author:
+  - name: Michael J Mahoney
+    affiliations:
+      - ref: GPES
+    orcid: 0000-0003-2402-304X
+    email: fake.email@fakeyfake.com
+    url: https://mm218.dev
+  - name: Another One
+    affiliations:
+      - ref: GPES
+  - name: Someone Else
+    email: test@email.com
+    affiliations:
+      - ref: SRM
+affiliations:
+  - id: GPES
+    name: State University of New York College of Environmental Science and Forestry
+    department: Graduate Program in Environmental Science
+    address: 1 Forestry Drive
+    city: Syracuse, NY
+    country: USA
+    postal-code: 13210
+  - id: SRM
+    name: State University of New York College of Environmental Science and Forestry
+    department: Department of Sustainable Resources Management
+    address: 1 Forestry Drive
+    city: Syracuse, NY
+    country: USA
+    postal-code: 13210
+abstract: |
+  This document is only a demo explaining how to use the template.
+keywords: 
+  - TSTF template
+  - demo
+bibliography: bibliography.bib  
+---
+
+# Introduction {#sec-intro}
+
+This is an example of how to use this template to render journal articles. This template is inspired by the Taylor and Francis rticles template for rmarkdown, repurposed for the Quarto publishing system.
+
+This quarto extension format supports PDF and HTML outputs. This template is primarily focused on generating acceptable {{< latex >}} outputs from Quarto, but renders an acceptable HTML output using the standard Quarto options.
+
+# Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+
+
+# Markdown Basics
+
+This section of the template is adapted from [Quarto's documentation on Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html).
+
+## Text Formatting
+
++-----------------------------------+-------------------------------+
+| Markdown Syntax                   | Output                        |
++===================================+===============================+
+|     *italics* and **bold**        | *italics* and **bold**        |
++-----------------------------------+-------------------------------+
+|     superscript^2^ / subscript~2~ | superscript^2^ / subscript~2~ |
++-----------------------------------+-------------------------------+
+|     ~~strikethrough~~             | ~~strikethrough~~             |
++-----------------------------------+-------------------------------+
+|     `verbatim code`               | `verbatim code`               |
++-----------------------------------+-------------------------------+
+
+## Headings {#headings}
+
++---------------------+-----------------------------------+
+| Markdown Syntax     | Output                            |
++=====================+===================================+
+|     # Header 1      | # Header 1 {.heading-output}      |
++---------------------+-----------------------------------+
+|     ## Header 2     | ## Header 2 {.heading-output}     |
++---------------------+-----------------------------------+
+|     ### Header 3    | ### Header 3 {.heading-output}    |
++---------------------+-----------------------------------+
+
+## Equations
+
+Use `$` delimiters for inline math and `$$` delimiters for display math. For example:
+
++-------------------------------+-------------------------+
+| Markdown Syntax               | Output                  |
++===============================+=========================+
+|     inline math: $E = mc^{2}$ | inline math: $E=mc^{2}$ |
++-------------------------------+-------------------------+
+|     display math:             | display math:\          |
+|                               | $$E = mc^{2}$$          |
+|     $$E = mc^{2}$$            |                         |
++-------------------------------+-------------------------+
+
+If assigned an ID, display math equations will be automatically numbered:
+
+$$
+\frac{\partial \mathrm C}{ \partial \mathrm t } + \frac{1}{2}\sigma^{2} \mathrm S^{2}
+\frac{\partial^{2} \mathrm C}{\partial \mathrm C^2}
+  + \mathrm r \mathrm S \frac{\partial \mathrm C}{\partial \mathrm S}\ =
+  \mathrm r \mathrm C 
+$$ {#eq-black-scholes}
+
+## Other Blocks
+
++-----------------------------+--------------------------+
+| Markdown Syntax             | Output                   |
++=============================+==========================+
+|     > Blockquote            | > Blockquote             |
++-----------------------------+--------------------------+
+|     | Line Block            | | Line Block             |
+|     |   Spaces and newlines | |    Spaces and newlines |
+|     |   are preserved       | |    are preserved       |
++-----------------------------+--------------------------+
+
+## Cross-references {#sec-crf}
+
+![A sunflower](sunflower.png){#fig-sunflower}
+
++---------------------------------------+---------------------------------+
+| Markdown Format                       | Output                          |
++=======================================+=================================+
+|     @fig-sunflower is pretty.         | @fig-sunflower is pretty.       |
++---------------------------------------+---------------------------------+
+|     @tbl-glm was created from code.   | @tbl-glm was created from code. |
++---------------------------------------+---------------------------------+
+|     @sec-crf is this section.         | @sec-crf is this section.       |
++---------------------------------------+---------------------------------+
+|     @eq-black-scholes is above.       | @eq-black-scholes is above.     |
++---------------------------------------+---------------------------------+
+
+See the [Quarto documentation on cross-references for more](https://quarto.org/docs/authoring/cross-references.html).
+
+
+# Citations
+
+This section of the template is adapted from the [Quarto citation documentation](https://quarto.org/docs/authoring/footnotes-and-citations.html).
+
+Quarto supports bibliography files in a wide variety of formats including BibTeX and CSL. Add a bibliography to your document using the `bibliography` YAML metadata field. For example:
+
+``` yaml
+---
+title: "My Document"
+bibliography: references.bib
+---
+```
+
+See the [Pandoc Citations](https://pandoc.org/MANUAL.html#citations) documentation for additional information on bibliography formats.
+
+
+## Citation Syntax {#sec-citations}
+
+Quarto uses the standard Pandoc markdown representation for citations. Here are some examples:
+
+
++-------------------------------------------+---------------------------------------------------------------------+
+| Markdown Format                           | Output                                                              |
++===========================================+=====================================================================+
+|     Blah Blah [see @knuth1984, pp. 33-35; | Blah Blah [see @knuth1984, pp. 33-35; also @wickham2015, chap. 1]   |
+|     also @wickham2015, chap. 1]           |                                                                     |
++-------------------------------------------+---------------------------------------------------------------------+
+|     Blah Blah [@knuth1984, pp. 33-35,     | Blah Blah [@knuth1984, pp. 33-35, 38-39 and passim]                 |
+|     38-39 and passim]                     |                                                                     |
++-------------------------------------------+---------------------------------------------------------------------+
+|     Blah Blah [@wickham2015; @knuth1984]. | Blah Blah [@wickham2015; @knuth1984].                               |
++-------------------------------------------+---------------------------------------------------------------------+
+|     Wickham says blah [-@wickham2015]     | Wickham says blah [-@wickham2015]                                   |
++-------------------------------------------+---------------------------------------------------------------------+
+
+You can also write in-text citations, as follows:
+
++-----------------------------------+-------------------------------+
+| Markdown Format                   | Output                        |
++===================================+===============================+
+|     @knuth1984 says blah.         | @knuth1984 says blah.         |
++-----------------------------------+-------------------------------+
+|     @knuth1984 [p. 33] says blah. | @knuth1984 [p. 33] says blah. |
++-----------------------------------+-------------------------------+
+
+See the [Pandoc Citations](https://pandoc.org/MANUAL.html#citations) documentation for additional information on citation syntax.
+
+To provide a custom citation stylesheet, provide a path to a CSL file using the `csl` metadata field in your document, for example:
+
+``` yaml
+---
+title: "My Document"
+bibliography: references.bib
+csl: nature.csl
+---
+```
+
+{{< pagebreak >}}
+
+# References {.unnumbered}
+
+::: {#refs}
+:::
+````
+
+### pdf输出 {.scrollabe}
+
+<iframe src="./refs/tstf-template.pdf" type="application/pdf" width="80%" height="650px"></iframe>
+
+:::
+
+
+## 3.5. 毕业论文 - Quarto模板 {background-image=images/slidecover.png}
+
+### Quarto 团队建立了一些毕业论文模板
+
+::: columns
+::: {.column width="45%"}
+
+- [Arizona State University](https://github.com/juliantao/quarto-asu-thesis)
+
+- [Georgia State University](https://github.com/joshuafayallen/gsu-quarto-dissertation-template)
+
+- [Macquarie University](https://github.com/thomas-fung/mq-thesis-quarto)
+
+- [University of Edinburgh](https://github.com/james-d-h/quarto-phd-thesis)
+
+- [University of Leeds](https://github.com/PublicHealthDataGeek/UoL_quarto_thesis)
+
+- [University of Michigan](https://github.com/kelly-sovacool/rackham)
+
+- [University of Minnesota](https://github.com/havablair/umn-thesis)
+
+- [University of Pittsburg](https://github.com/alberto-guzman/quarto-dissertation)
+
+
+:::
+
+::: {.column width="45%" .fragment}
+- 上海对外经贸大学毕业论文RMD/QMD模板
+
+<iframe src="./refs/SUIBE硕士学位论文RMD.pdf" 
+type="application/pdf" width="100%" height="600px"></iframe>
+:::
+
+:::
+
+::: footer 
+[更多参见: ]{.small}[A list of Quarto thesis templates templates](https://github.com/Jupyter4Science/awesome-quarto-thesis?tab=readme-ov-file)
+::: 
+
+### 演示示例
+
+- 华东师范大学毕业论文Quarto模板
+  
+- 上海对外经贸大学研究生毕业论文开题报告Quarto模板
+
+- [同济大学硕士/博士毕业论文模板](https://github.com/haiiliin/quarto-tongji-thesis) 
+
+- [香港科技大学硕士/博士毕业论文模板]( https://github.com/haiiliin/quarto-polyu-thesis) 
+
+## 3.6. 书稿 - Quarto模板 {background-image=images/slidecover.png}
+
+### Quarto books 
+
+::: columns
+::: {.column width="45%"}
+
+Quarto Books，新一代bookdown, 将多个文档以章节形式组合起来，并以不同的形式呈现出来
+
+- HTML
+- PDF
+- MS Word
+- EPUB
+
+:::
+
+::: {.column width="45%" .fragment}
+
+
+HTML和PDF是两种主要的形式， 支持章节、公式、图形、表格、参考文献等的交叉引用. 个性化定制分别通过CSS和$\LaTeX$实现. 可通过`quarto publish`命令发布到: 
+
+- [Quarto Pub](https://quarto.org/docs/publishing/quarto-pub.html)
+- [Github Pages](https://quarto.org/docs/publishing/github-pages.html)
+- [Posit Cloud](https://quarto.org/docs/publishing/posit-cloud.html)
+- [RStudio Connect](https://quarto.org/docs/publishing/rstudio-connect.html)
+- 静态服务器或内部网站上
+
+:::
+
+:::
+
+::: footer 
+[更多参见: ]{.small}[Quarto Gallery](https://quarto.org/docs/gallery/#books)
+::: 
+
+::: aside
+::: {style="text-align: center; margin-top: 1em"}
+ [汤银才, Bookdown中文书稿写作手册, 2021](https://tangyc8866.github.io/bookdown_tutorial/){preview-link="true" style="text-align: center"}
+:::
+:::
+
+
+### 演示示例
+
+::: panel-tabset
+
+### Quarto中文书稿写作手册(pdf)
+
+<iframe src="./refs/quarto_book/Quarto Book Manual.pdf" type="application/pdf" width="80%" height="600px"></iframe>
+
+### Quarto中文书稿写作手册(html)
+
+<iframe src="./refs/quarto_book/index.html" width="80%" height="600px"></iframe>
+
+
+### 随机退化过程与统计建模(pdf)
+
+<iframe src="./refs/deg_book/degreliability.pdf" type="application/pdf" width="80%" height="600px"></iframe>
+
+### 随机退化过程与统计建模(html)
+
+<iframe src="./refs/deg_book/index.html" width="80%" height="600px"></iframe>
+
+
+:::
+
+## 3.7. 幻灯片 - Quarto模板 {background-image=images/slidecover.png}
+
+### Quarto 幻灯片的类型
+
+Quarto 支持多种格式来创建演示文稿，包括：
+
+1. [revealjs]{.red} --- reveal.js (HTML), 案例: 本演讲稿
+
+2. [beamer]{.red} --- Beamer (LaTeX/PDF), 案例: 华东师范大学模板
+
+3. [pptx]{.red} --- PowerPoint (MS Office), 案例: 华东师范大学模板
+
+
+这些格式各有优缺点:
+
+1. revealjs 功能最强大，可以作为HTML幻灯片展示，也可以打印为PDF以便于分发
+
+2. Beamer 广为使用，特别适合数学类报告
+
+3. pptx 经模板定制后更亲民
+
+
+### Quarto revealjs 的yaml格式 {.scrollable}
+
+```yaml
+---
+title: "Quarto Slides with Beamer/PPT/Revealjs"
+subtitle: ECNU统计学院模板 --- 16:9
+bibliography: references.bib
+citation-style: apa
+author: "汤银才"
+institute: 华东师范大学统计学院
+date: '`r Sys.Date()`'  
+biblio-title: "参考文献"
+format:
+  metropolis-revealjs:
+#    lang: zh  
+    html-math-method: katex
+    transition: slide
+    background-transition: fade
+    logo: loc-figs/statLogo-02.png 
+    title-slide-attributes:
+      data-background-image: loc-figs/slidecover2.jpeg
+    toc: true 
+    toc-depth: 2
+#    toc-title: 目录
+    margin: 0.05
+    width: 1600  # default 1050
+    height: 900  # default 700
+    code-overflow: wrap # scroll
+    slide-number: true
+    slide-level: 3
+    chalkboard: 
+      boardmarker-width: 5
+    menu: true
+    filters: 
+      - reveal-auto-agenda
+    auto-agenda:
+      bullets: bullets # numbered
+      heading: "目录"
+---
+```
+
+### Quarto beamer 的yaml格式 {.scrollable}
+
+```yaml
+---
+title: "Quarto Slides with Beamer/PPT/Revealjs"
+subtitle: ECNU统计学院模板 --- 16:9
+bibliography: references.bib
+citation-style: apa
+author: "汤银才"
+institute: 华东师范大学统计学院
+date: '`r Sys.Date()`'  
+biblio-title: "参考文献"
+format:
+    documentclass: ctexbeamer
+    keep-tex: true
+    classoption: "12pt,table,t"   
+    lang: zh   # beamer中不能使用
+    include-in-header: custom-3.tex
+    include-after-body: suffix.tex
+    aspectratio: 169
+    navigation: horizontal
+    highlight: tango
+    theme: "Madrid"
+    colortheme: "whale"
+    fonttheme: "professionalfonts"
+    reference-section-title: "参考文献"
+    cite-method: biblatex
+    slide-level: 3
+    crossref: 
+      eq-prefix: ""
+      sec-prefix: ""
+---    
+```
+
+
+### Quarto PPT 的yaml格式 {.scrollable}
+
+```yaml
+---
+title: "Quarto Slides with Beamer/PPT/Revealjs"
+subtitle: ECNU统计学院模板 --- 16:9
+bibliography: references.bib
+citation-style: apa
+author: "汤银才"
+institute: 华东师范大学统计学院
+date: '`r Sys.Date()`'  
+biblio-title: "参考文献"
+format:
+  pptx:
+    incremental: true 
+    reference-doc: ecnu-stat-16to9-1.pptx
+    lang: zh  
+    slide-level: 3
+    toc: true
+    toc-depth: 2
+---
+```
+
+### 演示示例
+
+::: panel-tabset
+
+
+### Quarto revealjs
+
+<iframe src="./refs/quarto_slides/my-presentation.html" width="80%" height="600px"></iframe>
+
+
+### Quarto beamer
+
+<iframe src="./refs/quarto_slides/my-presentation.pdf" type="application/pdf" width="80%" height="800px"></iframe>
+
+
+### Quarto pptx
+
+
+[点击打开幻灯片](./refs/Quarto_slides/my-presentation.pptx){target="_blank"}
+
+:::
+
+-----------------------------------------------------------
+
+<br> <br>
+
+::: {style="text-align: center; font-size: 2em; color:#6A395B"}
+::: {.absolute top="5%" left="33%"}
+**Thank you!**
+:::
+:::
+
+::: {.absolute top="30%" left="15%" width="70%"}
+::: box
+::: {style="font-size: 1.5em"}
+**Stanley Tang (汤银才)**<br>
+github: [tangyc8866](https://github.com/tangyc8866)<br>
+Homepage: [Homepage](https://faculty.ecnu.edu.cn/_s35/tyc/main.psp)<br>
+Email: yctang@stat.ecnu.edu.cn<br>
+WecChat: tangyincai
+:::
+:::
+:::
+
+
+::: footer
+[本幻灯片由]{.small} [Quarto revealjs](https://quarto.org/) [制作]{.small}
+:::
+
+
+
+# [附录: Quarto revealjs 功能介绍]{.large}  {background-color="#01364C"}
+
+### Quarto revealjs 简介 {.scrollable}
+
+Quarto revealjs 是基于 reveal.js 的HTML 交互式演示文稿制作系统
+
+- 优势
+
+  1. 基于 Markdown，简单易用
+
+  2. 动态计算 & 可重复研究 (支持R、Python，Julia, Observable)
+
+  3. 高度可定制化
+  
+    - 主题：内置多种主题（如 simple、solarized、moon）
+    
+    - 布局：支持 分栏、嵌套幻灯片、演讲者视图
+    
+    - 动画：代码控制 渐进显示、自动播放
+    
+  4. 交互式功能
+    
+  5. 跨平台 & 易分享
+
+📌 适用场景: 
+
+  ✔ 学术报告（数学公式、动态图表）
+  
+  ✔ 数据科学演示（实时运行代码）
+  
+  ✔ 在线分享（HTML 直接发布网页）
+
+❌ 高度定制设计（如企业品牌 PPT）
+
+### revealjs 的片段类的呈现效果 {.scrollable}
+
+
+| **(类)名称**                  | **效果**                                          |
+|:-------------------------|:------------------------------------------------|
+| `fade-out`                | 开始可见，淡出                                 |
+| `fade-up`                 | 向上滑动的同时淡入                              |
+| `fade-down`               | 向下滑动的同时淡入                              |
+| `fade-left`               | 向左滑动的同时淡入                              |
+| `fade-right`              | 向右滑动的同时淡入                              |
+| `fade-in-then-out`        | 先淡入，然后在下一步淡出                        |
+| `fade-in-then-semi-out`   | 淡入，然后在下一步变为半透明                    |
+| `grow`                    | 放大                                             |
+| `semi-fade-out`           | 淡出至半透明                                    |
+| `shrink`                  | 缩小                                             |
+| `strike`                  | 划掉                                             |
+| `highlight-red`           | 文本变为红色                                     |
+| `highlight-green`         | 文本变为绿色                                     |
+| `highlight-blue`          | 文本变为蓝色                                     |
+| `highlight-current-red`   | 文本变为红色，然后在下一步恢复原样               |
+| `highlight-current-green` | 文本变为绿色，然后在下一步恢复原样              |
+| `highlight-current-blue`  | 文本变为蓝色，然后在下一步恢复原样             |
+
+
+
+### 内容分列展示 
+
+将内容通过`columns`环境和`column`类按不同宽度分列展示
+
+
+::: columns
+::: {.column width="30%"}
+
+-  Motor Trend汽车道路测试
+
+- 数据摘自1974年的《Motor Trend美国》杂志，包含了32款汽车的燃油消耗和10个设计及性能方面的数据. 
+
+:::
+
+
+::: {.column width="57%" .fragment}
+```{r}
+#| echo: true
+#| code-fold: true
+knitr::kable(head(mtcars)[,c("mpg",	"cyl", "disp", "hp", "wt")])
+```
+
+:::
+:::
+
+::: footer
+[更多参见: ]{.small}[Multiple Columns](https://quarto.org/docs/presentations/revealjs/#multiple-columns)
+:::
+
+
+### 内容分步展示
+
+列表可以通过`incremental`环境逐步显示
+
+::: columns
+::: {.column width="45%"}
+
+::: incremental
+-   第一条
+-   第二条
+-   第三条
+:::
+
+:::
+
+::: {.column width="45%" .fragment}
+
+::: incremental
+1.   第一条
+1.   第二条
+1.   第三条
+:::
+
+:::
+
+:::
+
+. . . 
+
+插入停顿(三个分开的点`. . .`)，也可以实现逐步显示
+
+::: footer
+[更多参见: ]{.small}[Incremental Lists](https://quarto.org/docs/presentations/revealjs/#incremental-lists)
+:::
+
+### 内容分片段展示
+
+借助`fragment`类将内容按不同的效果展示
+
+<br/>
+
+::: {.fragment .fade-in}
+淡入
+:::
+
+::: {.fragment .fade-up}
+向上滑动的同时淡入
+:::
+
+::: {.fragment .fade-left}
+向左滑动的同时淡入
+:::
+
+::: {.fragment .fade-in-then-semi-out}
+先淡入，然后半透明淡出
+:::
+
+. . .
+
+::: {.fragment .strike}
+删除
+:::
+
+::: {.fragment .highlight-red}
+红色高亮
+:::
+
+::: footer
+[更多参见: ]{.small}[Fragments](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments)
+:::
+
+
+
+### 更换页面主题 (Themes) 
+Quarto提供10个内嵌的页面更换主题 (也可 [自建合适的页面](https://quarto.org/docs/presentations/revealjs/themes.html#creating-themes))
+
+::: {.columns}
+
+::: {.column width="45%" .fragment .fade-in}
+![](images/moon.png)
+:::
+
+::: {.column width="45%" .fragment .fade-in-then-semi-out}
+![](images/sky.png)
+:::
+
+:::
+
+
+::: footer
+[更多参见: ]{.small}[Themes](https://quarto.org/docs/presentations/revealjs/themes.html)
+:::
+
+### 更换页面背景 (Backgrounds) {background="#43464B"}
+
+- 借助属性参数 `background` 或`background-color`用于改变页面的背景颜色 （支持CSS设定的颜色）
+
+- 通过选项 `background-transition`实现页面背景转换
+
+
+### 动画效果 {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+通过`auto-animate`实现动画自动匹配
+
+::: r-hstack
+::: {data-id="box1" auto-animate-delay="0" style="background: #2780e3; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box2" auto-animate-delay="0.1" style="background: #3fb618; width: 200px; height: 150px; margin: 10px;"}
+:::
+
+::: {data-id="box3" auto-animate-delay="0.2" style="background: #e83e8c; width: 200px; height: 150px; margin: 10px;"}
+:::
+:::
+
+::: footer
+[更多参见: ]{.small}[Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+### 动画效果 {auto-animate="true" auto-animate-easing="ease-in-out"}
+
+通过`auto-animate`实现动画自动匹配
+
+::: r-stack
+::: {data-id="box1" style="background: #2780e3; width: 350px; height: 350px; border-radius: 200px;"}
+:::
+
+::: {data-id="box2" style="background: #3fb618; width: 250px; height: 250px; border-radius: 200px;"}
+:::
+
+::: {data-id="box3" style="background: #e83e8c; width: 150px; height: 150px; border-radius: 200px;"}
+:::
+:::
+
+::: footer
+[更多参见: ]{.small}[Auto-Animate](https://quarto.org/docs/presentations/revealjs/advanced.html#auto-animate)
+:::
+
+### 更改页面过度方式 (Slide Transitions) 
+
+
+| 页面切换参数 | 描述                                                            |
+|------------|------------------------------------------------------------------------|
+| `none`     | 不切换 (默认)   |
+| `fade`     | 淡出到淡入      |
+| `slide`    | 水平切换        |
+| `convex`   | 以外凸的角度展示  |
+| `concave`  | 以凹进的角度展示  |
+| `zoom`     | 从中心开始放大 |
+
+::: footer
+[更多参见:]{.small} [Slide Transitions](https://quarto.org/docs/presentations/revealjs/advanced.html#slide-transitions)
+:::
+
+### 超链接预览
+
+- 在不打断演讲流程的情况下导航到超链接
+
+  - 使用 `preview-links` 选项可以在幻灯片上方打开链接
+
+  - 点击右上角的`X`关闭预览
+
+- 示例(点击打开): 
+
+::: {style="text-align: center; margin-top: 1em"}
+[Matplotlib: Visualization with Python](https://matplotlib.org/){preview-link="true" style="text-align: center"}
+:::
+
+::: footer
+[更多参见: ]{.small}[Preview Links](https://quarto.org/docs/presentations/revealjs/presenting.html#preview-links)
+:::
+
+
+### 轻松导航
+
+::: {style="margin-bottom: 0.9em;"}
+
+- 快速跳转到演示文稿的其他部分
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-menu.png){width="41"}
+
+使用菜单按钮（幻灯片左下角）切换幻灯片菜单，以访问其他幻灯片和演示工具
+
+:::
+
+- 您也可以按 `m` 键来打开和关闭菜单
+
+
+::: footer
+[更多参见: ]{.small}[Navigation](https://quarto.org/docs/presentations/revealjs/presenting.html#navigation-menu)
+:::
+
+### 黑板(chalkboard) {chalkboard-buttons="true"}
+
+::: {style="margin-bottom: 0.9em;"}
+
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-chalkboard.png){width="41"}
+
+使用幻灯片左下角的黑板(chalkboard)按钮来切换黑板的显示, 也可使用按钮`b`来切换黑板
+
+:::
+
+::: {layout="[1, 20]"}
+![](images/presentation-notes-canvas.png){width="41"}
+
+使用幻灯片左下角的笔记画布(notes canvas)按钮来切换在当前幻灯片上的绘图功能， 也可使用按钮`c`来切换笔记画布
+
+:::
+
+
+::: footer
+[更多参见: ]{.small}[Chalkboard](https://quarto.org/docs/presentations/revealjs/presenting.html#chalkboard)
+:::
+
+### 概览模式
+
+按 `o` 键切换到概览模式：
+
+
+![](images/overview-mode.png){.border}
+
+按住 `Alt` 键（或在Macbook中按 `Ctrl` 键），然后点击放大对应的幻灯片
+
+
+### 演讲者视图
+
+按 `s` 键（或使用演示菜单）打开演讲者视图
+
+![](images/speaker-view.png){fig-align="center" style="border: 3px solid #dee2e6;" width="780"}
+
+::: footer
+[更多参见: ]{.small}[Speaker View](https://quarto.org/docs/presentations/revealjs/presenting.html#speaker-view)
+:::
+
+

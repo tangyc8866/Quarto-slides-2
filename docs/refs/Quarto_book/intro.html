@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>1&nbsp; 引言 – Quarto中文书稿写作手册</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./quarto.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-50ea0ab093d56a7dd5cf7d3295364d1c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-6a87998dc46a5b1fc604b46eb64f32b8.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+      tex: {
+          tags: 'ams',  // should be 'ams', 'none', or 'all'
+          inlineMath: [                 // start/end delimiter pairs for in-line math
+              ['$', '$'],
+              ['\\(', '\\)'],
+          ],
+          displayMath: [                // start/end delimiter pairs for display math
+              ['$$', '$$'],
+              ['\\[', '\\]']
+          ],
+          processEscapes: true,
+          macros: {
+              bm: ["\\boldsymbol{#1}", 1],  //   mathbbl: ["\\mathbb{#1}", 1],
+          },
+      }
+  };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Quarto中文书稿写作手册</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/tangyc8866"> <i class="bi bi-github" role="img" aria-label="Github">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools tools-wide">
+    <a href="https://github.com/tangyc8866" title="源代码" class="quarto-navigation-tool px-1" aria-label="源代码"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿速览</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Quarto 书稿中的章节标题</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./formulas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quarto 书稿中的公式与定理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./figures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Quarto 书稿中的图形的处理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tables.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Quarto 书稿中的表格的处理</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./bibs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿中的文献排版</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">附录</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="切換部分">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./mathjax27.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title"><code>Mathjax</code>的离线安装与使用</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./biblatex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">基于<code>biblatex</code>生成参考文献</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tinytex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">tinytex安装</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">目录</h2>
+   
+  <ul>
+  <li><a href="#sec1-1" id="toc-sec1-1" class="nav-link active" data-scroll-target="#sec1-1"><span class="header-section-number">1.1</span> 中国图书出版的变化</a></li>
+  <li><a href="#sec1-2" id="toc-sec1-2" class="nav-link" data-scroll-target="#sec1-2"><span class="header-section-number">1.2</span> 统计类图书的核心要素</a></li>
+  <li><a href="#sec1-3" id="toc-sec1-3" class="nav-link" data-scroll-target="#sec1-3"><span class="header-section-number">1.3</span> 统计数据分析类图书模板的选择</a>
+  <ul class="collapse">
+  <li><a href="#sec1-3-1" id="toc-sec1-3-1" class="nav-link" data-scroll-target="#sec1-3-1"><span class="header-section-number">1.3.1</span> 基于纯 TeX 模板</a></li>
+  <li><a href="#sec1-3-2" id="toc-sec1-3-2" class="nav-link" data-scroll-target="#sec1-3-2"><span class="header-section-number">1.3.2</span> R, Markdown与 TeX 的结合</a></li>
+  <li><a href="#sec1-3-3" id="toc-sec1-3-3" class="nav-link" data-scroll-target="#sec1-3-3"><span class="header-section-number">1.3.3</span> 从Markdown、R Markdown 到 Quarto</a></li>
+  <li><a href="#格式转换流程" id="toc-格式转换流程" class="nav-link" data-scroll-target="#格式转换流程"><span class="header-section-number">1.3.4</span> 格式转换流程</a></li>
+  <li><a href="#sec1-3-4" id="toc-sec1-3-4" class="nav-link" data-scroll-target="#sec1-3-4"><span class="header-section-number">1.3.5</span> 多格式图书出版的实现</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-intro" class="quarto-section-identifier"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>这是第 <a href="#sec-intro" class="quarto-xref"><span> 1</span></a> 章的内容，回顾中国图书发展的历史及最新趋势 <span class="citation" data-cites="xie2015 R-base">(<a href="quarto.html#ref-R-base" role="doc-biblioref">R Core Team, 2021</a>; <a href="quarto.html#ref-xie2015" role="doc-biblioref">Xie, 2015</a>)</span>.</p>
+<section id="sec1-1" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="sec1-1"><span class="header-section-number">1.1</span> 中国图书出版的变化</h2>
+<p>中国的图书出版经历一些折腾，方正系统一度非常流行，但现在看来是非常失败的，主要是它在解决中文字库和公式排版等的同时没有解决兼容性、标准化及便利性等问题，其本质上想实现在其自创的中文系统中将 TeX 命令做一个映射以实现数学公式排版，同时完成格式的定制.</p>
+<p>中国学术界也经历了一些折腾，如中科院张林波研究员等开发的<code>CCT</code>系统和华东师范大学肖刚与陈志杰等老师开发的天元系统，它们是 TeX 系统汉化版，较好地解决了汉字生成与调用，但因没有考虑普适性或可拓展性而像方正系统一样随着<code>CJK</code>的逐渐成熟而逐渐被抛弃，均退出了历史舞台. 而同期中科院吴凌云博士等在普及 TeX 的同时开发的 TeX 中文套餐C TeX 相当成功，主要的工作是会对汉字排版的<code>ctex</code>宏包及套餐的开发(后者类似于针对苹果OS系统的MacTeX, 但后期的更新显得太慢)，并对三个主流的文档类<code>book</code>, <code>article</code>, <code>report</code>进行了定制，推出了相应的中文文档类<code>ctexbook</code>, <code>ctexart</code>, <code>ctexrep</code>, 由此避免了传统的基于<code>CJK</code>宏包需要的大量定制，同时保证了与原有 TeX 系统的兼容性. 这样我们始终可以使用跨平台的<code>TeXLiVe</code>进行排版或各类模板的开发，例如各个出版社的图书模板、各个期刊的模板、各高校的硕士和博士毕业论文模板等, 现在这样的模板都开源到Overleaf上.</p>
+<p>TeX 的出现<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>，而且始终屹立不倒的原因是什么？ 第一个原因是它解决了一个<code>Word</code>之类文字编辑系统的痛点，即从所见所得(WYSIWYG, What you see is what you get)到所想所得(WYTIWYG), 即通过一些 TeX 命令集构成一个完整的编程语言，由它完成一个封闭的体系，具有类似<code>C</code>语言一样非常强大的开发功能，由此形成了后来的<code>latex</code>, <code>miktex</code>, <code>latex2.09</code>, <code>luatex</code>, <code>xetex</code>等 TeX 编译引擎，它们在充分利用电脑系统资源的同时实现高质量输出需要的精度.</p>
+<p>TeX 屹立不倒的另一个原因是浮动对象的处理，即包括公式，表格、图形、页码、章节、文献、定理等的标签化与引用，实现文档内部的自由跳转，结合<code>Acrobat Reader</code>这样强大的<code>pdf</code>阅读器的支持，使得读者的阅读体验得到大幅改善，并为图书的电子化奠定了基础.</p>
+<p>随着数据科学这一新兴学科的出现，开源的<code>R</code>和<code>Python</code> (还有正在逐步流行的<code>Julia</code>)编程语言越来越强大. 为了增加这类图书的可读性，需要将代码较完整地呈现在读者面前，并且要求代码的即时可复现能力，即数据的变化，其分析的结果(包括图形和表格)也随之发生变化并同步呈现出来. 这就是现在逐步流行的文学化编程(<code>literate programming</code>), 它实现上最早也是 TeX 的鼻祖Knuth提出的, 后来被谢益辉得到重视并广泛推广，并通过<code>Rstudio</code>和<code>R Markdown</code>和现在的<code>Quarto Markdown</code>传递给<code>R</code>的用户. 我们姑且把这种将写作与数据分析相结合的统计分析称为文学化统计编程(<code>literate statistical programming</code>). 它在为数据科学爱好者带来便利的同时也通过<code>Bookdown</code>或<code>quarto</code>为论文、分析报告和图书的写作和电子化带来了极大的好处，越来越多的包括网页版电子书在内的文档出现在(https://github.com/)等网站上.</p>
+<p>这本小册子主要考虑书稿类文档的写作，它可以包括图书、毕业论文和分析报告，在些统称为书稿. 现在写书选择什么类型的模板，下面我们来作进一步的探索与比较.</p>
+</section>
+<section id="sec1-2" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="sec1-2"><span class="header-section-number">1.2</span> 统计类图书的核心要素</h2>
+<p>统计或数据科学类图书的排版除普通图书的页面及文字风格等静态元素外，核心要素体现在浮动的对象上，使得图书的阅读体验更好地发挥出来，即在不同页面之间快速切换、跟踪、搜索，以及必要的<code>R</code>和<code>Python</code>等代码以语法高亮方式显示，必要时同步将执行结果呈现出来.</p>
+<ol type="1">
+<li><p><strong>章节标题</strong>是浮动的，最主要用于书签的生成;</p></li>
+<li><p><strong>公式</strong>是浮动的，这是数学、统计等理科书的特点，公式引用必不可少;</p></li>
+<li><p><strong>图形</strong>是浮动的，统计图形作为可视工具，在说明数据或展示分析结果时经常会引用相应的图形;</p></li>
+<li><p><strong>表格</strong>是浮动的，通常是原始数据或统计分析的结果以表格形式展示出来，它们可能被多次在不同的章节中引用;</p></li>
+<li><p><strong>定理</strong>是浮动的, 这里定理是指与之相关的一大类，包括常用的定理、引理、推论、命题、例子等，它们在文中也会被反复引用;</p></li>
+<li><p><strong>文本</strong>可以设置浮动标签后被引用，最为常见的是图形与表格的题图(caption)通过文本方式来引用;</p></li>
+<li><p><strong>文献</strong>是浮动的，这在是谈及前人的已有工作、成果比较或进行综述时经常要引用大量已经发表的论文、图书、会议报告等.</p></li>
+</ol>
+<p>TeX 有一套成熟的浮动对象的排版方式，通过给浮动对象打标签(label)，然后引用(ref). <code>Quarto Book</code>(或之前的<code>Bookdown</code>)思路一样，但比 TeX 的处理稍复杂些(可能因我们还没有习惯引起). 我们在后面章节中分别举例说明.</p>
+</section>
+<section id="sec1-3" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="sec1-3"><span class="header-section-number">1.3</span> 统计数据分析类图书模板的选择</h2>
+<p>统计数据分析类图书既有理论或原理的讲解，又会有一些案例分析，包括这些案例分析实现的代码. 我们可以考虑的模板主要有三种类型.</p>
+<section id="sec1-3-1" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="sec1-3-1"><span class="header-section-number">1.3.1</span> 基于纯 TeX 模板</h3>
+<p>全世界90%的书是由 TeX 排版的，包括硕士和博士毕业论文模板，这要感谢鼻祖Knuth！开源成就了 TeX !</p>
+<p>如果仅仅是统计理论方面的书集，这显然是最好的选择，因为高质量公式的排版离不开 TeX. 基于 TeX 的排版存在三个明显的缺陷或不足:</p>
+<ol type="1">
+<li><p>大量的 TeX 命令需要记忆;</p></li>
+<li><p>对于代码的排版非常不便，特别是<code>R</code>或<code>Python</code>代码执行后的输出，尤其是图形与表格;</p></li>
+<li><p>代码以<code>listing</code>等包来呈现, 无法实时呈现代码运行的结果，不符合文学化编程的要求.</p></li>
+</ol>
+</section>
+<section id="sec1-3-2" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="sec1-3-2"><span class="header-section-number">1.3.2</span> R, Markdown与 TeX 的结合</h3>
+<p></p>
+<p>数据科学时代更注重文学化统计编程，<strong>代码伴随</strong>是这类图书的特点，自Springer出版<code>R</code>系列统计图书后，这种风格成为新趋势，大大方便了数据科学爱好者”便学习便练习”的学习方式. 针对代码伴随，早期对这类图书有二个解决方案：</p>
+<ol type="1">
+<li>Sweave/knitr + <code>R</code></li>
+</ol>
+<p></p>
+<p>本质上它是在 TeX 嵌入<code>R</code>代码块，并由<code>R</code>在后台运行后将结果也嵌入到 TeX 中，再由 TeX 的编译引擎生成<code>pdf</code>. 这个方案的基本沿用 TeX 的方式，它仅解决了上面提到的第二个问题. 在数据科学时代，报告的快速生成成为新的要求，效率优先！随着<code>knitr</code>的出现<code>Sweave</code>退出舞台.</p>
+<ol start="2" type="1">
+<li><code>R Markdown</code> + <code>Mathjax</code>/ TeX</li>
+</ol>
+<p></p>
+<p><code>Markdown</code>作为一种轻量级的标记语言成为网页作为文字主要载体的互联网时代首先的写作工作，但它显然不适合数学与统计类论文或图书的撰写，但<code>knitr</code>和<code>pandoc</code>的出现使不同风格的内容整合与转换成为可能，而不同风格的内容各有善长的工具实现，作为统计类专业论文或图书类文档主要的内容有：</p>
+<ol type="a">
+<li><p>文字， 由markdown完成</p></li>
+<li><p>公式，由 TeX 完成</p></li>
+<li><p>代码，由<code>R</code> (或Python) 完成</p></li>
+</ol>
+<p>要说明的是，在网页端， TeX 的实现可由<code>Mathjax</code>来完或渲染(转化或生成标准的公式)，见第 <a href="formulas.html" class="quarto-xref"><span> 4</span></a> 章说明.</p>
+</section>
+<section id="sec1-3-3" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="sec1-3-3"><span class="header-section-number">1.3.3</span> 从Markdown、R Markdown 到 Quarto</h3>
+<p><a href="https://markdown.com.cn/">Markdown</a> 是一种轻量级标记语言，其语法简单易用，容易上手. 人们可以通过 Markdown 给纯文本文档添加格式化元素，轻松转换为其他格式文件，适用不同场景，从而使创作者专注于内容写作，而非格式排版. Markdown文档的扩展名为<code>.md</code>. Markdown 的语法结构十分简单，使用者稍微阅读一下相关文档和案例，便可动手写作.</p>
+<p><a href="https://rmarkdown.rstudio.com/">R Markdown</a> 是基于 Markdown 的扩展，专门为 R 语言和数据分析而设计. 它允许在 Markdown 文档中嵌入R代码块，并提供了方便的方式来执行和显示代码的结果. 通过 R Markdown，用户可以编写结合了文本、代码和结果展示的动态报告、文档、演示文稿等. R Markdown 文件可以通过 RStudio 等工具进行编辑和转换，得到包括 HTML、PDF、Word 文档等多种输出格式. R Markdown 文档的扩展名为 <code>.rmd</code>.</p>
+<p>过去10年，R的功能与生态得到不断完善, 得益于Hadley Wickham和谢益辉等开发的许多优秀包的出现，如<code>knitr</code>, <code>kableExtra</code>, <code>ggplot2</code>, <code>dplyr</code>等, 以及基于 <code>rmarkdown</code>适用于新的特定应用场景的程序包, 如<code>bookdown</code>， <code>pagedown</code>, <code>rticle</code>等的出现和普及, <code>Rstudio</code>作为一个IDE也变得越来越成熟与强大， 正在成为一个非常优秀的论文、幻灯片及图书等撰写与出版系统(<code>PUB</code>).</p>
+<p><a href="https://quarto.org">Quarto</a> 则是定位 R Markdown 的下一代产品，由 Posit <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>（原 RStudio 的开发团队）开发，是一个开源的数据分析与科技出版系统. Quarto 不仅支持 R 生态系统的扩展，还支持更多的编程语言（如 <code>Python</code>、<code>Julia</code> 和 <code>Observable</code> 等），同时支持近 40 种输出格式(包括<code>html</code>,<code>pdf</code>, <code>ePub</code>, <code>Word</code>, <code>Asciidoc</code>等)，从而在更大范畴内为科技类（不仅仅限于统计类）出版活动提供解决方案.</p>
+<p><code>Quarto</code>已经完成能够实现<code>bookdown</code>的书稿排版涉及的定制及核心要素的排版，而且考虑到对更多编程语言的支持, 我们完成可以将原来基于<code>bookdown</code>的写作转换到<code>Quarto</code>上来. 若非必要, 我们这本手册之后也用<code>Quarto Book</code>来指基于<code>Quarto</code>的书稿格式排版.</p>
+</section>
+<section id="格式转换流程" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="格式转换流程"><span class="header-section-number">1.3.4</span> 格式转换流程</h3>
+<p>Quarto 根据以下工作流程导出各类格式文档：</p>
+<p><img src="images/quarto-flow.png" class="img-fluid" data-fig-env="figure*"></p>
+<p>其中，<code>Knitr</code> 是 Quarto 中使用的一个 R 包，负责将 <code>.qmd</code> 文件转换为普通 Markdown 格式（<code>.md</code> 文件），以便后续使用 <code>Pandoc</code> 进行格式转换。在转换前， 会运行<code>.qmd</code>文件中的代码块， 将得到的文字、表格、图形结果再插入到文档中. 代码块可以在R的<code>knitr</code>包支持下运行， 也可以在Jupyter软件的支持下运行.</p>
+<p><code>Pandoc</code> 是一个开源的文档转换工具，用于将一个格式的文档转换为另一种格式，广泛应用于科技写作领域。<code>Pandoc</code> 支持多种输入格式（如 Markdown、HTML、LaTeX 等）和输出格式（如 HTML、PDF、Word、ePub 等），并提供了丰富的选项和灵活的配置来满足各种转换需求。特别地, 对于<code>pdf</code>输出, 由<code>pandoc</code>完成由<code>md</code>转化为 TeX , 并由<code>laTeX</code>编译生成<code>pdf</code>; 对于<code>HTML</code>输出, 由<code>pandoc</code>由<code>md</code>转化为<code>html</code>, 其中的数学公式由<code>Mathjax</code>或<code>KaTeX</code>完成渲染.</p>
+<p>想在 VS Code 中进行格式转换，可以在命令行下运行如下命令：</p>
+<pre><code>quarto render --to all </code></pre>
+</section>
+<section id="sec1-3-4" class="level3" data-number="1.3.5">
+<h3 data-number="1.3.5" class="anchored" data-anchor-id="sec1-3-4"><span class="header-section-number">1.3.5</span> 多格式图书出版的实现</h3>
+<p>在科技高度发达的互联系时代，读者使用的媒介基本有三类：较为专业的电脑，较为轻便的平板(电脑)和全功能的智能手机. 前者以<code>pdf</code>类图书为主呈现给读者，同时可以完成标注等工作；后者以文字型的电子图书为主，消磨时间为主；而平板的使用者逐渐成为电子类图书的新势力，包括<code>pdf</code>和<code>epub</code>之类的电子书. 基于<code>Quarto</code>创建的<code>Book</code>类, 注重不同类型读者的媒体使用的差异，并很好地实现统一编写与差异化输出. 目前<code>Quarto Book</code>可以一键生成三类图书:</p>
+<ol type="1">
+<li><p><code>gitbook</code>，可自由出版在<code>git pages</code>上</p></li>
+<li><p><code>ePub</code>, 发表到大量的电子图书平台上</p></li>
+<li><p><code>pdf</code>, 正规的图书出版公司以电子或纸质形式出版</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+注释
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quarto 与 TeX 做到了无缝衔接，我们可以在 Markdown 文档中嵌入和管理 TeX 代码，而且我们还可以通过TeX或<span class="math inline">\(CSS/SCSS\)</span>的高度定制实现符合PDF、HTML或ePub的的输出。</p>
+</div>
+</div>
+
+
+<!-- -->
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-R-base" class="csl-entry" role="listitem">
+R Core Team, 2021. R: A Language and Environment for Statistical Computing[M/OL]. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-xie2015" class="csl-entry" role="listitem">
+Xie Y, 2015. Dynamic Documents with <span>R</span> and knitr[M/OL]. 2nd 版本. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.
+</div>
+</div>
+</section>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>是伟大的<code>Knuth</code>创造了排版的奇迹<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p><a href="https://posit.co/">Posit</a> 由 RStudio 更名而来，于2021年开始着手打造新一代的<code>R Markdown</code>，称为<code>Quarto</code>. 2022年12月，<code>Rstudio</code>作为公司于2021年作出了重大战略调整，不仅将公司名称改为<code>Popsit</code>，而且将更多的开发放在应用更为广泛的<code>VS Code</code>上，但同时保证对<code>Rstudio</code>和<code>Python Notebook</code>的支持. 该公司专注于数据科学的资源集成，近年来一直在布局打通大数据科学的创作与分享.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="前言">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">前言</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./quarto.html" class="pagination-link" aria-label="`Quarto`书稿速览">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><code>Quarto</code>书稿速览</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># 引言 {#sec-intro}</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>这是第 @sec-intro 章的内容，回顾中国图书发展的历史及最新趋势 <span class="co">[</span><span class="ot">@xie2015; @R-base</span><span class="co">]</span>.</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## 中国图书出版的变化 {#sec1-1}</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>中国的图书出版经历一些折腾，\index{方正系统}方正系统一度非常流行，但现在看来是非常失败的，主要是它在解决中文字库和公式排版等的同时没有解决兼容性、标准化及便利性等问题，其本质上想实现在其自创的\index{中文系统}中文系统中将 TeX 命令做一个映射以实现数学公式排版，同时完成格式的定制.</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>中国学术界也经历了一些折腾，如中科院张林波研究员等开发的<span class="in">`CCT`</span>系统和华东师范大学肖刚与陈志杰等老师开发的\index{天元系统}天元系统，它们是 TeX 系统汉化版，较好地解决了汉字生成与调用，但因没有考虑普适性或可拓展性而像方正系统一样随着<span class="in">`CJK`</span>的逐渐成熟而逐渐被抛弃，均退出了历史舞台. 而同期中科院吴凌云博士等在普及 TeX 的同时开发的 TeX \index{中文套餐}中文套餐C TeX 相当成功，主要的工作是会对汉字排版的<span class="in">`ctex`</span>宏包及套餐的开发(后者类似于针对苹果OS系统的MacTeX, 但后期的更新显得太慢)，并对三个主流的文档类<span class="in">`book`</span>, <span class="in">`article`</span>, <span class="in">`report`</span>进行了定制，推出了相应的中文文档类<span class="in">`ctexbook`</span>, <span class="in">`ctexart`</span>, <span class="in">`ctexrep`</span>, 由此避免了传统的基于<span class="in">`CJK`</span>宏包需要的大量定制，同时保证了与原有\index{<span class="in">`TeX`</span>} TeX 系统的兼容性. 这样我们始终可以使用跨平台的<span class="in">`TeXLiVe`</span>进行排版或各类模板的开发，例如各个出版社的图书模板、各个期刊的模板、各高校的硕士和博士毕业论文模板等, 现在这样的模板都开源到\index{Overleaf}Overleaf上.</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>TeX 的出现<span class="ot">[^intro-1]</span>，而且始终屹立不倒的原因是什么？ 第一个原因是它解决了一个<span class="in">`Word`</span>之类\index{文字编辑系统}文字编辑系统的痛点，即从所见所得(WYSIWYG, What you see is what you get)到所想所得(WYTIWYG), 即通过一些 TeX 命令集构成一个完整的编程语言，由它完成一个封闭的体系，具有类似<span class="in">`C`</span>语言一样非常强大的开发功能，由此形成了后来的<span class="in">`latex`</span>, <span class="in">`miktex`</span>, <span class="in">`latex2.09`</span>, <span class="in">`luatex`</span>, <span class="in">`xetex`</span>等 TeX 编译引擎，它们在充分利用电脑系统资源的同时实现高质量输出需要的精度.</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="ot">[^intro-1]: </span>是伟大的<span class="in">`Knuth`</span>创造了排版的奇迹</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>TeX 屹立不倒的另一个原因是\index{浮动对象}浮动对象的处理，即包括\index{浮动对象!公式}公式，\index{浮动对象!表格}表格、\index{浮动对象!图形}图形、\index{浮动对象!页码}页码、\index{浮动对象!章节}章节、\index{浮动对象!文献}文献、\index{浮动对象!定理}定理等的标签化与引用，实现文档内部的自由跳转，结合<span class="in">`Acrobat Reader`</span>这样强大的<span class="in">`pdf`</span>阅读器的支持，使得读者的阅读体验得到大幅改善，并为图书的电子化奠定了基础.</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>随着数据科学这一新兴学科的出现，开源的<span class="in">`R`</span>和<span class="in">`Python`</span> (还有正在逐步流行的<span class="in">`Julia`</span>)编程语言越来越强大. 为了增加这类图书的可读性，需要将代码较完整地呈现在读者面前，并且要求代码的即时可复现能力，即数据的变化，其分析的结果(包括图形和表格)也随之发生变化并同步呈现出来. 这就是现在逐步流行的\index{文学化编程}文学化编程(<span class="in">`literate programming`</span>), 它实现上最早也是 TeX 的鼻祖Knuth提出的, 后来被谢益辉得到重视并广泛推广，并通过<span class="in">`Rstudio`</span>和<span class="in">`R Markdown`</span>和现在的<span class="in">`Quarto Markdown`</span>传递给<span class="in">`R`</span>的用户. 我们姑且把这种将写作与数据分析相结合的统计分析称为\index{文学化统计编程}文学化统计编程(<span class="in">`literate statistical programming`</span>). 它在为数据科学爱好者带来便利的同时也通过<span class="in">`Bookdown`</span>或<span class="in">`quarto`</span>为论文、分析报告和图书的写作和电子化带来了极大的好处，越来越多的包括网页版电子书在内的文档出现在(https://github.com/)等网站上.</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>这本小册子主要考虑书稿类文档的写作，它可以包括图书、毕业论文和分析报告，在些统称为书稿. 现在写书选择什么类型的模板，下面我们来作进一步的探索与比较.</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## 统计类图书的核心要素 {#sec1-2}</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>统计或数据科学类图书的排版除普通图书的页面及文字风格等静态元素外，核心要素体现在浮动的对象上，使得图书的阅读体验更好地发挥出来，即在不同页面之间快速切换、跟踪、搜索，以及必要的<span class="in">`R`</span>和<span class="in">`Python`</span>等代码以语法高亮方式显示，必要时同步将执行结果呈现出来.</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>**章节标题**是浮动的，最主要用于书签的生成;</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>**公式**是浮动的，这是数学、统计等理科书的特点，公式引用必不可少;</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>**图形**是浮动的，统计图形作为可视工具，在说明数据或展示分析结果时经常会引用相应的图形;</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>**表格**是浮动的，通常是原始数据或统计分析的结果以表格形式展示出来，它们可能被多次在不同的章节中引用;</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="ss">5.  </span>**定理**是浮动的, 这里定理是指与之相关的一大类，包括常用的定理、引理、推论、命题、例子等，它们在文中也会被反复引用;</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="ss">6.  </span>**文本**可以设置浮动标签后被引用，最为常见的是图形与表格的题图(caption)通过\index{浮动对象!文本}文本方式来引用;</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss">7.  </span>**文献**是浮动的，这在是谈及前人的已有工作、成果比较或进行综述时经常要引用大量已经发表的论文、图书、会议报告等.</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>TeX 有一套成熟的浮动对象的排版方式，通过给浮动对象打标签(label)，然后引用(ref). <span class="in">`Quarto Book`</span>(或之前的<span class="in">`Bookdown`</span>)思路一样，但比 TeX 的处理稍复杂些(可能因我们还没有习惯引起). 我们在后面章节中分别举例说明.</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="fu">## 统计数据分析类图书模板的选择 {#sec1-3}</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>统计数据分析类图书既有理论或原理的讲解，又会有一些案例分析，包括这些案例分析实现的代码. 我们可以考虑的模板主要有三种类型.</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="fu">### 基于纯 TeX 模板 {#sec1-3-1}</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>全世界90%的书是由 TeX 排版的，包括硕士和博士毕业论文模板，这要感谢鼻祖Knuth！开源成就了 TeX !</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>如果仅仅是统计理论方面的书集，这显然是最好的选择，因为高质量公式的排版离不开 TeX. 基于 TeX 的排版存在三个明显的缺陷或不足:</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>大量的 TeX 命令需要记忆;</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>对于代码的排版非常不便，特别是<span class="in">`R`</span>或<span class="in">`Python`</span>代码执行后的输出，尤其是图形与表格;</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>代码以<span class="in">`listing`</span>等包来呈现, 无法实时呈现代码运行的结果，不符合文学化编程的要求.</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### R, Markdown与 TeX 的结合 {#sec1-3-2}</span></span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>\index{Rmarkdown}</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>数据科学时代更注重文学化统计编程，**代码伴随**是这类图书的特点，自Springer出版<span class="in">`R`</span>系列统计图书后，这种风格成为新趋势，大大方便了数据科学爱好者"便学习便练习"的学习方式. \index{代码伴随} 针对代码伴随，早期对这类图书有二个解决方案：</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Sweave/knitr + <span class="in">`R`</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>\index{Sweave}</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>本质上它是在 TeX 嵌入<span class="in">`R`</span>代码块，并由<span class="in">`R`</span>在后台运行后将结果也嵌入到 TeX 中，再由 TeX 的编译引擎生成<span class="in">`pdf`</span>. 这个方案的基本沿用 TeX 的方式，它仅解决了上面提到的第二个问题. 在数据科学时代，报告的快速生成成为新的要求，效率优先！随着<span class="in">`knitr`</span>的出现<span class="in">`Sweave`</span>退出舞台.</span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span><span class="in">`R Markdown`</span> + <span class="in">`Mathjax`</span>/ TeX</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>\index{Mathjax}</span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a><span class="in">`Markdown`</span>作为一种轻量级的标记语言成为网页作为文字主要载体的互联网时代首先的写作工作，但它显然不适合数学与统计类论文或图书的撰写，但<span class="in">`knitr`</span>和<span class="in">`pandoc`</span>的出现使不同风格的内容整合与转换成为可能，而不同风格的内容各有善长的工具实现，作为统计类专业论文或图书类文档主要的内容有：</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>a.  文字， 由markdown完成</span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a>b.  公式，由 TeX 完成</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>c.  代码，由<span class="in">`R`</span> (或Python) 完成</span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a>要说明的是，在网页端， TeX 的实现可由<span class="in">`Mathjax`</span>来完或渲染(转化或生成标准的公式)，见第 @sec-formulas 章说明.</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="fu">### 从Markdown、R Markdown 到 Quarto {#sec1-3-3}</span></span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Markdown</span><span class="co">](https://markdown.com.cn/)</span> 是一种轻量级标记语言，其语法简单易用，容易上手. 人们可以通过 Markdown 给纯文本文档添加格式化元素，轻松转换为其他格式文件，适用不同场景，从而使创作者专注于内容写作，而非格式排版. Markdown文档的扩展名为<span class="in">`.md`</span>. Markdown 的语法结构十分简单，使用者稍微阅读一下相关文档和案例，便可动手写作.</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">R Markdown</span><span class="co">](https://rmarkdown.rstudio.com/)</span> 是基于 Markdown 的扩展，专门为 R 语言和数据分析而设计. 它允许在 Markdown 文档中嵌入R代码块，并提供了方便的方式来执行和显示代码的结果. 通过 R Markdown，用户可以编写结合了文本、代码和结果展示的动态报告、文档、演示文稿等. R Markdown 文件可以通过 RStudio 等工具进行编辑和转换，得到包括 HTML、PDF、Word 文档等多种输出格式. R Markdown 文档的扩展名为 <span class="in">`.rmd`</span>.</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>过去10年，R的功能与生态得到不断完善, 得益于Hadley Wickham和谢益辉等开发的许多优秀包的出现，如<span class="in">`knitr`</span>, <span class="in">`kableExtra`</span>, <span class="in">`ggplot2`</span>, <span class="in">`dplyr`</span>等, 以及基于 <span class="in">`rmarkdown`</span>适用于新的特定应用场景的程序包, 如<span class="in">`bookdown`</span>， <span class="in">`pagedown`</span>, <span class="in">`rticle`</span>等的出现和普及, <span class="in">`Rstudio`</span>作为一个IDE也变得越来越成熟与强大， 正在成为一个非常优秀的论文、幻灯片及图书等撰写与出版系统(<span class="in">`PUB`</span>).</span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Quarto</span><span class="co">](https://quarto.org)</span> 则是定位 R Markdown 的下一代产品，由 Posit <span class="ot">[^intro-2]</span>（原 RStudio 的开发团队）开发，是一个开源的数据分析与科技出版系统. Quarto 不仅支持 R 生态系统的扩展，还支持更多的编程语言（如 <span class="in">`Python`</span>、<span class="in">`Julia`</span> 和 <span class="in">`Observable`</span> 等），同时支持近 40 种输出格式(包括<span class="in">`html`</span>,<span class="in">`pdf`</span>, <span class="in">`ePub`</span>, <span class="in">`Word`</span>, <span class="in">`Asciidoc`</span>等)，从而在更大范畴内为科技类（不仅仅限于统计类）出版活动提供解决方案.</span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="ot">[^intro-2]: </span><span class="co">[</span><span class="ot">Posit</span><span class="co">](https://posit.co/)</span> 由 RStudio 更名而来，于2021年开始着手打造新一代的<span class="in">`R Markdown`</span>，称为<span class="in">`Quarto`</span>. 2022年12月，<span class="in">`Rstudio`</span>作为公司于2021年作出了重大战略调整，不仅将公司名称改为<span class="in">`Popsit`</span>，而且将更多的开发放在应用更为广泛的<span class="in">`VS Code`</span>上，但同时保证对<span class="in">`Rstudio`</span>和<span class="in">`Python Notebook`</span>的支持. 该公司专注于数据科学的资源集成，近年来一直在布局打通大数据科学的创作与分享.</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="in">`Quarto`</span>已经完成能够实现<span class="in">`bookdown`</span>的书稿排版涉及的定制及核心要素的排版，而且考虑到对更多编程语言的支持, 我们完成可以将原来基于<span class="in">`bookdown`</span>的写作转换到<span class="in">`Quarto`</span>上来. 若非必要, 我们这本手册之后也用<span class="in">`Quarto Book`</span>来指基于<span class="in">`Quarto`</span>的书稿格式排版.</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="fu">### 格式转换流程</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>Quarto 根据以下工作流程导出各类格式文档：</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/quarto-flow.png)</span>{fig-env="figure*"}</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>\noindent 其中，<span class="in">`Knitr`</span> 是 Quarto 中使用的一个 R 包，负责将 <span class="in">`.qmd`</span> 文件转换为普通 Markdown 格式（<span class="in">`.md`</span> 文件），以便后续使用 <span class="in">`Pandoc`</span> 进行格式转换。在转换前， 会运行<span class="in">`.qmd`</span>文件中的代码块， 将得到的文字、表格、图形结果再插入到文档中. 代码块可以在R的<span class="in">`knitr`</span>包支持下运行， 也可以在Jupyter软件的支持下运行.</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a><span class="in">`Pandoc`</span> 是一个开源的文档转换工具，用于将一个格式的文档转换为另一种格式，广泛应用于科技写作领域。<span class="in">`Pandoc`</span> 支持多种输入格式（如 Markdown、HTML、LaTeX 等）和输出格式（如 HTML、PDF、Word、ePub 等），并提供了丰富的选项和灵活的配置来满足各种转换需求。特别地, 对于<span class="in">`pdf`</span>输出, 由<span class="in">`pandoc`</span>完成由<span class="in">`md`</span>转化为 TeX , 并由<span class="in">`laTeX`</span>编译生成<span class="in">`pdf`</span>; 对于<span class="in">`HTML`</span>输出, 由<span class="in">`pandoc`</span>由<span class="in">`md`</span>转化为<span class="in">`html`</span>, 其中的数学公式由<span class="in">`Mathjax`</span>或<span class="in">`KaTeX`</span>完成渲染.</span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>想在 VS Code 中进行格式转换，可以在命令行下运行如下命令：</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="in">```         </span></span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a><span class="in">quarto render --to all </span></span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="fu">### 多格式图书出版的实现 {#sec1-3-4}</span></span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>在科技高度发达的互联系时代，读者使用的媒介基本有三类：较为专业的电脑，较为轻便的平板(电脑)和全功能的智能手机. 前者以<span class="in">`pdf`</span>类图书为主呈现给读者，同时可以完成标注等工作；后者以文字型的电子图书为主，消磨时间为主；而平板的使用者逐渐成为电子类图书的新势力，包括<span class="in">`pdf`</span>和<span class="in">`epub`</span>之类的电子书. 基于<span class="in">`Quarto`</span>创建的<span class="in">`Book`</span>类, 注重不同类型读者的媒体使用的差异，并很好地实现统一编写与差异化输出. 目前<span class="in">`Quarto Book`</span>可以一键生成三类图书:</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span><span class="in">`gitbook`</span>，可自由出版在<span class="in">`git pages`</span>上</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span><span class="in">`ePub`</span>, 发表到大量的电子图书平台上</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span><span class="in">`pdf`</span>, 正规的图书出版公司以电子或纸质形式出版</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>::: callout-note</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>Quarto 与 TeX 做到了无缝衔接，我们可以在 Markdown 文档中嵌入和管理 TeX 代码，而且我们还可以通过TeX或$CSS/SCSS$的高度定制实现符合PDF、HTML或ePub的的输出。</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>:::</span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>本书由汤银才编写</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>本书使用 <a href="https://quarto.org/">Quarto</a> 写作</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

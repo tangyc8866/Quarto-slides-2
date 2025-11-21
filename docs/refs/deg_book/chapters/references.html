@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-Hans" xml:lang="zh-Hans"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.42">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>参考文献 – 随机退化过程与统计建模</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../chapters/06-Conclusion.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b53751a350365c71b6c909e95f209ed1.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-678afd9922eebfa9ca7f5014aecbca52.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-1b5c5d9af6a8c471bfa7390881d2a26e.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "没有结果",
+    "search-matching-documents-text": "匹配的文档",
+    "search-copy-link-title": "复制搜索链接",
+    "search-hide-matches-text": "隐藏其它匹配结果",
+    "search-more-match-text": "更多匹配结果",
+    "search-more-matches-text": "更多匹配结果",
+    "search-clear-button-title": "清除",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "取消",
+    "search-submit-button-title": "提交",
+    "search-label": "搜索"
+  }
+}</script>
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+      tex: {
+          tags: 'ams',  // should be 'ams', 'none', or 'all'
+          inlineMath: [                 // start/end delimiter pairs for in-line math
+              ['$', '$'],
+              ['\\(', '\\)'],
+          ],
+          displayMath: [                // start/end delimiter pairs for display math
+              ['$$', '$$'],
+              ['\\[', '\\]']
+          ],
+          processEscapes: true,
+          macros: {
+              bm: ["\\boldsymbol{#1}", 1],  
+              diff: ["\\mathrm{d}"],  
+          },
+      }
+  };
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">随机退化过程与统计建模</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="搜索"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="切换导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://xu-ancha.github.io/"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="切换深色模式"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="切换阅读器模式">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../chapters/references.html">参考文献</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="切换侧边栏导航" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">前言</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/01-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">引言</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/02-Wiener.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">基于维纳过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/03-Gamma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">基于伽马过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/04-IG.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">基于逆高斯过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/05-ED.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">基于指数分散过程的统计建模</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/06-Conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">总结与展望</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../chapters/references.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">参考文献</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">参考文献</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> 代码</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-abdel1975gamma" class="csl-entry" role="listitem">
+Abdel Hameed M, 1975. A Gamma Wear Process[J]. IEEE Transactions on
+Reliability, 24(2): 152–153.
+</div>
+<div id="ref-al1989failure" class="csl-entry" role="listitem">
+Al-Hussaini E K, Abd-El-Hakim N S, 1989. Failure Rate of the Inverse
+Gaussian-Weibull Mixture Model[J]. Annals of the Institute of
+Statistical Mathematics, 41(3): 617–622.
+</div>
+<div id="ref-bae2008degradation" class="csl-entry" role="listitem">
+Bae S J, Kim S-J, Kim M S, et al., 2008. Degradation Analysis of
+Nano-Contamination in Plasma Display Panels[J]. IEEE Transactions on
+Reliability, 57(2): 222–229.
+</div>
+<div id="ref-bae2006change" class="csl-entry" role="listitem">
+Bae S J, Kvam P H, 2006. A Change-Point Analysis for Modeling Incomplete
+Burn-in for Light Displays[J]. IIE Transactions, 38(6): 489–498. DOI:<a href="https://doi.org/10.1080/074081791009068">10.1080/074081791009068</a>.
+</div>
+<div id="ref-bae2016bayesian" class="csl-entry" role="listitem">
+Bae S J, Yuan T, Kim S, 2016. Bayesian Degradation Modeling for
+Reliability Prediction of Organic Light-Emitting Diodes[J]. Journal of
+Computational Science, 17: 117–125. DOI:<a href="https://doi.org/10.1016/j.jocs.2016.08.006">10.1016/j.jocs.2016.08.006</a>.
+</div>
+<div id="ref-bae2015bayesian" class="csl-entry" role="listitem">
+Bae S J, Yuan T, Ning S, et al., 2015. A <span>B</span>ayesian Approach
+to Modeling Two-Phase Degradation Using Change-Point Regression[J].
+Reliability Engineering &amp; System Safety, 134: 66–74.
+</div>
+<div id="ref-Barndorff1998" class="csl-entry" role="listitem">
+Barndorff-Nielsen O E, Koudou A E, 1998. Trees with Random
+Conductivities and the (Reciprocal) Inverse <span>G</span>aussian
+Distribution[J]. Advances in Applied Probability, 30(2): 409–424.
+</div>
+<div id="ref-bemisetal1972" class="csl-entry" role="listitem">
+Bemis B M, Bain L J, Higgins J J, 1972. Estimation and Hypothesis
+Testing for the Parameters of a Bivariate Exponential Distribution[J].
+Journal of the American Statistical Association, 67(340): 927–929.
+</div>
+<div id="ref-berger2013" class="csl-entry" role="listitem">
+Berger J O, 2013. Statistical Decision Theory and <span>B</span>ayesian
+Analysis[M]. Springer Science &amp; Business Media.
+</div>
+<div id="ref-bernardo2009bayesian" class="csl-entry" role="listitem">
+Bernardo J M, Smith A F, 2009. Bayesian Theory[M]. John Wiley &amp;
+Sons.
+</div>
+<div id="ref-blei2017variational" class="csl-entry" role="listitem">
+Blei D M, Kucukelbir A, McAuliffe J D, 2017. Variational Inference: A
+Review for Statisticians[J]. Journal of the American Statistical
+Association, 112(518): 859–877.
+</div>
+<div id="ref-bolstad2016introduction" class="csl-entry" role="listitem">
+Bolstad W M, Curran J M, 2016. Introduction to <span>Bayesian</span>
+Statistics[M]. John Wiley &amp; Sons.
+</div>
+<div id="ref-pracma2021" class="csl-entry" role="listitem">
+Borchers H W, 2019. Pracma: Practical Numerical Math Functions[J]. R
+Package Version, 2(9): 519.
+</div>
+<div id="ref-bouetal2015" class="csl-entry" role="listitem">
+Bousquet N, Fouladirad M, Grall A, et al., 2015. Bayesian Gamma
+Processes for Optimizing Condition-Based Maintenance Under
+Uncertainty[J]. Applied Stochastic Models in Business and Industry,
+31(3): 360–379.
+</div>
+<div id="ref-casella2021statistical" class="csl-entry" role="listitem">
+Casella G, Berger R L, 2021. Statistical Inference[M]. Cengage Learning.
+</div>
+<div id="ref-celeux2000computational" class="csl-entry" role="listitem">
+Celeux G, Hurn M, Robert C P, 2000. Computational and Inferential
+Difficulties with Mixture Posterior Distributions[J]. Journal of the
+American Statistical Association, 95(451): 957–970.
+</div>
+<div id="ref-chao2022fusing" class="csl-entry" role="listitem">
+Chao M A, Kulkarni C, Goebel K, et al., 2022. Fusing Physics-Based and
+Deep Learning Models for Prognostics[J]. Reliability Engineering &amp;
+System Safety, 217: 107961.
+</div>
+<div id="ref-Chen2013" class="csl-entry" role="listitem">
+Chen N, Tsui K L, 2013. Condition Monitoring and Remaining Useful Life
+Prediction Using Degradation Signals: Revisited[J]. IIE Transactions,
+45(9): 939–952. DOI:<a href="https://doi.org/10.1080/0740817X.2012.706376">10.1080/0740817X.2012.706376</a>.
+</div>
+<div id="ref-chen2021random" class="csl-entry" role="listitem">
+Chen Z, Xia T, Li Y, et al., 2021. Random-Effect Models for Degradation
+Analysis Based on Nonlinear <span>T</span>weedie Exponential-Dispersion
+Processes[J]. IEEE Transactions on Reliability, 71(1): 47–62.
+</div>
+<div id="ref-chen2022edrandom" class="csl-entry" role="listitem">
+Chen Z, Xia T, Li Y, et al., 2022. Random-Effect Models for Degradation
+Analysis Based on Nonlinear Tweedie Exponential-Dispersion Processes[J].
+IEEE Transactions on Reliability, 71(1): 47–62.
+</div>
+<div id="ref-chen2017estimation" class="csl-entry" role="listitem">
+Chen P, Ye Z-S, 2017. Estimation of Field Reliability Based on Aggregate
+Lifetime Data[J]. Technometrics, 59(1): 115–125.
+</div>
+<div id="ref-chenye2018" class="csl-entry" role="listitem">
+Chen P, Ye Z-S, 2018b. A Systematic Look at the Gamma Process Capability
+Indices[J]. European Journal of Operational Research, 265(2): 589–597.
+</div>
+<div id="ref-chen2018uncertainty" class="csl-entry" role="listitem">
+Chen P, Ye Z-S, 2018a. Uncertainty Quantification for Monotone
+Stochastic Degradation Models[J]. Journal of Quality Technology, 50(2):
+207–219.
+</div>
+<div id="ref-welsh1989" class="csl-entry" role="listitem">
+Csorgo S, Welsh A. H., 1989. Testing for Exponential and Marshall-Olkin
+Distributions[J]. Journal of Statistical Planning and Inference, 23:
+287–300.
+</div>
+<div id="ref-dams1975" class="csl-entry" role="listitem">
+Damsleth E, 1975. Conjugate Classes for Gamma Distributions[J].
+Scandinavian Journal of Statistics, 2(2): 80–84.
+</div>
+<div id="ref-davis2007methods" class="csl-entry" role="listitem">
+Davis P J, Rabinowitz P, 2007. Methods of Numerical Integration[M].
+Courier Corporation.
+</div>
+<div id="ref-denison2002bayesian" class="csl-entry" role="listitem">
+Denison D G, Holmes C C, Mallick B K, et al., 2002. Bayesian Methods for
+Nonlinear Classification and Regression[M]. John Wiley &amp; Sons.
+</div>
+<div id="ref-doksum1992models" class="csl-entry" role="listitem">
+Doksum K A, Hbyland A, 1992. Models for Variable-Stress Accelerated Life
+Testing Experiments Based on <span>W</span>iener Processes and the
+Inverse <span>G</span>aussian Distribution[J]. Technometrics, 34(1):
+74–82.
+</div>
+<div id="ref-Duan2017" class="csl-entry" role="listitem">
+Duan F, Wang G, 2017. Reliability Modeling of Two-Phase Inverse
+<span>G</span>aussian Degradation Process[C]//2017 Second International
+Conference on Reliability Systems Engineering (ICRSE). IEEE: 1–6.
+</div>
+<div id="ref-duan2018exponential" class="csl-entry" role="listitem">
+Duan F, Wang G, 2018. Exponential-Dispersion Degradation Process Models
+with Random Effects and Covariates[J]. IEEE Transactions on Reliability,
+67(3): 1128–1142.
+</div>
+<div id="ref-dsm2005" class="csl-entry" role="listitem">
+Dunn P K, Smyth G K, 2005. Series Evaluation of Tweedie Exponential
+Dispersion Model Densities[J]. Statistics and Computing, 15(4): 267–280.
+</div>
+<div id="ref-efron2012bayesian" class="csl-entry" role="listitem">
+Efron B, 2012. Bayesian Inference and the Parametric Bootstrap[J]. The
+Annals of Applied Statistics, 6(4): 1971–1997. DOI:<a href="https://doi.org/10.1214/12-AOAS571">10.1214/12-AOAS571</a>.
+</div>
+<div id="ref-Johnson1993" class="csl-entry" role="listitem">
+Efron B, Tibshirani R, 1993. An Introduction to the Bootstrap[M].
+Chapman &amp; Hall: 49–54.
+</div>
+<div id="ref-ericsouglu2011mixture" class="csl-entry" role="listitem">
+Erişoğlu Ü, Erişoğlu M, Erol H, 2011. A Mixture Model of Two Different
+Distributions Approach to the Analysis of Heterogeneous Survival
+Data[J]. International Journal of Computational and Mathematical
+Sciences, 5(6): 544–548.
+</div>
+<div id="ref-fan2017bayesian" class="csl-entry" role="listitem">
+Fan T-H, Chen C-H, 2017. A <span>B</span>ayesian Predictive Analysis of
+Step-Stress Accelerated Tests in Gamma Degradation-Based Processes[J].
+Quality and Reliability Engineering International.
+</div>
+<div id="ref-fan2023complete" class="csl-entry" role="listitem">
+Fan T-H, Dong Y-S, Peng C-Y, 2024. A Complete <span>B</span>ayesian
+Degradation Analysis Based on Inverse <span>G</span>aussian
+Processes[J]. IEEE Transactions on Reliability, 73(1): 536–548. DOI:<a href="https://doi.org/10.1109/TR.2023.3304673">10.1109/TR.2023.3304673</a>.
+</div>
+<div id="ref-fang2022inverse" class="csl-entry" role="listitem">
+Fang G, Pan R, Wang Y, 2022. Inverse Gaussian Processes with Correlated
+Random Effects for Multivariate Degradation Modeling[J]. European
+Journal of Operational Research, 300(3): 1177–1193.
+</div>
+<div id="ref-fanhus2015" class="csl-entry" role="listitem">
+Fan T, Hsu T, 2015. Statistical Inference of a Two-Component Series
+System with Correlated Log-Normal Lifetime Distribution Under Multiple
+Type-i Censoring[J]. IEEE Transactions on Reliability, 64(1): 376–385.
+</div>
+<div id="ref-fouladirad2011" class="csl-entry" role="listitem">
+Fouladirad M, Grall A, 2011. Condition-Based Maintenance for a System
+Subject to a Non-Homogeneous Wear Process with a Wear Rate
+Transition[J]. Reliability Engineering &amp; System Safety, 96(6):
+611–618. DOI:<a href="https://doi.org/10.1016/j.ress.2010.12.008">10.1016/j.ress.2010.12.008</a>.
+</div>
+<div id="ref-fouladirad2008use" class="csl-entry" role="listitem">
+Fouladirad M, Grall A, Dieulle L, 2008. On the Use of on-Line Detection
+for Maintenance of Gradually Deteriorating Systems[J]. Reliability
+Engineering &amp; System Safety, 93(12): 1814–1820. DOI:<a href="https://doi.org/10.1016/j.ress.2008.03.020">10.1016/j.ress.2008.03.020</a>.
+</div>
+<div id="ref-azevedo1994laplace" class="csl-entry" role="listitem">
+Geisser S, Hodges J, Press S, et al., 1990. The Validity of Posterior
+Expansions Based on <span>Laplace</span>’s Method[J]. Bayesian and
+Likelihood Methods in Statistics and Econometrics, 7: 473.
+</div>
+<div id="ref-gelman2006" class="csl-entry" role="listitem">
+Gelman A, 2006. Prior Distributions for Variance Parameters in
+Hierarchical Models[J]. Bayesian Analysis, 1(3): 515–533.
+</div>
+<div id="ref-gelman2014bayesian" class="csl-entry" role="listitem">
+Gelman A, Carlin J B, Stern H S, et al., 2014. Bayesian Data
+Analysis[M]. Taylor &amp; Francis.
+</div>
+<div id="ref-gilks1995" class="csl-entry" role="listitem">
+Gilks W R, Best N G, Tan K K C, 2022. Adaptive Rejection Metropolis
+Sampling Within <span>G</span>ibbs Sampling[J]. Applied Statistics, 44:
+455–472. DOI:<a href="https://doi.org/10.2307/2986138">10.2307/2986138</a>.
+</div>
+<div id="ref-gilwil1992" class="csl-entry" role="listitem">
+Gilks W R, Wild P, 1992. Adaptive Rejection Sampling for Gibbs
+Sampling[J]. Journal of the Royal Statistical Society: Series C, 41(2):
+337–348.
+</div>
+<div id="ref-giorgio2019perturbed" class="csl-entry" role="listitem">
+Giorgio M, Mele A, Pulcini G, 2019. A Perturbed Gamma Degradation
+Process with Degradation Dependent Non-Gaussian Measurement Errors[J].
+Applied Stochastic Models in Business and Industry, 35(2): 198–210.
+</div>
+<div id="ref-grall2008maintenance" class="csl-entry" role="listitem">
+Grall A, Fouladirad M, 2008. Maintenance Decision Rule with Embedded
+Online <span>B</span>ayesian Change Detection for Gradually
+Non-Stationary Deteriorating Systems[J]. Proceedings of the Institution
+of Mechanical Engineers, Part O: Journal of Risk and Reliability,
+222(3): 359–369. DOI:<a href="https://doi.org/10.1243/1748006XJRR141">10.1243/1748006XJRR141</a>.
+</div>
+<div id="ref-guida2019bayesian" class="csl-entry" role="listitem">
+Guida M, Postiglione F, Pulcini G, 2019. A <span>Bayesian</span>
+Approach for Non-Homogeneous Gamma Degradation Processes[J].
+Communications in Statistics-Theory and Methods, 48(7): 1748–1765.
+</div>
+<div id="ref-guo2018improved" class="csl-entry" role="listitem">
+Guo J, Wang C, Cabrera J, et al., 2018. Improved Inverse
+<span>G</span>aussian Process and Bootstrap: <span>D</span>egradation
+and Reliability Metrics[J]. Reliability Engineering &amp; System Safety,
+178: 269–277.
+</div>
+<div id="ref-halwan2005" class="csl-entry" role="listitem">
+Hall P, Wang J Z, 2005. Bayesian Likelihood Methods for Estimating the
+End Point of a Distribution[J]. Journal of the Royal Statistical
+Society: Series B, 67(5): 717–729.
+</div>
+<div id="ref-hao2015led" class="csl-entry" role="listitem">
+Hao H, Su C, Li C, 2015. <span>LED</span> Lighting System Reliability
+Modeling and Inference via Random Effects Gamma Process and Copula
+Function[J]. International Journal of Photoenergy, 2015.
+</div>
+<div id="ref-hao2019degradation" class="csl-entry" role="listitem">
+Hao S, Yang J, Berenguer C, 2019. Degradation Analysis Based on an
+Extended Inverse <span>G</span>aussian Process Model with Skew-Normal
+Random Effects and Measurement Errors[J]. Reliability Engineering &amp;
+System Safety, 189: 261–270. DOI:<a href="https://doi.org/10.1016/j.ress.2019.04.031">10.1016/j.ress.2019.04.031</a>.
+</div>
+<div id="ref-hartzell2011lifetime" class="csl-entry" role="listitem">
+Hartzell A L, Da Silva M G, Shea H R, 2011. Lifetime Prediction[M]//MEMS
+Reliability. Springer, New York: 9–42.
+</div>
+<div id="ref-hazra2020approximate" class="csl-entry" role="listitem">
+Hazra I, Pandey M D, Manzana N, 2020. Approximate Bayesian Computation
+Method for Estimating Parameters of the Gamma Process Using Noisy
+Data[J]. Reliability Engineering &amp; System Safety, 198: 106780.
+</div>
+<div id="ref-hong2015statistical" class="csl-entry" role="listitem">
+Hong Y, Duan Y, Meeker W Q, et al., 2015. Statistical Methods for
+Degradation Data with Dynamic Covariates Information and an Application
+to Outdoor Weathering Data[J]. Technometrics, 57(2): 180–193.
+</div>
+<div id="ref-hong2017acceleration" class="csl-entry" role="listitem">
+Hong L, Ye Z-S, 2017. When Is Acceleration Unnecessary in a Degradation
+Test?[J]. Statistica Sinica, 27(3): 1461–1483.
+</div>
+<div id="ref-hongetal2019" class="csl-entry" role="listitem">
+Hong L, Zhai Q, Wang X, et al., 2019. System Reliability Evaluation
+Under Dynamic Operating Conditions[J]. IEEE Transactions on Reliability,
+68(3): 800–809.
+</div>
+<div id="ref-houg1995" class="csl-entry" role="listitem">
+Hougaard P, 1995. Frailty Models for Survival Data[J]. Lifetime Data
+Analysis, 1(3): 255–273.
+</div>
+<div id="ref-hu2020predictive" class="csl-entry" role="listitem">
+Hu J, Chen P, 2020. Predictive Maintenance of Systems Subject to Hard
+Failure Based on Proportional Hazards Model[J]. Reliability Engineering
+&amp; System Safety, 196: 106707.
+</div>
+<div id="ref-huynh2021adaptive" class="csl-entry" role="listitem">
+Huynh K T, 2021. An Adaptive Predictive Maintenance Model for Repairable
+Deteriorating Systems Using Inverse Gaussian Degradation Process[J].
+Reliability Engineering &amp; System Safety, 213: 107695.
+</div>
+<div id="ref-jaakkola2000bayesian" class="csl-entry" role="listitem">
+Jaakkola T S, Jordan M I, 2000. Bayesian Parameter Estimation via
+Variational Methods[J]. Statistics and Computing, 10(1): 25–37.
+</div>
+<div id="ref-jamshidian1997" class="csl-entry" role="listitem">
+Jamshidian M, Jennrich R I, 1997. Acceleration of the <span>EM</span>
+Algorithm by Using Quasi-<span>N</span>ewton Methods[J]. Journal of the
+Royal Statistical Society: Series B (Statistical Methodology), 59(3):
+569–587. DOI:<a href="https://doi.org/10.1111/1467-9868.00083">10.1111/1467-9868.00083</a>.
+</div>
+<div id="ref-J1986Some" class="csl-entry" role="listitem">
+Jørgensen B, 1986. Some Properties of Exponential Dispersion Models[J].
+Scandinavian Journal of Statistics, 13(3): 187–197.
+</div>
+<div id="ref-Jorgensen1987Exponential" class="csl-entry" role="listitem">
+Jørgensen B, 1987. Exponential Dispersion Models[J]. Journal of the
+Royal Statistical Society, 49(2): 127–162.
+</div>
+<div id="ref-J1992Exponential" class="csl-entry" role="listitem">
+Jørgensen B, 1992. Exponential Dispersion Models and Extensions: A
+Review[J]. International Statistical Review, 60(1): 5–20.
+</div>
+<div id="ref-J1998" class="csl-entry" role="listitem">
+Jørgensen B, 1998. The Theory of Exponential Dispersion Models[M].
+Chapman <span class="math inline">&amp;</span> Hall.
+</div>
+<div id="ref-komarek2008generalized" class="csl-entry" role="listitem">
+Komárek A, Lesaffre E, 2008. Generalized Linear Mixed Model with a
+Penalized Gaussian Mixture as a Random Effects Distribution[J].
+Computational Statistics &amp; Data Analysis, 52(7): 3441–3458.
+</div>
+<div id="ref-Kong2017" class="csl-entry" role="listitem">
+Kong D J, Balakrishnan N, Cui L R, 2017. Two-Phase Degradation Process
+Model with Abrupt Jump at Change Point Governed by <span>W</span>iener
+Process[J]. IEEE Transactions on Reliability, 66(4): 1345–1360. DOI:<a href="https://doi.org/10.1109/Tr.2017.2711621">10.1109/Tr.2017.2711621</a>.
+</div>
+<div id="ref-kontar2017remaining" class="csl-entry" role="listitem">
+Kontar R, Son J, Zhou S, et al., 2017. Remaining Useful Life Prediction
+Based on the Mixed Effects Model with Mixture Prior Distribution[J].
+IISE Transactions, 49(7): 682–697.
+</div>
+<div id="ref-kotzetal2003" class="csl-entry" role="listitem">
+Kotz S, Lai C D, Xie M, 2003. On the Effect of Redundancy for Systems
+with Dependent Components[J]. IIE Transactions, 35(12): 1103–1110.
+</div>
+<div id="ref-krishnamoorthy2016handbook" class="csl-entry" role="listitem">
+Krishnamoorthy K, 2016. Handbook of Statistical Distributions with
+Applications[M]. CRC Press.
+</div>
+<div id="ref-kundgupt2014" class="csl-entry" role="listitem">
+Kundu D, Gupta A K, 2013. Bayes Estimation for the Marshall–Olkin
+Bivariate Weibull Distribution[J]. Computational Statistics &amp; Data
+Analysis, 57(1): 271–281.
+</div>
+<div id="ref-Tarald1985" class="csl-entry" role="listitem">
+Kvalseth T O, 1985. Cautionary Note about <span class="math inline"><em>R</em><sup>2</sup></span>[J]. The American
+Statistician, 39(4): 279–285.
+</div>
+<div id="ref-laixie2006" class="csl-entry" role="listitem">
+Lai C D, Xie M, 2006. Stochastic Ageing and Dependence for
+Reliability[M]. Springer.
+</div>
+<div id="ref-lawless2004covariates" class="csl-entry" role="listitem">
+Lawless J, Crowder M, 2004. Covariates and Random Effects in a Gamma
+Process Model with Application to Degradation and Failure[J]. Lifetime
+Data Analysis, 10: 213–227. DOI:<a href="https://doi.org/10.1023/B:LIDA.0000036389.14073.dd">10.1023/B:LIDA.0000036389.14073.dd</a>.
+</div>
+<div id="ref-lee2020global" class="csl-entry" role="listitem">
+Lee I-C, Tseng S-T, Hong Y, 2020. Global Planning of Accelerated
+Degradation Tests Based on Exponential Dispersion Degradation Models[J].
+Naval Research Logistics, 67(6): 469–483.
+</div>
+<div id="ref-lesaffre1991multivariate" class="csl-entry" role="listitem">
+Lesaffre E, Molenberghs G, 1991. Multivariate Probit Analysis: A
+Neglected Procedure in Medical Statistics[J]. Statistics in Medicine,
+10(9): 1391–1403.
+</div>
+<div id="ref-lewis2022prediction" class="csl-entry" role="listitem">
+Lewis-Beck C, Tian Q, Meeker W Q, 2022. Prediction of Future Failures
+for Heterogeneous Reliability Field Data[J]. Technometrics, 64(1):
+125–138.
+</div>
+<div id="ref-li2017nonparametric" class="csl-entry" role="listitem">
+Li M, Meng H, Zhang Q, 2017. A Nonparametric Bayesian Modeling Approach
+for Heterogeneous Lifetime Data with Covariates[J]. Reliability
+Engineering &amp; System Safety, 167: 95–104.
+</div>
+<div id="ref-lindbate1988" class="csl-entry" role="listitem">
+Lindstrom M J, Bates D M, 1988. Newton-Raphson and EM Algorithms for
+Linear Mixed-Effects Models for Repeated-Measures Data[J]. Journal of
+the American Statistical Association, 83: 1014–1022.
+</div>
+<div id="ref-linngtsu2019" class="csl-entry" role="listitem">
+Ling M H, Ng H, Tsui K L, 2019. Bayesian and Likelihood Inferences on
+Remaining Useful Life in Two-Phase Degradation Models Under Gamma
+Process[J]. Reliability Engineering &amp; System Safety, 184: 77–85.
+</div>
+<div id="ref-Lin2021b" class="csl-entry" role="listitem">
+Lin C P, Ling M H, Cabrera J, et al., 2021. Prognostics for Lithium-Ion
+Batteries Using a Two-Phase Gamma Degradation Process Model[J].
+Reliability Engineering &amp; System Safety, 214: 107797. DOI:<a href="https://doi.org/10.1016/j.ress.2021.107797">10.1016/j.ress.2021.107797</a>.
+</div>
+<div id="ref-liu2012" class="csl-entry" role="listitem">
+Liu X, 2012. Planning of Accelerated Life Tests with Dependent Failure
+Modes Based on a Gamma Frailty Model[J]. Technometrics, 54(4): 398–409.
+</div>
+<div id="ref-liu1994note" class="csl-entry" role="listitem">
+Liu Q, Pierce D A, 1994. A Note on <span>Gauss—Hermite</span>
+Quadrature[J]. Biometrika, 81(3): 624–629.
+</div>
+<div id="ref-liu2018statistical" class="csl-entry" role="listitem">
+Liu X, Yeo K, Kalagnanam J, 2018. A Statistical Modeling Approach for
+Spatio-Temporal Degradation Data[J]. Journal of Quality Technology,
+50(2): 166–182.
+</div>
+<div id="ref-li2017degradation" class="csl-entry" role="listitem">
+Li J, Wang Z, Zhang Y, et al., 2017. Degradation Data Analysis Based on
+a Generalized Wiener Process Subject to Measurement Error[J]. Mechanical
+Systems and Signal Processing, 94: 57–72.
+</div>
+<div id="ref-li2018nonlinear" class="csl-entry" role="listitem">
+Li J, Wang Z, Zhang Y, et al., 2018. A Nonlinear Wiener Process
+Degradation Model with Autoregressive Errors[J]. Reliability Engineering
+&amp; System Safety, 173: 48–57.
+</div>
+<div id="ref-louis1982" class="csl-entry" role="listitem">
+Louis T A, 1982. Finding the Observed Information Matrix When Using the
+EM Algorithm[J]. Journal of the Royal Statistical Society, Series B, 44:
+226–233.
+</div>
+<div id="ref-Lu2022" class="csl-entry" role="listitem">
+Lu B, Chen Z, Zhao X, 2022. Data-Driven Dynamic Adaptive Replacement
+Policy for Units Subject to Heterogeneous Degradation[J]. Computers
+&amp; Industrial Engineering, 171: 108478. DOI:<a href="https://doi.org/10.1016/j.cie.2022.108478">10.1016/j.cie.2022.108478</a>.
+</div>
+<div id="ref-lu1993using" class="csl-entry" role="listitem">
+Lu C J, Meeker W O, 1993. Using Degradation Measures to Estimate a
+Time-to-Failure Distribution[J]. Technometrics, 35(2): 161–174.
+</div>
+<div id="ref-Lu2020" class="csl-entry" role="listitem">
+Lu L, Wang B, Hong Y, et al., 2020. General Path Models for Degradation
+Data with Multiple Characteristics and Covariates[J]. Technometrics,
+63(3): 354–369.
+</div>
+<div id="ref-ma2019pf" class="csl-entry" role="listitem">
+Ma Y, Chen Y, Zhou X, et al., 2019. Remaining Useful Life Prediction of
+Lithium-Ion Battery Based on Gauss–Hermite Particle Filter[J]. IEEE
+Transactions on Control Systems Technology, 27(4): 1788–1795.
+</div>
+<div id="ref-matin2005" class="csl-entry" role="listitem">
+Marin J-M, Mengersen K, Robert C P, 2005. Bayesian Modelling and
+Inference on Mixtures of Distributions[J]. Handbook of Statistics, 25:
+459–507.
+</div>
+<div id="ref-wangetal03" class="csl-entry" role="listitem">
+Marsaglia G, Tsang W W, Wang J, 2003. Evaluating Kolmogorov’s
+Distribution[J]. Journal of Statistical Software, 8: 1–4.
+</div>
+<div id="ref-maro1967" class="csl-entry" role="listitem">
+Marshall A W, Olkin I, 1967. A Multivariate Exponential Distribution[J].
+Journal of the American Statistical Association, 62(317): 30–44.
+</div>
+<div id="ref-ma2019engineering" class="csl-entry" role="listitem">
+Ma Z, Wang S, Liao H, et al., 2019. Engineering-Driven Performance
+Degradation Analysis of Hydraulic Piston Pump Based on the Inverse
+<span>G</span>aussian Process[J]. Quality and Reliability Engineering
+International, 35(7): 2278–2296.
+</div>
+<div id="ref-mclachlan2007algorithm" class="csl-entry" role="listitem">
+McLachlan G J, Krishnan T, 2007. The EM Algorithm and Extensions[M].
+John Wiley &amp; Sons.
+</div>
+<div id="ref-Meeker1998" class="csl-entry" role="listitem">
+Meeker W Q, Escobar L A, Pascual F G, 1998. Statistical Methods for
+Reliability Data[M]. John Wiley &amp; Sons.
+</div>
+<div id="ref-meinta2007" class="csl-entry" role="listitem">
+Meintanis S G, 2007. Test of Fit for Marshall–Olkin Distributions with
+Applications[J]. Journal of Statistical Planning and Inference, 137:
+3954–3963.
+</div>
+<div id="ref-miller1992estimating" class="csl-entry" role="listitem">
+Miller K W, Morell L J, Noonan R E, et al., 1992. Estimating the
+Probability of Failure When Testing Reveals No Failures[J]. IEEE
+Transactions on Software Engineering, 18(1): 33.
+</div>
+<div id="ref-nelson1980" class="csl-entry" role="listitem">
+Nelson W, 1980. Accelerated Life Testing-Step-Stress Models and Data
+Analyses[J]. IEEE Transactions on Reliability, 29(2): 103–108.
+</div>
+<div id="ref-nguyen2022probabilistic" class="csl-entry" role="listitem">
+Nguyen K T, Medjaher K, Gogu C, 2022. Probabilistic Deep Learning
+Methodology for Uncertainty Quantification of Remaining Useful Lifetime
+of Multi-Component Systems[J]. Reliability Engineering &amp; System
+Safety, 222: 108383.
+</div>
+<div id="ref-ntzoufras2011bayesian" class="csl-entry" role="listitem">
+Ntzoufras I, 2011. Bayesian Modeling Using
+<span>W</span>in<span>BUGS</span>[M]. John Wiley &amp; Sons.
+</div>
+<div id="ref-pan2016remaining" class="csl-entry" role="listitem">
+Pan D, Liu J-B, Cao J, 2016. Remaining Useful Life Estimation Using an
+Inverse Gaussian Degradation Model[J]. Neurocomputing, 185: 64–72.
+</div>
+<div id="ref-pan2017wiener" class="csl-entry" role="listitem">
+Pan D, Liu J-B, Huang F, et al., 2017. A Wiener Process Model with
+Truncated Normal Distribution for Reliability Analysis[J]. Applied
+Mathematical Modelling, 50: 333–346.
+</div>
+<div id="ref-parpad2005" class="csl-entry" role="listitem">
+Park C, Padgett W, 2005. Accelerated Degradation Models for Failure
+Based on Geometric Brownian Motion and Gamma Processes[J]. Lifetime Data
+Analysis, 11(4): 511–527.
+</div>
+<div id="ref-park2006stochastic" class="csl-entry" role="listitem">
+Park C, Padgett W J, 2006. Stochastic Degradation Models with Several
+Accelerating Variables[J]. IEEE Transactions on Reliability, 55(2):
+379–390. DOI:<a href="https://doi.org/10.1109/TR.2006.874937">10.1109/TR.2006.874937</a>.
+</div>
+<div id="ref-park2014cumulative" class="csl-entry" role="listitem">
+Park C, Padgett W J, 2014. Cumulative Damage Models Based on Gamma
+Processes[J]. Wiley StatsRef: Statistics Reference Online.
+</div>
+<div id="ref-paroissin2015inference" class="csl-entry" role="listitem">
+Paroissin C, 2015. Inference for the Wiener Process with Random
+Initiation Time[J]. IEEE Transactions on Reliability, 65(1): 147–157.
+</div>
+<div id="ref-paroissin2017" class="csl-entry" role="listitem">
+Paroissin C, 2017. Online Estimation Methods for the Gamma Degradation
+Process[J]. IEEE Transactions on Reliability, 66(4): 1361–1367.
+</div>
+<div id="ref-peng2015inverse" class="csl-entry" role="listitem">
+Peng C-Y, 2015. Inverse <span>G</span>aussian Processes with Random
+Effects and Explanatory Variables for Degradation Data[J].
+Technometrics, 57(1): 100–111.
+</div>
+<div id="ref-peng2020student" class="csl-entry" role="listitem">
+Peng C-Y, Cheng Y-S, 2020. Student-t Processes for Degradation
+Analysis[J]. Technometrics, 62(2): 223–235.
+</div>
+<div id="ref-peng2024coll" class="csl-entry" role="listitem">
+Peng W, Chen Y, Xu A, et al., 2024. Collaborative Online RUL Prediction
+of Multiple Assets with Analytically Recursive Bayesian Inference[J].
+IEEE Transactions on Reliability, 73(1): 506–520.
+</div>
+<div id="ref-peng2012note" class="csl-entry" role="listitem">
+Peng C-Y, Hsu S-C, 2012. A Note on a Wiener Process with Measurement
+Error[J]. Applied Mathematics Letters, 25(4): 729–732.
+</div>
+<div id="ref-peng2014inverse" class="csl-entry" role="listitem">
+Peng W, Li Y-F, Yang Y-J, et al., 2014. Inverse Gaussian Process Models
+for Degradation Analysis: A Bayesian Perspective[J]. Reliability
+Engineering &amp; System Safety, 130: 175–189.
+</div>
+<div id="ref-pengliyang2016" class="csl-entry" role="listitem">
+Peng W W, Li Y F, Yang Y J, et al., 2016. Bivariate Analysis of
+Incomplete Degradation Observations Based on Inverse Gaussian Processes
+and Copulas[J]. IEEE Transactions on Reliability, 65(2): 624–639.
+</div>
+<div id="ref-peng2017bayesian" class="csl-entry" role="listitem">
+Peng W, Li Y-F, Yang Y-J, et al., 2017. Bayesian Degradation Analysis
+with Inverse <span>G</span>aussian Process Models Under Time-Varying
+Degradation Rates[J]. IEEE Transactions on Reliability, 66(1): 84–96.
+DOI:<a href="https://doi.org/10.1109/TR.2016.2635149">10.1109/TR.2016.2635149</a>.
+</div>
+<div id="ref-pengetal2018" class="csl-entry" role="listitem">
+Peng W, Shen L, Shen Y, et al., 2018. Reliability Analysis of Repairable
+Systems with Recurrent Misuse-Induced Failures and Normal-Operation
+Failures[J]. Reliability Engineering &amp; System Safety, 171: 87–98.
+</div>
+<div id="ref-peng2009mis" class="csl-entry" role="listitem">
+Peng C-Y, Tseng S-T, 2009. Mis-Specification Analysis of Linear
+Degradation Models[J]. IEEE Transactions on Reliability, 58(3): 444–455.
+</div>
+<div id="ref-peng2017dynamic" class="csl-entry" role="listitem">
+Peng Y, Wang Y, Zi Y, et al., 2017. Dynamic Reliability Assessment and
+Prediction for Repairable Systems with Interval-Censored Data[J].
+Reliability Engineering &amp; System Safety, 159: 301–309.
+</div>
+<div id="ref-peng2018joint" class="csl-entry" role="listitem">
+Peng Weiwen, Ye Z-S, Chen N, 2018. Joint Online <span>RUL</span>
+Prediction for Multivariate Deteriorating Systems[J]. IEEE Transactions
+on Industrial Informatics, 15(5): 2870–2878. DOI:<a href="https://doi.org/10.1109/TII.2018.2869429">10.1109/TII.2018.2869429</a>.
+</div>
+<div id="ref-peng2019transformed" class="csl-entry" role="listitem">
+Peng W, Zhu S-P, Shen L, 2019. The Transformed Inverse Gaussian Process
+as an Age-and State-Dependent Degradation Model[J]. Applied Mathematical
+Modelling, 75: 837–852.
+</div>
+<div id="ref-polsco2012" class="csl-entry" role="listitem">
+Polson N G, Scott J G, 2012. On the Half-Cauchy Prior for a Global Scale
+Parameter[J]. Bayesian Analysis, 7(4): 887–901.
+</div>
+<div id="ref-pulcini2016perturbed" class="csl-entry" role="listitem">
+Pulcini G, 2016. A Perturbed Gamma Process with Statistically Dependent
+Measurement Errors[J]. Reliability Engineering &amp; System Safety, 152:
+296–306.
+</div>
+<div id="ref-ren2023deep" class="csl-entry" role="listitem">
+Ren L, Jia Z, Laili Y, et al., 2024. Deep Learning for Time-Series
+Prediction in <span>II</span>o<span>T</span>: Progress, Challenges, and
+Prospects[J]. IEEE Transactions on Neural Networks and Learning Systems,
+35(11): 15072–15091.
+</div>
+<div id="ref-robinson2000" class="csl-entry" role="listitem">
+Robinson M E, Crowder M J, 2000. Bayesian Methods for a Growth-Curve
+Degradation Model with Repeated Measures[J]. Lifetime Data Analysis, 6:
+357–374.
+</div>
+<div id="ref-schrodinger1915notiz" class="csl-entry" role="listitem">
+Schrödinger E, 1915. Notiz <span class="nocase">ü</span>ber Den
+Kapillardruck in Gasblasen[J]. Annalen Der Physik, 351(3): 413–418.
+</div>
+<div id="ref-seo2017data" class="csl-entry" role="listitem">
+Seo K, Pan R, 2017. Data Analysis of Step-Stress Accelerated Life Tests
+with Heterogeneous Group Effects[J]. IISE Transactions, 49(9): 885–898.
+</div>
+<div id="ref-severson2019data" class="csl-entry" role="listitem">
+Severson K A, Attia P M, Jin N, et al., 2019. Data-Driven Prediction of
+Battery Cycle Life Before Capacity Degradation[J]. Nature Energy, 4(5):
+383–391.
+</div>
+<div id="ref-shak1977" class="csl-entry" role="listitem">
+Shaked M A, 1977. Concept of Positive Dependence for Exchangeable Random
+Variables[J]. Annals of Statistics, 5(3): 505–515.
+</div>
+<div id="ref-shen2018degradation" class="csl-entry" role="listitem">
+Shen L, Wang Y, Zhai Q, et al., 2018. Degradation Modeling Using
+Stochastic Processes with Random Initial Degradation[J]. IEEE
+Transactions on Reliability, 68(4): 1320–1329. DOI:<a href="https://doi.org/10.1109/TR.2018.2885133">10.1109/TR.2018.2885133</a>.
+</div>
+<div id="ref-sheu2019optimal" class="csl-entry" role="listitem">
+Sheu S-H, Tsai H-N, Sheu U-Y, et al., 2019. Optimal Replacement Policies
+for a System Based on a One-Cycle Criterion[J]. Reliability Engineering
+&amp; System Safety, 191: 106527. DOI:<a href="https://doi.org/10.1016/j.ress.2019.106527">10.1016/j.ress.2019.106527</a>.
+</div>
+<div id="ref-shuster1968inverse" class="csl-entry" role="listitem">
+Shuster J, 1968. On the Inverse <span>G</span>aussian Distribution
+Function[J]. Journal of the American Statistical Association, 63(324):
+1514–1516.
+</div>
+<div id="ref-si2011" class="csl-entry" role="listitem">
+Si X-S, Hu C, Wang W, et al., 2011. An Adaptive and Nonlinear
+Drift-Based Wiener Process for Remaining Useful Life Estimation[C]. 2011
+Prognostics; System Health Managment Confernece: 1–5.
+</div>
+<div id="ref-singpurwalla1997gamma" class="csl-entry" role="listitem">
+Singpurwalla N, 1997. Gamma Processes and Their Generalizations: An
+Overview[J]. Engineering Probabilistic Design and Maintenance for Flood
+Protection, : 67–75.
+</div>
+<div id="ref-Si2012" class="csl-entry" role="listitem">
+Si X-S, Wang W, Hu C-H, et al., 2012. Remaining Useful Life Estimation
+Based on a Nonlinear Diffusion Degradation Process[J]. IEEE Transactions
+on Reliability, 61(1): 50–67.
+</div>
+<div id="ref-si2018reliability" class="csl-entry" role="listitem">
+Si W, Yang Q, Wu X, et al., 2018. Reliability Analysis Considering
+Dynamic Material Local Deformation[J]. Journal of Quality Technology,
+50(2): 183–197.
+</div>
+<div id="ref-si2013generalized" class="csl-entry" role="listitem">
+Si X-S, Zhou D, 2013. A Generalized Result for Degradation Model-Based
+Reliability Estimation[J]. IEEE Transactions on Automation Science and
+Engineering, 11(2): 632–637.
+</div>
+<div id="ref-songetal2014" class="csl-entry" role="listitem">
+Song S, Coit D W, Feng Q, et al., 2014. Reliability Analysis for
+Multi-Component Systems Subject to Multiple Dependent Competing Failure
+Processes[J]. IEEE Transactions on Reliability, 63(1): 331–345.
+</div>
+<div id="ref-sun2021improved" class="csl-entry" role="listitem">
+Sun B, Li Y, Wang Z, et al., 2021. An Improved Inverse
+<span>G</span>aussian Process with Random Effects and Measurement Errors
+for <span>RUL</span> Prediction of Hydraulic Piston Pump[J].
+Measurement, 173: 108604.
+</div>
+<div id="ref-tang2014accelerated" class="csl-entry" role="listitem">
+Tang S, Guo X, Yu C, et al., 2014. Accelerated Degradation Tests
+Modeling Based on the Nonlinear Wiener Process with Random Effects[J].
+Mathematical Problems in Engineering, 2014(1): 560726.
+</div>
+<div id="ref-tang2014remaining" class="csl-entry" role="listitem">
+Tang S, Yu C, Wang X, et al., 2014. Remaining Useful Life Prediction of
+Lithium-Ion Batteries Based on the Wiener Process with Measurement
+Error[J]. Energies, 7(2): 520–547.
+</div>
+<div id="ref-taylor2022bayesian" class="csl-entry" role="listitem">
+Taylor D, Rigdon S E, Pan R, et al., 2024. Bayesian
+<span>D</span>-Optimal Design for Life Testing with Censoring[J].
+Quality and Reliability Engineering International, 40(1): 71–90. DOI:<a href="https://doi.org/10.1002/qre.322">10.1002/qre.322</a>.
+</div>
+<div id="ref-Tsai2011" class="csl-entry" role="listitem">
+Tsai C, Tseng S, Balakrishnan N, 2011. Mis-Specification Analyses of
+Gamma and Wiener Degradation Processes[J]. Journal of Statistical
+Planning and Inference, 141(12): 3725–3735.
+</div>
+<div id="ref-tsai2012optimal" class="csl-entry" role="listitem">
+Tsai C-C, Tseng S-T, Balakrishnan N, 2012. Optimal Design for
+Degradation Tests Based on Gamma Processes with Random Effects[J]. IEEE
+Transactions on Reliability, 61(2): 604–613.
+</div>
+<div id="ref-tseng2016optimum" class="csl-entry" role="listitem">
+Tseng S-T, Lee I-C, 2016. Optimum Allocation Rule for Accelerated
+Degradation Tests with a Class of Exponential-Dispersion Degradation
+Models[J]. Technometrics, 58(2): 244–254.
+</div>
+<div id="ref-tseng2007stochastic" class="csl-entry" role="listitem">
+Tseng S-T, Peng C-Y, 2007. Stochastic Diffusion Modeling of Degradation
+Data[J]. Journal of Data Science, 5(3): 315–333.
+</div>
+<div id="ref-turlapaty2020variational" class="csl-entry" role="listitem">
+Turlapaty A C, 2020. Variational Bayesian Estimation of Statistical
+Properties of Composite Gamma Log-Normal Distribution[J]. IEEE
+Transactions on Signal Processing, 68: 6481–6492.
+</div>
+<div id="ref-Tweedie1984An" class="csl-entry" role="listitem">
+Tweedie M C, 1984. An Index Which Distinguishes Between Some Important
+Exponential Families[J]. 579: 579–604.
+</div>
+<div id="ref-van2000asymptotic" class="csl-entry" role="listitem">
+Van der Vaart A W, 1998. Asymptotic Statistics[M]. Cambridge University
+Press.
+</div>
+<div id="ref-noort2009" class="csl-entry" role="listitem">
+Van Noortwijk J M, 2009. A Survey of the Application of Gamma Processes
+in Maintenance[J]. Reliability Engineering &amp; System Safety, 94(1):
+2–21.
+</div>
+<div id="ref-wang2008" class="csl-entry" role="listitem">
+Wang X, 2008. A Pseudo-Likelihood Estimation Method for Nonhomogeneous
+Gamma Process Model with Random Effects[J]. Statistica Sinica, 18(3):
+1153–1163.
+</div>
+<div id="ref-wang2010wiener" class="csl-entry" role="listitem">
+Wang X, 2010. Wiener Processes with Random Effects for Degradation
+Data[J]. Journal of Multivariate Analysis, 101(2): 340–351.
+</div>
+<div id="ref-Wangxl2014b" class="csl-entry" role="listitem">
+Wang X, Balakrishnan N, Guo B, 2014. Residual Life Estimation Based on a
+Generalized Wiener Degradation Process[J]. Reliability Engineering &amp;
+System Safety, 124: 13–23.
+</div>
+<div id="ref-wangguochen2014" class="csl-entry" role="listitem">
+Wang X, Guo B, Cheng Z, 2014. Residual Life Estimation Based on
+Bivariate Wiener Degradation Process with Time-Scale Transformations[J].
+Journal of Statistical Computation and Simulation, 84(3): 545–563.
+</div>
+<div id="ref-Wang2019" class="csl-entry" role="listitem">
+Wang H, Ma X, Zhao Y, 2019. An Improved Wiener Process Model with
+Adaptive Drift and Diffusion for Online Remaining Useful Life
+Prediction[J]. Mechanical Systems and Signal Processing, 127: 370–387.
+</div>
+<div id="ref-wangschda2007" class="csl-entry" role="listitem">
+Wang X, Schumitzky A, D’Argenio D Z, 2007. Nonlinear Random Effects
+Mixture Models: Maximum Likelihood Estimation via the EM Algorithm[J].
+Computational Statistics <span class="math inline">&amp;</span> Data
+Analysis, 51: 6614–6623.
+</div>
+<div id="ref-wang2017" class="csl-entry" role="listitem">
+Wang P, Tang Y, Bae S J, He Y, 2018. Bayesian Analysis of Two-Phase
+Degradation Data Based on Change-Point <span>W</span>iener Process[J].
+Reliability Engineering &amp; System Safety, 170: 244–256.
+</div>
+<div id="ref-Wang2018itr" class="csl-entry" role="listitem">
+Wang P, Tang Y, Bae S J, Xu A, 2018. Bayesian Approach for Two-Phase
+Degradation Data Based on Change-Point <span>W</span>iener Process with
+Measurement Errors[J]. IEEE Transactions on Reliability, 67(2): 688–700.
+DOI:<a href="https://doi.org/10.1109/tr.2017.2785978">10.1109/tr.2017.2785978</a>.
+</div>
+<div id="ref-Wang2018ress" class="csl-entry" role="listitem">
+Wang P, Tang Y, Joo Bae S, et al., 2018. Bayesian Analysis of Two-Phase
+Degradation Data Based on Change-Point <span>W</span>iener Process[J].
+Reliability Engineering &amp; System Safety, 170: 244–256. DOI:<a href="https://doi.org/10.1016/j.ress.2017.09.027">10.1016/j.ress.2017.09.027</a>.
+</div>
+<div id="ref-wang2005inadequacy" class="csl-entry" role="listitem">
+Wang B, Titterington D M, 2005. Inadequacy of Interval Estimates
+Corresponding to Variational Bayesian Approximations[C]//International
+Workshop on Artificial Intelligence and Statistics. PMLR: 373–380.
+</div>
+<div id="ref-wang2020accurate" class="csl-entry" role="listitem">
+Wang X, Wang B X, Jiang P H, et al., 2020. Accurate Reliability
+Inference Based on Wiener Process with Random Effects for Degradation
+Data[J]. Reliability Engineering &amp; System Safety, 193: 106631.
+</div>
+<div id="ref-wang2010inverse" class="csl-entry" role="listitem">
+Wang X, Xu D, 2010. An Inverse Gaussian Process Model for Degradation
+Data[J]. Technometrics, 52(2): 188–197.
+</div>
+<div id="ref-wangetal2010" class="csl-entry" role="listitem">
+Wang B, Yu K, Jones M C, 2010. Inference Under Progressively Type II
+Right-Censored Sampling for Certain Lifetime Distributions[J].
+Technometrics, 52(4): 453–460.
+</div>
+<div id="ref-wang2021degradation" class="csl-entry" role="listitem">
+Wang Z, Zhai Q, Chen P, 2021. Degradation Modeling Considering
+Unit-to-Unit Heterogeneity-a General Model and Comparative Study[J].
+Reliability Engineering &amp; System Safety, 216: 107897.
+</div>
+<div id="ref-weer1993" class="csl-entry" role="listitem">
+Weerahandi S, 1993. Generalized Confidence Intervals[J]. Journal of the
+American Statistical Association, 88: 899–905.
+</div>
+<div id="ref-wen2022recent" class="csl-entry" role="listitem">
+Wen Y, Rahman M F, Xu H, et al., 2022. Recent Advances and Trends of
+Predictive Maintenance from Data-Driven Machine Prognostics
+Perspective[J]. Measurement, 187: 110276.
+</div>
+<div id="ref-whitmore1995estimating" class="csl-entry" role="listitem">
+Whitmore G, 1995. Estimating Degradation by a <span>W</span>iener
+Diffusion Process Subject to Measurement Error[J]. Lifetime Data
+Analysis, 1(3): 307–319.
+</div>
+<div id="ref-whitmore1997modelling" class="csl-entry" role="listitem">
+Whitmore G A, Schenkelberg F, 1997. Modelling Accelerated Degradation
+Data Using <span>W</span>iener Diffusion with a Time Scale
+Transformation[J]. Lifetime Data Analysis, 3(1): 27–45.
+</div>
+<div id="ref-wu1983" class="csl-entry" role="listitem">
+Wu C, 1983. On the Convergence Properties of the EM Algorithm[J]. The
+Annals of Statistics, 11(1): 95–103.
+</div>
+<div id="ref-wu2020maintenance" class="csl-entry" role="listitem">
+Wu S, Castro I T, 2020. Maintenance Policy for a System with a Weighted
+Linear Combination of Degradation Processes[J]. European Journal of
+Operational Research, 280(1): 124–133.
+</div>
+<div id="ref-Wu2003A" class="csl-entry" role="listitem">
+Wu W F, Ni C C, 2003. A Study of Stochastic Fatigue Crack Growth
+Modeling Through Experimental Data[J]. Probabilistic Engineering
+Mechanics, 18(2): 107–118.
+</div>
+<div id="ref-wu2022interval" class="csl-entry" role="listitem">
+Wu W, Wang B X, Chen J, et al., 2023. Interval Estimation of the
+Two-Parameter Exponential Constant Stress Accelerated Life Test Model
+Under Type-<span>II</span> Censoring[J]. Quality Technology &amp;
+Quantitative Management, 20(6): 751–762. DOI:<a href="https://doi.org/10.1080/16843703.2022.2147688">10.1080/16843703.2022.2147688</a>.
+</div>
+<div id="ref-xia2022distance" class="csl-entry" role="listitem">
+Xia J, Feng Y, Teng D, et al., 2022. Distance Self-Attention Network
+Method for Remaining Useful Life Estimation of Aeroengine with Parallel
+Computing[J]. Reliability Engineering &amp; System Safety, 225: 108636.
+</div>
+<div id="ref-xiao2023hybrid" class="csl-entry" role="listitem">
+Xiao T, Park C, Lin C, et al., 2023. Hybrid Reliability Analysis with
+Incomplete Interval Data Based on Adaptive <span>K</span>riging[J].
+Reliability Engineering &amp; System Safety, 237: 109362. DOI:<a href="https://doi.org/10.1016/j.ress.2023.10936">10.1016/j.ress.2023.10936</a>.
+</div>
+<div id="ref-xujor1996" class="csl-entry" role="listitem">
+Xu L, Jordan M I, 1996. On Convergence Properties of the EM Algorithm
+for Gaussian Mixtures[J]. Neural Computation, 8: 129–151.
+</div>
+<div id="ref-xuetal2014" class="csl-entry" role="listitem">
+Xu A, Sanjib B, Tang Y, 2014. A Full Bayesian Approach for Masked Data
+in Step-Stress Accelerated Life Testing[J]. IEEE Transactions on
+Reliability, 63(3): 798–806.
+</div>
+<div id="ref-xushen2018" class="csl-entry" role="listitem">
+Xu A, Shen L, 2018. Improved on-Line Estimation for Gamma Process[J].
+Statistics &amp; Probability Letters, 143: 67–73.
+</div>
+<div id="ref-xuetal2018" class="csl-entry" role="listitem">
+Xu A, Shen L, Wang B, et al., 2018. On Modeling Bivariate Wiener
+Degradation Process[J]. IEEE Transactions on Reliability, 67(3):
+897–906.
+</div>
+<div id="ref-xutang2012" class="csl-entry" role="listitem">
+Xu A, Tang Y, 2012. Objective <span>B</span>ayesian Analysis for Linear
+Degradation Models[J]. Communications in Statistics-Theory and Methods,
+41(21): 4034–4046.
+</div>
+<div id="ref-xuzhou2017" class="csl-entry" role="listitem">
+Xu A, Zhou S, 2017. Bayesian Analysis of Series System with Dependent
+Causes of Failure[J]. Statistical Theory and Related Fields, 1: 128–140.
+</div>
+<div id="ref-xu2019unified" class="csl-entry" role="listitem">
+Xu A, Zhou S, Tang Y, 2021. A Unified Model for System Reliability
+Evaluation Under Dynamic Operating Conditions[J]. IEEE Transactions on
+Reliability, 70(1): 65–72.
+</div>
+<div id="ref-yalaoui2005" class="csl-entry" role="listitem">
+Yalaoui A, Chu C, Chatelet E, 2005. Reliability Allocation Problem in a
+Series-Parallel System[J]. Reliability Engineering &amp; System Safety,
+90(1): 55–61.
+</div>
+<div id="ref-Yang2008" class="csl-entry" role="listitem">
+Yang G, 2008. Life Cycle Reliability Engineering[M]. John Wiley <span class="math inline">&amp;</span> Sons, Inc.
+</div>
+<div id="ref-yang2017condition" class="csl-entry" role="listitem">
+Yang L, Ma X, Zhao Y, 2017. A Condition-Based Maintenance Model for a
+Three-State System Subject to Degradation and Environmental Shocks[J].
+Computers &amp; Industrial Engineering, 105: 210–222. DOI:<a href="https://doi.org/10.1016/j.cie.2017.01.012">10.1016/j.cie.2017.01.012</a>.
+</div>
+<div id="ref-yan2020novel" class="csl-entry" role="listitem">
+Yan B, Ma X, Yang L, et al., 2020. A Novel Degradation-Rate-Volatility
+Related Effect <span>W</span>iener Process Model with Its Extension to
+Accelerated Ageing Data Analysis[J]. Reliability Engineering &amp;
+System Safety, 204: 107138.
+</div>
+<div id="ref-ye2014inverse" class="csl-entry" role="listitem">
+Ye Z-S, Chen N, 2014. The Inverse Gaussian Process as a Degradation
+Model[J]. Technometrics, 56(3): 302–311.
+</div>
+<div id="ref-Ye2015" class="csl-entry" role="listitem">
+Ye Z-S, Chen N, Shen Y, 2015. A New Class of Wiener Process Models for
+Degradation Analysis[J]. Reliability Engineering &amp; System Safety,
+139: 58–67.
+</div>
+<div id="ref-ye2014accelerated" class="csl-entry" role="listitem">
+Ye Z-S, Chen L-P, Tang L C, et al., 2014. Accelerated Degradation Test
+Planning Using the Inverse <span>G</span>aussian Process[J]. IEEE
+Transactions on Reliability, 63(3): 750–763.
+</div>
+<div id="ref-ye2013heterogeneities" class="csl-entry" role="listitem">
+Ye Z-S, Hong Y, Xie Y, 2013. How Do Heterogeneities in Operating
+Environments Affect Field Failure Predictions and Test Planning?[J]. The
+Annals of Applied Statistics, 7(4): 2249–2271.
+</div>
+<div id="ref-Ye2012" class="csl-entry" role="listitem">
+Ye Z-S, Shen Y, Xie M, 2012. Degradation-Based Burn-in with Preventive
+Maintenance[J]. European Journal of Operational Research, 221(2):
+360–367.
+</div>
+<div id="ref-ye2013degradation" class="csl-entry" role="listitem">
+Ye Z-S, Wang Y, Tsui K-L, et al., 2013. Degradation Data Analysis Using
+<span>W</span>iener Processes with Measurement Errors[J]. IEEE
+Transactions on Reliability, 62(4): 772–780.
+</div>
+<div id="ref-ye2015" class="csl-entry" role="listitem">
+Ye Z-S, Xie M, 2015. Stochastic Modelling and Analysis of Degradation
+for Highly Reliable Products[J]. Applied Stochastic Models in Business
+and Industry, 31(1): 16–32.
+</div>
+<div id="ref-ye2012degradation" class="csl-entry" role="listitem">
+Ye Z-S, Xie M, Tang L-C, et al., 2012. Degradation-Based Burn-in
+Planning Under Competing Risks[J]. Technometrics, 54(2): 159–168.
+</div>
+<div id="ref-yuan2016bayesian" class="csl-entry" role="listitem">
+Yuan T, Bae S J, Zhu X, 2016. A <span>B</span>ayesian Approach to
+Degradation-Based Burn-in Optimization for Display Products Exhibiting
+Two-Phase Degradation Patterns[J]. Reliability Engineering &amp; System
+Safety, 155: 55–63.
+</div>
+<div id="ref-yuanetal21" class="csl-entry" role="listitem">
+Yuan X-X, Higo E, Pandey M D, 2021. Estimation of the Value of an
+Inspection and Maintenance Program: A <span>B</span>ayesian Gamma
+Process Model[J]. Reliability Engineering &amp; System Safety, 216:
+107912.
+</div>
+<div id="ref-yuan2015hierarchical" class="csl-entry" role="listitem">
+Yuan T, Ji Y, 2015. A Hierarchical Bayesian Degradation Model for
+Heterogeneous Data[J]. IEEE Transactions on Reliability, 64(1): 63–70.
+</div>
+<div id="ref-yuan2012reliability" class="csl-entry" role="listitem">
+Yuan T, Zhu X, 2012. Reliability Study of Ultra-Thin Dielectric Films
+with Variable Thickness Levels[J]. IIE Transactions, 44(9): 744–753.
+</div>
+<div id="ref-zaidan2016gas" class="csl-entry" role="listitem">
+Zaidan M A, Mills A R, Harrison R F, et al., 2016. Gas Turbine Engine
+Prognostics Using <span>Bayesian</span> Hierarchical Models: A
+Variational Approach[J]. Mechanical Systems and Signal Processing, 70:
+120–140.
+</div>
+<div id="ref-zellner1986" class="csl-entry" role="listitem">
+Zellner A, 1986. On Assessing Prior Distributions and Bayesian
+Regression Analysis with g-Prior Distributions[J]. Bayesian Inference
+and Decision Techniques.
+</div>
+<div id="ref-zhai2018random" class="csl-entry" role="listitem">
+Zhai Q, Chen P, Hong L, et al., 2018. A Random-Effects Wiener
+Degradation Model Based on Accelerated Failure Time[J]. Reliability
+Engineering &amp; System Safety, 180: 94–103.
+</div>
+<div id="ref-zhai2023statistical" class="csl-entry" role="listitem">
+Zhai Q, Xu A, Yang J, et al., 2023. Statistical Modeling and Reliability
+Analysis for Degradation Processes Indexed by Two Scales[J]. IEEE
+Transactions on Industrial Informatics, 20(3): 3675–3684.
+</div>
+<div id="ref-Zhai2018" class="csl-entry" role="listitem">
+Zhai Q, Ye Z-S, 2018. Degradation in Common Dynamic Environments[J].
+Technometrics, 60(4): 461–471. DOI:<a href="https://doi.org/10.1080/00401706.2017.1375994">10.1080/00401706.2017.1375994</a>.
+</div>
+<div id="ref-Zhai2023multivariate" class="csl-entry" role="listitem">
+Zhai Q, Ye Z-S, 2023. A Multivariate Stochastic Degradation Model for
+Dependent Performance Characteristics[J]. Technometrics, 65(3): 315–327.
+DOI:<a href="https://doi.org/10.1080/00401706.2022.2157881">10.1080/00401706.2022.2157881</a>.
+</div>
+<div id="ref-zhang2021stochastic" class="csl-entry" role="listitem">
+Zhang H, Chen M, Shang J, et al., 2021. Stochastic Process-Based
+Degradation Modeling and <span>RUL</span> Prediction: From
+<span>B</span>rownian Motion to Fractional <span>B</span>rownian
+Motion[J]. Science China Information Sciences, 64(7): 171201.
+</div>
+<div id="ref-zhang2023joint" class="csl-entry" role="listitem">
+Zhang Y, Feng F, Wang S, et al., 2023. Joint Nonlinear-Drift-Driven
+<span>W</span>iener Process-<span>M</span>arkov Chain Degradation
+Switching Model for Adaptive Online Predicting Lithium-Ion Battery
+Remaining Useful Life[J]. Applied Energy, 341: 121043. DOI:<a href="https://doi.org/10.1016/j.apenergy.2023.121043">10.1016/j.apenergy.2023.121043</a>.
+</div>
+<div id="ref-zhang2016optimal" class="csl-entry" role="listitem">
+Zhang J, Huang X, Fang Y, et al., 2016. Optimal Inspection-Based
+Preventive Maintenance Policy for Three-State Mechanical Components
+Under Competing Failure Modes[J]. Reliability Engineering &amp; System
+Safety, 152: 95–103. DOI:<a href="https://doi.org/10.1016/j.ress.2016.02.007">10.1016/j.ress.2016.02.007</a>.
+</div>
+<div id="ref-zhang2017stochastic" class="csl-entry" role="listitem">
+Zhang Z, Hu C, Si X, et al., 2017. Stochastic Degradation Process
+Modeling and Remaining Useful Life Estimation with Flexible
+Random-Effects[J]. Journal of the Franklin Institute, 354(6): 2477–2499.
+</div>
+<div id="ref-zhang2024condition" class="csl-entry" role="listitem">
+Zhang Y, Ouyang L, Meng X, et al., 2024. Condition-Based Maintenance
+Considering Imperfect Inspection for a Multi-State System Subject to
+Competing and Hidden Failures[J]. Computers &amp; Industrial
+Engineering, 188: 109856. DOI:<a href="https://doi.org/10.1016/j.cie.2023.109856">10.1016/j.cie.2023.109856</a>.
+</div>
+<div id="ref-zhang2018degradation" class="csl-entry" role="listitem">
+Zhang Z, Si X, Hu C, et al., 2018. Degradation Data Analysis and
+Remaining Useful Life Estimation: A Review on Wiener-Process-Based
+Methods[J]. European Journal of Operational Research, 271(3): 775–796.
+</div>
+<div id="ref-zhou2021generalized" class="csl-entry" role="listitem">
+Zhou S, Tang Y, Xu A, 2021. A Generalized Wiener Process with Dependent
+Degradation Rate and Volatility and Time-Varying Mean-to-Variance
+Ratio[J]. Reliability Engineering &amp; System Safety, 216: 107895.
+</div>
+<div id="ref-zhou2019exponential" class="csl-entry" role="listitem">
+Zhou S, Xu A, 2019. Exponential Dispersion Process for Degradation
+Analysis[J]. IEEE Transactions on Reliability, 68(2): 398–409.
+</div>
+<div id="ref-zhou2020variational" class="csl-entry" role="listitem">
+Zhou S, Xu A, Lian Y, et al., 2020. Variational <span>Bayesian</span>
+Analysis for <span>Wiener</span> Degradation Model with Random
+Effects[J]. Communications in Statistics-Theory and Methods, : 1–21.
+</div>
+<div id="ref-zhou2023fast" class="csl-entry" role="listitem">
+Zhou S, Xu A, Tang Y, et al., 2023. Fast <span>B</span>ayesian Inference
+of Reparameterized Gamma Process with Random Effects[J]. IEEE
+Transactions on Reliability, 73(1): 399–412. DOI:<a href="https://doi.org/10.1109/TR.2023.3263940">10.1109/TR.2023.3263940</a>.
+</div>
+<div id="ref-Zhuang2024-ejor" class="csl-entry" role="listitem">
+Zhuang L, Xu A, Wang Y, et al., 2024. Remaining Useful Life Prediction
+for Two-Phase Degradation Model Based on Reparameterized Inverse
+Gaussian Process[J]. European Journal of Operational Research, 319(3):
+877–890. DOI:<a href="https://doi.org/10.1016/j.ejor.2024.06.032">https://doi.org/10.1016/j.ejor.2024.06.032</a>.
+</div>
+<div id="ref-zhu2022bayesian" class="csl-entry" role="listitem">
+Zhu R, Chen Y, Peng W, et al., 2022. Bayesian Deep-Learning for
+<span>RUL</span> Prediction: <span>A</span>n Active Learning
+Perspective[J]. Reliability Engineering &amp; System Safety, 228:
+108758. DOI:<a href="https://doi.org/10.1016/j.ress.2022.108758">10.1016/j.ress.2022.108758</a>.
+</div>
+<div id="ref-张志华2002" class="csl-entry" role="listitem">
+张志华, 2002. 加速寿命试验及其统计分析[M]. 加速寿命试验及其统计分析.
+</div>
+<div id="ref-李海洋2018" class="csl-entry" role="listitem">
+李海洋, 谢里阳, 李铭, et al., 2018.
+一种新的无失效数据可靠性评估方法研究[J]. 兵工学报, 39(8): 1622.
+</div>
+<div id="ref-茆诗松2008" class="csl-entry" role="listitem">
+茆诗松, 汤银才, 王玲玲, 2008. 可靠性统计[M]. 可靠性统计.
+</div>
+<div id="ref-韩明2003" class="csl-entry" role="listitem">
+韩明, 2003. 产品无失效数据的综合处理[J]. 机械工程学报, 39(2): 129–132.
+</div>
+</div>
+
+
+
+<!-- -->
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "已复制");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "已复制");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../chapters/06-Conclusion.html" class="pagination-link" aria-label="总结与展望">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">总结与展望</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">源代码</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu"># 参考文献 {.unnumbered}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a>::: {#refs}</span>
+<span id="cb1-4"><a href="#cb1-4"></a>:::</span></code><button title="复制到剪贴板" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

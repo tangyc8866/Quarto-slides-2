@@ -1,0 +1,20 @@
+<!-- This is what works with Quarto -->
+<script>
+  MathJax = {
+      tex: {
+          tags: 'ams',  // should be 'ams', 'none', or 'all'
+          inlineMath: [                 // start/end delimiter pairs for in-line math
+              ['$', '$'],
+              ['\\(', '\\)'],
+          ],
+          displayMath: [                // start/end delimiter pairs for display math
+              ['$$', '$$'],
+              ['\\[', '\\]']
+          ],
+          processEscapes: true,
+          macros: {
+              bm: ["\\boldsymbol{#1}", 1],  //   mathbbl: ["\\mathbb{#1}", 1],
+          },
+      }
+  };
+</script>
