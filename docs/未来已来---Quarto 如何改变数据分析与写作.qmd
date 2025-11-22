@@ -18,8 +18,8 @@ subtitle: 长春工业大学数学与统计学院 (2025-11-22)
 #subtitle: 温州大学  数理大讲堂  2025 年 第 2 期
 institute: "华东师范大学 统计学院"
 author: "汤银才"
-date: "2025-11-05"
-last-modified: "`r Sys.Date()`"
+date: "更新时间: `r Sys.Date()`"
+last-modified: "更新时间:`r Sys.Date()`"
 format:
   metropolis-revealjs:
     lang: zh  
